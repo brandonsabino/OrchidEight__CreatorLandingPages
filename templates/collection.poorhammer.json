@@ -1,0 +1,211 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "image_with_text_6yHeab": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_jA7yqq": {
+          "type": "heading",
+          "settings": {
+            "heading": "THE NEW COLLECTION",
+            "heading_size": "h0"
+          }
+        },
+        "text_LLXwPk": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Zip up with the Poorhammer crew!</h2>",
+            "text_style": "body"
+          }
+        },
+        "button_eEx4cJ": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "#123",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_jA7yqq",
+        "text_LLXwPk",
+        "button_eEx4cJ"
+      ],
+      "custom_css": [
+        ".button {background: #8f937c; font-family: Shrimp; text-transform: uppercase;}",
+        "h2 {font-family: Shrimp;}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/PH1.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-03b59dde-2eaa-40de-a3b9-74641c6cce50",
+        "color_scheme": "scheme-03b59dde-2eaa-40de-a3b9-74641c6cce50",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 100,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_pbLtLE": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<svg width=\"100%\" height=\"auto\" viewBox=\"0 0 947 110\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M947 7.62939e-06V97.1565C947 97.1565 859.5 119 698 105.5C536.5 92 394.5 56.5 245 57.5644C95.5 58.6288 0 90 0 90V7.62939e-06L947 7.62939e-06Z\" fill=\"#2F3221\"/>\n</svg>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_yfYr9j": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_VgxYpx": {
+          "type": "heading",
+          "settings": {
+            "heading": "ALL PRODUCTS",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VgxYpx"
+      ],
+      "custom_css": [
+        "h2 {font-family: Shrimp;}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 52,
+        "padding_bottom": 0
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".card__inner {background: #f3f3f3;}",
+        ".card__information {align-items: center;}",
+        ".price {text-align: center;}",
+        ".card__information {padding: 0; text-align: center;}",
+        "@media screen and (max-width: 749px) {.card__information {margin-bottom: 20px; }}"
+      ],
+      "settings": {
+        "products_per_page": 24,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 40,
+        "padding_bottom": 36
+      }
+    },
+    "custom_liquid_wwLBqV": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<svg style=\"\n  transform: scaleX(-1) rotate(180deg); margin-bottom: -10px;\" width=\"100%\" height=\"auto\"  viewBox=\"0 0 947 110\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M947 7.62939e-06V97.1565C947 97.1565 859.5 119 698 105.5C536.5 92 394.5 56.5 245 57.5644C95.5 58.6288 0 90 0 90V7.62939e-06L947 7.62939e-06Z\" fill=\"#8F937C\"/>\n</svg>",
+        "color_scheme": "",
+        "padding_top": 28,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_j7hjTd": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_rRpHNK": {
+          "type": "heading",
+          "settings": {
+            "heading": "RECENT PODCASTS",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_rRpHNK"
+      ],
+      "custom_css": [
+        "h2 {font-family: Shrimp; color: white; margin-bottom: 50px;}"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-51d71a61-e01f-4d4c-b576-4e144461e827",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_dmf7tt": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"page-width\" style=\"border-radius: 20px; overflow: hidden;\"><iframe style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/show/1WyIol71cPqppTtKe8sctP?utm_source=generator&theme=0\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe></div>",
+        "color_scheme": "scheme-51d71a61-e01f-4d4c-b576-4e144461e827",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_hXmi6H": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<script \n            type=\"text/javascript\" \n            src=\"https://cdn.ytb.reputon.com/assets/widget.js?shop=orchideight.myshopify.com\" defer></script>\n<div class=\"page-width\" >\n<div class=\"reputon-youtube-widget\" style=\"background: #22262a;\n    border-radius: 20px;\"\n                 data-content-index=\"2\"\n                 data-autoscroll=\"false\"\n                 data-theme=\"dark\"\n                 data-widget-type=\"carousel\"></div></div>",
+        "color_scheme": "scheme-51d71a61-e01f-4d4c-b576-4e144461e827",
+        "padding_top": 20,
+        "padding_bottom": 40
+      }
+    },
+    "custom_liquid_pBEQr8": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".gradient {background: #8f937c; margin-top: -0px;}"
+      ],
+      "settings": {
+        "custom_liquid": "<svg style=\"transform: rotate(180deg); margin-bottom: -20px;\" width=\"100%\" height=\"auto\" viewBox=\"0 0 947 110\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M947 7.62939e-06V97.1565C947 97.1565 859.5 119 698 105.5C536.5 92 394.5 56.5 245 57.5644C95.5 58.6288 0 90 0 90V7.62939e-06L947 7.62939e-06Z\" fill=\"#2F3221\"/>\n</svg>",
+        "color_scheme": "",
+        "padding_top": 100,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "image_with_text_6yHeab",
+    "custom_liquid_pbLtLE",
+    "rich_text_yfYr9j",
+    "product-grid",
+    "custom_liquid_wwLBqV",
+    "rich_text_j7hjTd",
+    "custom_liquid_dmf7tt",
+    "custom_liquid_hXmi6H",
+    "custom_liquid_pBEQr8"
+  ]
+}

@@ -1,0 +1,147 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_liquid_YmALUM": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Akshar\">\n<style>\nh1 {\n  font-family: Shrimp;\n  font-size: 3rem;\n  text-transform: uppercase;\n}\n.button--primary {\n  font-family: Shrimp;\n  text-transform: uppercase;\n}\n.starting-at {display: none}\n.product__media-item {\n  background: #f3f3f3;\n  border-radius: 20px;\n}\n.product-media-container {\n  mix-blend-mode: darken;\n}\n.product .price-item {\n  font-weight: 400;\nfont-family: Akshar;\n  font-size: 2.5rem;\n}\n.form__label {\n  padding-top: 10px;\n  font-weight: bold;\n    padding-bottom: 10px;\n    font-size: 1.5rem;\nfont-family: Akshar;\n}\n\n.product-form__input {display: flex;}\n\n.swatches input[type=radio]+label {\nwidth: 33px!important; height: 33px!important;}\n\n.product-form__input--pill input[type=\"radio\"] + label {\nmin-height: 33px !important;\n    min-width: 33px !important;\n    padding: 0;\nfont-family: Akshar!important;\nmargin-right: 10px!important;\n    height: 33px;\n    display: flex!important;\n    font-size: 12px !important;\n    width: 33px;\n    flex-direction: row!important;\n    flex-wrap: nowrap!important;\n    align-items: center!important;\n    justify-content: center!important;\n}\n\n.product-form__buttons {padding-top: 20px;}\n\n.accordion {\n    font-family: Akshar;\n}\n\n.product-form__input--pill input[type=radio]:checked+label {font-weight: bold;}\n\n@media screen and (min-width: 1023px) { \n.slider {padding-right: 50px;\n}\n\n\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "description"
+      ],
+      "custom_css": [],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "show",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 68,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "custom_css": [
+        "h2 {font-family: Shrimp; font-size: 3rem; text-transform: uppercase;}",
+        ".price .price-item {padding-top: 5px; font-size: 1.75rem; font-family: \"Akshar\";}",
+        ".card__heading {font-family: Shrimp; font-size: 1.75rem; text-transform: uppercase;}",
+        ".card__inner {background: #f3f3f3;}",
+        ".card__information {align-items: center; padding: 0; margin-top: 10px; text-align: center;}",
+        ".price {text-align: center; font-family: Akshar;}",
+        ".title {text-align: left;}",
+        "@media screen and (max-width: 749px) {.title {text-align: center; } h2 {font-size: 2rem; }}"
+      ],
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 3,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "1",
+        "padding_top": 100,
+        "padding_bottom": 76
+      }
+    },
+    "featured_collection_WYUiCQ": {
+      "type": "featured-collection",
+      "custom_css": [
+        "h2 {font-family: Shrimp; font-size: 3rem; text-align: left; text-transform: uppercase;}",
+        ".price .price-item {padding-top: 5px; font-size: 1.75rem; font-family: \"Akshar\";}",
+        ".card__heading {font-family: Shrimp; font-size: 1.75rem; text-transform: uppercase;}",
+        ".card__inner {background: #f3f3f3;}",
+        ".card__information {align-items: center; padding: 0; margin-top: 10px; text-align: center;}",
+        ".price {text-align: center; font-family: Akshar;}",
+        "@media screen and (max-width: 749px) {h2 {font-size: 2rem; text-align: center; }}"
+      ],
+      "settings": {
+        "title": "Featured collection",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "poor-hammer",
+        "products_to_show": 3,
+        "columns_desktop": 3,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 80,
+        "padding_bottom": 72
+      }
+    }
+  },
+  "order": [
+    "custom_liquid_YmALUM",
+    "main",
+    "related-products",
+    "featured_collection_WYUiCQ"
+  ]
+}
