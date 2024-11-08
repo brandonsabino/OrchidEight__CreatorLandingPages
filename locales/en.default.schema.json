@@ -52,6 +52,11 @@
         }
       }
     },
+    "collection_landing_pages": {
+      "name": "Creator Landing Pages",
+      "enable": "Enable Custom Creator Landing Pages",
+      "collections": "Select the Collections you wish to apply Creator Landing Pages to:"
+    },
     "cards": {
       "name": "Product cards",
       "settings": {

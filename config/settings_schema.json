@@ -487,6 +487,22 @@
     ]
   },
   {
+    "name": "t:settings_schema.collection_landing_pages.name",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_creator_landing_pages",
+        "label": "t:settings_schema.collection_landing_pages.enable",
+        "default": false
+      },
+      {
+        "type": "collection_list",
+        "id": "creator_landing_pages_collections",
+        "label": "t:settings_schema.collection_landing_pages.collections"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.cards.name",
     "settings": [
       {
