@@ -1,0 +1,34 @@
+<nav class="header__inline-menu creator">
+  <ul class="list-menu list-menu--inline" role="list">
+    {% if collection.metafields.custom.creator_landing_page_x_account.value.url %}
+      <li>
+        <a
+          target="_blank"
+          href="{{ collection.metafields.custom.creator_landing_page_x_account.value.url }}"
+        >
+          {{- 'icon-twitter.svg' | inline_asset_content -}}
+        </a>
+      </li>
+    {% endif %}
+    {% if collection.metafields.custom.creator_landing_page_twitch_account.value.url %}
+      <li>
+        <a
+          target="_blank"
+          href="{{ collection.metafields.custom.creator_landing_page_twitch_account.value.url }}"
+        >
+          {{- 'icon-twitch.svg' | inline_asset_content -}}
+        </a>
+      </li>
+    {% endif %}
+    {% if collection.metafields.custom.creator_landing_page_youtube_account.value.url %}
+      <li>
+        <a
+          target="_blank"
+          href="{{ collection.metafields.custom.creator_landing_page_youtube_account.value.url }}"
+        >
+          {{- 'icon-youtube.svg' | inline_asset_content -}}
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>

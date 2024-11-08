@@ -1,0 +1,37 @@
+<nav class="menu-drawer__navigation">
+  <ul class="menu-drawer__menu has-submenu list-menu" role="list">
+    {% if collection.metafields.custom.creator_landing_page_x_account.value.url %}
+      <li>
+        <a
+          class="menu-drawer__menu-item list-menu__item link link--text"
+          target="_blank"
+          href="{{ collection.metafields.custom.creator_landing_page_x_account.value.url }}"
+        >
+          X
+        </a>
+      </li>
+    {% endif %}
+    {% if collection.metafields.custom.creator_landing_page_twitch_account.value.url %}
+      <li>
+        <a
+          class="menu-drawer__menu-item list-menu__item link link--text"
+          target="_blank"
+          href="{{ collection.metafields.custom.creator_landing_page_twitch_account.value.url }}"
+        >
+          Twitch
+        </a>
+      </li>
+    {% endif %}
+    {% if collection.metafields.custom.creator_landing_page_youtube_account.value.url %}
+      <li>
+        <a
+          class="menu-drawer__menu-item list-menu__item link link--text"
+          target="_blank"
+          href="{{ collection.metafields.custom.creator_landing_page_youtube_account.value.url }}"
+        >
+          YouTube
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
