@@ -28,6 +28,30 @@
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
+
+{% assign is_creator_landing_page = false %}
+{% for creator_collection in settings.creator_landing_pages_collections %}
+  {% if creator_collection.title == collection.title
+    and settings.enable_creator_landing_pages
+    and collection.metafields.custom.creator_landing_page_primary_color
+  %}
+    {% assign is_creator_landing_page = true %}
+  {% endif %}
+{% endfor %}
+
+{% style %}
+  .card__content.creator-view {
+    background-color: {{ collection.metafields.custom.creator_landing_page_primary_color }};
+  }
+
+  {% if collection.custom.creator_landing_page_alternate_text_color != blank %}
+    .creator-view .card__information h3,
+    .creator-view .card__information .price {
+      color: {{ collection.metafields.custom.creator_landing_page_alternate_text_color }};
+    }
+  {% endif %}
+{% endstyle %}
+
 {%- if card_product and card_product != empty -%}
   {%- liquid
     assign ratio = 1
@@ -58,7 +82,7 @@
         style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
       >
         {%- if card_product.featured_media -%}
-          <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
+          <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}{% if is_creator_landing_page %} creator-view{% endif %}">
             <div class="media media--transparent media--hover-effect">
               {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
               <img
@@ -143,7 +167,7 @@
           </div>
         </div>
       </div>
-      <div class="card__content">
+      <div class="card__content {% if is_creator_landing_page %}creator-view{% endif %}">
         <div class="card__information">
           <h3
             class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"
@@ -590,7 +614,7 @@
         class="card__inner{% if settings.card_style == 'standard' %} color-{{ settings.card_color_scheme }} gradient{% endif %} ratio"
       >
         <div
-          class="card__media {% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}"
+          class="card__media {% if is_creator_landing_page %}creator-view {%  endif %}{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}"
         >
           <div
             class="media media--transparent"
@@ -603,7 +627,7 @@
           </div>
         </div>
       </div>
-      <div class="card__content">
+      <div class="card__content {% if is_creator_landing_page %}creator-view{% endif %}">
         <div class="card__information">
           <h3 class="card__heading card__heading--placeholder{% if settings.card_style == 'standard' %} h5{% endif %}">
             <a role="link" aria-disabled="true" class="full-unstyled-link">
