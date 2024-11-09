@@ -593,3 +593,28 @@
     clip-path: polygon(var(--shape--blob-5));
   }
 }
+
+/* Styles for Custom Creator Landing Pages */
+/* .card__inner .card__media.creator-view {
+  border-radius: 20px;
+}
+
+.card__content.creator-view {
+  border-radius: 20px;
+} */
+
+.card__content.creator-view .card__information {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  grid-column-gap: 5px;
+}
+
+.card.card--card .card__content.creator-view .card__information .price {
+  margin-top: 0;
+}
+
+.creator-view .card__information h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
