@@ -1,12 +1,39 @@
 {% assign is_creator_landing_page = false %}
+{% assign collection_page_match = false %}
+{% assign product_page_match = false %}
+
+<!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
+{% if collection %}
 {% for creator_collection in settings.creator_landing_pages_collections %}
-  {% if creator_collection.title == collection.title
+    {% if creator_collection.title == collection.title
     and settings.enable_creator_landing_pages
     and collection.metafields.custom.creator_landing_page_primary_color
-  %}
-    {% assign is_creator_landing_page = true %}
-  {% endif %}
+    %}
+    {% assign collection_page_match = true %}
+    {% break %}
+    {% endif %}
 {% endfor %}
+{% endif %}
+
+<!-- Check if this is a product page and if any of the product's collections match creator collections -->
+{% if product and product.collections %}
+{% for product_collection in product.collections %}
+    {% for creator_collection in settings.creator_landing_pages_collections %}
+    {% if product_collection.title == creator_collection.title %}
+        {% assign product_page_match = true %}
+        {% break %}
+    {% endif %}
+    {% endfor %}
+    {% if product_page_match %}
+    {% break %}
+    {% endif %}
+{% endfor %}
+{% endif %}
+
+<!-- Set is_creator_landing_page if either collection_page_match or product_page_match is true -->
+{% if collection_page_match or product_page_match %}
+    {% assign is_creator_landing_page = true %}
+{% endif %}
 
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
