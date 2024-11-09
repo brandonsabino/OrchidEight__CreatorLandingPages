@@ -5,16 +5,6 @@
   {% render 'header-mega-menu' %}
 {% endcomment %}
 
-{% assign is_creator_landing_page = false %}
-{% for creator_collection in settings.creator_landing_pages_collections %}
-  {% if creator_collection.title == collection.title
-    and settings.enable_creator_landing_pages
-    and collection.metafields.custom.creator_landing_page_primary_color
-  %}
-    {% assign is_creator_landing_page = true %}
-  {% endif %}
-{% endfor %}
-
 {% if is_creator_landing_page %}
   {% render 'creator-navigation' %}
 {% else %}
