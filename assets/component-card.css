@@ -607,7 +607,7 @@
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
-  grid-column-gap: 5px;
+  grid-column-gap: 10px;
 }
 
 .card.card--card .card__content.creator-view .card__information .price {
