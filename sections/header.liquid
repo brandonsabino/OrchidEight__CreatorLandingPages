@@ -2,37 +2,66 @@
 {% assign collection_page_match = false %}
 {% assign product_page_match = false %}
 
+<!-- Initialize variables to store metafield values if a match is found -->
+{% assign creator_primary_color = '' %}
+{% assign creator_x_account = '' %}
+{% assign creator_youtube_account = '' %}
+{% assign creator_twitch_account = '' %}
+{% assign creator_logo = '' %}
+{% assign creator_alternate_text_color = '' %}
+{% assign creator_collection_url = '' %}
+
 <!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
 {% if collection %}
-{% for creator_collection in settings.creator_landing_pages_collections %}
+  {% for creator_collection in settings.creator_landing_pages_collections %}
     {% if creator_collection.title == collection.title
-    and settings.enable_creator_landing_pages
-    and collection.metafields.custom.creator_landing_page_primary_color
+      and settings.enable_creator_landing_pages
+      and collection.metafields.custom.creator_landing_page_primary_color
     %}
-    {% assign collection_page_match = true %}
-    {% break %}
+      {% assign collection_page_match = true %}
+
+      <!-- Set each metafield value for the matched collection -->
+      {% assign creator_primary_color = collection.metafields.custom.creator_landing_page_primary_color %}
+      {% assign creator_x_account = collection.metafields.custom.creator_landing_page_x_account %}
+      {% assign creator_youtube_account = collection.metafields.custom.creator_landing_page_youtube_account %}
+      {% assign creator_twitch_account = collection.metafields.custom.creator_landing_page_twitch_account %}
+      {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
+      {% assign creator_alternate_text_color = collection.metafields.custom.creator_landing_page_alternate_text_color %}
+      {% assign creator_collection_url = collection.url %}
+      {% break %}
     {% endif %}
-{% endfor %}
+  {% endfor %}
 {% endif %}
 
 <!-- Check if this is a product page and if any of the product's collections match creator collections -->
 {% if product and product.collections %}
-{% for product_collection in product.collections %}
+  {% for product_collection in product.collections %}
     {% for creator_collection in settings.creator_landing_pages_collections %}
-    {% if product_collection.title == creator_collection.title %}
+      {% if product_collection.title == creator_collection.title
+        and product_collection.metafields.custom.creator_landing_page_primary_color
+      %}
         {% assign product_page_match = true %}
+
+        <!-- Set each metafield value for the matched collection -->
+        {% assign creator_primary_color = product_collection.metafields.custom.creator_landing_page_primary_color %}
+        {% assign creator_x_account = product_collection.metafields.custom.creator_landing_page_x_account %}
+        {% assign creator_youtube_account = product_collection.metafields.custom.creator_landing_page_youtube_account %}
+        {% assign creator_twitch_account = product_collection.metafields.custom.creator_landing_page_twitch_account %}
+        {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
+        {% assign creator_alternate_text_color = product_collection.metafields.custom.creator_landing_page_alternate_text_color %}
+        {% assign creator_collection_url = product_collection.url %}
         {% break %}
-    {% endif %}
+      {% endif %}
     {% endfor %}
     {% if product_page_match %}
-    {% break %}
+      {% break %}
     {% endif %}
-{% endfor %}
+  {% endfor %}
 {% endif %}
 
 <!-- Set is_creator_landing_page if either collection_page_match or product_page_match is true -->
 {% if collection_page_match or product_page_match %}
-    {% assign is_creator_landing_page = true %}
+  {% assign is_creator_landing_page = true %}
 {% endif %}
 
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -134,7 +163,7 @@
 
   {% if is_creator_landing_page %}
     .header-wrapper {
-      background-color: {{ collection.metafields.custom.creator_landing_page_primary_color }};
+      background-color: {{ creator_primary_color }};
       border: 2px solid black;
     }
 
@@ -169,14 +198,14 @@
     }
 
     .header__inline-menu.creator a:hover {
-      border-bottom: 1px solid {{ collection.metafields.custom.creator_landing_page_alternate_text_color}}
+      border-bottom: 1px solid {{ creator_alternate_text_color }}
     }
 
     .header-wrapper path,
     .header-wrapper .header-localization button,
     .header-wrapper .localization-selector span {
-      color: {{ collection.metafields.custom.creator_landing_page_alternate_text_color}};
-      fill: {{ collection.metafields.custom.creator_landing_page_alternate_text_color}};
+      color: {{ creator_alternate_text_color }};
+      fill: {{ creator_alternate_text_color }};
     }
   {% endif %}
 {%- endstyle -%}
@@ -219,7 +248,7 @@
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
-          <a href="{% if is_creator_landing_page %}{{ shop.secure_url | append: collection.url }}{% else %}{{ routes.root_url }}{% endif %}" class="header__heading-link link link--text focus-inset">
+          <a href="{% if is_creator_landing_page %}{{ shop.secure_url | append: creator_collection_url }}{% else %}{{ routes.root_url }}{% endif %}" class="header__heading-link link link--text focus-inset">
             {%- if settings.logo != blank -%}
               <div class="header__heading-logo-wrapper">
                 {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
@@ -227,7 +256,7 @@
                 {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
                 {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
                 {% if is_creator_landing_page == true %}
-                  {{ collection.metafields.custom.creator_landing_page_logo | image_url: width: 600 | image_tag:
+                  {{ creator_logo | image_url: width: 600 | image_tag:
                     class: 'header__heading-logo motion-reduce',
                     widths: widths,
                     height: logo_height,
@@ -271,7 +300,7 @@
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
-          <a href="{% if is_creator_landing_page %}{{ shop.secure_url | append: collection.url }}{% else %}{{ routes.root_url }}{% endif %}" class="header__heading-link link link--text focus-inset">
+          <a href="{% if is_creator_landing_page %}{{ shop.secure_url | append: creator_collection_url }}{% else %}{{ routes.root_url }}{% endif %}" class="header__heading-link link link--text focus-inset">
             {%- if settings.logo != blank -%}
               <div class="header__heading-logo-wrapper">
                 {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
@@ -279,7 +308,7 @@
                 {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
                 {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
                 {% if is_creator_landing_page == true %}
-                  {{ collection.metafields.custom.creator_landing_page_logo | image_url: width: 600 | image_tag:
+                  {{ creator_logo | image_url: width: 600 | image_tag:
                     class: 'header__heading-logo motion-reduce',
                     widths: widths,
                     height: logo_height,

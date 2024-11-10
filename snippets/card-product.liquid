@@ -33,6 +33,10 @@
 {% assign collection_page_match = false %}
 {% assign product_page_match = false %}
 
+<!-- Initialize variables to store metafield values if a match is found -->
+{% assign creator_primary_color = '' %}
+{% assign creator_alternate_text_color = '' %}
+
 <!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
 {% if collection %}
   {% for creator_collection in settings.creator_landing_pages_collections %}
@@ -41,6 +45,10 @@
       and collection.metafields.custom.creator_landing_page_primary_color
     %}
       {% assign collection_page_match = true %}
+
+      <!-- Set each metafield value for the matched collection -->
+      {% assign creator_primary_color = collection.metafields.custom.creator_landing_page_primary_color %}
+      {% assign creator_alternate_text_color = collection.metafields.custom.creator_landing_page_alternate_text_color %}
       {% break %}
     {% endif %}
   {% endfor %}
@@ -50,8 +58,14 @@
 {% if product and product.collections %}
   {% for product_collection in product.collections %}
     {% for creator_collection in settings.creator_landing_pages_collections %}
-      {% if product_collection.title == creator_collection.title %}
+      {% if product_collection.title == creator_collection.title
+        and product_collection.metafields.custom.creator_landing_page_primary_color
+      %}
         {% assign product_page_match = true %}
+
+        <!-- Set each metafield value for the matched collection -->
+        {% assign creator_primary_color = product_collection.metafields.custom.creator_landing_page_primary_color %}
+        {% assign creator_alternate_text_color = product_collection.metafields.custom.creator_landing_page_alternate_text_color %}
         {% break %}
       {% endif %}
     {% endfor %}
@@ -68,13 +82,13 @@
 
 {% style %}
   .card__content.creator-view {
-    background-color: {{ collection.metafields.custom.creator_landing_page_primary_color }};
+    background-color: {{ creator_primary_color }};
   }
 
-  {% if collection.custom.creator_landing_page_alternate_text_color != blank %}
+  {% if creator_alternate_text_color != blank %}
     .creator-view .card__information h3,
     .creator-view .card__information .price {
-      color: {{ collection.metafields.custom.creator_landing_page_alternate_text_color }};
+      color: {{ creator_alternate_text_color }};
     }
   {% endif %}
 {% endstyle %}
