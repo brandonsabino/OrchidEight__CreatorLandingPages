@@ -164,11 +164,12 @@
   {% if is_creator_landing_page %}
     .header-wrapper {
       background-color: {{ creator_primary_color }};
-      border: 2px solid black;
+      border-bottom: 2px solid black;
     }
 
     @media screen and (min-width: 990px) {
       .header-wrapper {
+        border: 2px solid black;
         max-width: 82%;
         margin: 15px auto;
         border-radius: 50px;
