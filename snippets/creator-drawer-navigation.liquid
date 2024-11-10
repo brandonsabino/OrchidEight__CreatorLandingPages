@@ -1,33 +1,78 @@
+{% assign product_page_match = false %}
+
+<!-- Initialize variables to store metafield values if a match is found -->
+{% assign creator_x_account = '' %}
+{% assign creator_youtube_account = '' %}
+{% assign creator_twitch_account = '' %}
+
+<!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
+{% if collection %}
+  {% for creator_collection in settings.creator_landing_pages_collections %}
+    {% if creator_collection.title == collection.title
+      and settings.enable_creator_landing_pages
+      and collection.metafields.custom.creator_landing_page_primary_color
+    %}
+      <!-- Set each metafield value for the matched collection -->
+      {% assign creator_x_account = collection.metafields.custom.creator_landing_page_x_account %}
+      {% assign creator_youtube_account = collection.metafields.custom.creator_landing_page_youtube_account %}
+      {% assign creator_twitch_account = collection.metafields.custom.creator_landing_page_twitch_account %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<!-- Check if this is a product page and if any of the product's collections match creator collections -->
+{% if product and product.collections %}
+  {% for product_collection in product.collections %}
+    {% for creator_collection in settings.creator_landing_pages_collections %}
+      {% if product_collection.title == creator_collection.title
+        and product_collection.metafields.custom.creator_landing_page_primary_color
+      %}
+        {% assign product_page_match = true %}
+
+        <!-- Set each metafield value for the matched collection -->
+        {% assign creator_x_account = product_collection.metafields.custom.creator_landing_page_x_account %}
+        {% assign creator_youtube_account = product_collection.metafields.custom.creator_landing_page_youtube_account %}
+        {% assign creator_twitch_account = product_collection.metafields.custom.creator_landing_page_twitch_account %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if product_page_match %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
 <nav class="menu-drawer__navigation">
   <ul class="menu-drawer__menu has-submenu list-menu" role="list">
-    {% if collection.metafields.custom.creator_landing_page_x_account.value.url %}
+    {% if creator_x_account.value.url %}
       <li>
         <a
           class="menu-drawer__menu-item list-menu__item link link--text"
           target="_blank"
-          href="{{ collection.metafields.custom.creator_landing_page_x_account.value.url }}"
+          href="{{ creator_x_account.value.url }}"
         >
           X
         </a>
       </li>
     {% endif %}
-    {% if collection.metafields.custom.creator_landing_page_twitch_account.value.url %}
+    {% if creator_twitch_account.value.url %}
       <li>
         <a
           class="menu-drawer__menu-item list-menu__item link link--text"
           target="_blank"
-          href="{{ collection.metafields.custom.creator_landing_page_twitch_account.value.url }}"
+          href="{{ creator_twitch_account.value.url }}"
         >
           Twitch
         </a>
       </li>
     {% endif %}
-    {% if collection.metafields.custom.creator_landing_page_youtube_account.value.url %}
+    {% if creator_youtube_account.value.url %}
       <li>
         <a
           class="menu-drawer__menu-item list-menu__item link link--text"
           target="_blank"
-          href="{{ collection.metafields.custom.creator_landing_page_youtube_account.value.url }}"
+          href="{{ creator_youtube_account.value.url }}"
         >
           YouTube
         </a>

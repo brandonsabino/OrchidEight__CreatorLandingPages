@@ -1,9 +1,6 @@
-{% assign creator_primary_color = '' %}
 {% assign creator_x_account = '' %}
 {% assign creator_youtube_account = '' %}
 {% assign creator_twitch_account = '' %}
-{% assign creator_logo = '' %}
-{% assign creator_alternate_text_color = '' %}
 
 <!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
 {% if collection %}
@@ -12,15 +9,10 @@
       and settings.enable_creator_landing_pages
       and collection.metafields.custom.creator_landing_page_primary_color
     %}
-      {% assign collection_page_match = true %}
-
       <!-- Set each metafield value for the matched collection -->
-      {% assign creator_primary_color = collection.metafields.custom.creator_landing_page_primary_color %}
       {% assign creator_x_account = collection.metafields.custom.creator_landing_page_x_account %}
       {% assign creator_youtube_account = collection.metafields.custom.creator_landing_page_youtube_account %}
       {% assign creator_twitch_account = collection.metafields.custom.creator_landing_page_twitch_account %}
-      {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
-      {% assign creator_alternate_text_color = collection.metafields.custom.creator_landing_page_alternate_text_color %}
       {% break %}
     {% endif %}
   {% endfor %}
@@ -36,12 +28,9 @@
         {% assign product_page_match = true %}
 
         <!-- Set each metafield value for the matched collection -->
-        {% assign creator_primary_color = product_collection.metafields.custom.creator_landing_page_primary_color %}
         {% assign creator_x_account = product_collection.metafields.custom.creator_landing_page_x_account %}
         {% assign creator_youtube_account = product_collection.metafields.custom.creator_landing_page_youtube_account %}
         {% assign creator_twitch_account = product_collection.metafields.custom.creator_landing_page_twitch_account %}
-        {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
-        {% assign creator_alternate_text_color = product_collection.metafields.custom.creator_landing_page_alternate_text_color %}
         {% break %}
       {% endif %}
     {% endfor %}
@@ -49,11 +38,6 @@
       {% break %}
     {% endif %}
   {% endfor %}
-{% endif %}
-
-<!-- Set is_creator_landing_page if either collection_page_match or product_page_match is true -->
-{% if collection_page_match or product_page_match %}
-  {% assign is_creator_landing_page = true %}
 {% endif %}
 
 <nav class="header__inline-menu creator">
