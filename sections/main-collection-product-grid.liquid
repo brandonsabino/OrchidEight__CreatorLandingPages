@@ -34,6 +34,12 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  {% if section.settings.grid_background_image %}
+    .product-grid-container {
+      background: url({{ section.settings.grid_background_image | image_url: width: 2000 }});
+    }
+  {% endif %}
 {%- endstyle -%}
 
 <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
@@ -224,6 +230,12 @@
       "label": "t:sections.all.colors.label",
       "info": "t:sections.all.colors.has_cards_info",
       "default": "scheme-1"
+    },
+    {
+      "type": "image_picker",
+      "id": "grid_background_image",
+      "label": "Background Image",
+      "info": "Select a background image to display behind the product grid."
     },
     {
       "type": "header",
