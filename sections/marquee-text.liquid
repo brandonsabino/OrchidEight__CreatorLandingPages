@@ -3,7 +3,18 @@
 {% endcomment %}
 
 <div class="marquee-container">
-  <div class="marquee-content">Welcome to our website! Stay updated with our latest news and offers!</div>
+  <div class="marquee-content">
+    <p>{{ section.settings.marquee_text }}</p>
+  </div>
+  <div class="marquee-content">
+    <p>{{ section.settings.marquee_text }}</p>
+  </div>
+  <div class="marquee-content">
+    <p>{{ section.settings.marquee_text }}</p>
+  </div>
+  <div class="marquee-content">
+    <p>{{ section.settings.marquee_text }}</p>
+  </div>
 </div>
 
 <style>
@@ -11,6 +22,8 @@
     overflow: hidden;
     white-space: nowrap;
     width: 100%;
+    border-top: 2px solid {{ section.settings.marquee_border_color }};
+    border-bottom: 2px solid {{ section.settings.marquee_border_color }};
     background-color: {{ section.settings.marquee_background_color }};
     color: {{ section.settings.marquee_text_color }};
     padding: 10px 0;
@@ -18,9 +31,16 @@
   }
 
   .marquee-content {
+    text-transform: uppercase;
+    font-weight: bold;
     display: inline-block;
     padding-right: 25%; /* Spacing for seamless loop */
     animation: scroll-marquee 10s linear infinite;
+  }
+
+  .marquee-content p {
+    padding: 0;
+    margin: 0;
   }
 
   @keyframes scroll-marquee {
@@ -54,6 +74,11 @@
       "id": "marquee_text_color",
       "label": "Text Color",
       "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "marquee_border_color",
+      "label": "Border Color"
     }
   ],
   "presets": [
