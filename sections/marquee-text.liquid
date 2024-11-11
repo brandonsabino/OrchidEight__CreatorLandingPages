@@ -1,0 +1,66 @@
+{% comment %}
+  marquee-text.liquid
+{% endcomment %}
+
+<div class="marquee-container">
+  <div class="marquee-content">Welcome to our website! Stay updated with our latest news and offers!</div>
+</div>
+
+<style>
+  .marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    background-color: {{ section.settings.marquee_background_color }};
+    color: {{ section.settings.marquee_text_color }};
+    padding: 10px 0;
+    box-sizing: border-box;
+  }
+
+  .marquee-content {
+    display: inline-block;
+    padding-right: 25%; /* Spacing for seamless loop */
+    animation: scroll-marquee 10s linear infinite;
+  }
+
+  @keyframes scroll-marquee {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Marquee Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "marquee_text",
+      "label": "Marquee Text",
+      "default": "Welcome to our site!"
+    },
+    {
+      "type": "color",
+      "id": "marquee_background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "marquee_text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
