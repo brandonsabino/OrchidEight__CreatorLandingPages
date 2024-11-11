@@ -45,9 +45,106 @@
       assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
       assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
       assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+
+      assign is_creator_landing_page = false
+      assign collection_page_match = false
+      assign product_page_match = false
+
+      assign creator_x_account = ''
+      assign creator_instagram_account = ''
+      assign creator_youtube_account = ''
+      assign creator_twitch_account = ''
+      assign creator_heading_font = ''
+      assign creator_content_font = ''
+      assign creator_logo = ''
+      assign creator_collection_url =
+      assign creator_accent_color = ''
+      assign creator_header_background_color = ''
+      assign creator_header_content_color = ''
+      assign creator_link_color = ''
+      assign creator_button_primary_background = ''
+      assign creator_button_secondary_background = ''
+      assign creator_footer_background_color = ''
+      assign creator_footer_content_color = ''
+
+      if collection
+        for creator_collection in settings.creator_landing_pages_collections
+          if creator_collection.title == collection.title and settings.enable_creator_landing_pages
+            assign collection_page_match = true
+
+            assign creator_heading_font = collection.metafields.custom.creator_landing_page_heading_font_import
+            assign creator_content_font = collection.metafields.custom.creator_landing_page_content_font_import
+            assign creator_logo = collection.metafields.custom.creator_landing_page_logo
+            assign creator_x_account = collection.metafields.custom.creator_landing_page_x_account
+            assign creator_instagram_account = collection.metafields.custom.creator_landing_page_instagram_account
+            assign creator_youtube_account = collection.metafields.custom.creator_landing_page_youtube_account
+            assign creator_twitch_account = collection.metafields.custom.creator_landing_page_twitch_account
+            assign creator_collection_url = collection.u
+            assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color
+            assign creator_header_background_color = collection.metafields.custom.creator_landing_page_header_background
+            assign creator_header_content_color = collection.metafields.custom.creator_landing_page_header_content_color
+            assign creator_link_color = collection.metafields.custom.creator_landing_page_link_color
+            assign creator_button_primary_background = collection.metafields.custom.creator_landing_page_button_primary_background
+            assign creator_button_secondary_background = collection.metafields.custom.creator_landing_page_button_secondary_background
+            assign creator_footer_background_color = collection.metafields.custom.creator_landing_page_footer_background
+            assign creator_footer_content_color = collection.metafields.custom.creator_landing_page_footer_content_color
+            break
+          endif
+        endfor
+      endif
+
+      if product and product.collections
+        for product_collection in product.collections
+          for creator_collection in settings.creator_landing_pages_collections
+            if product_collection.title == creator_collection.title
+              assign product_page_match = true
+
+              assign creator_heading_font = product_collection.metafields.custom.creator_landing_page_heading_font_import
+              assign creator_content_font = product_collection.metafields.custom.creator_landing_page_content_font_import
+              assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo
+              assign creator_x_account = product_collection.metafields.custom.creator_landing_page_x_account
+              assign creator_instagram_account = product_collection.metafields.custom.creator_landing_page_instagram_account
+              assign creator_youtube_account = product_collection.metafields.custom.creator_landing_page_youtube_account
+              assign creator_twitch_account = product_collection.metafields.custom.creator_landing_page_twitch_account
+              assign creator_collection_url = product_collection.url
+
+              assign creator_accent_color = product_collection.metafields.custom.creator_landing_page_accent_color
+              assign creator_header_background_color = product_collection.metafields.custom.creator_landing_page_header_background
+              assign creator_header_content_color = product_collection.metafields.custom.creator_landing_page_header_content_color
+              assign creator_link_color = product_collection.metafields.custom.creator_landing_page_link_color
+              assign creator_button_primary_background = product_collection.metafields.custom.creator_landing_page_button_primary_background
+              assign creator_button_secondary_background = product_collection.metafields.custom.creator_landing_page_button_secondary_background
+              assign creator_footer_background_color = product_collection.metafields.custom.creator_landing_page_footer_background
+              assign creator_footer_content_color = product_collection.metafields.custom.creator_landing_page_footer_content_color
+              break
+            endif
+          endfor
+          if product_page_match
+            break
+          endif
+        endfor
+      endif
+
+      if collection_page_match or product_page_match
+        assign is_creator_landing_page = true
+      endif
+
+      if creator_heading_font
+        assign creator_heading_font_name = creator_heading_font | split: 'family=' | last | split: '&' | first | split: ':' | first | replace: '+', ' '
+      endif
+
+      if creator_content_font
+        assign creator_content_font_name = creator_content_font | split: 'family=' | last | split: '&' | first | split: ':' | first | replace: '+', ' '
+      endif
     %}
 
     {% style %}
+      {% if creator_heading_font %}
+        {{ creator_heading_font }}
+      {% endif %}
+      {% if creator_content_font %}
+        {{ creator_content_font }}
+      {% endif %}
       {{ settings.type_body_font | font_face: font_display: 'swap' }}
       {{ body_font_bold | font_face: font_display: 'swap' }}
       {{ body_font_italic | font_face: font_display: 'swap' }}
@@ -100,12 +197,12 @@
       }
 
       :root {
-        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+        --font-heading-family:{% if creator_heading_font_name and is_creator_landing_page %}{{ creator_heading_font_name }}, {% endif %}{{ settings.type_body_font.fallback_families }};
         --font-body-style: {{ settings.type_body_font.style }};
         --font-body-weight: {{ settings.type_body_font.weight }};
         --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
 
-        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+        --font-body-family: {% if creator_content_font_name and is_creator_landing_page %}{{ creator_content_font_name }}, {% endif %} {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
         --font-heading-style: {{ settings.type_header_font.style }};
         --font-heading-weight: {{ settings.type_header_font.weight }};
 
@@ -253,6 +350,69 @@
           font-size: 1.6rem;
         }
       }
+
+      /* Begin Custom Creator Styles */
+      {% if is_creator_landing_page %}
+        .product__info-wrapper .product-form__input--pill input[type="radio"] + label {
+          text-transform: uppercase;
+        }
+
+        .product__info-wrapper .product-form__input--pill input[type="radio"]:checked + label {
+          transition: 200ms;
+          border: 2px solid {{ creator_accent_color }};
+          background-color: {{ creator_button_primary_background }};
+          color: {{ creator_button_secondary_background }};
+        }
+
+        .product-form__submit {
+          border: 2px solid {{ creator_accent_color }};
+          background-color: {{ creator_button_primary_background }};
+          color: {{ creator_button_secondary_background }};
+        }
+        .slideshow__text.banner__box {
+          border-radius: 20px;
+        }
+
+        .slideshow__text.banner__box h2 {
+          text-transform: uppercase;
+        }
+
+        .slideshow__text.banner__box .button.button--primary {
+          transition: 200ms;
+          text-transform: uppercase;
+          border: 2px solid {{ creator_accent_color }};
+          background-color: {{ creator_button_primary_background }};
+          color: {{ creator_button_secondary_background }};
+        }
+
+        .slideshow__text.banner__box .button.button--primary:hover,
+        .slideshow__text.banner__box .button.button--primary:focus {
+          background-color: {{ creator_button_secondary_background }};
+          color: {{ creator_button_primary_background }};
+        }
+
+        .slideshow__text.banner__box .button.button--secondary {
+          transition: 200ms;
+          text-transform: uppercase;
+          border: 2px solid {{ creator_accent_color }};
+          background-color: {{ creator_button_secondary_background }};
+          color: {{ creator_button_primary_background }};
+        }
+
+        .slideshow__text.banner__box .button.button--secondary:hover,
+        .slideshow__text.banner__box .button.button--secondary:focus {
+          background-color: {{ creator_button_primary_background }};
+          color: {{ creator_button_secondary_background }};
+        }
+
+        .slideshow__controls {
+          border: none;
+        }
+
+        .slider-button {
+          display: none;
+        }
+      {% endif %}
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
