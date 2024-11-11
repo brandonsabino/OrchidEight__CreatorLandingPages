@@ -5,6 +5,58 @@
 {{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 
+{% assign is_creator_landing_page = false %}
+{% assign collection_page_match = false %}
+{% assign product_page_match = false %}
+
+<!-- Initialize variables to store metafield values if a match is found -->
+{% assign creator_logo = '' %}
+
+{% assign creator_footer_background_color = '' %}
+{% assign creator_footer_content_color = '' %}
+
+<!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
+{% if collection %}
+  {% for creator_collection in settings.creator_landing_pages_collections %}
+    {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
+      {% assign collection_page_match = true %}
+
+      <!-- Set each metafield value for the matched collection -->
+      {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
+
+      {% assign creator_footer_background_color = collection.metafields.custom.creator_landing_page_footer_background %}
+      {% assign creator_footer_content_color = collection.metafields.custom.creator_landing_page_footer_content_color %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<!-- Check if this is a product page and if any of the product's collections match creator collections -->
+{% if product and product.collections %}
+  {% for product_collection in product.collections %}
+    {% for creator_collection in settings.creator_landing_pages_collections %}
+      {% if product_collection.title == creator_collection.title %}
+        {% assign product_page_match = true %}
+
+        <!-- Set each metafield value for the matched collection -->
+        {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
+
+        {% assign creator_footer_background_color = product_collection.metafields.custom.creator_landing_page_footer_background %}
+        {% assign creator_footer_content_color = product_collection.metafields.custom.creator_landing_page_footer_content_color %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if product_page_match %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<!-- Set is_creator_landing_page if either collection_page_match or product_page_match is true -->
+{% if collection_page_match or product_page_match %}
+  {% assign is_creator_landing_page = true %}
+{% endif %}
+
 {%- style -%}
   .footer {
     margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
@@ -28,20 +80,13 @@
 
   {% if is_creator_landing_page %}
     .footer {
-      background-color: {{ creator_primary_color }};
-      color: {{ creator_alternate_text_color }}
+      background-color: {{ creator_footer_background_color }};
+      color: {{ creator_footer_content_color }}
     }
 
     .footer-block__details-content .list-menu__item--link,
     .footer h2 {
-      color: {{ creator_alternate_text_color }}
-    }
-
-    .footer-block__details-content .list-menu__item--link:hover,
-    .footer-block__details-content .list-menu__item--link:focus,
-    .copyright__content a:hover,
-    .copyright__content a:focus {
-      color: {{ creator_alternate_text_color }}
+      color: {{ creator_footer_content_color }}
     }
   {% endif %}
 {%- endstyle -%}

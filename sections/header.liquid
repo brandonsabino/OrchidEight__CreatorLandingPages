@@ -3,31 +3,28 @@
 {% assign product_page_match = false %}
 
 <!-- Initialize variables to store metafield values if a match is found -->
-{% assign creator_primary_color = '' %}
-{% assign creator_x_account = '' %}
-{% assign creator_youtube_account = '' %}
-{% assign creator_twitch_account = '' %}
 {% assign creator_logo = '' %}
-{% assign creator_alternate_text_color = '' %}
 {% assign creator_collection_url = '' %}
+
+{% assign creator_accent_color = '' %}
+{% assign creator_header_background_color = '' %}
+{% assign creator_header_content_color = '' %}
+{% assign creator_link_color = '' %}
 
 <!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
 {% if collection %}
   {% for creator_collection in settings.creator_landing_pages_collections %}
-    {% if creator_collection.title == collection.title
-      and settings.enable_creator_landing_pages
-      and collection.metafields.custom.creator_landing_page_primary_color
-    %}
+    {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
       {% assign collection_page_match = true %}
 
       <!-- Set each metafield value for the matched collection -->
-      {% assign creator_primary_color = collection.metafields.custom.creator_landing_page_primary_color %}
-      {% assign creator_x_account = collection.metafields.custom.creator_landing_page_x_account %}
-      {% assign creator_youtube_account = collection.metafields.custom.creator_landing_page_youtube_account %}
-      {% assign creator_twitch_account = collection.metafields.custom.creator_landing_page_twitch_account %}
       {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
-      {% assign creator_alternate_text_color = collection.metafields.custom.creator_landing_page_alternate_text_color %}
       {% assign creator_collection_url = collection.url %}
+
+      {% assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color %}
+      {% assign creator_header_background_color = collection.metafields.custom.creator_landing_page_header_background %}
+      {% assign creator_header_content_color = collection.metafields.custom.creator_landing_page_header_content_color %}
+      {% assign creator_link_color = collection.metafields.custom.creator_landing_page_link_color %}
       {% break %}
     {% endif %}
   {% endfor %}
@@ -37,19 +34,17 @@
 {% if product and product.collections %}
   {% for product_collection in product.collections %}
     {% for creator_collection in settings.creator_landing_pages_collections %}
-      {% if product_collection.title == creator_collection.title
-        and product_collection.metafields.custom.creator_landing_page_primary_color
-      %}
+      {% if product_collection.title == creator_collection.title %}
         {% assign product_page_match = true %}
 
         <!-- Set each metafield value for the matched collection -->
-        {% assign creator_primary_color = product_collection.metafields.custom.creator_landing_page_primary_color %}
-        {% assign creator_x_account = product_collection.metafields.custom.creator_landing_page_x_account %}
-        {% assign creator_youtube_account = product_collection.metafields.custom.creator_landing_page_youtube_account %}
-        {% assign creator_twitch_account = product_collection.metafields.custom.creator_landing_page_twitch_account %}
         {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
-        {% assign creator_alternate_text_color = product_collection.metafields.custom.creator_landing_page_alternate_text_color %}
         {% assign creator_collection_url = product_collection.url %}
+
+        {% assign creator_accent_color = product_collection.metafields.custom.creator_landing_page_accent_color %}
+        {% assign creator_header_background_color = product_collection.metafields.custom.creator_landing_page_header_background %}
+        {% assign creator_header_content_color = product_collection.metafields.custom.creator_landing_page_header_content_color %}
+        {% assign creator_link_color = product_collection.metafields.custom.creator_landing_page_link_color %}
         {% break %}
       {% endif %}
     {% endfor %}
@@ -163,13 +158,13 @@
 
   {% if is_creator_landing_page %}
     .header-wrapper {
-      background-color: {{ creator_primary_color }};
-      border-bottom: 2px solid black;
+      background-color: {{ creator_header_background_color }};
+      border-bottom: 2px solid {{ creator_header_content_color }};
     }
 
     @media screen and (min-width: 990px) {
       .header-wrapper {
-        border: 2px solid black;
+        border: 2px solid {{ creator_accent_color }};
         max-width: 82%;
         margin: 15px auto;
         border-radius: 50px;
@@ -199,14 +194,14 @@
     }
 
     .header__inline-menu.creator a:hover {
-      border-bottom: 1px solid {{ creator_alternate_text_color }}
+      border-bottom: 1px solid {{ creator_header_content_color }}
     }
 
     .header-wrapper path,
     .header-wrapper .header-localization button,
     .header-wrapper .localization-selector span {
-      color: {{ creator_alternate_text_color }};
-      fill: {{ creator_alternate_text_color }};
+      color: {{ creator_header_content_color }};
+      fill: {{ creator_header_content_color }};
     }
   {% endif %}
 {%- endstyle -%}
