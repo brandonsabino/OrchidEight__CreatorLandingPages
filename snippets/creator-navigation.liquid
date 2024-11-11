@@ -1,5 +1,6 @@
 <!-- Initialize variables to store metafield values if a match is found -->
 {% assign creator_x_account = '' %}
+{% assign creator_instagram_account = '' %}
 {% assign creator_youtube_account = '' %}
 {% assign creator_twitch_account = '' %}
 
@@ -9,6 +10,7 @@
     {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
       <!-- Set each metafield value for the matched collection -->
       {% assign creator_x_account = collection.metafields.custom.creator_landing_page_x_account %}
+      {% assign creator_instagram_account = collection.metafields.custom.creator_landing_page_instagram_account %}
       {% assign creator_youtube_account = collection.metafields.custom.creator_landing_page_youtube_account %}
       {% assign creator_twitch_account = collection.metafields.custom.creator_landing_page_twitch_account %}
       {% break %}
@@ -23,6 +25,7 @@
       {% if product_collection.title == creator_collection.title %}
         <!-- Set each metafield value for the matched collection -->
         {% assign creator_x_account = product_collection.metafields.custom.creator_landing_page_x_account %}
+        {% assign creator_instagram_account = product_collection.metafields.custom.creator_landing_page_instagram_account %}
         {% assign creator_youtube_account = product_collection.metafields.custom.creator_landing_page_youtube_account %}
         {% assign creator_twitch_account = product_collection.metafields.custom.creator_landing_page_twitch_account %}
         {% break %}
@@ -30,7 +33,6 @@
     {% endfor %}
   {% endfor %}
 {% endif %}
-
 <nav class="header__inline-menu creator">
   <ul class="list-menu list-menu--inline" role="list">
     {% if creator_x_account.value.url %}
@@ -40,6 +42,16 @@
           href="{{ creator_x_account.value.url }}"
         >
           {{- 'icon-twitter.svg' | inline_asset_content -}}
+        </a>
+      </li>
+    {% endif %}
+    {% if creator_instagram_account.value.url %}
+      <li>
+        <a
+          target="_blank"
+          href="{{ creator_instagram_account.value.url }}"
+        >
+          {{- 'icon-instagram.svg' | inline_asset_content -}}
         </a>
       </li>
     {% endif %}
