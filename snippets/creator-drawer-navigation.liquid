@@ -1,5 +1,3 @@
-{% assign product_page_match = false %}
-
 <!-- Initialize variables to store metafield values if a match is found -->
 {% assign creator_x_account = '' %}
 {% assign creator_youtube_account = '' %}
@@ -8,10 +6,7 @@
 <!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
 {% if collection %}
   {% for creator_collection in settings.creator_landing_pages_collections %}
-    {% if creator_collection.title == collection.title
-      and settings.enable_creator_landing_pages
-      and collection.metafields.custom.creator_landing_page_primary_color
-    %}
+    {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
       <!-- Set each metafield value for the matched collection -->
       {% assign creator_x_account = collection.metafields.custom.creator_landing_page_x_account %}
       {% assign creator_youtube_account = collection.metafields.custom.creator_landing_page_youtube_account %}
@@ -25,9 +20,7 @@
 {% if product and product.collections %}
   {% for product_collection in product.collections %}
     {% for creator_collection in settings.creator_landing_pages_collections %}
-      {% if product_collection.title == creator_collection.title
-        and product_collection.metafields.custom.creator_landing_page_primary_color
-      %}
+      {% if product_collection.title == creator_collection.title %}
         {% assign product_page_match = true %}
 
         <!-- Set each metafield value for the matched collection -->
