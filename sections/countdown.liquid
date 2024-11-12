@@ -1,6 +1,6 @@
 <div class="release-countdown">
-  {% assign release_date = collection.metafields.custom.creator_landing_page_release_countdown_date %}
-  {% if release_date %}
+  {% assign creator_release_date = collection.metafields.custom.creator_landing_page_release_countdown_date %}
+  {% if creator_release_date %}
     <div id="countdown" class="countdown" style="color: {{ section.settings.text_color }};">
       <div class="countdown-unit">
         <span id="days" class="countdown-number">0</span>
@@ -73,7 +73,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var releaseDate = new Date("{{ release_date | date: '%Y-%m-%dT%H:%M:%S' }}").getTime();
+    var releaseDate = new Date("{{ creator_release_date | date: '%Y-%m-%dT%H:%M:%S' }}").getTime();
 
     function updateCountdown() {
       var now = new Date().getTime();
