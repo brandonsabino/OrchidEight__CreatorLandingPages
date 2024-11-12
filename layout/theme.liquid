@@ -50,22 +50,27 @@
       assign collection_page_match = false
       assign product_page_match = false
 
+      assign creator_heading_font = ''
+      assign creator_content_font = ''
+      assign creator_logo = ''
       assign creator_x_account = ''
       assign creator_instagram_account = ''
       assign creator_youtube_account = ''
       assign creator_twitch_account = ''
-      assign creator_heading_font = ''
-      assign creator_content_font = ''
-      assign creator_logo = ''
-      assign creator_collection_url =
       assign creator_accent_color = ''
+      assign creator_header_shape = ''
+      assign creater_outer_header_background = ''
       assign creator_header_background_color = ''
       assign creator_header_content_color = ''
       assign creator_link_color = ''
       assign creator_button_primary_background = ''
       assign creator_button_secondary_background = ''
+      assign creator_product_item_toggle = ''
+      assign creator_product_item_background_color = ''
+      assign creator_product_item_link_color = ''
       assign creator_footer_background_color = ''
       assign creator_footer_content_color = ''
+      assign creator_release_date = ''
 
       if collection
         for creator_collection in settings.creator_landing_pages_collections
@@ -79,15 +84,21 @@
             assign creator_instagram_account = collection.metafields.custom.creator_landing_page_instagram_account
             assign creator_youtube_account = collection.metafields.custom.creator_landing_page_youtube_account
             assign creator_twitch_account = collection.metafields.custom.creator_landing_page_twitch_account
-            assign creator_collection_url = collection.u
             assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color
+            assign creator_header_shape = collection.metafields.custom.creator_landing_page_header_shape
+            assign creater_outer_header_background = collection.metafields.custom.creator_landing_page_outer_header_background
             assign creator_header_background_color = collection.metafields.custom.creator_landing_page_header_background
             assign creator_header_content_color = collection.metafields.custom.creator_landing_page_header_content_color
             assign creator_link_color = collection.metafields.custom.creator_landing_page_link_color
             assign creator_button_primary_background = collection.metafields.custom.creator_landing_page_button_primary_background
             assign creator_button_secondary_background = collection.metafields.custom.creator_landing_page_button_secondary_background
+            assign creator_product_item_toggle = collection.metafields.custom.creator_landing_page_product_item_toggle
+            assign creator_product_item_background_color = collection.metafields.custom.creator_landing_page_product_item_information_background
+            assign creator_product_item_link_color = collection.metafields.custom.creator_landing_page_product_item_link_color
             assign creator_footer_background_color = collection.metafields.custom.creator_landing_page_footer_background
             assign creator_footer_content_color = collection.metafields.custom.creator_landing_page_footer_content_color
+            assign creator_release_date = collection.metafields.custom.creator_landing_page_release_countdown_date
+            assign creator_collection_url = collection.url
             break
           endif
         endfor
@@ -106,16 +117,21 @@
               assign creator_instagram_account = product_collection.metafields.custom.creator_landing_page_instagram_account
               assign creator_youtube_account = product_collection.metafields.custom.creator_landing_page_youtube_account
               assign creator_twitch_account = product_collection.metafields.custom.creator_landing_page_twitch_account
-              assign creator_collection_url = product_collection.url
-
               assign creator_accent_color = product_collection.metafields.custom.creator_landing_page_accent_color
+              assign creator_header_shape = product_collection.metafields.custom.creator_landing_page_header_shape
+              assign creater_outer_header_background = product_collection.metafields.custom.creator_landing_page_outer_header_background
               assign creator_header_background_color = product_collection.metafields.custom.creator_landing_page_header_background
               assign creator_header_content_color = product_collection.metafields.custom.creator_landing_page_header_content_color
               assign creator_link_color = product_collection.metafields.custom.creator_landing_page_link_color
               assign creator_button_primary_background = product_collection.metafields.custom.creator_landing_page_button_primary_background
               assign creator_button_secondary_background = product_collection.metafields.custom.creator_landing_page_button_secondary_background
+              assign creator_product_item_toggle = product_collection.metafields.custom.creator_landing_page_product_item_toggle
+              assign creator_product_item_background_color = product_collection.metafields.custom.creator_landing_page_product_item_information_background
+              assign creator_product_item_link_color = product_collection.metafields.custom.creator_landing_page_product_item_link_color
               assign creator_footer_background_color = product_collection.metafields.custom.creator_landing_page_footer_background
               assign creator_footer_content_color = product_collection.metafields.custom.creator_landing_page_footer_content_color
+              assign creator_release_date = product_collection.metafields.custom.creator_landing_page_release_countdown_date
+              assign creator_collection_url = product_collection.url
               break
             endif
           endfor
