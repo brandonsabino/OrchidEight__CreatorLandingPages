@@ -5,7 +5,7 @@
 <!-- Initialize variables to store metafield values if a match is found -->
 {% assign creator_logo = '' %}
 {% assign creator_collection_url = '' %}
-
+{% assign creator_title = '' %}
 {% assign creator_accent_color = '' %}
 {% assign creator_header_background_color = '' %}
 {% assign creator_header_content_color = '' %}
@@ -20,7 +20,7 @@
       <!-- Set each metafield value for the matched collection -->
       {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
       {% assign creator_collection_url = collection.url %}
-
+      {% assign creator_title = collection.title %}
       {% assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color %}
       {% assign creator_header_background_color = collection.metafields.custom.creator_landing_page_header_background %}
       {% assign creator_header_content_color = collection.metafields.custom.creator_landing_page_header_content_color %}
@@ -40,7 +40,7 @@
         <!-- Set each metafield value for the matched collection -->
         {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
         {% assign creator_collection_url = product_collection.url %}
-
+        {% assign creator_title = product_collection.title %}
         {% assign creator_accent_color = product_collection.metafields.custom.creator_landing_page_accent_color %}
         {% assign creator_header_background_color = product_collection.metafields.custom.creator_landing_page_header_background %}
         {% assign creator_header_content_color = product_collection.metafields.custom.creator_landing_page_header_content_color %}
@@ -176,6 +176,15 @@
       padding: 2px 30px;
     }
 
+    .header__heading-logo_fallback {
+      min-width: max-content;
+      color: {{ creator_header_content_color }};
+      font-size: 25px;
+      font-weight: bold;
+      padding: 0;
+      margin: 0
+    }
+
     .header__inline-menu.creator .list-menu--inline {
       align-items: center;
       margin-top: 10px;
@@ -251,7 +260,7 @@
                 {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
                 {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
                 {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-                {% if is_creator_landing_page == true %}
+                {% if is_creator_landing_page == true and creator_logo %}
                   {{ creator_logo | image_url: width: 600 | image_tag:
                     class: 'header__heading-logo motion-reduce',
                     widths: widths,
@@ -261,6 +270,8 @@
                     sizes: sizes,
                     preload: true
                   }}
+                {% elsif is_creator_landing_page == true %}
+                  <h1 class="header__heading-logo_fallback">{{ creator_title }}</h1>
                 {% else %}
                   {{ settings.logo | image_url: width: 600 | image_tag:
                     class: 'header__heading-logo motion-reduce',

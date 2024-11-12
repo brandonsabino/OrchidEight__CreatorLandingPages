@@ -11,7 +11,7 @@
 
 <!-- Initialize variables to store metafield values if a match is found -->
 {% assign creator_logo = '' %}
-
+{% assign creator_title = '' %}
 {% assign creator_footer_background_color = '' %}
 {% assign creator_footer_content_color = '' %}
 
@@ -23,7 +23,7 @@
 
       <!-- Set each metafield value for the matched collection -->
       {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
-
+      {% assign creator_title = collection.title %}
       {% assign creator_footer_background_color = collection.metafields.custom.creator_landing_page_footer_background %}
       {% assign creator_footer_content_color = collection.metafields.custom.creator_landing_page_footer_content_color %}
       {% break %}
@@ -40,7 +40,7 @@
 
         <!-- Set each metafield value for the matched collection -->
         {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
-
+        {% assign creator_title = product_collection.title %}
         {% assign creator_footer_background_color = product_collection.metafields.custom.creator_landing_page_footer_background %}
         {% assign creator_footer_content_color = product_collection.metafields.custom.creator_landing_page_footer_content_color %}
         {% break %}
@@ -215,7 +215,9 @@
                             >
                           </div>
                         {%- else -%}
-                          {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                          <h2>
+                            {{ creator_title }}
+                          </h2>
                         {%- endif -%}
                       </div>
                     {% else %}
