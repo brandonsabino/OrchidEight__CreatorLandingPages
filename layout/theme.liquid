@@ -145,11 +145,11 @@
         assign is_creator_landing_page = true
       endif
 
-      if creator_heading_font
+      if creator_heading_font and is_creator_landing_page
         assign creator_heading_font_name = creator_heading_font | split: 'family=' | last | split: '&' | first | split: ':' | first | replace: '+', ' '
       endif
 
-      if creator_content_font
+      if creator_content_font and is_creator_landing_page
         assign creator_content_font_name = creator_content_font | split: 'family=' | last | split: '&' | first | split: ':' | first | replace: '+', ' '
       endif
     %}
@@ -213,12 +213,12 @@
       }
 
       :root {
-        --font-heading-family:{% if creator_heading_font_name and is_creator_landing_page %}{{ creator_heading_font_name }}, {% endif %}{{ settings.type_body_font.fallback_families }};
+        --font-heading-family:{% if is_creator_landing_page %}{{ creator_heading_font_name }}, {% endif %}{{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
         --font-body-style: {{ settings.type_body_font.style }};
         --font-body-weight: {{ settings.type_body_font.weight }};
         --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
 
-        --font-body-family: {% if creator_content_font_name and is_creator_landing_page %}{{ creator_content_font_name }}, {% endif %} {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+        --font-body-family: {% if is_creator_landing_page %}{{ creator_content_font_name }}, {% endif %} {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
         --font-heading-style: {{ settings.type_header_font.style }};
         --font-heading-weight: {{ settings.type_header_font.weight }};
 
