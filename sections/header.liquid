@@ -11,6 +11,7 @@
 {% assign creator_header_background_color = '' %}
 {% assign creator_header_content_color = '' %}
 {% assign creator_link_color = '' %}
+{% assign creator_header_shape = '' %}
 
 <!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
 {% if collection %}
@@ -23,6 +24,7 @@
       {% assign creator_collection_url = collection.url %}
       {% assign creator_title = collection.title %}
       {% assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color %}
+      {% assign creator_header_shape = collection.metafields.custom.creator_landing_page_header_shape %}
       {% assign creater_outer_header_background = collection.metafields.custom.creator_landing_page_outer_header_background %}
       {% assign creator_header_background_color = collection.metafields.custom.creator_landing_page_header_background %}
       {% assign creator_header_content_color = collection.metafields.custom.creator_landing_page_header_content_color %}
@@ -44,6 +46,7 @@
         {% assign creator_collection_url = product_collection.url %}
         {% assign creator_title = product_collection.title %}
         {% assign creator_accent_color = product_collection.metafields.custom.creator_landing_page_accent_color %}
+        {% assign creator_header_shape = product_collection.metafields.custom.creator_landing_page_header_shape %}
         {% assign creater_outer_header_background = product_collection.metafields.custom.creator_landing_page_outer_header_background %}
         {% assign creator_header_background_color = product_collection.metafields.custom.creator_landing_page_header_background %}
         {% assign creator_header_content_color = product_collection.metafields.custom.creator_landing_page_header_content_color %}
@@ -171,10 +174,13 @@
 
     @media screen and (min-width: 990px) {
       .header-wrapper {
-        border: 2px solid {{ creator_accent_color }};
-        max-width: 82%;
-        margin: 15px auto;
-        border-radius: 50px;
+        border-bottom: 2px solid {{ creator_accent_color }};
+        {% if creator_header_shape == true %}
+          border: 2px solid {{ creator_accent_color }};
+          margin: 15px auto;
+          max-width: 82%;
+          border-radius: 50px;
+        {% endif %}
         padding: 0;
       }
     }
