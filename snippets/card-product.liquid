@@ -95,17 +95,15 @@
     color: {{ creator_product_item_link_color }};
   }
 
-  .card.card--card {
-    background-color: transparent;
+  .card.card--card.creator-view {
+    border-radius: 50px;
   }
 
-  {% if creator_product_item_toggle %}
-    .card__inner .card__media.creator-view {
-      border: solid {{ creator_accent_color }};
-      border-width: 2px 2px 0 2px;
-      border-radius: 50px 50px 0 0;
-    }
-  {% endif %}
+  .card__inner .card__media.creator-view {
+    border: solid {{ creator_accent_color }};
+    border-width: 2px 2px 0 2px;
+    border-radius: 50px 50px 0 0;
+  }
 {% endstyle %}
 
 {%- if card_product and card_product != empty -%}
@@ -130,6 +128,7 @@
         {% if extend_height %} card--extend-height{% endif %}
         {% if card_product.featured_media == nil and settings.card_style == 'card' %} ratio{% endif %}
         {% if horizontal_class %} card--horizontal{% endif %}
+        {% if is_creator_landing_page %} creator-view{% endif %}
       "
       style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
     >
