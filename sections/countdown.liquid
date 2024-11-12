@@ -1,0 +1,132 @@
+<div class="release-countdown">
+  {% assign release_date = collection.metafields.custom.creator_landing_page_release_countdown_date %}
+  {% if release_date %}
+    <div id="countdown" class="countdown" style="color: {{ section.settings.text_color }};">
+      <div class="countdown-unit">
+        <span id="days" class="countdown-number">0</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <div class="countdown-unit">
+        <span id="hours" class="countdown-number">0</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <div class="countdown-unit">
+        <span id="minutes" class="countdown-number">0</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+      <div class="countdown-unit">
+        <span id="seconds" class="countdown-number">0</span>
+        <span class="countdown-label">Seconds</span>
+      </div>
+    </div>
+  {% else %}
+    <p class="fallback-message" style="color: {{ section.settings.text_color }};">
+      {{ section.settings.fallback_message }}
+    </p>
+  {% endif %}
+</div>
+
+<style>
+  .release-countdown {
+    transform: scale(1.1)rotate(-1deg);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    margin: 50px 0;
+    background-color: {{ section.settings.background_color }};
+    border-top: 2px solid {{ section.settings.border_color }};
+    border-bottom: 2px solid {{ section.settings.border_color }};
+  }
+
+  .countdown {
+    display: flex;
+    grid-column-gap: 50px;
+    font-size: 1.5rem;
+  }
+
+  .countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90px;
+    width: 90px;
+  }
+
+  .countdown-number {
+    font-size: 72px;
+    line-height: 1;
+    font-weight: bold;
+
+  }
+
+  .countdown-label {
+    font-size: 12px;
+  }
+
+  .fallback-message {
+    font-size: 2.5rem;
+    margin: 0
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var releaseDate = new Date("{{ release_date | date: '%Y-%m-%dT%H:%M:%S' }}").getTime();
+
+    function updateCountdown() {
+      var now = new Date().getTime();
+      var distance = releaseDate - now;
+
+      if (distance > 0) {
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').innerText = days;
+        document.getElementById('hours').innerText = hours;
+        document.getElementById('minutes').innerText = minutes;
+        document.getElementById('seconds').innerText = seconds;
+      } else {
+        clearInterval(countdownInterval);
+        document.querySelector('.countdown').innerHTML = 'Release time has arrived!';
+      }
+    }
+
+    var countdownInterval = setInterval(updateCountdown, 1000);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Release Countdown Section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Countdown Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "fallback_message",
+      "label": "Message to Display if No Release Date",
+      "default": "Stay tuned for our next release!"
+    }
+  ]
+}
+{% endschema %}
