@@ -7,6 +7,7 @@
 {% assign creator_collection_url = '' %}
 {% assign creator_title = '' %}
 {% assign creator_accent_color = '' %}
+{% assign creater_outer_header_background = '' %}
 {% assign creator_header_background_color = '' %}
 {% assign creator_header_content_color = '' %}
 {% assign creator_link_color = '' %}
@@ -22,6 +23,7 @@
       {% assign creator_collection_url = collection.url %}
       {% assign creator_title = collection.title %}
       {% assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color %}
+      {% assign creater_outer_header_background = collection.metafields.custom.creator_landing_page_outer_header_background %}
       {% assign creator_header_background_color = collection.metafields.custom.creator_landing_page_header_background %}
       {% assign creator_header_content_color = collection.metafields.custom.creator_landing_page_header_content_color %}
       {% assign creator_link_color = collection.metafields.custom.creator_landing_page_link_color %}
@@ -42,6 +44,7 @@
         {% assign creator_collection_url = product_collection.url %}
         {% assign creator_title = product_collection.title %}
         {% assign creator_accent_color = product_collection.metafields.custom.creator_landing_page_accent_color %}
+        {% assign creater_outer_header_background = product_collection.metafields.custom.creator_landing_page_outer_header_background %}
         {% assign creator_header_background_color = product_collection.metafields.custom.creator_landing_page_header_background %}
         {% assign creator_header_content_color = product_collection.metafields.custom.creator_landing_page_header_content_color %}
         {% assign creator_link_color = product_collection.metafields.custom.creator_landing_page_link_color %}
@@ -157,6 +160,10 @@
   }
 
   {% if is_creator_landing_page %}
+    .section-header {
+      background: {{ creater_outer_header_background }};
+    }
+
     .header-wrapper {
       background-color: {{ creator_header_background_color }};
       border-bottom: 2px solid {{ creator_header_content_color }};
