@@ -369,6 +369,33 @@
 
       /* Begin Custom Creator Styles */
       {% if is_creator_landing_page %}
+        .slideshow__controls.slider-buttons {
+          border: none;
+          /* margin-bottom: 20px; */
+        }
+
+        span.svg-wrapper {
+          width: unset;
+          height: unset;
+        }
+
+        .slider-button svg.icon {
+          width: 4rem;
+          height: 4rem;
+        }
+
+        button.slider-button {
+          position: absolute;
+        }
+
+        .slider-button.slider-button--next {
+          right: 1%;
+        }
+
+        .slider-button.slider-button--prev {
+          left: 1%;
+        }
+
         .product__info-wrapper .product-form__input--pill input[type="radio"] + label {
           text-transform: uppercase;
         }
