@@ -99,11 +99,13 @@
     border-radius: 50px;
   }
 
-  .card__inner .card__media.creator-view {
-    border: solid {{ creator_accent_color }};
-    border-width: 2px 2px 0 2px;
-    border-radius: 50px 50px 0 0;
-  }
+  {% if creator_product_item_toggle %}
+    .card__inner .card__media.creator-view {
+      border: solid {{ creator_accent_color }};
+      border-width: 2px 2px 0 2px;
+      border-radius: 50px 50px 0 0;
+    }
+  {% endif %}
 {% endstyle %}
 
 {%- if card_product and card_product != empty -%}
