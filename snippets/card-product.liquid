@@ -36,6 +36,7 @@
 <!-- Initialize variables to store metafield values if a match is found -->
 
 {% assign creator_product_item_toggle = '' %}
+{% assign creator_product_item_background_image = '' %}
 {% assign creator_product_item_background_color = '' %}
 {% assign creator_product_item_link_color = '' %}
 
@@ -48,6 +49,7 @@
       <!-- Set each metafield value for the matched collection -->
       {% assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color %}
       {% assign creator_product_item_toggle = collection.metafields.custom.creator_landing_page_product_item_toggle %}
+      {% assign creator_product_item_background_image = collection.metafields.custom.creator_landing_page_product_item_background_image %}
       {% assign creator_product_item_background_color = collection.metafields.custom.creator_landing_page_product_item_information_background %}
       {% assign creator_product_item_link_color = collection.metafields.custom.creator_landing_page_product_item_link_color %}
       {% break %}
@@ -65,6 +67,7 @@
         <!-- Set each metafield value for the matched collection -->
         {% assign creator_accent_color = product_collection.metafields.custom.creator_landing_page_accent_color %}
         {% assign creator_product_item_toggle = product_collection.metafields.custom.creator_landing_page_product_item_toggle %}
+        {% assign creator_product_item_background_image = collection.metafields.custom.creator_landing_page_product_item_background_image %}
         {% assign creator_product_item_background_color = product_collection.metafields.custom.creator_landing_page_product_item_information_background %}
         {% assign creator_product_item_link_color = product_collection.metafields.custom.creator_landing_page_product_item_link_color %}
       {% endif %}
@@ -96,7 +99,12 @@
   }
 
   .card.card--card.creator-view {
-    border-radius: 50px;
+    {% if creator_product_item_toggle %}
+      border-radius: 50px;
+    {% endif %}
+    {% if creator_product_item_background_image %}
+      background: url({{ creator_product_item_background_image | image_url: width: 2000 }});
+    {% endif %}
   }
 
   {% if creator_product_item_toggle %}
