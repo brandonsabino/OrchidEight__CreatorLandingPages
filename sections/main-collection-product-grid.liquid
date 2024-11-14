@@ -22,6 +22,67 @@
   <script src="{{ 'quick-order-list.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
+{%- liquid
+  assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+  assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+  assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+
+  assign is_creator_landing_page = false
+  assign collection_page_match = false
+  assign product_page_match = false
+
+  assign creator_heading_font = ''
+  assign creator_content_font = ''
+  assign creator_logo = ''
+  assign creator_x_account = ''
+  assign creator_instagram_account = ''
+  assign creator_youtube_account = ''
+  assign creator_twitch_account = ''
+  assign creator_accent_color = ''
+  assign creator_header_shape = ''
+  assign creater_outer_header_background = ''
+  assign creator_header_background_color = ''
+  assign creator_header_content_color = ''
+  assign creator_button_primary_background = ''
+  assign creator_button_secondary_background = ''
+  assign creator_product_grid_background = ''
+  assign creator_product_item_toggle = ''
+  assign creator_product_item_background_color = ''
+  assign creator_product_item_link_color = ''
+  assign creator_footer_background_color = ''
+  assign creator_footer_content_color = ''
+  assign creator_release_date = ''
+
+  if collection
+    for creator_collection in settings.creator_landing_pages_collections
+      if creator_collection.title == collection.title and settings.enable_creator_landing_pages
+        assign collection_page_match = true
+        assign creator_product_grid_background = collection.metafields.custom.product_grid_background_override
+        break
+      endif
+    endfor
+  endif
+
+  if product and product.collections
+    for product_collection in product.collections
+      for creator_collection in settings.creator_landing_pages_collections
+        if product_collection.title == creator_collection.title
+          assign product_page_match = true
+          assign creator_product_grid_background = product_collection.metafields.custom.product_grid_background_override
+          break
+        endif
+      endfor
+      if product_page_match
+        break
+      endif
+    endfor
+  endif
+
+  if collection_page_match or product_page_match
+    assign is_creator_landing_page = true
+  endif
+%}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -38,6 +99,13 @@
   {% if section.settings.grid_background_image %}
     .product-grid-container {
       background: url({{ section.settings.grid_background_image | image_url: width: 2000 }});
+    }
+  {% endif %}
+
+  /* Override the Schema background */
+  {% if is_creator_landing_page and creator_product_grid_background %}
+    .product-grid-container {
+      background: url({{ creator_product_grid_background | image_url: width: 2000 }});
     }
   {% endif %}
 {%- endstyle -%}
