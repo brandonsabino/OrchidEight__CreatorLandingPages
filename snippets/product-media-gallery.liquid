@@ -11,6 +11,52 @@
   {% render 'product-media-gallery' %}
 {% endcomment %}
 
+{% assign is_creator_landing_page = false %}
+{% assign collection_page_match = false %}
+{% assign product_page_match = false %}
+
+<!-- Initialize variables to store metafield values if a match is found -->
+
+{% assign creator_accent_color = '' %}
+{% assign creator_product_item_background_image = '' %}
+
+<!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
+{% if collection %}
+  {% for creator_collection in settings.creator_landing_pages_collections %}
+    {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
+      {% assign collection_page_match = true %}
+
+      <!-- Set each metafield value for the matched collection -->
+      {% assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color %}
+      {% assign creator_product_item_background_image = collection.metafields.custom.creator_landing_page_product_item_background_image %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<!-- Check if this is a product page and if any of the product's collections match creator collections -->
+{% if product and product.collections %}
+  {% for product_collection in product.collections %}
+    {% for creator_collection in settings.creator_landing_pages_collections %}
+      {% if product_collection.title == creator_collection.title %}
+        {% assign product_page_match = true %}
+
+        <!-- Set each metafield value for the matched collection -->
+        {% assign creator_accent_color = product_collection.metafields.custom.creator_landing_page_accent_color %}
+        {% assign creator_product_item_background_image = product_collection.metafields.custom.creator_landing_page_product_item_background_image %}
+      {% endif %}
+    {% endfor %}
+    {% if product_page_match %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<!-- Set is_creator_landing_page if either collection_page_match or product_page_match is true -->
+{% if collection_page_match or product_page_match %}
+  {% assign is_creator_landing_page = true %}
+{% endif %}
+
 {%- liquid
   if section.settings.hide_variants and variant_images.size == product.media.size
     assign single_media_visible = true
@@ -41,6 +87,50 @@
     assign media_width = 0.45
   endif
 -%}
+
+{% style %}
+  /* Style for thumbnails */
+  @media screen and (min-width: 750px) {
+    .product__media-item:not(.is-active) {
+      max-width: 140px; /* Adjust the width of thumbnails */
+      height: auto; /* Maintain aspect ratio */
+      object-fit: contain; /* Resize appropriately */
+    }
+
+    .product__media-list {
+      position: relative;
+      transform: scale(.8) translateY(-10%);
+    }
+  }
+
+  /* Style for the overall media container */
+  .product__media-item > div {
+    height: 100%;
+    border: 2px solid {{ creator_accent_color }};
+    border-radius: 25px;
+    /* max-height: 550px; */
+  }
+
+  .product__media.media {
+    aspect-ratio: 1 / 1;
+    border-radius: 25px;
+    max-height: 400px;
+  }
+
+  .product__media.media img {
+    border: 2px solid transparent;
+    object-position: top;
+    transform: scale(1.05);
+    /* max-height: 550px; */
+  }
+
+  .product-media-container {
+    background: url({{ creator_product_item_background_image | image_url: width: 620 }});
+    border-radius: 25px;
+    background-size: cover;
+    /* max-height: 500px; */
+  }
+{% endstyle %}
 
 <media-gallery
   id="MediaGallery-{{ section.id }}"
