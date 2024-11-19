@@ -261,23 +261,6 @@
   <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
-{% javascript %}
-  document.addEventListener('DOMContentLoaded', () => {
-    const slideshow = document.querySelector('.slideshow.banner');
-    const prevButton = document.querySelector('.slider-button--prev');
-    const nextButton = document.querySelector('.slider-button--next');
-
-    if (slideshow && prevButton && nextButton) {
-      const slideshowHeight = slideshow.offsetHeight; // Get slideshow height
-      const centerOffset = slideshowHeight / 2 + 20; // Calculate half height and account for hight of the controls
-
-      // Apply calculated position to buttons
-      prevButton.style.transform = `translateY(-${centerOffset}px)`;
-      nextButton.style.transform = `translateY(-${centerOffset}px)`;
-    }
-  });
-{% endjavascript %}
-
 {% schema %}
 {
   "name": "t:sections.slideshow.name",
