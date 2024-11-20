@@ -369,6 +369,25 @@
 
       /* Begin Custom Creator Styles */
       {% if is_creator_landing_page %}
+        .product__info-wrapper .product-form__input--pill input[type="radio"] + label {
+          text-transform: uppercase;
+        }
+
+        .product__info-wrapper .product-form__input--pill input[type="radio"]:checked + label {
+          transition: 200ms;
+          border: 2px solid {{ creator_accent_color }};
+          background-color: {{ creator_button_primary_background }};
+          color: {{ creator_button_secondary_background }};
+        }
+
+        .product-form__submit {
+          border: 2px solid {{ creator_accent_color }};
+          background-color: {{ creator_button_primary_background }};
+          color: {{ creator_button_secondary_background }};
+        }
+      {% endif %}
+
+      {% if collection_page_match %}
         .slideshow__controls.slider-buttons {
           border: none;
         }
@@ -395,22 +414,6 @@
           left: 1%;
         }
 
-        .product__info-wrapper .product-form__input--pill input[type="radio"] + label {
-          text-transform: uppercase;
-        }
-
-        .product__info-wrapper .product-form__input--pill input[type="radio"]:checked + label {
-          transition: 200ms;
-          border: 2px solid {{ creator_accent_color }};
-          background-color: {{ creator_button_primary_background }};
-          color: {{ creator_button_secondary_background }};
-        }
-
-        .product-form__submit {
-          border: 2px solid {{ creator_accent_color }};
-          background-color: {{ creator_button_primary_background }};
-          color: {{ creator_button_secondary_background }};
-        }
         .slideshow__text.banner__box {
           border-radius: 20px;
         }
@@ -565,6 +568,23 @@
         recipientFormCollapsed: `{{ 'recipient.form.collapsed' | t }}`,
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
+
+      {%- if collection_page_match -%}
+        document.addEventListener('DOMContentLoaded', () => {
+          const slideshow = document.querySelector('.slideshow.banner');
+          const prevButton = document.querySelector('.slider-button--prev');
+          const nextButton = document.querySelector('.slider-button--next');
+
+          if (slideshow && prevButton && nextButton) {
+            const slideshowHeight = slideshow.offsetHeight; // Get slideshow height
+            const centerOffset = slideshowHeight / 2 + 20; // Calculate half height and account for hight of the controls
+
+            // Apply calculated position to buttons
+            prevButton.style.transform = `translateY(-${centerOffset}px)`;
+            nextButton.style.transform = `translateY(-${centerOffset}px)`;
+          }
+        });
+      {%- endif -%}
     </script>
 
     {%- if settings.predictive_search_enabled -%}
