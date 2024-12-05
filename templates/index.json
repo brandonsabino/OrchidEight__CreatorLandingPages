@@ -12,6 +12,24 @@
     "slideshow_YxPGqp": {
       "type": "slideshow",
       "blocks": {
+        "slide_VHAYwp": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/banner_1_bdc30f05-792a-4135-9fbd-179318467e3a.png",
+            "heading": "WELCOME LIMES!",
+            "heading_size": "h1",
+            "subheading": "Check out her new merch here!",
+            "button_label": "Shop now",
+            "link": "shopify://collections/limealicious",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        },
         "slide_hn8VQh": {
           "type": "slide",
           "settings": {
@@ -83,36 +101,18 @@
             "color_scheme": "scheme-1",
             "text_alignment_mobile": "center"
           }
-        },
-        "slide_7DHy9M": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/O8_Dr_Rhino_Marketing_Web_Banner.jpg",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "link": "shopify://collections/dr-rhino",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "",
-            "text_alignment_mobile": "center"
-          }
         }
       },
       "block_order": [
+        "slide_VHAYwp",
         "slide_hn8VQh",
         "slide_gGcYpG",
         "slide_ptc6TC",
-        "slide_8Hi8WC",
-        "slide_7DHy9M"
+        "slide_8Hi8WC"
       ],
       "settings": {
         "layout": "full_bleed",
-        "slide_height": "adapt_image",
+        "slide_height": "medium",
         "slider_visual": "dots",
         "auto_rotate": true,
         "change_slides_speed": 5,
@@ -142,6 +142,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -169,6 +170,7 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 68,
@@ -196,6 +198,7 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
+        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 44,
