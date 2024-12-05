@@ -117,9 +117,10 @@
   .product__media-item > div,
   .thumbnail-list__item > button {
     height: 100%;
-    border: 5px solid {{ creator_accent_color }};
-    border-radius: 25px;
-    /* max-height: 550px; */
+    {% if is_creator_landing_page %}
+      border: 5px solid {{ creator_accent_color }};
+      border-radius: 25px;
+    {% endif %}
   }
 
   .product__media.media {
