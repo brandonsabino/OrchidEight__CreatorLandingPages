@@ -204,15 +204,15 @@
                           {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
                           <div
                             class="footer-block__image-wrapper"
-                            style="max-width: min(100%, {{ block.settings.image_width }}px);"
+                            style="max-width: min(100%, {% if is_creator_landing_page and creator_logo %}200px{% else %}{{ block.settings.image_width }}px){% endif %};"
                           >
                             <img
-                              srcset="{{ creator_logo | image_url: width: block.settings.image_width }}, {{ creator_logo | image_url: width: image_size_2x }} 2x"
+                              srcset="{{ creator_logo | image_url: width: 200 }}, {{ creator_logo | image_url: width: 200 }} 2x"
                               src="{{ creator_logo | image_url: width: 760 }}"
                               alt="{{ block.settings.image.alt | escape }}"
                               loading="lazy"
-                              width="{{ block.settings.image.width }}"
-                              height="{{ block.settings.image.height }}"
+                              height="200px"
+                              width="200px"
                             >
                           </div>
                         {%- else -%}

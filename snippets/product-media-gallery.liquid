@@ -91,8 +91,18 @@
 {% style %}
   /* Style for thumbnails */
   @media screen and (min-width: 750px) {
-    .product__media-item:not(.is-active) {
-      max-width: 140px; /* Adjust the width of thumbnails */
+    .thumbnail-slider {
+      margin-top: -10%;
+    }
+
+    .product--thumbnail .thumbnail-list {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+    
+    .product__media-item:not(.is-active),
+    li.slider__slide.thumbnail-list__item {
+      max-width: 130px; /* Adjust the width of thumbnails */
       height: auto; /* Maintain aspect ratio */
       object-fit: contain; /* Resize appropriately */
     }
@@ -104,9 +114,10 @@
   }
 
   /* Style for the overall media container */
-  .product__media-item > div {
+  .product__media-item > div,
+  .thumbnail-list__item > button {
     height: 100%;
-    border: 2px solid {{ creator_accent_color }};
+    border: 5px solid {{ creator_accent_color }};
     border-radius: 25px;
     /* max-height: 550px; */
   }
@@ -118,17 +129,16 @@
   }
 
   .product__media.media img {
-    border: 2px solid transparent;
+    border: 5px solid transparent;
     object-position: top;
     transform: scale(1.05);
-    /* max-height: 550px; */
   }
 
-  .product-media-container {
+  .product-media-container,
+  .thumbnail-slider .thumbnail {
     background: url({{ creator_product_item_background_image | image_url: width: 620 }});
     border-radius: 25px;
     background-size: cover;
-    /* max-height: 500px; */
   }
 {% endstyle %}
 

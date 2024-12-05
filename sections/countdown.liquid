@@ -50,12 +50,18 @@
     font-size: 1.5rem;
   }
 
+  @media screen and (max-width: 750px) {
+    .countdown {
+      grid-column-gap: 20px;
+    }
+  }
+
   .countdown-unit {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 90px;
-    width: 90px;
+    max-width: 90px;
   }
 
   .countdown-number {

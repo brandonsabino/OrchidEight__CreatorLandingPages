@@ -9,9 +9,9 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/logo_7042e312-25f9-4114-94e2-4eca2b0052fe.png",
-    "logo_width": 50,
-    "favicon": "shopify://shop_images/logo_7042e312-25f9-4114-94e2-4eca2b0052fe.png",
+    "logo": "shopify://shop_images/O8_Website_Logo.png",
+    "logo_width": 90,
+    "favicon": "shopify://shop_images/O8_Elements_O8_1_7fd3b452-7789-44ed-83c2-b64ba6634a10.png",
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
@@ -45,7 +45,9 @@
     "inputs_shadow_blur": 5,
     "enable_creator_landing_pages": true,
     "creator_landing_pages_collections": [
-      "numb-skulls"
+      "cottontail",
+      "limealicious",
+      "narrative-declaration"
     ],
     "card_style": "card",
     "card_image_padding": 0,
