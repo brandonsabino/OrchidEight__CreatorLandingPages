@@ -88,60 +88,60 @@
   endif
 -%}
 
-{% style %}
-  /* Style for thumbnails */
-  @media screen and (min-width: 750px) {
-    .thumbnail-slider {
-      margin-top: -10%;
+{% if is_creator_landing_page %}
+  {% style %}
+    /* Style for thumbnails */
+    @media screen and (min-width: 750px) {
+      .thumbnail-slider {
+        margin-top: -10%;
+      }
+
+      .product--thumbnail .thumbnail-list {
+        max-width: 90%;
+        margin: 0 auto;
+      }
+
+      .product__media-item:not(.is-active),
+      li.slider__slide.thumbnail-list__item {
+        max-width: 130px; /* Adjust the width of thumbnails */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: contain; /* Resize appropriately */
+      }
+
+      .product__media-list {
+        position: relative;
+        transform: scale(.8) translateY(-10%);
+      }
     }
 
-    .product--thumbnail .thumbnail-list {
-      max-width: 90%;
-      margin: 0 auto;
-    }
-
-    .product__media-item:not(.is-active),
-    li.slider__slide.thumbnail-list__item {
-      max-width: 130px; /* Adjust the width of thumbnails */
-      height: auto; /* Maintain aspect ratio */
-      object-fit: contain; /* Resize appropriately */
-    }
-
-    .product__media-list {
-      position: relative;
-      transform: scale(.8) translateY(-10%);
-    }
-  }
-
-  /* Style for the overall media container */
-  .product__media-item > div,
-  .thumbnail-list__item > button {
-    height: 100%;
-    {% if is_creator_landing_page %}
+    /* Style for the overall media container */
+    .product__media-item > div,
+    .thumbnail-list__item > button {
+      height: 100%;
       border: 5px solid {{ creator_accent_color }};
       border-radius: 25px;
-    {% endif %}
-  }
+    }
 
-  .product__media.media {
-    aspect-ratio: 1 / 1;
-    border-radius: 25px;
-    max-height: 400px;
-  }
+    .product__media.media {
+      aspect-ratio: 1 / 1;
+      border-radius: 25px;
+      max-height: 400px;
+    }
 
-  .product__media.media img {
-    border: 5px solid transparent;
-    object-position: top;
-    transform: scale(1.05);
-  }
+    .product__media.media img {
+      border: 5px solid transparent;
+      object-position: top;
+      transform: scale(1.05);
+    }
 
-  .product-media-container,
-  .thumbnail-slider .thumbnail {
-    background: url({{ creator_product_item_background_image | image_url: width: 620 }});
-    border-radius: 25px;
-    background-size: cover;
-  }
-{% endstyle %}
+    .product-media-container,
+    .thumbnail-slider .thumbnail {
+      background: url({{ creator_product_item_background_image | image_url: width: 620 }});
+      border-radius: 25px;
+      background-size: cover;
+    }
+  {% endstyle %}
+{% endif %}
 
 <media-gallery
   id="MediaGallery-{{ section.id }}"
