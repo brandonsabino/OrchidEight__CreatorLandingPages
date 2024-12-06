@@ -4,6 +4,49 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 
+{% assign is_creator_landing_page = false %}
+{% assign product_page_match = false %}
+{% assign creator_collection = '' %}
+{% assign creator_products = '' %}
+
+<!-- Initialize variables to store metafield values if a match is found -->
+{% assign product_collection = '' %}
+{% assign creator_product_background = '' %}
+
+<!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
+{% if collection %}
+  {% for creator_collection in settings.creator_landing_pages_collections %}
+    {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
+      {% assign creator_product_background = collection.metafields.custom.product_grid_background_override %}
+      {% assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color %}
+      {% assign collection_page_match = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<!-- Check if this is a product page and if any of the product's collections match creator collections -->
+{% if product and product.collections %}
+  {% for product_collection in product.collections %}
+    {% for creator_collection in settings.creator_landing_pages_collections %}
+      {% if product_collection.title == creator_collection.title %}
+        {% assign product_page_match = true %}
+        {% assign creator_collection = creator_collection.title %}
+        {% assign creator_product_background = creator_collection.metafields.custom.product_grid_background_override %}
+        {% assign creator_accent_color = creator_collection.metafields.custom.creator_landing_page_accent_color %}
+      {% endif %}
+    {% endfor %}
+    {% if product_page_match %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<!-- Set is_creator_landing_page if either collection_page_match or product_page_match is true -->
+{% if collection_page_match or product_page_match %}
+  {% assign is_creator_landing_page = true %}
+{% endif %}
+
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
@@ -36,6 +79,25 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  {% if is_creator_landing_page %}
+    #collection-{{ section.id }}.collection {
+      border-top: 5px solid {{ creator_accent_color }};
+      background: url({{ creator_product_background | image_url: width: 3000 }});
+    }
+
+    .collection__title {
+      margin-top: 25px;
+    }
+
+    .title {
+      background: white;
+      border: 5px solid {{ creator_accent_color }};
+      border-radius: 25px;
+      padding: 10px 20px;
+      display: inline-block;
+    }
+  {% endif %}
 {%- endstyle -%}
 
 {%- liquid
@@ -59,7 +121,7 @@
 -%}
 
 <div
-  class="color-{{ section.settings.color_scheme }} isolate gradient"
+  class="{% unless is_creator_landing_page %}color-{{ section.settings.color_scheme }} isolate gradient{% endunless %}"
 >
   <div
     class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
