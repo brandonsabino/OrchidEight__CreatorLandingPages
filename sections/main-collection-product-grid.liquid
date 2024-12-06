@@ -58,6 +58,8 @@
       if creator_collection.title == collection.title and settings.enable_creator_landing_pages
         assign collection_page_match = true
         assign creator_product_grid_background = collection.metafields.custom.product_grid_background_override
+        assign creator_collection_banner_background = collection.metafields.custom.collection_banner_background_color
+        assign creator_collection_banner_text_color = collection.metafields.custom.collection_banner_text_color
         break
       endif
     endfor
@@ -110,6 +112,29 @@
 
     .product-grid {
       padding: 5% 0;
+    }
+  {% endif %}
+
+  {% if is_creator_landing_page %}
+    .facets-wrapper,
+    .facets-container *,
+    .facets-container h2 {
+      background-color: {{ creator_collection_banner_background }};
+      color: {{ creator_collection_banner_text_color }};
+    }
+
+    .facets-container {
+      padding: 1rem;
+    }
+
+    .facet-filters path {
+      fill: {{ creator_collection_banner_text_color }};
+    }
+
+    @media screen and (min-width: 1200px) {
+      .facets-wrapper {
+        padding: 1.5rem 20rem 0;
+      }
     }
   {% endif %}
 {%- endstyle -%}
@@ -181,7 +206,7 @@
       {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
         <aside
           aria-labelledby="verticalTitle"
-          class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}"
+          class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' and is_creator_landing_page == false %} page-width{% endif %}"
           id="main-collection-filters"
           data-id="{{ section.id }}"
         >
