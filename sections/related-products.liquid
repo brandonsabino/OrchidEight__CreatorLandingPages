@@ -13,11 +13,13 @@
 
 <!-- Initialize variables to store metafield values if a match is found -->
 {% assign product_collection = '' %}
+{% assign creator_product_background = '' %}
 
 <!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
 {% if collection %}
   {% for creator_collection in settings.creator_landing_pages_collections %}
     {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
+      {% assign creator_product_background = collection.metafields.custom.product_grid_background_override %}
       {% assign collection_page_match = true %}
       {% break %}
     {% endif %}
@@ -31,6 +33,7 @@
       {% if product_collection.title == creator_collection.title %}
         {% assign product_page_match = true %}
         {% assign creator_collection = creator_collection.title %}
+        {% assign creator_product_background = creator_collection.metafields.custom.product_grid_background_override %}
       {% endif %}
     {% endfor %}
     {% if product_page_match %}
@@ -47,7 +50,7 @@
 <!-- Fetch and display products from the creator's collection -->
 {% if is_creator_landing_page %}
   {% assign creator_collection_handle = creator_collection | handleize %}
-  
+
   <!-- Fetch products from this collection -->
   {% assign creator_products = collections[creator_collection_handle].products %}
 {% endif %}
@@ -65,7 +68,6 @@
     }
   }
 {%- endstyle -%}
-
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <product-recommendations
