@@ -435,6 +435,12 @@
           </div>
         {%- endif -%}
       </a>
+
+      {% if is_creator_landing_page %}
+        <a href="{{ shop.url }}" class="header__icon header__icon--orchid-eight">
+          <img src="{{ 'orchidEightLogo.png' | asset_url }}"/>
+        </a>
+      {% endif %}
     </div>
   </header>
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
