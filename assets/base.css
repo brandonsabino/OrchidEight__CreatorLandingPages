@@ -2713,6 +2713,34 @@ details[open] .modal-overlay::after {
   }
 }
 
+/* Header Creator View Orchid Eight Logo */
+a.header__icon--orchid-eight {
+  margin-left: 25px;
+}
+
+.header__icon--orchid-eight img {
+  width: 35px;
+  height: 35px;
+}
+
+@media screen and (min-width: 990px) {
+  .header__icon--orchid-eight img {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Basic styling for the image */
+.header__icon--orchid-eight img {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Apply the animation on hover */
+.header__icon--orchid-eight img:hover {
+  animation: wiggle 0.5s ease-in-out;
+}
+
 /* Header menu drawer */
 .header__icon--menu .icon {
   display: block;
@@ -3324,6 +3352,14 @@ details-disclosure > details {
     to {
       opacity: 1;
     }
+  }
+
+  @keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
   }
 }
 
