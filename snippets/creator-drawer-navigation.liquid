@@ -3,6 +3,8 @@
 {% assign creator_instagram_account = '' %}
 {% assign creator_youtube_account = '' %}
 {% assign creator_twitch_account = '' %}
+{% assign creator_tiktok_account = '' %}
+{% assign creator_bluesky_account = '' %}
 
 <!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
 {% if collection %}
@@ -13,6 +15,8 @@
       {% assign creator_instagram_account = collection.metafields.custom.creator_landing_page_instagram_account %}
       {% assign creator_youtube_account = collection.metafields.custom.creator_landing_page_youtube_account %}
       {% assign creator_twitch_account = collection.metafields.custom.creator_landing_page_twitch_account %}
+      {% assign creator_tiktok_account = collection.metafields.custom.creator_landing_page_tiktok_account %}
+      {% assign creator_bluesky_account = collection.metafields.custom.creator_landing_page_bluesky_account %}
       {% break %}
     {% endif %}
   {% endfor %}
@@ -28,6 +32,8 @@
         {% assign creator_instagram_account = product_collection.metafields.custom.creator_landing_page_instagram_account %}
         {% assign creator_youtube_account = product_collection.metafields.custom.creator_landing_page_youtube_account %}
         {% assign creator_twitch_account = product_collection.metafields.custom.creator_landing_page_twitch_account %}
+        {% assign creator_tiktok_account = product_collection.metafields.custom.creator_landing_page_tiktok_account %}
+        {% assign creator_bluesky_account = product_collection.metafields.custom.creator_landing_page_bluesky_account %}
         {% break %}
       {% endif %}
     {% endfor %}
@@ -77,6 +83,28 @@
           href="{{ creator_youtube_account.value.url }}"
         >
           YouTube
+        </a>
+      </li>
+    {% endif %}
+    {% if creator_tiktok_account.value.url %}
+      <li>
+        <a
+          class="menu-drawer__menu-item list-menu__item link link--text"
+          target="_blank"
+          href="{{ creator_tiktok_account.value.url }}"
+        >
+          TikTok
+        </a>
+      </li>
+    {% endif %}
+    {% if creator_bluesky_account.value.url %}
+      <li>
+        <a
+          class="menu-drawer__menu-item list-menu__item link link--text"
+          target="_blank"
+          href="{{ creator_bluesky_account.value.url }}"
+        >
+          BlueSky
         </a>
       </li>
     {% endif %}

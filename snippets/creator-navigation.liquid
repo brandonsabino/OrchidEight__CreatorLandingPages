@@ -3,6 +3,8 @@
 {% assign creator_instagram_account = '' %}
 {% assign creator_youtube_account = '' %}
 {% assign creator_twitch_account = '' %}
+{% assign creator_tiktok_account = '' %}
+{% assign creator_bluesky_account = '' %}
 
 <!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
 {% if collection %}
@@ -13,6 +15,8 @@
       {% assign creator_instagram_account = collection.metafields.custom.creator_landing_page_instagram_account %}
       {% assign creator_youtube_account = collection.metafields.custom.creator_landing_page_youtube_account %}
       {% assign creator_twitch_account = collection.metafields.custom.creator_landing_page_twitch_account %}
+      {% assign creator_tiktok_account = collection.metafields.custom.creator_landing_page_tiktok_account %}
+      {% assign creator_bluesky_account = collection.metafields.custom.creator_landing_page_bluesky_account %}
       {% break %}
     {% endif %}
   {% endfor %}
@@ -28,11 +32,14 @@
         {% assign creator_instagram_account = product_collection.metafields.custom.creator_landing_page_instagram_account %}
         {% assign creator_youtube_account = product_collection.metafields.custom.creator_landing_page_youtube_account %}
         {% assign creator_twitch_account = product_collection.metafields.custom.creator_landing_page_twitch_account %}
+        {% assign creator_tiktok_account = product_collection.metafields.custom.creator_landing_page_tiktok_account %}
+        {% assign creator_bluesky_account = product_collection.metafields.custom.creator_landing_page_bluesky_account %}
         {% break %}
       {% endif %}
     {% endfor %}
   {% endfor %}
 {% endif %}
+
 <nav class="header__inline-menu creator">
   <ul class="list-menu list-menu--inline" role="list">
     {% if creator_x_account.value.url %}
@@ -72,6 +79,26 @@
           href="{{ creator_youtube_account.value.url }}"
         >
           {{- 'icon-youtube.svg' | inline_asset_content -}}
+        </a>
+      </li>
+    {% endif %}
+    {% if creator_tiktok_account.value.url %}
+      <li>
+        <a
+          target="_blank"
+          href="{{ creator_tiktok_account.value.url }}"
+        >
+          {{- 'icon-tiktok.svg' | inline_asset_content -}}
+        </a>
+      </li>
+    {% endif %}
+    {% if creator_bluesky_account.value.url %}
+      <li>
+        <a
+          target="_blank"
+          href="{{ creator_bluesky_account.value.url }}"
+        >
+          {{- 'icon-bluesky.svg' | inline_asset_content -}}
         </a>
       </li>
     {% endif %}
