@@ -86,7 +86,7 @@
       >
         {% assign skip_card_product_styles = false %}
         {% if is_creator_landing_page %}
-          {% for product in creator_products %}
+          {% for product in creator_products limit:section.settings.products_to_show %}
             <li class="grid__item">
               {% render 'card-product',
                 card_product: product,
