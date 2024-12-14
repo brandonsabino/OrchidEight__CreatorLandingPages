@@ -437,8 +437,8 @@
       </a>
 
       {% if is_creator_landing_page %}
-        <a href="{{ shop.url }}" class="header__icon header__icon--orchid-eight">
-          <img src="{{ 'orchidEightLogo.png' | asset_url }}"/>
+        <a href="{{ shop.url }}" class="header__icon header__icon--orchid-eight" target="_blank" aria-label="Link to {{ shop.name }} home page.">
+          <img src="{{ 'orchidEightLogo.png' | asset_url }}" alt="{{ shop.name }} logo"/>
         </a>
       {% endif %}
     </div>
