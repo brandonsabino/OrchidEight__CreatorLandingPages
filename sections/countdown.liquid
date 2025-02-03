@@ -82,9 +82,16 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    // Assumes time stored in PST
     var releaseDateString = "{{ creator_release_date | date: '%Y-%m-%dT%H:%M:%S' }}";
     var releaseDateISO = releaseDateString + "-08:00";
     var releaseDate = new Date(releaseDateISO);
+
+    var daysEl = document.getElementById('days');
+    var hoursEl = document.getElementById('hours');
+    var minutesEl = document.getElementById('minutes');
+    var secondsEl = document.getElementById('seconds');
+    var countdownEl = document.querySelector('.countdown');
 
     function updateCountdown() {
       var now = new Date().getTime();
@@ -96,17 +103,40 @@
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        document.getElementById('days').innerText = days;
-        document.getElementById('hours').innerText = hours;
-        document.getElementById('minutes').innerText = minutes;
-        document.getElementById('seconds').innerText = seconds;
+        if (daysEl.innerText != days) daysEl.innerText = days;
+        if (hoursEl.innerText != hours) hoursEl.innerText = hours;
+        if (minutesEl.innerText != minutes) minutesEl.innerText = minutes;
+        if (secondsEl.innerText != seconds) secondsEl.innerText = seconds;
+
+        var delay = 1000 - (now % 1000);
+        timerId = setTimeout(updateCountdown, delay);
       } else {
-        clearInterval(countdownInterval);
-        document.querySelector('.countdown').innerHTML = 'Release time has arrived!';
+        clearTimeout(timerId);
+        countdownEl.innerHTML = 'Release time has arrived!';
       }
     }
 
-    var countdownInterval = setInterval(updateCountdown, 1000);
+    function startCountdown() {
+      updateCountdown();
+      if (observer) {
+        observer.disconnect();
+      }
+    }
+
+    var timerId;
+    var observer;
+    if ('IntersectionObserver' in window) {
+      observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            startCountdown();
+          }
+        });
+      });
+      observer.observe(document.querySelector('.release-countdown'));
+    } else {
+      startCountdown();
+    }
   });
 </script>
 
