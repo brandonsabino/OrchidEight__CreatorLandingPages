@@ -47,7 +47,13 @@
     "creator_landing_pages_collections": [
       "cottontail",
       "limealicious",
-      "narrative-declaration"
+      "narrative-declaration",
+      "easty",
+      "doc",
+      "numbskulls",
+      "poorhammer",
+      "suto",
+      "demo-collection"
     ],
     "card_style": "card",
     "card_image_padding": 0,
@@ -131,7 +137,7 @@
     "currency_code_enabled": false,
     "cart_type": "drawer",
     "show_vendor": false,
-    "show_cart_note": false,
+    "show_cart_note": true,
     "cart_drawer_collection": "new-products",
     "cart_color_scheme": "scheme-1",
     "sections": {

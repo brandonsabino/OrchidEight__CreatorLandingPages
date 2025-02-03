@@ -28,26 +28,43 @@
         "slide_XxC6N3": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/banner_1_bdc30f05-792a-4135-9fbd-179318467e3a.png",
-            "heading": "IT'S LAIMU TAIMU!",
+            "image": "shopify://shop_images/suto_banner_1.png",
+            "heading": "",
             "heading_size": "h1",
-            "subheading": "New merch finally here!!",
+            "subheading": "",
             "button_label": "",
             "link": "",
             "button_style_secondary": false,
             "box_align": "middle-left",
-            "show_text_box": true,
+            "show_text_box": false,
             "text_alignment": "left",
             "image_overlay_opacity": 0,
             "color_scheme": "scheme-1",
             "text_alignment_mobile": "center"
           }
         },
-        "slide_MmLqn9": {
+        "slide_HqCqtq": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/web_banner1_bf467171-1945-4da4-9087-7d07f20bda67.jpg",
+            "image": "shopify://shop_images/suto_banner_2.png",
+            "heading": "",
+            "heading_size": "h1",
+            "subheading": "",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_jXN8HF": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/suto_banner_3.png",
             "heading": "",
             "heading_size": "h1",
             "subheading": "",
@@ -65,16 +82,17 @@
       },
       "block_order": [
         "slide_XxC6N3",
-        "slide_MmLqn9"
+        "slide_HqCqtq",
+        "slide_jXN8HF"
       ],
       "settings": {
         "layout": "full_bleed",
         "slide_height": "adapt_image",
         "slider_visual": "dots",
-        "auto_rotate": false,
+        "auto_rotate": true,
         "change_slides_speed": 5,
         "image_behavior": "none",
-        "show_text_below": true,
+        "show_text_below": false,
         "accessibility_info": ""
       }
     },
@@ -82,18 +100,17 @@
       "type": "marquee-text",
       "settings": {
         "marquee_text": "No pre-order, shipping immediately!",
-        "marquee_background_color": "#c5e495",
-        "marquee_text_color": "#81a5da",
-        "marquee_border_color": "#c5e495"
+        "marquee_background_color": "#f1cd70",
+        "marquee_text_color": "#646c52",
+        "marquee_border_color": "#f1cd70"
       }
     },
     "countdown_a3DVUj": {
       "type": "countdown",
-      "disabled": true,
       "settings": {
-        "background_color": "#ffdbdb",
-        "border_color": "#ffffff",
-        "text_color": "#81a5da",
+        "background_color": "#f0b0bc",
+        "border_color": "#f0b0bc",
+        "text_color": "#deefaf",
         "fallback_message": "Stay tuned for our next release!"
       }
     },
@@ -114,7 +131,7 @@
         "enable_sorting": false,
         "columns_mobile": "1",
         "padding_top": 0,
-        "padding_bottom": 20
+        "padding_bottom": 36
       }
     }
   },

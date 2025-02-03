@@ -11,9 +11,8 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
-      "disabled": true,
       "custom_css": [
-        ".collection-hero__description {text-align: center; margin: auto; padding-bottom: 40px;}",
+        ".collection-hero__description {text-align: center; margin: auto; padding-bottom: 20px;}",
         "table {width: 100% !important;}"
       ],
       "settings": {
@@ -34,11 +33,11 @@
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
-        "enable_filtering": true,
+        "enable_filtering": false,
         "filter_type": "horizontal",
-        "enable_sorting": false,
-        "columns_mobile": "2",
-        "padding_top": 24,
+        "enable_sorting": true,
+        "columns_mobile": "1",
+        "padding_top": 0,
         "padding_bottom": 0
       }
     }

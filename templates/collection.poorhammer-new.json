@@ -9,50 +9,37 @@
  */
 {
   "sections": {
-    "banner": {
-      "type": "main-collection-banner",
-      "disabled": true,
-      "settings": {
-        "show_collection_description": false,
-        "show_collection_image": false,
-        "color_scheme": "scheme-1"
-      }
-    },
-    "image_with_text_6yHeab": {
+    "image_with_text_fepqXx": {
       "type": "image-with-text",
       "blocks": {
-        "heading_jA7yqq": {
+        "heading_bY4cLF": {
           "type": "heading",
           "settings": {
             "heading": "THE NEW COLLECTION",
             "heading_size": "h0"
           }
         },
-        "text_LLXwPk": {
+        "text_pyjVG6": {
           "type": "text",
           "settings": {
             "text": "<h2>Zip up with the Poorhammer crew!</h2>",
             "text_style": "body"
           }
         },
-        "button_eEx4cJ": {
+        "button_jAYzMx": {
           "type": "button",
           "disabled": true,
           "settings": {
-            "button_label": "Shop Now",
-            "button_link": "#123",
+            "button_label": "Button label",
+            "button_link": "",
             "button_style_secondary": false
           }
         }
       },
       "block_order": [
-        "heading_jA7yqq",
-        "text_LLXwPk",
-        "button_eEx4cJ"
-      ],
-      "custom_css": [
-        ".button {background: #8f937c; font-family: Shrimp; text-transform: uppercase;}",
-        "h2 {font-family: Shrimp;}"
+        "heading_bY4cLF",
+        "text_pyjVG6",
+        "button_jAYzMx"
       ],
       "settings": {
         "image": "shopify://shop_images/PH1.png",
@@ -65,51 +52,45 @@
         "section_color_scheme": "scheme-03b59dde-2eaa-40de-a3b9-74641c6cce50",
         "color_scheme": "scheme-03b59dde-2eaa-40de-a3b9-74641c6cce50",
         "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "padding_top": 100,
-        "padding_bottom": 0
-      }
-    },
-    "custom_liquid_pbLtLE": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "settings": {
-        "custom_liquid": "<svg width=\"100%\" height=\"auto\" viewBox=\"0 0 947 110\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M947 7.62939e-06V97.1565C947 97.1565 859.5 119 698 105.5C536.5 92 394.5 56.5 245 57.5644C95.5 58.6288 0 90 0 90V7.62939e-06L947 7.62939e-06Z\" fill=\"#2F3221\"/>\n</svg>",
-        "color_scheme": "",
+        "mobile_content_alignment": "left",
         "padding_top": 0,
         "padding_bottom": 0
       }
     },
-    "rich_text_yfYr9j": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_VgxYpx": {
-          "type": "heading",
-          "settings": {
-            "heading": "ALL PRODUCTS",
-            "heading_size": "h1"
-          }
-        }
-      },
-      "block_order": [
-        "heading_VgxYpx"
-      ],
+    "banner": {
+      "type": "main-collection-banner",
       "disabled": true,
       "custom_css": [
-        "h2 {font-family: Shrimp;}"
+        ".collection-hero__description {text-align: center; margin: auto; padding-bottom: 40px;}",
+        "table {width: 100% !important;}"
       ],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 52,
-        "padding_bottom": 0
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "marquee_text_FY3qhb": {
+      "type": "marquee-text",
+      "settings": {
+        "marquee_text": "New page with new products",
+        "marquee_background_color": "#8f937b",
+        "marquee_text_color": "#ffffff",
+        "marquee_border_color": "#8f937b"
+      }
+    },
+    "countdown_a3DVUj": {
+      "type": "countdown",
+      "disabled": true,
+      "settings": {
+        "background_color": "#2f3221",
+        "border_color": "#ffffff",
+        "text_color": "#ffffff",
+        "fallback_message": "Stay tuned for our next release!"
       }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
-      "custom_css": [],
       "settings": {
         "products_per_page": 24,
         "columns_desktop": 3,
@@ -120,28 +101,18 @@
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
-        "enable_filtering": true,
+        "enable_filtering": false,
         "filter_type": "horizontal",
-        "enable_sorting": true,
+        "enable_sorting": false,
         "columns_mobile": "1",
-        "padding_top": 40,
-        "padding_bottom": 36
+        "padding_top": 0,
+        "padding_bottom": 16
       }
     },
-    "custom_liquid_wwLBqV": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "settings": {
-        "custom_liquid": "<svg style=\"\n  transform: scaleX(-1) rotate(180deg); margin-bottom: -10px;\" width=\"100%\" height=\"auto\"  viewBox=\"0 0 947 110\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M947 7.62939e-06V97.1565C947 97.1565 859.5 119 698 105.5C536.5 92 394.5 56.5 245 57.5644C95.5 58.6288 0 90 0 90V7.62939e-06L947 7.62939e-06Z\" fill=\"#8F937C\"/>\n</svg>",
-        "color_scheme": "",
-        "padding_top": 28,
-        "padding_bottom": 0
-      }
-    },
-    "rich_text_j7hjTd": {
+    "rich_text_Y9hmRK": {
       "type": "rich-text",
       "blocks": {
-        "heading_rRpHNK": {
+        "heading_mQAV3L": {
           "type": "heading",
           "settings": {
             "heading": "RECENT PODCASTS",
@@ -150,21 +121,18 @@
         }
       },
       "block_order": [
-        "heading_rRpHNK"
-      ],
-      "custom_css": [
-        "h2 {font-family: Shrimp; color: white; margin-bottom: 50px;}"
+        "heading_mQAV3L"
       ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-51d71a61-e01f-4d4c-b576-4e144461e827",
         "full_width": true,
-        "padding_top": 44,
+        "padding_top": 16,
         "padding_bottom": 0
       }
     },
-    "custom_liquid_dmf7tt": {
+    "custom_liquid_ETbxR6": {
       "type": "custom-liquid",
       "settings": {
         "custom_liquid": "<div class=\"page-width\" style=\"border-radius: 20px; overflow: hidden;\"><iframe style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/show/1WyIol71cPqppTtKe8sctP?utm_source=generator&theme=0\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe></div>",
@@ -173,7 +141,7 @@
         "padding_bottom": 0
       }
     },
-    "custom_liquid_hXmi6H": {
+    "custom_liquid_8aFT7A": {
       "type": "custom-liquid",
       "settings": {
         "custom_liquid": "<script \n            type=\"text/javascript\" \n            src=\"https://cdn.ytb.reputon.com/assets/widget.js?shop=orchideight.myshopify.com\" defer></script>\n<div class=\"page-width\" >\n<div class=\"reputon-youtube-widget\" style=\"background: #22262a;\n    border-radius: 20px;\"\n                 data-content-index=\"2\"\n                 data-autoscroll=\"false\"\n                 data-theme=\"dark\"\n                 data-widget-type=\"carousel\"></div></div>",
@@ -181,31 +149,16 @@
         "padding_top": 20,
         "padding_bottom": 40
       }
-    },
-    "custom_liquid_pBEQr8": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "custom_css": [
-        ".gradient {background: #8f937c; margin-top: -0px;}"
-      ],
-      "settings": {
-        "custom_liquid": "<svg style=\"transform: rotate(180deg); margin-bottom: -20px;\" width=\"100%\" height=\"auto\" viewBox=\"0 0 947 110\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M947 7.62939e-06V97.1565C947 97.1565 859.5 119 698 105.5C536.5 92 394.5 56.5 245 57.5644C95.5 58.6288 0 90 0 90V7.62939e-06L947 7.62939e-06Z\" fill=\"#2F3221\"/>\n</svg>",
-        "color_scheme": "",
-        "padding_top": 100,
-        "padding_bottom": 0
-      }
     }
   },
   "order": [
+    "image_with_text_fepqXx",
     "banner",
-    "image_with_text_6yHeab",
-    "custom_liquid_pbLtLE",
-    "rich_text_yfYr9j",
+    "marquee_text_FY3qhb",
+    "countdown_a3DVUj",
     "product-grid",
-    "custom_liquid_wwLBqV",
-    "rich_text_j7hjTd",
-    "custom_liquid_dmf7tt",
-    "custom_liquid_hXmi6H",
-    "custom_liquid_pBEQr8"
+    "rich_text_Y9hmRK",
+    "custom_liquid_ETbxR6",
+    "custom_liquid_8aFT7A"
   ]
 }

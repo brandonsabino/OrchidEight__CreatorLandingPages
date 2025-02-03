@@ -99,6 +99,7 @@
     },
     "marquee_text_FY3qhb": {
       "type": "marquee-text",
+      "disabled": true,
       "settings": {
         "marquee_text": "Free Sticker Sheet With Every Order!!!",
         "marquee_background_color": "#000000",
@@ -108,6 +109,7 @@
     },
     "countdown_a3DVUj": {
       "type": "countdown",
+      "disabled": true,
       "settings": {
         "background_color": "#671b49",
         "border_color": "#ffffff",

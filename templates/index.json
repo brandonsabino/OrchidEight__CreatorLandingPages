@@ -56,7 +56,7 @@
             "heading_size": "h1",
             "subheading": "",
             "button_label": "",
-            "link": "shopify://collections/numb-skulls",
+            "link": "shopify://collections/numbskulls",
             "button_style_secondary": false,
             "box_align": "middle-center",
             "show_text_box": false,
@@ -241,7 +241,7 @@
         "featured_collection_knehDj": {
           "type": "featured_collection",
           "settings": {
-            "collection": "my-beloved"
+            "collection": "bricky"
           }
         }
       },
