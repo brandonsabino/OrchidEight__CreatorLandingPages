@@ -82,11 +82,13 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    var releaseDate = new Date("{{ creator_release_date | date: '%Y-%m-%dT%H:%M:%S' }}").getTime();
+    var releaseDateString = "{{ creator_release_date | date: '%Y-%m-%dT%H:%M:%S' }}";
+    var releaseDateISO = releaseDateString + "-08:00";
+    var releaseDate = new Date(releaseDateISO);
 
     function updateCountdown() {
       var now = new Date().getTime();
-      var distance = releaseDate - now;
+      var distance = releaseDate.getTime() - now;
 
       if (distance > 0) {
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -139,8 +141,7 @@
   ],
   "presets": [
     {
-      "name": "Countdown",
-      "category": "Custom"
+      "name": "Countdown"
     }
   ]
 }
