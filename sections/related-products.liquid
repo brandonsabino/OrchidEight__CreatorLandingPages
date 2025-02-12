@@ -86,10 +86,13 @@
       >
         {% assign skip_card_product_styles = false %}
         {% if is_creator_landing_page %}
-          {% for product in creator_products limit:section.settings.products_to_show %}
+          {% for creator_product in creator_products limit:section.settings.products_to_show %}
+            {% if product.id == creator_product.id %}
+              {% continue %}
+            {% endif %}
             <li class="grid__item">
               {% render 'card-product',
-                card_product: product,
+                card_product: creator_product,
                 media_aspect_ratio: section.settings.image_ratio,
                 image_shape: section.settings.image_shape,
                 show_secondary_image: section.settings.show_secondary_image,
