@@ -15,7 +15,7 @@
       "type": "header",
       "settings": {
         "logo_position": "middle-center",
-        "menu": "main-menu",
+        "menu": "",
         "menu_type_desktop": "mega",
         "sticky_header_type": "reduce-logo-size",
         "show_line_separator": false,

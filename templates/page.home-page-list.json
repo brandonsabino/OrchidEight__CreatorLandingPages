@@ -1,0 +1,228 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_8tp746": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_VkQfhz": {
+          "type": "heading",
+          "settings": {
+            "heading": "Orchid Eight Content Creators",
+            "heading_size": "h1"
+          }
+        },
+        "text_jCwHAF": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Here are links to all of our content creator's store pages</p>"
+          }
+        },
+        "button_XYDbNj": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_VkQfhz",
+        "text_jCwHAF",
+        "button_XYDbNj"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "collection_list_3LmFAU": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_kkEtH8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "adeptus-ridiculous"
+          }
+        },
+        "featured_collection_wNQQLY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "billion-dollar-clown-farm"
+          }
+        },
+        "featured_collection_aUXkcR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bricky"
+          }
+        },
+        "featured_collection_QU8iHd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cottontail"
+          }
+        },
+        "featured_collection_qx7LAe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dicehammer"
+          }
+        },
+        "featured_collection_mf8Nf8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dr-rhino"
+          }
+        },
+        "featured_collection_xHV3kL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "easty"
+          }
+        },
+        "featured_collection_WnAzwa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "geef"
+          }
+        },
+        "featured_collection_QbLhXp": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hayegurl"
+          }
+        },
+        "featured_collection_DH3Y6n": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "limealicious"
+          }
+        },
+        "featured_collection_6XFbfd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "matara-kan"
+          }
+        },
+        "featured_collection_7LMbWD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "narrative-declaration"
+          }
+        },
+        "featured_collection_ahTm4h": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "numbskulls"
+          }
+        },
+        "featured_collection_6GFPpr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "poorhammer"
+          }
+        },
+        "featured_collection_3PNemn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "shammy"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_kkEtH8",
+        "featured_collection_wNQQLY",
+        "featured_collection_aUXkcR",
+        "featured_collection_QU8iHd",
+        "featured_collection_qx7LAe",
+        "featured_collection_mf8Nf8",
+        "featured_collection_xHV3kL",
+        "featured_collection_WnAzwa",
+        "featured_collection_QbLhXp",
+        "featured_collection_DH3Y6n",
+        "featured_collection_6XFbfd",
+        "featured_collection_7LMbWD",
+        "featured_collection_ahTm4h",
+        "featured_collection_6GFPpr",
+        "featured_collection_3PNemn"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_3yxRjE": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_9GXHfF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "suto"
+          }
+        },
+        "featured_collection_cyfnKA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wicked-good-gaming"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_9GXHfF",
+        "featured_collection_cyfnKA"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_8tp746",
+    "collection_list_3LmFAU",
+    "collection_list_3yxRjE"
+  ]
+}

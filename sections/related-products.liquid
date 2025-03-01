@@ -86,15 +86,10 @@
       >
         {% assign skip_card_product_styles = false %}
         {% if is_creator_landing_page %}
-          {% assign displayed_count = 0 %}
-          {% for creator_product in creator_products %}
-            {% if product.id == creator_product.id %}
-              {% continue %}
-            {% endif %}
-
+          {% for product in creator_products limit:section.settings.products_to_show %}
             <li class="grid__item">
               {% render 'card-product',
-                card_product: creator_product,
+                card_product: product,
                 media_aspect_ratio: section.settings.image_ratio,
                 image_shape: section.settings.image_shape,
                 show_secondary_image: section.settings.show_secondary_image,
@@ -104,13 +99,7 @@
               %}
             </li>
             {%- assign skip_card_product_styles = true -%}
-
-            {% assign displayed_count = displayed_count | plus: 1 %}
-            {% if displayed_count >= section.settings.products_to_show %}
-              {% break %}
-            {% endif %}
           {% endfor %}
-
         {% else %}
           {% for recommendation in recommendations.products %}
             <li class="grid__item">

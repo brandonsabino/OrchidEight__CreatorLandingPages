@@ -155,11 +155,6 @@
     %}
 
     {% style %}
-      {% if is_creator_landing_page and creator_heading_font == blank or creator_content_font == blank %}
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;...&display=swap');
-        {% assign poppins_font = 'Poppins' %}
-      {% endif %}
-
       {% if creator_heading_font %}
         {{ creator_heading_font }}
       {% endif %}
@@ -218,12 +213,12 @@
       }
 
       :root {
-        --font-heading-family: {% if is_creator_landing_page %}{{ creator_heading_font_name | default: poppins_font }}, {% endif %}{{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+        --font-heading-family:{% if is_creator_landing_page %}{{ creator_heading_font_name }}, {% endif %}{{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
         --font-body-style: {{ settings.type_body_font.style }};
         --font-body-weight: {{ settings.type_body_font.weight }};
         --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
 
-        --font-body-family: {% if is_creator_landing_page %}{{ creator_content_font_name | default: poppins_font }}, {% endif %}{{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+        --font-body-family: {% if is_creator_landing_page %}{{ creator_content_font_name }}, {% endif %} {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
         --font-heading-style: {{ settings.type_header_font.style }};
         --font-heading-weight: {{ settings.type_header_font.weight }};
 
