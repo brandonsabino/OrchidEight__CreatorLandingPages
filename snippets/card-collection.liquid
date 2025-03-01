@@ -87,6 +87,8 @@
               <a
                 {% if card_collection == blank %}
                   role="link" aria-disabled="true"
+                {%  elsif custom_path != blank %}
+                  href="{{ custom_path }}"
                 {% else %}
                   href="{{ card_collection.url }}"
                 {% endif %}
@@ -123,6 +125,8 @@
             <a
               {% if card_collection == blank %}
                 role="link" aria-disabled="true"
+              {%  elsif custom_path != blank %}
+                href="{{ custom_path }}"
               {% else %}
                 href="{{ card_collection.url }}"
               {% endif %}
