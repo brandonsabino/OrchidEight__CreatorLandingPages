@@ -110,6 +110,7 @@
         "slide_ptc6TC",
         "slide_8Hi8WC"
       ],
+      "disabled": true,
       "settings": {
         "layout": "full_bleed",
         "slide_height": "medium",
@@ -123,6 +124,7 @@
     },
     "featured_collection_GTBmqi": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Pride 2024 Featured Artists",
         "heading_size": "h1",
@@ -151,6 +153,7 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Best Sellers",
         "heading_size": "h2",
@@ -179,6 +182,7 @@
     },
     "featured_collection_Qwfrgb": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "New Products!",
         "heading_size": "h2",
@@ -253,6 +257,7 @@
         "featured_collection_Jqzxnk",
         "featured_collection_knehDj"
       ],
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -265,6 +270,207 @@
         "padding_top": 36,
         "padding_bottom": 100
       }
+    },
+    "rich_text_YybPAh": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_46RXbd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Orchid Eight Content Creators",
+            "heading_size": "h1"
+          }
+        },
+        "text_xiCpPr": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+          }
+        },
+        "button_8rpe9x": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_46RXbd",
+        "text_xiCpPr",
+        "button_8rpe9x"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "collection_list_pRMRje": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_Q8PyyT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "adeptus-ridiculous"
+          }
+        },
+        "featured_collection_8cqWHX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "billion-dollar-clown-farm"
+          }
+        },
+        "featured_collection_mWEebx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "bricky"
+          }
+        },
+        "featured_collection_PcL9Qt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cottontail"
+          }
+        },
+        "featured_collection_m7YAbe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dicehammer"
+          }
+        },
+        "featured_collection_mc7NQQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dr-rhino"
+          }
+        },
+        "featured_collection_4aXCXB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "easty"
+          }
+        },
+        "featured_collection_rLrDDE": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "geef"
+          }
+        },
+        "featured_collection_f4VKgW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hayegurl"
+          }
+        },
+        "featured_collection_H9gQ4b": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "limealicious"
+          }
+        },
+        "featured_collection_ygcWL6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "matara-kan"
+          }
+        },
+        "featured_collection_jFbyKx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "narrative-declaration"
+          }
+        },
+        "featured_collection_YJbR8B": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "numbskulls"
+          }
+        },
+        "featured_collection_nzVCxt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "poorhammer"
+          }
+        },
+        "featured_collection_4Lc9KY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "shammy"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_Q8PyyT",
+        "featured_collection_8cqWHX",
+        "featured_collection_mWEebx",
+        "featured_collection_PcL9Qt",
+        "featured_collection_m7YAbe",
+        "featured_collection_mc7NQQ",
+        "featured_collection_4aXCXB",
+        "featured_collection_rLrDDE",
+        "featured_collection_f4VKgW",
+        "featured_collection_H9gQ4b",
+        "featured_collection_ygcWL6",
+        "featured_collection_jFbyKx",
+        "featured_collection_YJbR8B",
+        "featured_collection_nzVCxt",
+        "featured_collection_4Lc9KY"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collection_list_nH3Ray": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_BqAAkG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "suto"
+          }
+        },
+        "featured_collection_9efB7p": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wicked-good-gaming"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_BqAAkG",
+        "featured_collection_9efB7p"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -272,6 +478,9 @@
     "featured_collection_GTBmqi",
     "featured_collection",
     "featured_collection_Qwfrgb",
-    "collection_list_GUHgL8"
+    "collection_list_GUHgL8",
+    "rich_text_YybPAh",
+    "collection_list_pRMRje",
+    "collection_list_nH3Ray"
   ]
 }
