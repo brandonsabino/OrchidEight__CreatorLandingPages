@@ -138,12 +138,24 @@
 
 .collection-list .card > .card__content {
   position: absolute;
-  background-color: #FFFFFF;
+  background-color: var(--white);
   bottom: 20px;
-  border: 3px solid var(--collection-icon-pink);
+  border: 3px solid var(--sun);
   min-width: 100%;
   border-radius: 35px;
   min-height: 75px;
+  transition-duration: 500ms;
+}
+
+.collection-list .card > .card__content:hover,
+.collection-list .card > .card__content:focus {
+  background-color: var(--sun);
+  border-color: var(--sun);
+}
+
+.collection-list .card > .card__content:hover a,
+.collection-list .card > .card__content:focus a {
+  color: var(--black);
 }
 
 .collection-list .card > .card__content .card__information {
@@ -160,6 +172,8 @@
 .collection-list .card > .card__content h3 a {
   font-family: 'Greston';
   line-height: 1;
+  letter-spacing: 1px;
+  transition-duration: 500ms;
 }
 
 .card__content--auto-margins {

@@ -7,8 +7,13 @@
   --focused-base-outline-offset: 0.3rem;
   --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
 
-  /* Custom Colors */
-  --collection-icon-pink: #f50f75;
+  /* Brand Colors */
+  --orchid: #CC1746;
+  --stem:#378255;
+  --sun: #F9B355;
+  --water: #2384B5;
+  --black: #141516;
+  --white: #F8FDFF;
 }
 
 .product-card-wrapper .card,
