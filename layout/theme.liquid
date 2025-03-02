@@ -155,6 +155,16 @@
     %}
 
     {% style %}
+      @font-face {
+        font-family: 'Greston';
+        src: url('{{ "Greston.woff" | asset_url }}') format('woff'),
+            url('{{ "Greston.ttf" | asset_url }}') format('truetype'),
+            url('{{ "Greston.otf" | asset_url }}') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
       {% if creator_heading_font %}
         {{ creator_heading_font }}
       {% endif %}
