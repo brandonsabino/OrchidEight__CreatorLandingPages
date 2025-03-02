@@ -15,12 +15,36 @@
 {%- endstyle -%}
 
 <div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
-  <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
+  <div class="rich-text content-container section-{{ section.id }}  color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
     <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
       <div class="rich-text__blocks {{ section.settings.content_alignment }}">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'heading' -%}
+            {% style %}
+              {% if block.settings.use_greston_font %}
+                .section-{{ section.id }} .rich-text__heading {
+                  font-family: 'Greston', 'Times New Roman';
+                }
+              {% elsif block.settings.heading_font_family_import != blank %}
+                {{ block.settings.heading_font_family_import }}
+                {% assign font_url = block.settings.heading_font_family_import %}
+                {% assign font_family_param = font_url | split: 'family=' | last | split: '&' | first %}
+                {% assign custom_font_family_name = font_family_param | split: ':' | first | replace: '+', ' ' %}
+
+                .section-{{ section.id }} .rich-text__heading {
+                  font-family: '{{ custom_font_family_name }}', 'Times New Roman';
+                }
+
+              {% else %}
+                {{ block.settings.heading_font_family | font_face }}
+                .section-{{ section.id }} .rich-text__heading {
+                  font-family: {{ block.settings.heading_font_family.family }}, {{ block.settings.heading_font_family.fallback_families }};
+                  font-weight: {{ block.settings.heading_font_family.weight }};
+                  font-style: {{ block.settings.heading_font_family.style }};
+                }
+              {% endif %}
+            {% endstyle %}
               <h2
                 class="rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                 {{ block.shopify_attributes }}
@@ -43,6 +67,25 @@
                 {{ block.settings.caption | escape }}
               </p>
             {%- when 'text' -%}
+              {% style %}
+                {% if block.settings.text_font_family_import != blank %}
+                  {{ block.settings.text_font_family_import }}
+                  {% assign font_url = block.settings.text_font_family_import %}
+                  {% assign font_family_param = font_url | split: 'family=' | last | split: '&' | first %}
+                  {% assign custom_font_family_name = font_family_param | split: ':' | first | replace: '+', ' ' %}
+
+                  .section-{{ section.id }} .rich-text__text > * {
+                    font-family: '{{ custom_font_family_name }}', sans-serif;
+                  }
+                {% else %}
+                  {{ block.settings.text_font_family | font_face }}
+                  .section-{{ section.id }} .rich-text__text > * {
+                    font-family: {{ block.settings.text_font_family.family }}, {{ block.settings.text_font_family.fallback_families }};
+                    font-weight: {{ block.settings.text_font_family.weight }};
+                    font-style: {{ block.settings.text_font_family.style }};
+                  }
+                {% endif %}
+              {% endstyle %}
               <div
                 class="rich-text__text rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                 {{ block.shopify_attributes }}
@@ -220,6 +263,25 @@
           ],
           "default": "h1",
           "label": "t:sections.all.heading_size.label"
+        },
+        {
+          "type": "font_picker",
+          "id": "heading_font_family",
+          "label": "Heading font",
+          "default": "helvetica_n4"
+        },
+        {
+          "type": "text",
+          "id": "heading_font_family_import",
+          "label": "Custom Font Import URL",
+          "info": "Provide the @import URL for the custom font (e.g., from Google Fonts)."
+        },
+        {
+          "type": "checkbox",
+          "id": "use_greston_font",
+          "label": "Use Greston font",
+          "default": false,
+          "info": "Overrides all other selections"
         }
       ]
     },
@@ -282,6 +344,18 @@
           "id": "text",
           "default": "t:sections.rich-text.blocks.text.settings.text.default",
           "label": "t:sections.rich-text.blocks.text.settings.text.label"
+        },
+        {
+          "type": "font_picker",
+          "id": "text_font_family",
+          "label": "Text font",
+          "default": "helvetica_n4"
+        },
+        {
+          "type": "text",
+          "id": "text_font_family_import",
+          "label": "Custom Font Import URL",
+          "info": "Provide the @import URL for the custom font (e.g., from Google Fonts)."
         }
       ]
     },
