@@ -130,6 +130,38 @@
   flex-grow: 1;
 }
 
+.collection-list .card {
+  align-items: center;
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+.collection-list .card > .card__content {
+  position: absolute;
+  background-color: #FFFFFF;
+  bottom: 20px;
+  border: 3px solid var(--collection-icon-pink);
+  min-width: 100%;
+  border-radius: 35px;
+  min-height: 75px;
+}
+
+.collection-list .card > .card__content .card__information {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.collection-list .card > .card__content h3 {
+  text-align: center;
+}
+
+.collection-list .card > .card__content h3 a {
+  font-family: 'Greston';
+  line-height: 1;
+}
+
 .card__content--auto-margins {
   grid-template-rows: minmax(0, auto) max-content minmax(0, auto);
 }
