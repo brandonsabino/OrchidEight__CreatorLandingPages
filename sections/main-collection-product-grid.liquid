@@ -60,6 +60,7 @@
         assign creator_product_grid_background = collection.metafields.custom.product_grid_background_override
         assign creator_collection_banner_background = collection.metafields.custom.collection_banner_background_color
         assign creator_collection_banner_text_color = collection.metafields.custom.collection_banner_text_color
+        assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color
         break
       endif
     endfor
@@ -140,10 +141,19 @@
         padding: 1.5rem 20rem 0;
       }
     }
+
+    .section-{{ section.id }} .pagination__list > li {
+      border: 2px solid {{ creator_accent_color }};
+      border-radius: 15px;
+    }
+
+    .section-{{ section.id }} .pagination__list > li a {
+      color: {{ creator_accent_color }};
+    }
   {% endif %}
 {%- endstyle -%}
 
-<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+<div class="section-{{ section.id }} section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
   {%- paginate collection.products by section.settings.products_per_page -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
     {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
