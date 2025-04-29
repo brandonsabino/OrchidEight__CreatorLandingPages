@@ -11,8 +11,9 @@
   "sections": {
     "custom_liquid_YmALUM": {
       "type": "custom-liquid",
+      "disabled": true,
       "settings": {
-        "custom_liquid": "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Akshar\">\n<style>\nh1 {\n  font-family: Shrimp;\n  font-size: 3rem;\n  text-transform: uppercase;\n}\n.button--primary {\n  font-family: Shrimp;\n  text-transform: uppercase;\n}\n.starting-at {display: none}\n.product__media-item {\n  background: #f3f3f3;\n  border-radius: 20px;\n}\n.product-media-container {\n  mix-blend-mode: darken;\n}\n.product .price-item {\n  font-weight: 400;\nfont-family: Akshar;\n  font-size: 2.5rem;\n}\n.form__label {\n  padding-top: 10px;\n  font-weight: bold;\n    padding-bottom: 10px;\n    font-size: 1.5rem;\nfont-family: Akshar;\n}\n\n.product-form__input {display: flex;}\n\n.swatches input[type=radio]+label {\nwidth: 33px!important; height: 33px!important;}\n\n.product-form__input--pill input[type=\"radio\"] + label {\nmin-height: 33px !important;\n    min-width: 33px !important;\n    padding: 0;\nfont-family: Akshar!important;\nmargin-right: 10px!important;\n    height: 33px;\n    display: flex!important;\n    font-size: 12px !important;\n    width: 33px;\n    flex-direction: row!important;\n    flex-wrap: nowrap!important;\n    align-items: center!important;\n    justify-content: center!important;\n}\n\n.product-form__buttons {padding-top: 20px;}\n\n.accordion {\n    font-family: Akshar;\n}\n\n.product-form__input--pill input[type=radio]:checked+label {font-weight: bold;}\n\n@media screen and (min-width: 1023px) { \n.slider {padding-right: 50px;\n}\n\n\n</style>",
+        "custom_liquid": "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Akshar\">\n<style>\nh1 {\n  font-family: Shrimp;\n  font-size: 3rem;\n  text-transform: uppercase;\n}\n.button--primary {\n  font-family: Shrimp;\n  text-transform: uppercase;\n}\n.starting-at {display: none}\n.product__media-item {\n  background: #f3f3f3;\n  border-radius: 20px;\n}\n.product-media-container {\n  mix-blend-mode: darken;\n}\n.product .price-item {\n  font-weight: 400;\nfont-family: Poppins;\n  font-size: 2.5rem;\n}\n.form__label {\n  padding-top: 10px;\n  font-weight: bold;\n    padding-bottom: 10px;\n    font-size: 1.5rem;\nfont-family: Poppins;\n}\n\n.product-form__input {display: flex;}\n\n.swatches input[type=radio]+label {\nwidth: 33px!important; height: 33px!important;}\n\n.product-form__input--pill input[type=\"radio\"] + label {\nmin-height: 33px !important;\n    min-width: 33px !important;\n    padding: 0;\nfont-family: Poppins!important;\nmargin-right: 10px!important;\n    height: 33px;\n    display: flex!important;\n    font-size: 12px !important;\n    width: 33px;\n    flex-direction: row!important;\n    flex-wrap: nowrap!important;\n    align-items: center!important;\n    justify-content: center!important;\n}\n\n.product-form__buttons {padding-top: 20px;}\n\n.accordion {\n    font-family: Akshar;\n}\n\n.product-form__input--pill input[type=radio]:checked+label {font-weight: bold;}\n\n@media screen and (min-width: 1023px) { \n.slider {padding-right: 50px;\n}\n\n\n</style>",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0
@@ -59,7 +60,7 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
-        "media_size": "large",
+        "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "thumbnail",
@@ -131,6 +132,7 @@
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
+        "quick_add": "none",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 80,

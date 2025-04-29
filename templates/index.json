@@ -9,268 +9,6 @@
  */
 {
   "sections": {
-    "slideshow_YxPGqp": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_VHAYwp": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/banner_1_bdc30f05-792a-4135-9fbd-179318467e3a.png",
-            "heading": "WELCOME LIMES!",
-            "heading_size": "h1",
-            "subheading": "Check out her new merch here!",
-            "button_label": "Shop now",
-            "link": "shopify://collections/limealicious",
-            "button_style_secondary": false,
-            "box_align": "middle-left",
-            "show_text_box": true,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-1",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "slide_hn8VQh": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/wgg_oct_promo_desktop.png",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "link": "shopify://collections/wicked-good-gaming",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-1",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "slide_gGcYpG": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/O8_Numbskulls_Marketing_Web_Banner.jpg",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "link": "shopify://collections/numbskulls",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "slide_ptc6TC": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/O8_BDCF_Marketing_Web_Banner.jpg",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "link": "shopify://collections/billion-dollar-clown-farm",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-1",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "slide_8Hi8WC": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/O8_Hayegurl_Marketing_Web_Banner.jpg",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "link": "shopify://collections/hayegurl",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-1",
-            "text_alignment_mobile": "center"
-          }
-        }
-      },
-      "block_order": [
-        "slide_VHAYwp",
-        "slide_hn8VQh",
-        "slide_gGcYpG",
-        "slide_ptc6TC",
-        "slide_8Hi8WC"
-      ],
-      "disabled": true,
-      "settings": {
-        "layout": "full_bleed",
-        "slide_height": "medium",
-        "slider_visual": "dots",
-        "auto_rotate": true,
-        "change_slides_speed": 5,
-        "image_behavior": "none",
-        "show_text_below": false,
-        "accessibility_info": ""
-      }
-    },
-    "featured_collection_GTBmqi": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "title": "Pride 2024 Featured Artists",
-        "heading_size": "h1",
-        "description": "<p>In honor of Pride Month we decided to feature two incredible artists within the LGBTQIA+ community, Seanna Latiff and Justin Sado. Both artists have their own unique and breathtaking style to their pieces. If you can't purchase one of their products, at least give them a follow and show them some support. </p><ul><li><a href=\"https://www.instagram.com/seannalatiff/\" target=\"_blank\" title=\"Artist Seanna Latiff's Instagram Profile\">Seanna Latiff's Instagram</a></li><li><a href=\"https://www.instagram.com/justinsado/\" target=\"_blank\" title=\"Artist Justin Sado's Instagram Profile\">Justin Sado's Instagram</a></li></ul><p>All proceeds from the sales of the Pride 2024 collection will be donated to <a href=\"https://www.thetrevorproject.org/\" target=\"_blank\">The Trevor Project</a>.</p>",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "pride-2024",
-        "products_to_show": 4,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "",
-        "image_ratio": "portrait",
-        "image_shape": "default",
-        "show_secondary_image": false,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "title": "Best Sellers",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "best-sellers",
-        "products_to_show": 10,
-        "columns_desktop": 5,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 68,
-        "padding_bottom": 100
-      }
-    },
-    "featured_collection_Qwfrgb": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "title": "New Products!",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "new-products",
-        "products_to_show": 10,
-        "columns_desktop": 5,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
-        "image_ratio": "square",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 100
-      }
-    },
-    "collection_list_GUHgL8": {
-      "type": "collection-list",
-      "blocks": {
-        "featured_collection_QGR34n": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "little-guys"
-          }
-        },
-        "featured_collection_XDhACy": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "dice-and-mats"
-          }
-        },
-        "featured_collection_tkaQCr": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "tees"
-          }
-        },
-        "featured_collection_ezfXxi": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "prints"
-          }
-        },
-        "featured_collection_Jqzxnk": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "hoodies"
-          }
-        },
-        "featured_collection_knehDj": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "bricky"
-          }
-        }
-      },
-      "block_order": [
-        "featured_collection_QGR34n",
-        "featured_collection_XDhACy",
-        "featured_collection_tkaQCr",
-        "featured_collection_ezfXxi",
-        "featured_collection_Jqzxnk",
-        "featured_collection_knehDj"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_ratio": "square",
-        "columns_desktop": 3,
-        "color_scheme": "",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 100
-      }
-    },
     "rich_text_YybPAh": {
       "type": "rich-text",
       "blocks": {
@@ -278,33 +16,24 @@
           "type": "heading",
           "settings": {
             "heading": "Orchid Eight Content Creators",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_font_family": "helvetica_n4",
+            "heading_font_family_import": "",
+            "use_greston_font": true
           }
         },
         "text_xiCpPr": {
           "type": "text",
-          "disabled": true,
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
-          }
-        },
-        "button_8rpe9x": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text": "<p>Here's all of the content creator's store links. Take a look at their current products.</p>",
+            "text_font_family": "poppins_n4",
+            "text_font_family_import": ""
           }
         }
       },
       "block_order": [
         "heading_46RXbd",
-        "text_xiCpPr",
-        "button_8rpe9x"
+        "text_xiCpPr"
       ],
       "settings": {
         "desktop_content_position": "center",
@@ -321,91 +50,141 @@
         "featured_collection_Q8PyyT": {
           "type": "featured_collection",
           "settings": {
-            "collection": "adeptus-ridiculous"
+            "collection": "adeptus-ridiculous",
+            "custom_path": ""
           }
         },
         "featured_collection_8cqWHX": {
           "type": "featured_collection",
           "settings": {
-            "collection": "billion-dollar-clown-farm"
+            "collection": "billion-dollar-clown-farm",
+            "custom_path": ""
           }
         },
         "featured_collection_mWEebx": {
           "type": "featured_collection",
           "settings": {
-            "collection": "bricky"
+            "collection": "bricky",
+            "custom_path": ""
           }
         },
         "featured_collection_PcL9Qt": {
           "type": "featured_collection",
           "settings": {
-            "collection": "cottontail"
+            "collection": "cottontail",
+            "custom_path": ""
           }
         },
         "featured_collection_m7YAbe": {
           "type": "featured_collection",
           "settings": {
-            "collection": "dicehammer"
+            "collection": "dicehammer",
+            "custom_path": ""
           }
         },
         "featured_collection_mc7NQQ": {
           "type": "featured_collection",
           "settings": {
-            "collection": "dr-rhino"
+            "collection": "dr-rhino",
+            "custom_path": ""
           }
         },
         "featured_collection_4aXCXB": {
           "type": "featured_collection",
           "settings": {
-            "collection": "easty"
+            "collection": "easty",
+            "custom_path": ""
           }
         },
         "featured_collection_rLrDDE": {
           "type": "featured_collection",
           "settings": {
-            "collection": "geef"
+            "collection": "geef",
+            "custom_path": ""
           }
         },
         "featured_collection_f4VKgW": {
           "type": "featured_collection",
           "settings": {
-            "collection": "hayegurl"
+            "collection": "hayegurl",
+            "custom_path": ""
           }
         },
         "featured_collection_H9gQ4b": {
           "type": "featured_collection",
           "settings": {
-            "collection": "limealicious"
+            "collection": "limealicious",
+            "custom_path": ""
           }
         },
         "featured_collection_ygcWL6": {
           "type": "featured_collection",
           "settings": {
-            "collection": "matara-kan"
+            "collection": "matara-kan",
+            "custom_path": "https://www.matarakan.shop/"
           }
         },
         "featured_collection_jFbyKx": {
           "type": "featured_collection",
           "settings": {
-            "collection": "narrative-declaration"
+            "collection": "narrative-declaration",
+            "custom_path": ""
           }
         },
         "featured_collection_YJbR8B": {
           "type": "featured_collection",
           "settings": {
-            "collection": "numbskulls"
+            "collection": "numbskulls",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_UJnPtV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "paragon",
+            "custom_path": ""
           }
         },
         "featured_collection_nzVCxt": {
           "type": "featured_collection",
           "settings": {
-            "collection": "poorhammer"
+            "collection": "poorhammer",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_Trm869": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "roflgator",
+            "custom_path": ""
           }
         },
         "featured_collection_4Lc9KY": {
           "type": "featured_collection",
           "settings": {
-            "collection": "shammy"
+            "collection": "shammy",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_TtQk8h": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "suto",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_piKBfc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tabletop-titans",
+            "custom_path": "shopify://collections/tabletop-titans"
+          }
+        },
+        "featured_collection_ya7Yhw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vexoria",
+            "custom_path": ""
           }
         }
       },
@@ -423,14 +202,20 @@
         "featured_collection_ygcWL6",
         "featured_collection_jFbyKx",
         "featured_collection_YJbR8B",
+        "featured_collection_UJnPtV",
         "featured_collection_nzVCxt",
-        "featured_collection_4Lc9KY"
+        "featured_collection_Trm869",
+        "featured_collection_4Lc9KY",
+        "featured_collection_TtQk8h",
+        "featured_collection_piKBfc",
+        "featured_collection_ya7Yhw"
       ],
       "settings": {
         "title": "",
         "heading_size": "h1",
         "image_ratio": "square",
         "columns_desktop": 5,
+        "grid_alignment": "center",
         "color_scheme": "scheme-2",
         "show_view_all": false,
         "columns_mobile": "2",
@@ -439,48 +224,39 @@
         "padding_bottom": 36
       }
     },
-    "collection_list_nH3Ray": {
+    "collection_list_caChzJ": {
       "type": "collection-list",
       "blocks": {
-        "featured_collection_BqAAkG": {
+        "featured_collection_3Jqz8d": {
           "type": "featured_collection",
           "settings": {
-            "collection": "suto"
-          }
-        },
-        "featured_collection_9efB7p": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "wicked-good-gaming"
+            "collection": "wicked-good-gaming",
+            "custom_path": ""
           }
         }
       },
       "block_order": [
-        "featured_collection_BqAAkG",
-        "featured_collection_9efB7p"
+        "featured_collection_3Jqz8d"
       ],
+      "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "title": "",
+        "title": "Collections",
         "heading_size": "h1",
         "image_ratio": "square",
-        "columns_desktop": 5,
-        "color_scheme": "scheme-2",
+        "columns_desktop": 3,
+        "grid_alignment": "center",
+        "color_scheme": "",
         "show_view_all": false,
-        "columns_mobile": "2",
+        "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 0,
+        "padding_top": 36,
         "padding_bottom": 36
       }
     }
   },
   "order": [
-    "slideshow_YxPGqp",
-    "featured_collection_GTBmqi",
-    "featured_collection",
-    "featured_collection_Qwfrgb",
-    "collection_list_GUHgL8",
     "rich_text_YybPAh",
     "collection_list_pRMRje",
-    "collection_list_nH3Ray"
+    "collection_list_caChzJ"
   ]
 }
