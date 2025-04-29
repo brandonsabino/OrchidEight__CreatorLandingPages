@@ -1,4 +1,4 @@
-<div class="release-countdown">
+<div class="section--{{ section.id }} release-countdown">
   {% assign creator_release_date = collection.metafields.custom.creator_landing_page_release_countdown_date %}
   {% if creator_release_date %}
     <div id="countdown" class="countdown" style="color: {{ section.settings.text_color }};">
@@ -29,6 +29,10 @@
 <style>
   .shopify-section:has(.release-countdown) {
     overflow-x: hidden;
+  }
+
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.section_background }};
   }
 
   .release-countdown {
@@ -167,6 +171,12 @@
       "id": "fallback_message",
       "label": "Message to Display if No Release Date",
       "default": "Stay tuned for our next release!"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background Color",
+      "default": "#ffffff"
     }
   ],
   "presets": [
