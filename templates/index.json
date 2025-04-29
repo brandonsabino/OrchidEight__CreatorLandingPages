@@ -24,6 +24,7 @@
         },
         "text_xiCpPr": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p>Here's all of the content creator's store links. Take a look at their current products.</p>",
             "text_font_family": "poppins_n4",
@@ -65,6 +66,13 @@
           "type": "featured_collection",
           "settings": {
             "collection": "bricky",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_6xEtTi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cakejumper",
             "custom_path": ""
           }
         },
@@ -152,7 +160,7 @@
             "custom_path": ""
           }
         },
-        "featured_collection_Trm869": {
+        "featured_collection_mLJxcX": {
           "type": "featured_collection",
           "settings": {
             "collection": "roflgator",
@@ -179,19 +187,13 @@
             "collection": "tabletop-titans",
             "custom_path": "shopify://collections/tabletop-titans"
           }
-        },
-        "featured_collection_ya7Yhw": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "vexoria",
-            "custom_path": ""
-          }
         }
       },
       "block_order": [
         "featured_collection_Q8PyyT",
         "featured_collection_8cqWHX",
         "featured_collection_mWEebx",
+        "featured_collection_6xEtTi",
         "featured_collection_PcL9Qt",
         "featured_collection_m7YAbe",
         "featured_collection_mc7NQQ",
@@ -204,11 +206,10 @@
         "featured_collection_YJbR8B",
         "featured_collection_UJnPtV",
         "featured_collection_nzVCxt",
-        "featured_collection_Trm869",
+        "featured_collection_mLJxcX",
         "featured_collection_4Lc9KY",
         "featured_collection_TtQk8h",
-        "featured_collection_piKBfc",
-        "featured_collection_ya7Yhw"
+        "featured_collection_piKBfc"
       ],
       "settings": {
         "title": "",
@@ -227,6 +228,13 @@
     "collection_list_caChzJ": {
       "type": "collection-list",
       "blocks": {
+        "featured_collection_jzaDyk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vexoria",
+            "custom_path": ""
+          }
+        },
         "featured_collection_3Jqz8d": {
           "type": "featured_collection",
           "settings": {
@@ -236,6 +244,7 @@
         }
       },
       "block_order": [
+        "featured_collection_jzaDyk",
         "featured_collection_3Jqz8d"
       ],
       "name": "t:sections.collection-list.presets.name",
@@ -243,11 +252,11 @@
         "title": "Collections",
         "heading_size": "h1",
         "image_ratio": "square",
-        "columns_desktop": 3,
+        "columns_desktop": 5,
         "grid_alignment": "center",
         "color_scheme": "",
         "show_view_all": false,
-        "columns_mobile": "1",
+        "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
