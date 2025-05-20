@@ -147,8 +147,8 @@
   transition-duration: 500ms;
 }
 
-.collection-list .card > .card__content:hover,
-.collection-list .card > .card__content:focus {
+.collection-list .card-wrapper-link:hover .card > .card__content,
+.collection-list .card-wrapper-link:focus .card > .card__content {
   background-color: var(--sun);
   border-color: var(--sun);
 }
@@ -169,7 +169,7 @@
   text-align: center;
 }
 
-.collection-list .card > .card__content h3 a {
+.collection-list .card > .card__content h3 span {
   font-family: 'Greston';
   line-height: 1;
   letter-spacing: 1px;
@@ -385,14 +385,14 @@
 }
 
 .card--standard.card--text a::after,
-.card--card .card__heading a::after {
+.card--card .card__heading span::after {
   bottom: calc(var(--border-width) * -1);
   left: calc(var(--border-width) * -1);
   right: calc(var(--border-width) * -1);
   top: calc(var(--border-width) * -1);
 }
 
-.card__heading a::after {
+.card__heading span::after {
   bottom: 0;
   content: '';
   left: 0;
@@ -402,26 +402,26 @@
   z-index: 1;
 }
 
-.card__heading a:after {
+.card__heading span:after {
   outline-offset: 0.3rem;
 }
 
-.card__heading a:focus:after {
+.card__heading span:focus:after {
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
 }
 
-.card__heading a:focus-visible:after {
+.card__heading span:focus-visible:after {
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
 }
 
-.card__heading a:focus:not(:focus-visible):after {
+.card__heading span:focus:not(:focus-visible):after {
   box-shadow: none;
   outline: 0;
 }
 
-.card__heading a:focus {
+.card__heading span:focus {
   box-shadow: none;
   outline: 0;
 }
