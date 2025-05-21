@@ -23,35 +23,10 @@
 {%- endif -%}
 
 {%- liquid
-  assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
-  assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
-  assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
-
   assign is_creator_landing_page = false
   assign collection_page_match = false
   assign product_page_match = false
-
-  assign creator_heading_font = ''
-  assign creator_content_font = ''
-  assign creator_logo = ''
-  assign creator_x_account = ''
-  assign creator_instagram_account = ''
-  assign creator_youtube_account = ''
-  assign creator_twitch_account = ''
-  assign creator_accent_color = ''
-  assign creator_header_shape = ''
-  assign creater_outer_header_background = ''
-  assign creator_header_background_color = ''
-  assign creator_header_content_color = ''
-  assign creator_button_primary_background = ''
-  assign creator_button_secondary_background = ''
   assign creator_product_grid_background = ''
-  assign creator_product_item_toggle = ''
-  assign creator_product_item_background_color = ''
-  assign creator_product_item_link_color = ''
-  assign creator_footer_background_color = ''
-  assign creator_footer_content_color = ''
-  assign creator_release_date = ''
 
   if collection
     for creator_collection in settings.creator_landing_pages_collections
