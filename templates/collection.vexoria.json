@@ -28,7 +28,7 @@
         "slide_XxC6N3": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Ending_soon_FINAL_-_Vexoria_Sun_Eater.png",
+            "image": "shopify://shop_images/Vexoria_Sun_Eater_banner_image.png",
             "heading": "",
             "heading_size": "h1",
             "subheading": "",
@@ -75,7 +75,8 @@
         "background_color": "#ca8cdb",
         "border_color": "#ca8cdb",
         "text_color": "#ffffff",
-        "fallback_message": "Stay tuned for our next release!"
+        "fallback_message": "Stay tuned for our next release!",
+        "section_background": "#ffffff"
       }
     },
     "product-grid": {

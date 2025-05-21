@@ -62,7 +62,8 @@
       "tabletop-titans",
       "vexoria",
       "roflgator",
-      "cakejumper"
+      "cakejumper",
+      "sunnysplosion"
     ],
     "card_style": "card",
     "card_image_padding": 0,
@@ -402,6 +403,11 @@
     "blocks": {
       "5946647744298494267": {
         "type": "shopify://apps/wishlist-plus/blocks/wishlist-app-embed/80c3b1fc-3a8f-407e-8367-ffdeebb8b612",
+        "disabled": false,
+        "settings": {}
+      },
+      "17368511000352060744": {
+        "type": "shopify://apps/goaffpro-affiliate-marketing/blocks/goaffpro-embedded-pixel/2f4d802b-86c2-47e4-8096-ae1aa3efbab2",
         "disabled": false,
         "settings": {}
       }

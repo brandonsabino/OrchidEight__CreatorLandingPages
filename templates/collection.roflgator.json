@@ -74,7 +74,8 @@
         "background_color": "#ca8cdb",
         "border_color": "#ca8cdb",
         "text_color": "#ffffff",
-        "fallback_message": "Stay tuned for our next release!"
+        "fallback_message": "Stay tuned for our next release!",
+        "section_background": "#ffffff"
       }
     },
     "product-grid": {
