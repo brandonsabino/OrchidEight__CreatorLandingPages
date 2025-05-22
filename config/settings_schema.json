@@ -1255,6 +1255,10 @@
           {
             "value": "top right",
             "label": "t:settings_schema.badges.settings.position.options__4.label"
+          },
+          {
+            "value": "top center",
+            "label": "t:settings_schema.badges.settings.position.options__5.label"
           }
         ],
         "default": "bottom left",

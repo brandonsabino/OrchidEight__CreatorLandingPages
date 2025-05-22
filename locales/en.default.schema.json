@@ -115,6 +115,9 @@
           "options__4": {
             "label": "Top right"
           },
+          "options__5": {
+            "label": "Top center"
+          },
           "label": "Position on cards"
         },
         "sale_badge_color_scheme": {

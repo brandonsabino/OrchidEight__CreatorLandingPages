@@ -315,6 +315,10 @@
   justify-self: flex-end;
 }
 
+.card__badge.center {
+  justify-self: center;
+}
+
 .card:not(.card--horizontal)>.card__content>.card__badge {
   margin: 1.3rem;
 }
