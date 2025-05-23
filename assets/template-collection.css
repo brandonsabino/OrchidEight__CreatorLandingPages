@@ -100,10 +100,8 @@
 
 .highlighted-products-block {
   padding-block: 3rem;
-}
-
-.highlighted-products-block * {
-  /* color: white; */
+  display: flex;
+  flex-direction: column;
 }
 
 .highlighted-products-block h2 {
@@ -116,5 +114,12 @@
 
 .highlighted-products-block ul {
   padding-block: 0;
-  margin-block-start: 0;
+  margin-block: 0 5rem;
+}
+
+.highlighted-products-block__cta {
+  transition: ease .2s;
+  min-width: 10rem;
+  padding-block: 1.25rem;
+  font-size: 2rem;
 }

@@ -137,6 +137,18 @@
       background-color: {{ highlighted_products_heading_background }};
       border: 2px solid {{ highlighted_products_heading_color }};
     }
+
+    .highlighted-products-block__cta {
+      color: {{ highlighted_products_heading_background }};
+      background-color: {{ highlighted_products_heading_color }};
+    }
+
+
+    .highlighted-products-block__cta:hover,
+    .highlighted-products-block__cta:focus {
+      background-color: {{ highlighted_products_heading_background }};
+      color: {{ highlighted_products_heading_color }};
+    }
   {% endif %}
 {%- endstyle -%}
 
@@ -301,6 +313,9 @@
                       {% endfor %}
                     {% endfor %}
                   </ul>
+                  <button class="highlighted-products-block__cta button button--primary">
+                    {{ block.settings.button_link_text }}
+                  </button>
                 </div>
               {% endif %}
             {% endfor %}
