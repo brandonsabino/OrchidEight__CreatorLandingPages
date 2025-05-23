@@ -63,7 +63,7 @@
   }
 }
 
-.collection__description > * {
+.collection__description>* {
   margin: 0;
 }
 
@@ -96,4 +96,25 @@
 
 .collection__view-all a:not(.link) {
   margin-top: 1rem;
+}
+
+.highlighted-products-block {
+  padding-block: 3rem;
+}
+
+.highlighted-products-block * {
+  /* color: white; */
+}
+
+.highlighted-products-block h2 {
+  font-family: "Greston";
+  width: fit-content;
+  padding: 2rem;
+  border-radius: 32px;
+  line-height: .5;
+}
+
+.highlighted-products-block ul {
+  padding-block: 0;
+  margin-block-start: 0;
 }
