@@ -27,6 +27,8 @@
   assign collection_page_match = false
   assign product_page_match = false
   assign creator_product_grid_background = ''
+  assign highlighted_products_heading_color = ''
+  assign highlighted_products_heading_background = ''
 
   if collection
     for creator_collection in settings.creator_landing_pages_collections
@@ -36,6 +38,8 @@
         assign creator_collection_banner_background = collection.metafields.custom.collection_banner_background_color
         assign creator_collection_banner_text_color = collection.metafields.custom.collection_banner_text_color
         assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color
+        assign highlighted_products_heading_color = collection.metafields.custom.creator_landing_page_button_secondary_background
+        assign highlighted_products_heading_background = collection.metafields.custom.creator_landing_page_button_primary_background
         break
       endif
     endfor
@@ -47,6 +51,8 @@
         if product_collection.title == creator_collection.title
           assign product_page_match = true
           assign creator_product_grid_background = product_collection.metafields.custom.product_grid_background_override
+          assign highlighted_products_heading_color = product_collection.metafields.custom.creator_landing_page_button_secondary_background
+          assign highlighted_products_heading_background = product_collection.metafields.custom.creator_landing_page_button_primary_background
           break
         endif
       endfor
@@ -293,6 +299,13 @@
   "class": "section",
   "settings": [
     {
+      "type": "checkbox",
+      "id": "enabled_filtered_sections",
+      "label": "Enable filtered sections",
+      "info": "This will allow any configured 'Highlighted Products' blocks to be visible on the page.",
+      "default": false
+    },
+    {
       "type": "range",
       "id": "products_per_page",
       "min": 8,
@@ -509,6 +522,86 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "highlighted_products",
+      "name": "Highlighted Products",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Block heading",
+          "default": "New Drop!"
+        },
+        {
+          "type": "select",
+          "id": "filter_by",
+          "label": "Filter by",
+          "options": [
+            {
+              "value": "tag",
+              "label": "Tag"
+            },
+            {
+              "value": "type",
+              "label": "Type"
+            }
+          ],
+          "default": "tag"
+        },
+        {
+          "type": "text",
+          "id": "filter_input_strings",
+          "label": "Filter strings",
+          "info": "Whether filtering by tag or type, enter the name of the tag or type you'd like to filter by.",
+          "default": "demo, new_drop"
+        },
+        {
+          "type": "range",
+          "id": "products_mobile",
+          "min": 3,
+          "max": 6,
+          "step": 1,
+          "unit": "Qty",
+          "label": "Number of products on mobile",
+          "default": 3
+        },
+        {
+          "type": "range",
+          "id": "products_desktop",
+          "min": 6,
+          "max": 9,
+          "step": 1,
+          "unit": "Qty",
+          "label": "Number of products on desktop",
+          "default": 6
+        },
+        {
+          "type": "select",
+          "id": "button_link_type",
+          "label": "Button link type",
+          "options": [
+            {
+              "value": "view-all",
+              "label": "View All"
+            },
+            {
+              "value": "view-more",
+              "label": "Type"
+            }
+          ],
+          "default": "view-all",
+          "info": "This toggles the button between bringing the user to the rest of the collection or just more products of the same type or tag."
+        },
+        {
+          "type": "text",
+          "id": "button_link_text",
+          "label": "Button link text",
+          "default": "View All"
+        }
+      ]
     }
   ]
 }
