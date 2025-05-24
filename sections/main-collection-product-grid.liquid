@@ -94,6 +94,7 @@
 
     .product-grid {
       padding: 5% 0;
+      margin-top: 0;
     }
   {% endif %}
 
@@ -148,6 +149,12 @@
     .highlighted-products-block__cta:focus {
       background-color: {{ highlighted_products_heading_background }};
       color: {{ highlighted_products_heading_color }};
+    }
+  {% endif %}
+
+    {% if section.blocks.size > 0 %}
+    #product-grid {
+      display: none;
     }
   {% endif %}
 {%- endstyle -%}
@@ -261,9 +268,22 @@
             <div class="loading-overlay gradient"></div>
             {% for block in section.blocks %}
               {% if block.type == 'highlighted_products' and block.settings.filter_input_strings != blank %}
+                {% assign filter_tags = block.settings.filter_input_strings | split: ',' %}
+                {% assign filter_url = '' %}
+
+                {% for tag in filter_tags %}
+                  {% assign tag_clean = tag | strip | url_encode %}
+                  {% assign filter_url = filter_url | append: '&filter.p.tag=' | append: tag_clean %}
+                {% endfor %}
+
+                {% assign collection_url = collection.url | default: '/collections/all' %}
+                {% assign full_url = collection_url | append: '?' | append: filter_url | remove_first: '&' %}
+
                 <div class="highlighted-products-block" id="block-{{ block.id }}">
                   {% if block.settings.heading != blank %}
-                    <h2>{{ block.settings.heading }}</h2>
+                    <h2 class="highlighted-products-block__heading" aria-hidden="false">
+                      {{ block.settings.heading }}
+                    </h2>
                   {% endif %}
 
                   {% assign filter_input_strings = block.settings.filter_input_strings | split: ',' %}
@@ -272,9 +292,13 @@
                   {% endfor %}
 
                   <ul
-                    id="product-grid"
+                    id="product-grid--highlighted-{{ block.id }}"
+                    aria-hidden="false"
                     data-id="{{ section.id }}"
+                    data-limit-desktop="{{ block.settings.products_desktop }}"
+                    data-limit-mobile="{{ block.settings.products_mobile }}"
                     class="
+                      product-grid--highlighted
                       grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
                       grid--{{ section.settings.columns_desktop }}-col-desktop
                       {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}
@@ -313,13 +337,37 @@
                       {% endfor %}
                     {% endfor %}
                   </ul>
-                  <button class="highlighted-products-block__cta button button--primary">
-                    {{ block.settings.button_link_text }}
-                  </button>
                 </div>
+                <button
+                  type="button"
+                  class="highlighted-products-block__cta button button--primary"
+                  data-toggle-product-grid
+                  data-button-text="{{ block.settings.button_link_text }}"
+                  {% if block.settings.button_link_type == 'view-more' %}
+                    data-filter-url="{{ full_url }}"
+                    data-link-behavior="redirect"
+                  {% endif %}
+                >
+                  {{ block.settings.button_link_text }}
+                </button>
               {% endif %}
             {% endfor %}
+
+            {% if section.blocks.size > 0 %}
+              <button
+                type="button"
+                id="revert-to-featured"
+                class="highlighted-products-block__cta button button--primary"
+                style="display: none;"
+              >
+                Show Highlighted Products
+              </button>
+            {% endif %}
+
             <ul
+              {% if section.blocks.size > 0 %}
+                aria-hidden="true"
+              {% endif %}
               id="product-grid"
               data-id="{{ section.id }}"
               class="
@@ -396,6 +444,110 @@
     {{ 'mask-arch.svg' | inline_asset_content }}
   {%- endif -%}
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleButtons = document.querySelectorAll('[data-toggle-product-grid]');
+    const mainGrid = document.querySelector('#product-grid');
+    const highlightedBlocks = document.querySelectorAll('.highlighted-products-block');
+    const revertBtn = document.getElementById('revert-to-featured');
+
+    if (!mainGrid || !highlightedBlocks.length) return;
+
+    highlightedBlocks.forEach((block) => {
+      const grid = block.querySelector('.product-grid--highlighted');
+      if (!grid) return;
+
+      const desktopLimit = parseInt(grid.dataset.limitDesktop, 10) || Infinity;
+      const mobileLimit = parseInt(grid.dataset.limitMobile, 10) || Infinity;
+
+      console.log(desktopLimit);
+      console.log(mobileLimit);
+      const allItems = Array.from(grid.children);
+
+      const isMobile = window.innerWidth < 750;
+      const limit = isMobile ? mobileLimit : desktopLimit;
+
+      allItems.forEach((item, index) => {
+        if (index >= limit) item.style.display = 'none';
+      });
+    });
+
+    function getURLFilterTags() {
+      const params = new URLSearchParams(window.location.search);
+      return [...params.entries()].filter(([key]) => key === 'filter.p.tag').map(([, value]) => value);
+    }
+
+    function getAllBlockFilterTags() {
+      const tagSet = new Set();
+
+      toggleButtons.forEach((btn) => {
+        const filterUrl = btn.dataset.filterUrl;
+        if (!filterUrl) return;
+
+        const params = new URLSearchParams(filterUrl.split('?')[1]);
+        params.forEach((value, key) => {
+          if (key === 'filter.p.tag') tagSet.add(value);
+        });
+      });
+
+      return [...tagSet];
+    }
+
+    const urlTags = getURLFilterTags();
+    const blockTags = getAllBlockFilterTags();
+    const matchFound = urlTags.some((tag) => blockTags.includes(tag));
+
+    if (matchFound) {
+      highlightedBlocks.forEach((block) => (block.style.display = 'none'));
+      toggleButtons.forEach((btn) => (btn.style.display = 'none'));
+      mainGrid.style.display = 'flex';
+      revertBtn.style.display = 'inline-block';
+    }
+
+    revertBtn?.addEventListener('click', () => {
+      const baseCollectionUrl = window.location.pathname;
+      window.location.href = baseCollectionUrl;
+    });
+
+    let showingMainGrid = false;
+
+    toggleButtons.forEach((btn) => {
+      const originalText = btn.dataset.buttonText;
+      const altText = 'Show Featured';
+
+      btn.addEventListener('click', function () {
+        const isRedirect = btn.dataset.linkBehavior === 'redirect';
+        const redirectUrl = btn.dataset.filterUrl;
+
+        if (isRedirect && redirectUrl) {
+          window.location.href = redirectUrl;
+          return;
+        }
+
+        showingMainGrid = !showingMainGrid;
+
+        if (showingMainGrid) {
+          highlightedBlocks.forEach((block) => (block.style.display = 'none'));
+          toggleButtons.forEach((otherBtn) => {
+            if (otherBtn !== btn) otherBtn.style.display = 'none';
+          });
+          mainGrid.style.display = 'flex';
+          btn.textContent = altText;
+          if (!isRedirect) revertBtn.style.display = 'none';
+        } else {
+          highlightedBlocks.forEach((block) => (block.style.display = 'block'));
+          toggleButtons.forEach((otherBtn) => {
+            otherBtn.style.display = 'inline-block';
+            otherBtn.textContent = otherBtn.dataset.buttonText;
+          });
+          mainGrid.style.display = 'none';
+          revertBtn.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
 
 {% schema %}
 {
@@ -580,7 +732,7 @@
     {
       "type": "checkbox",
       "id": "enable_sorting",
-      "default": true,
+      "default": false,
       "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
     },
     {
@@ -665,7 +817,7 @@
         {
           "type": "range",
           "id": "products_mobile",
-          "min": 3,
+          "min": 1,
           "max": 6,
           "step": 1,
           "unit": "Qty",
@@ -675,7 +827,7 @@
         {
           "type": "range",
           "id": "products_desktop",
-          "min": 6,
+          "min": 1,
           "max": 9,
           "step": 1,
           "unit": "Qty",
@@ -693,7 +845,7 @@
             },
             {
               "value": "view-more",
-              "label": "Type"
+              "label": "View More"
             }
           ],
           "default": "view-all",

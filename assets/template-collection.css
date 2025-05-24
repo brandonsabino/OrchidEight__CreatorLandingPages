@@ -118,8 +118,15 @@
 }
 
 .highlighted-products-block__cta {
+  font-family: "Greston";
   transition: ease .2s;
   min-width: 10rem;
   padding-block: 1.25rem;
   font-size: 2rem;
+  width: 100%;
+  margin-block: 2rem;
+}
+
+.highlighted-products-block .hidden {
+  display: none;
 }
