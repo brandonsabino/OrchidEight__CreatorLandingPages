@@ -21,9 +21,104 @@
         "color_scheme": "scheme-1"
       }
     },
+    "creator_slideshow_xPxq3K": {
+      "type": "creator-slideshow",
+      "blocks": {
+        "slide_FXiraz": {
+          "type": "slide",
+          "settings": {
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_i6N6KY": {
+          "type": "slide",
+          "settings": {
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "slide_FXiraz",
+        "slide_i6N6KY"
+      ],
+      "disabled": true,
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "marquee_text_GPUKnh": {
+      "type": "marquee-text",
+      "disabled": true,
+      "name": "Marquee",
+      "settings": {
+        "marquee_text": "Welcome to our site!",
+        "marquee_background_color": "#000000",
+        "marquee_text_color": "#ffffff",
+        "marquee_border_color": ""
+      }
+    },
+    "countdown_mnApfU": {
+      "type": "countdown",
+      "disabled": true,
+      "name": "Countdown",
+      "settings": {
+        "background_color": "#ffffff",
+        "border_color": "#ffffff",
+        "text_color": "#000000",
+        "fallback_message": "Stay tuned for our next release!",
+        "section_background": "#ffffff"
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "blocks": {
+        "highlighted_products_FFzVaC": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "New Drops!",
+            "filter_input_strings": "demo, new_drop",
+            "products_mobile": 1,
+            "products_desktop": 5,
+            "button_link_type": "view-all",
+            "button_link_text": "view all products from {{ collection.title }}"
+          }
+        }
+      },
+      "block_order": [
+        "highlighted_products_FFzVaC"
+      ],
       "settings": {
+        "enabled_filtered_sections": true,
         "products_per_page": 16,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",
@@ -44,6 +139,9 @@
   },
   "order": [
     "banner",
+    "creator_slideshow_xPxq3K",
+    "marquee_text_GPUKnh",
+    "countdown_mnApfU",
     "product-grid"
   ]
 }
