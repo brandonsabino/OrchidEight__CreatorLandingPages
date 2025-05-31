@@ -136,18 +136,15 @@
     .highlighted-products-block h2 {
       color: {{ highlighted_products_heading_color }};
       background-color: {{ highlighted_products_heading_background }};
-      border: 2px solid {{ highlighted_products_heading_color }};
     }
 
     .highlighted-products-block__cta {
       color: {{ highlighted_products_heading_background }};
-      background-color: {{ highlighted_products_heading_color }};
     }
 
 
     .highlighted-products-block__cta:hover,
     .highlighted-products-block__cta:focus {
-      background-color: {{ highlighted_products_heading_background }};
       color: {{ highlighted_products_heading_color }};
     }
   {% endif %}
@@ -337,19 +334,19 @@
                       {% endfor %}
                     {% endfor %}
                   </ul>
+                  <button
+                    type="button"
+                    class="highlighted-products-block__cta"
+                    data-toggle-product-grid
+                    data-button-text="{{ block.settings.button_link_text }}"
+                    {% if block.settings.button_link_type == 'view-more' %}
+                      data-filter-url="{{ full_url }}"
+                      data-link-behavior="redirect"
+                    {% endif %}
+                  >
+                    {{ block.settings.button_link_text }}
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  class="highlighted-products-block__cta button button--primary"
-                  data-toggle-product-grid
-                  data-button-text="{{ block.settings.button_link_text }}"
-                  {% if block.settings.button_link_type == 'view-more' %}
-                    data-filter-url="{{ full_url }}"
-                    data-link-behavior="redirect"
-                  {% endif %}
-                >
-                  {{ block.settings.button_link_text }}
-                </button>
               {% endif %}
             {% endfor %}
 
@@ -357,10 +354,10 @@
               <button
                 type="button"
                 id="revert-to-featured"
-                class="highlighted-products-block__cta button button--primary"
+                class="highlighted-products-block__cta"
                 style="display: none;"
               >
-                Show Highlighted Products
+                Back
               </button>
             {% endif %}
 
@@ -456,14 +453,15 @@
 
     highlightedBlocks.forEach((block) => {
       const grid = block.querySelector('.product-grid--highlighted');
-      if (!grid) return;
+      const button = block.querySelector('[data-toggle-product-grid]');
+      const heading = block.querySelector('.highlighted-products-block__heading');
+      if (!grid || !button) return;
 
       const desktopLimit = parseInt(grid.dataset.limitDesktop, 10) || Infinity;
       const mobileLimit = parseInt(grid.dataset.limitMobile, 10) || Infinity;
 
-      console.log(desktopLimit);
-      console.log(mobileLimit);
-      const allItems = Array.from(grid.children);
+      const allItems = Array.from(grid.children).filter((child) => child.tagName === 'LI');
+      const productCount = allItems.length;
 
       const isMobile = window.innerWidth < 750;
       const limit = isMobile ? mobileLimit : desktopLimit;
@@ -471,6 +469,20 @@
       allItems.forEach((item, index) => {
         if (index >= limit) item.style.display = 'none';
       });
+
+      if (productCount <= desktopLimit && productCount <= mobileLimit) {
+        button.style.display = 'none';
+      }
+
+      const backLink = document.createElement('button');
+      backLink.textContent = 'Back';
+      backLink.className = 'highlighted-products-block__cta highlighted-products-block__cta--back';
+      backLink.style.display = 'none';
+      backLink.addEventListener('click', () => {
+        const baseCollectionUrl = window.location.pathname;
+        window.location.href = baseCollectionUrl;
+      });
+      heading?.before(backLink);
     });
 
     function getURLFilterTags() {
@@ -480,17 +492,14 @@
 
     function getAllBlockFilterTags() {
       const tagSet = new Set();
-
       toggleButtons.forEach((btn) => {
         const filterUrl = btn.dataset.filterUrl;
         if (!filterUrl) return;
-
         const params = new URLSearchParams(filterUrl.split('?')[1]);
         params.forEach((value, key) => {
           if (key === 'filter.p.tag') tagSet.add(value);
         });
       });
-
       return [...tagSet];
     }
 
@@ -499,10 +508,35 @@
     const matchFound = urlTags.some((tag) => blockTags.includes(tag));
 
     if (matchFound) {
-      highlightedBlocks.forEach((block) => (block.style.display = 'none'));
-      toggleButtons.forEach((btn) => (btn.style.display = 'none'));
+      highlightedBlocks.forEach((block) => {
+        const grid = block.querySelector('.product-grid--highlighted');
+        const button = block.querySelector('[data-toggle-product-grid]');
+        const backBtn = block.querySelector('.highlighted-products-block__cta--back');
+        const heading = block.querySelector('.highlighted-products-block__heading');
+
+        const filterUrl = button?.dataset.filterUrl;
+        if (!filterUrl) {
+          block.style.display = 'none';
+          return;
+        }
+        const filterTags = new URLSearchParams(filterUrl.split('?')[1]).getAll('filter.p.tag');
+
+        const showBlock = filterTags.some((tag) => urlTags.includes(tag));
+
+        if (showBlock) {
+          grid?.style.setProperty('display', 'none');
+          button?.style.setProperty('display', 'none');
+          backBtn?.style.setProperty('display', 'inline-block');
+          heading?.style.setProperty('display', 'block');
+          block.style.display = 'block';
+        } else {
+          block.style.display = 'none';
+        }
+      });
+
       mainGrid.style.display = 'flex';
-      revertBtn.style.display = 'inline-block';
+      mainGrid.style.paddingTop = 0;
+      if (revertBtn) revertBtn.style.display = 'none';
     }
 
     revertBtn?.addEventListener('click', () => {
@@ -533,8 +567,9 @@
             if (otherBtn !== btn) otherBtn.style.display = 'none';
           });
           mainGrid.style.display = 'flex';
+          mainGrid.style.paddingTop = 0;
           btn.textContent = altText;
-          if (!isRedirect) revertBtn.style.display = 'none';
+          if (!isRedirect && revertBtn) revertBtn.style.display = 'inline-block';
         } else {
           highlightedBlocks.forEach((block) => (block.style.display = 'block'));
           toggleButtons.forEach((otherBtn) => {
@@ -542,7 +577,7 @@
             otherBtn.textContent = otherBtn.dataset.buttonText;
           });
           mainGrid.style.display = 'none';
-          revertBtn.style.display = 'none';
+          if (revertBtn) revertBtn.style.display = 'none';
         }
       });
     });
@@ -792,26 +827,10 @@
           "default": "New Drop!"
         },
         {
-          "type": "select",
-          "id": "filter_by",
-          "label": "Filter by",
-          "options": [
-            {
-              "value": "tag",
-              "label": "Tag"
-            },
-            {
-              "value": "type",
-              "label": "Type"
-            }
-          ],
-          "default": "tag"
-        },
-        {
           "type": "text",
           "id": "filter_input_strings",
           "label": "Filter strings",
-          "info": "Whether filtering by tag or type, enter the name of the tag or type you'd like to filter by.",
+          "info": "Enter tags you'd like to filter by. Enter as a comma separated list if more than one!",
           "default": "demo, new_drop"
         },
         {
@@ -849,7 +868,7 @@
             }
           ],
           "default": "view-all",
-          "info": "This toggles the button between bringing the user to the rest of the collection or just more products of the same type or tag."
+          "info": "This toggles the button between bringing the user to the rest of the collection or just more products of the same tag."
         },
         {
           "type": "text",

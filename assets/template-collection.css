@@ -99,7 +99,6 @@
 }
 
 .highlighted-products-block {
-  padding-block: 3rem;
   display: flex;
   flex-direction: column;
 }
@@ -107,24 +106,47 @@
 .highlighted-products-block h2 {
   font-family: "Greston";
   width: fit-content;
-  padding: 2rem;
-  border-radius: 32px;
+  padding: 2rem 2rem 1.25rem;
+  border-radius: 32px 32px 0 0;
   line-height: .5;
+  margin-inline: auto;
+  margin-block-end: 0;
+}
+
+@media screen and (min-width: 990px) {
+  .highlighted-products-block h2 {
+    margin-inline-start: 42px;
+  }
 }
 
 .highlighted-products-block ul {
   padding-block: 0;
-  margin-block: 0 5rem;
+  margin-block: 0 1rem;
 }
 
 .highlighted-products-block__cta {
   font-family: "Greston";
   transition: ease .2s;
-  min-width: 10rem;
+  width: fit-content;
   padding-block: 1.25rem;
   font-size: 2rem;
-  width: 100%;
-  margin-block: 2rem;
+  margin-inline: auto;
+  text-decoration: underline;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 990px) {
+  .highlighted-products-block__cta {
+    margin-inline-start: auto;
+    margin-inline-end: 42px;
+  }
+}
+
+.highlighted-products-block__cta:hover, 
+.highlighted-products-block__cta:focus {
+  text-decoration: none;
 }
 
 .highlighted-products-block .hidden {
