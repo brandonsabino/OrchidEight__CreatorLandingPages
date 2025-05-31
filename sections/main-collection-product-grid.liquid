@@ -149,7 +149,7 @@
     }
   {% endif %}
 
-    {% if section.blocks.size > 0 %}
+    {% if section.blocks.size > 0 and section.settings.enabled_filtered_sections %}
     #product-grid {
       display: none;
     }
@@ -264,7 +264,10 @@
           >
             <div class="loading-overlay gradient"></div>
             {% for block in section.blocks %}
-              {% if block.type == 'highlighted_products' and block.settings.filter_input_strings != blank %}
+              {% if block.type == 'highlighted_products'
+                and block.settings.filter_input_strings != blank
+                and section.settings.enabled_filtered_sections
+              %}
                 {% assign filter_tags = block.settings.filter_input_strings | split: ',' %}
                 {% assign filter_url = '' %}
 
@@ -350,7 +353,7 @@
               {% endif %}
             {% endfor %}
 
-            {% if section.blocks.size > 0 %}
+            {% if section.blocks.size > 0 and section.settings.enabled_filtered_sections %}
               <button
                 type="button"
                 id="revert-to-featured"
@@ -362,7 +365,7 @@
             {% endif %}
 
             <ul
-              {% if section.blocks.size > 0 %}
+              {% if section.blocks.size > 0 and section.settings.enabled_filtered_sections %}
                 aria-hidden="true"
               {% endif %}
               id="product-grid"
@@ -442,147 +445,149 @@
   {%- endif -%}
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const toggleButtons = document.querySelectorAll('[data-toggle-product-grid]');
-    const mainGrid = document.querySelector('#product-grid');
-    const highlightedBlocks = document.querySelectorAll('.highlighted-products-block');
-    const revertBtn = document.getElementById('revert-to-featured');
+{% if section.settings.enabled_filtered_sections and section.blocks.size > 0 %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggleButtons = document.querySelectorAll('[data-toggle-product-grid]');
+      const mainGrid = document.querySelector('#product-grid');
+      const highlightedBlocks = document.querySelectorAll('.highlighted-products-block');
+      const revertBtn = document.getElementById('revert-to-featured');
 
-    if (!mainGrid || !highlightedBlocks.length) return;
+      if (!mainGrid || !highlightedBlocks.length) return;
 
-    highlightedBlocks.forEach((block) => {
-      const grid = block.querySelector('.product-grid--highlighted');
-      const button = block.querySelector('[data-toggle-product-grid]');
-      const heading = block.querySelector('.highlighted-products-block__heading');
-      if (!grid || !button) return;
-
-      const desktopLimit = parseInt(grid.dataset.limitDesktop, 10) || Infinity;
-      const mobileLimit = parseInt(grid.dataset.limitMobile, 10) || Infinity;
-
-      const allItems = Array.from(grid.children).filter((child) => child.tagName === 'LI');
-      const productCount = allItems.length;
-
-      const isMobile = window.innerWidth < 750;
-      const limit = isMobile ? mobileLimit : desktopLimit;
-
-      allItems.forEach((item, index) => {
-        if (index >= limit) item.style.display = 'none';
-      });
-
-      if (productCount <= desktopLimit && productCount <= mobileLimit) {
-        button.style.display = 'none';
-      }
-
-      const backLink = document.createElement('button');
-      backLink.textContent = 'Back';
-      backLink.className = 'highlighted-products-block__cta highlighted-products-block__cta--back';
-      backLink.style.display = 'none';
-      backLink.addEventListener('click', () => {
-        const baseCollectionUrl = window.location.pathname;
-        window.location.href = baseCollectionUrl;
-      });
-      heading?.before(backLink);
-    });
-
-    function getURLFilterTags() {
-      const params = new URLSearchParams(window.location.search);
-      return [...params.entries()].filter(([key]) => key === 'filter.p.tag').map(([, value]) => value);
-    }
-
-    function getAllBlockFilterTags() {
-      const tagSet = new Set();
-      toggleButtons.forEach((btn) => {
-        const filterUrl = btn.dataset.filterUrl;
-        if (!filterUrl) return;
-        const params = new URLSearchParams(filterUrl.split('?')[1]);
-        params.forEach((value, key) => {
-          if (key === 'filter.p.tag') tagSet.add(value);
-        });
-      });
-      return [...tagSet];
-    }
-
-    const urlTags = getURLFilterTags();
-    const blockTags = getAllBlockFilterTags();
-    const matchFound = urlTags.some((tag) => blockTags.includes(tag));
-
-    if (matchFound) {
       highlightedBlocks.forEach((block) => {
         const grid = block.querySelector('.product-grid--highlighted');
         const button = block.querySelector('[data-toggle-product-grid]');
-        const backBtn = block.querySelector('.highlighted-products-block__cta--back');
         const heading = block.querySelector('.highlighted-products-block__heading');
+        if (!grid || !button) return;
 
-        const filterUrl = button?.dataset.filterUrl;
-        if (!filterUrl) {
-          block.style.display = 'none';
-          return;
+        const desktopLimit = parseInt(grid.dataset.limitDesktop, 10) || Infinity;
+        const mobileLimit = parseInt(grid.dataset.limitMobile, 10) || Infinity;
+
+        const allItems = Array.from(grid.children).filter((child) => child.tagName === 'LI');
+        const productCount = allItems.length;
+
+        const isMobile = window.innerWidth < 750;
+        const limit = isMobile ? mobileLimit : desktopLimit;
+
+        allItems.forEach((item, index) => {
+          if (index >= limit) item.style.display = 'none';
+        });
+
+        if (productCount <= desktopLimit && productCount <= mobileLimit) {
+          button.style.display = 'none';
         }
-        const filterTags = new URLSearchParams(filterUrl.split('?')[1]).getAll('filter.p.tag');
 
-        const showBlock = filterTags.some((tag) => urlTags.includes(tag));
-
-        if (showBlock) {
-          grid?.style.setProperty('display', 'none');
-          button?.style.setProperty('display', 'none');
-          backBtn?.style.setProperty('display', 'inline-block');
-          heading?.style.setProperty('display', 'block');
-          block.style.display = 'block';
-        } else {
-          block.style.display = 'none';
-        }
+        const backLink = document.createElement('button');
+        backLink.textContent = 'Back';
+        backLink.className = 'highlighted-products-block__cta highlighted-products-block__cta--back';
+        backLink.style.display = 'none';
+        backLink.addEventListener('click', () => {
+          const baseCollectionUrl = window.location.pathname;
+          window.location.href = baseCollectionUrl;
+        });
+        heading?.before(backLink);
       });
 
-      mainGrid.style.display = 'flex';
-      mainGrid.style.paddingTop = 0;
-      if (revertBtn) revertBtn.style.display = 'none';
-    }
+      function getURLFilterTags() {
+        const params = new URLSearchParams(window.location.search);
+        return [...params.entries()].filter(([key]) => key === 'filter.p.tag').map(([, value]) => value);
+      }
 
-    revertBtn?.addEventListener('click', () => {
-      const baseCollectionUrl = window.location.pathname;
-      window.location.href = baseCollectionUrl;
-    });
-
-    let showingMainGrid = false;
-
-    toggleButtons.forEach((btn) => {
-      const originalText = btn.dataset.buttonText;
-      const altText = 'Show Featured';
-
-      btn.addEventListener('click', function () {
-        const isRedirect = btn.dataset.linkBehavior === 'redirect';
-        const redirectUrl = btn.dataset.filterUrl;
-
-        if (isRedirect && redirectUrl) {
-          window.location.href = redirectUrl;
-          return;
-        }
-
-        showingMainGrid = !showingMainGrid;
-
-        if (showingMainGrid) {
-          highlightedBlocks.forEach((block) => (block.style.display = 'none'));
-          toggleButtons.forEach((otherBtn) => {
-            if (otherBtn !== btn) otherBtn.style.display = 'none';
+      function getAllBlockFilterTags() {
+        const tagSet = new Set();
+        toggleButtons.forEach((btn) => {
+          const filterUrl = btn.dataset.filterUrl;
+          if (!filterUrl) return;
+          const params = new URLSearchParams(filterUrl.split('?')[1]);
+          params.forEach((value, key) => {
+            if (key === 'filter.p.tag') tagSet.add(value);
           });
-          mainGrid.style.display = 'flex';
-          mainGrid.style.paddingTop = 0;
-          btn.textContent = altText;
-          if (!isRedirect && revertBtn) revertBtn.style.display = 'inline-block';
-        } else {
-          highlightedBlocks.forEach((block) => (block.style.display = 'block'));
-          toggleButtons.forEach((otherBtn) => {
-            otherBtn.style.display = 'inline-block';
-            otherBtn.textContent = otherBtn.dataset.buttonText;
-          });
-          mainGrid.style.display = 'none';
-          if (revertBtn) revertBtn.style.display = 'none';
-        }
+        });
+        return [...tagSet];
+      }
+
+      const urlTags = getURLFilterTags();
+      const blockTags = getAllBlockFilterTags();
+      const matchFound = urlTags.some((tag) => blockTags.includes(tag));
+
+      if (matchFound) {
+        highlightedBlocks.forEach((block) => {
+          const grid = block.querySelector('.product-grid--highlighted');
+          const button = block.querySelector('[data-toggle-product-grid]');
+          const backBtn = block.querySelector('.highlighted-products-block__cta--back');
+          const heading = block.querySelector('.highlighted-products-block__heading');
+
+          const filterUrl = button?.dataset.filterUrl;
+          if (!filterUrl) {
+            block.style.display = 'none';
+            return;
+          }
+          const filterTags = new URLSearchParams(filterUrl.split('?')[1]).getAll('filter.p.tag');
+
+          const showBlock = filterTags.some((tag) => urlTags.includes(tag));
+
+          if (showBlock) {
+            grid?.style.setProperty('display', 'none');
+            button?.style.setProperty('display', 'none');
+            backBtn?.style.setProperty('display', 'inline-block');
+            heading?.style.setProperty('display', 'block');
+            block.style.display = 'block';
+          } else {
+            block.style.display = 'none';
+          }
+        });
+
+        mainGrid.style.display = 'flex';
+        mainGrid.style.paddingTop = 0;
+        if (revertBtn) revertBtn.style.display = 'none';
+      }
+
+      revertBtn?.addEventListener('click', () => {
+        const baseCollectionUrl = window.location.pathname;
+        window.location.href = baseCollectionUrl;
+      });
+
+      let showingMainGrid = false;
+
+      toggleButtons.forEach((btn) => {
+        const originalText = btn.dataset.buttonText;
+        const altText = 'Show Featured';
+
+        btn.addEventListener('click', function () {
+          const isRedirect = btn.dataset.linkBehavior === 'redirect';
+          const redirectUrl = btn.dataset.filterUrl;
+
+          if (isRedirect && redirectUrl) {
+            window.location.href = redirectUrl;
+            return;
+          }
+
+          showingMainGrid = !showingMainGrid;
+
+          if (showingMainGrid) {
+            highlightedBlocks.forEach((block) => (block.style.display = 'none'));
+            toggleButtons.forEach((otherBtn) => {
+              if (otherBtn !== btn) otherBtn.style.display = 'none';
+            });
+            mainGrid.style.display = 'flex';
+            mainGrid.style.paddingTop = 0;
+            btn.textContent = altText;
+            if (!isRedirect && revertBtn) revertBtn.style.display = 'inline-block';
+          } else {
+            highlightedBlocks.forEach((block) => (block.style.display = 'block'));
+            toggleButtons.forEach((otherBtn) => {
+              otherBtn.style.display = 'inline-block';
+              otherBtn.textContent = otherBtn.dataset.buttonText;
+            });
+            mainGrid.style.display = 'none';
+            if (revertBtn) revertBtn.style.display = 'none';
+          }
+        });
       });
     });
-  });
-</script>
+  </script>
+{% endif %}
 
 {% schema %}
 {
