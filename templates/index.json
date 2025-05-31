@@ -146,6 +146,13 @@
             "custom_path": ""
           }
         },
+        "featured_collection_R9JqWy": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "papamutt",
+            "custom_path": ""
+          }
+        },
         "featured_collection_UJnPtV": {
           "type": "featured_collection",
           "settings": {
@@ -225,6 +232,7 @@
         "featured_collection_ygcWL6",
         "featured_collection_jFbyKx",
         "featured_collection_YJbR8B",
+        "featured_collection_R9JqWy",
         "featured_collection_UJnPtV",
         "featured_collection_nzVCxt",
         "featured_collection_mLJxcX",
