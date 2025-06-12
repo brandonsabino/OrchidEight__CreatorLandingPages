@@ -91,11 +91,6 @@
     .product-grid-container {
       background: url({{ creator_product_grid_background | image_url: width: 2000 }});
     }
-
-    .product-grid {
-      padding: 5% 0;
-      margin-top: 0;
-    }
   {% endif %}
 
   {% if is_creator_landing_page %}
@@ -152,6 +147,8 @@
     {% if section.blocks.size > 0 and section.settings.enabled_filtered_sections %}
     #product-grid {
       display: none;
+      padding: 5% 0;
+      margin-top: 0;
     }
   {% endif %}
 {%- endstyle -%}
