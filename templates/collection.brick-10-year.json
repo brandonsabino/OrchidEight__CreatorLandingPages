@@ -74,13 +74,55 @@
         "background_color": "#6eb6c6",
         "border_color": "#ffffff",
         "text_color": "#ffe7c8",
-        "fallback_message": "Stay tuned for our next release!"
+        "fallback_message": "Stay tuned for our next release!",
+        "section_background": "#ffffff"
       }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "blocks": {
+        "highlighted_products_c7Ypfw": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "10 Year",
+            "filter_input_strings": "bricky-10year",
+            "products_mobile": 1,
+            "products_desktop": 7,
+            "button_link_type": "view-all",
+            "button_link_text": "View All Products"
+          }
+        },
+        "highlighted_products_8yKjkr": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "Clothing",
+            "filter_input_strings": "tee, hoodie, sweats, sweatshirt, hat",
+            "products_mobile": 1,
+            "products_desktop": 3,
+            "button_link_type": "view-more",
+            "button_link_text": "View More Clothing"
+          }
+        },
+        "highlighted_products_VceLmC": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "Accessories",
+            "filter_input_strings": "accessory",
+            "products_mobile": 1,
+            "products_desktop": 3,
+            "button_link_type": "view-more",
+            "button_link_text": "View All Accessories"
+          }
+        }
+      },
+      "block_order": [
+        "highlighted_products_c7Ypfw",
+        "highlighted_products_8yKjkr",
+        "highlighted_products_VceLmC"
+      ],
       "settings": {
-        "products_per_page": 16,
+        "enabled_filtered_sections": true,
+        "products_per_page": 36,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",
         "image_ratio": "square",

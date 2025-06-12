@@ -1,0 +1,67 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "collapsible_content_GwgztQ": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_jNzQDh": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is your Shipping and Return Policy?",
+            "icon": "none",
+            "row_content": "<p><strong>Shipping:</strong></p><p>Products will be shipped to order. All shipping is standard, no express shipping is offered. We will have your item shipped as fast as possible once the order is received. Delays may occur depending on shipping method, distance, international, weekends, and so forth. To put it all into one sentence, \"We will try and get your product to you as soon as we possibly can. Delays can happen, but we will try our best to avoid them.\"</p><p><strong>Returns:</strong></p><p>All products may be returned within 5 days of receiving them if there is a defect or we sent you the wrong size/product. Please email support@brickymerch.com regarding your order and the issue with it. If the customer does not contact customer service regarding a return after 5 days from delivery, no refunds will be given. Due note that if the wrong size or product is ordered by the customer they will need to pay the return shipping for the product swap. Basically, if something is wrong (incorrect size, manufacturing issue, wrong product) tell us ASAP so we may fix it.</p><p><strong>IMPORTANT:</strong></p><p>We cannot guarantee that you will or will not be charged any customs taxes or duties. Any customs or import duties are charged once the parcel reaches its destination country. These charges must be paid by the recipient of the parcel. This applies only to International and Canadian Orders. </p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_Ck7T4N": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is your Privacy Policy?",
+            "icon": "none",
+            "row_content": "<p>This privacy notice discloses the privacy practices for shop.orchideight.com. This privacy notice applies solely to information collected by this website. It will notify you of the following:</p><ol><li>What personally identifiable information is collected from you through the website, how it is used and with whom it may be shared.</li><li>What choices are available to you regarding the use of your data.</li><li>The security procedures in place to protect the misuse of your information.</li><li>How you can correct any inaccuracies in the information.</li></ol><p><strong>Information Collection, Use, and Sharing</strong> </p><p>We are the sole owners of the information collected on this site. We only have access to/collect information that you voluntarily give us via email or other direct contact from you. We will not sell or rent this information to anyone.</p><p>We will use your information to respond to you, regarding the reason you contacted us. We will not share your information with any third party outside of our organization, other than as necessary to fulfill your request, e.g. to ship an order.</p><p>Unless you ask us not to, we may contact you via email in the future to tell you about specials, new products or services, or changes to this privacy policy.</p><p><strong>Your Access to and Control Over Information</strong> </p><p>You may opt out of any future contacts from us at any time. You can do the following at any time by contacting us via the email address or phone number given on our website:</p><ul><li>See what data we have about you, if any.</li><li>Change/correct any data we have about you.</li><li>Have us delete any data we have about you.</li><li>Express any concern you have about our use of your data.</li></ul><p><strong>Security</strong> </p><p>We take precautions to protect your information. When you submit sensitive information via the website, your information is protected both online and offline.</p><p>Wherever we collect sensitive information (such as credit card data), that information is encrypted and transmitted to us in a secure way. You can verify this by looking for a lock icon in the address bar and looking for \"https\" at the beginning of the address of the Web page.</p><p>While we use encryption to protect sensitive information transmitted online, we also protect your information offline. Only employees who need the information to perform a specific job (for example, billing or customer service) are granted access to personally identifiable information. The computers/servers in which we store personally identifiable information are kept in a secure environment. </p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_jNzQDh",
+        "collapsible_row_Ck7T4N"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "Frequently Asked Questions",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "row",
+        "color_scheme": "scheme-1",
+        "container_color_scheme": "scheme-3",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collapsible_content_GwgztQ"
+  ]
+}

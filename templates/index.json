@@ -48,6 +48,13 @@
     "collection_list_pRMRje": {
       "type": "collection-list",
       "blocks": {
+        "featured_collection_M3ic34": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pride2025",
+            "custom_path": ""
+          }
+        },
         "featured_collection_Q8PyyT": {
           "type": "featured_collection",
           "settings": {
@@ -218,6 +225,7 @@
         }
       },
       "block_order": [
+        "featured_collection_M3ic34",
         "featured_collection_Q8PyyT",
         "featured_collection_8cqWHX",
         "featured_collection_mWEebx",

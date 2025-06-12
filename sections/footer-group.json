@@ -22,11 +22,11 @@
             "alignment": ""
           }
         },
-        "text_EcFBwp": {
-          "type": "text",
+        "link_list_UM9X9X": {
+          "type": "link_list",
           "settings": {
             "heading": "Contact & Support",
-            "subtext": "<p>contact@orchideight.com<br/>949-648-4291 (Text & Voicemail)</p>"
+            "menu": "footer-customer-service"
           }
         },
         "link_list_zdd6QT": {
@@ -39,7 +39,7 @@
       },
       "block_order": [
         "image_XN9PrQ",
-        "text_EcFBwp",
+        "link_list_UM9X9X",
         "link_list_zdd6QT"
       ],
       "settings": {

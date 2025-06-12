@@ -107,7 +107,7 @@
           "settings": {
             "heading": "New Drops!",
             "filter_input_strings": "demo, new_drop",
-            "products_mobile": 1,
+            "products_mobile": 2,
             "products_desktop": 5,
             "button_link_type": "view-all",
             "button_link_text": "view all products from {{ collection.title }}"
@@ -118,7 +118,7 @@
         "highlighted_products_FFzVaC"
       ],
       "settings": {
-        "enabled_filtered_sections": true,
+        "enabled_filtered_sections": false,
         "products_per_page": 16,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",

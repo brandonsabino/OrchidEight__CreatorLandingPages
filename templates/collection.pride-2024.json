@@ -1,0 +1,78 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "custom_css": [
+        ".collection-hero__description {text-align: center; margin: auto; padding-bottom: 20px;}",
+        "table {width: 100% !important;}"
+      ],
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "highlighted_products_FFzVaC": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "Pride 2025",
+            "filter_input_strings": "pride2025",
+            "products_mobile": 1,
+            "products_desktop": 6,
+            "button_link_type": "view-more",
+            "button_link_text": ""
+          }
+        },
+        "highlighted_products_pNwfhj": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "Pride 2024",
+            "filter_input_strings": "pride2024",
+            "products_mobile": 1,
+            "products_desktop": 6,
+            "button_link_type": "view-more",
+            "button_link_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "highlighted_products_FFzVaC",
+        "highlighted_products_pNwfhj"
+      ],
+      "settings": {
+        "enabled_filtered_sections": true,
+        "products_per_page": 16,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "columns_mobile": "1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid"
+  ]
+}

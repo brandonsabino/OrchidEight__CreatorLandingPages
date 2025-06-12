@@ -1,0 +1,143 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "custom_css": [
+        ".collection-hero__description {text-align: center; margin: auto; padding-bottom: 40px;}",
+        "table {width: 100% !important;}"
+      ],
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "enabled_filtered_sections": true,
+        "products_per_page": 16,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "columns_mobile": "1",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_Vdxrpk": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_3GAED6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Pride 2025",
+            "heading_size": "h1",
+            "heading_font_family": "poppins_n4",
+            "heading_font_family_import": "",
+            "use_greston_font": true
+          }
+        },
+        "text_tC8nQP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>In honor of Pride Month we decided to feature four incredible artists within the LGBTQIA+ community. Each artist has brought their own unique and breathtaking style to their pieces. </p>",
+            "text_font_family": "poppins_n4",
+            "text_font_family_import": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_3GAED6",
+        "text_tC8nQP"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 20,
+        "padding_bottom": 40
+      }
+    },
+    "collection_list_Aq3YGt": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_fWqMNR": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fujisprouts",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_3BdEY4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "justin-sado",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_Tdd8A4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mangohcake",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_BatVk6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "seanna-latiff",
+            "custom_path": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_fWqMNR",
+        "featured_collection_3BdEY4",
+        "featured_collection_Tdd8A4",
+        "featured_collection_BatVk6"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "grid_alignment": "center",
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "rich_text_Vdxrpk",
+    "collection_list_Aq3YGt"
+  ]
+}
