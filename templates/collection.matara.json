@@ -27,12 +27,13 @@
       "blocks": {
         "slide_XxC6N3": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Matara_Banner_1.png",
             "heading": "THE R.O.A.C.H. COLLECTION",
             "heading_size": "hxxl",
             "subheading": "It's Rapid, Operational, Assault, Combat and Hardware.",
-            "button_label": "SHOP NOW",
+            "button_label": "",
             "link": "",
             "button_style_secondary": false,
             "box_align": "middle-left",
@@ -45,12 +46,13 @@
         },
         "slide_MmLqn9": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Matara_Banner_2.png",
             "heading": "FREE STICKER SHEET WITH EVERY ORDER!",
             "heading_size": "h0",
             "subheading": "Yep. For absolutely nothing, zero, nada!",
-            "button_label": "SHOP NOW",
+            "button_label": "",
             "link": "",
             "button_style_secondary": false,
             "box_align": "middle-left",
@@ -60,11 +62,30 @@
             "color_scheme": "scheme-1",
             "text_alignment_mobile": "left"
           }
+        },
+        "slide_YR33eQ": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/matara_drop_2_banner_v2.png",
+            "heading": "Empress Collection",
+            "heading_size": "hxxl",
+            "subheading": "Worship your Empress and the Golden Laurel Momo",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
         }
       },
       "block_order": [
         "slide_XxC6N3",
-        "slide_MmLqn9"
+        "slide_MmLqn9",
+        "slide_YR33eQ"
       ],
       "settings": {
         "layout": "full_bleed",
@@ -80,7 +101,7 @@
     "marquee_text_FY3qhb": {
       "type": "marquee-text",
       "settings": {
-        "marquee_text": "FREE STICKER SHEET WITH EVERY ORDER!",
+        "marquee_text": "FREE postcard print WITH orders over $50",
         "marquee_background_color": "#f5a0e9",
         "marquee_text_color": "#000000",
         "marquee_border_color": "#f5a0e9"
@@ -93,13 +114,43 @@
         "background_color": "#ffdbdb",
         "border_color": "#ffffff",
         "text_color": "#81a5da",
-        "fallback_message": "Stay tuned for our next release!"
+        "fallback_message": "Stay tuned for our next release!",
+        "section_background": "#ffffff"
       }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "blocks": {
+        "highlighted_products_aa4ELx": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "Empress Collection",
+            "filter_input_strings": "drop2",
+            "products_mobile": 6,
+            "products_desktop": 9,
+            "button_link_type": "view-more",
+            "button_link_text": "View More"
+          }
+        },
+        "highlighted_products_VU8ami": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "R.O.A.C.H. Collection",
+            "filter_input_strings": "drop1",
+            "products_mobile": 1,
+            "products_desktop": 3,
+            "button_link_type": "view-more",
+            "button_link_text": "View More"
+          }
+        }
+      },
+      "block_order": [
+        "highlighted_products_aa4ELx",
+        "highlighted_products_VU8ami"
+      ],
       "settings": {
-        "products_per_page": 16,
+        "enabled_filtered_sections": true,
+        "products_per_page": 36,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",
         "image_ratio": "square",
@@ -141,6 +192,7 @@
       "block_order": [
         "slide_kUqFAp"
       ],
+      "disabled": true,
       "settings": {
         "layout": "grid",
         "slide_height": "adapt_image",

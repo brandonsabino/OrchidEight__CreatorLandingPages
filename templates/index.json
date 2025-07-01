@@ -132,17 +132,24 @@
             "custom_path": ""
           }
         },
-        "featured_collection_ygcWL6": {
+        "featured_collection_KCkwKX": {
           "type": "featured_collection",
           "settings": {
             "collection": "matara-kan",
-            "custom_path": "https://www.matarakan.shop/"
+            "custom_path": ""
           }
         },
         "featured_collection_jFbyKx": {
           "type": "featured_collection",
           "settings": {
             "collection": "narrative-declaration",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_g8PPic": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "nene-amano",
             "custom_path": ""
           }
         },
@@ -237,8 +244,9 @@
         "featured_collection_rLrDDE",
         "featured_collection_f4VKgW",
         "featured_collection_H9gQ4b",
-        "featured_collection_ygcWL6",
+        "featured_collection_KCkwKX",
         "featured_collection_jFbyKx",
+        "featured_collection_g8PPic",
         "featured_collection_YJbR8B",
         "featured_collection_R9JqWy",
         "featured_collection_UJnPtV",
