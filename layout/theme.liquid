@@ -417,10 +417,21 @@
         }
 
         .product__info-wrapper.grid__item .product__info-container .product__title h1,
+        .product__info-wrapper.grid__item .product__info-container .h4.accordion__title,
         .price-item .money,
         .product__tax.caption.rte a,
         .price-item {
           color: {{ creator_product_item_link_color }} !important;
+        }
+
+        .product__info-wrapper.grid__item .product__info-container .icon.icon-accordion {
+          fill: {{ creator_product_item_link_color }};
+        }
+
+        .product__info-wrapper.grid__item .accordion__content {
+          background-color: {{ creator_product_item_link_color }};
+          padding: 1rem;
+          border-radius: 32px;
         }
       {% endif %}
 

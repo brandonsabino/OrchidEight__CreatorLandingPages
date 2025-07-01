@@ -1492,3 +1492,7 @@ a.product__text {
     border: none;
   }
 }
+
+.accordion_fallback {
+  color: black;
+}
