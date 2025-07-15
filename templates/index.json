@@ -51,7 +51,7 @@
         "featured_collection_M3ic34": {
           "type": "featured_collection",
           "settings": {
-            "collection": "pride2025",
+            "collection": "artist-alley",
             "custom_path": ""
           }
         },
@@ -135,7 +135,7 @@
         "featured_collection_KCkwKX": {
           "type": "featured_collection",
           "settings": {
-            "collection": "matara-kan",
+            "collection": "matarakan",
             "custom_path": ""
           }
         },
@@ -216,6 +216,13 @@
             "custom_path": "shopify://collections/tabletop-titans"
           }
         },
+        "featured_collection_iyfANj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "theking",
+            "custom_path": ""
+          }
+        },
         "featured_collection_3dayQP": {
           "type": "featured_collection",
           "settings": {
@@ -256,6 +263,7 @@
         "featured_collection_yq6fKj",
         "featured_collection_TtQk8h",
         "featured_collection_piKBfc",
+        "featured_collection_iyfANj",
         "featured_collection_3dayQP",
         "featured_collection_DfbQTF"
       ],
