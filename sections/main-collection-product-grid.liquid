@@ -214,7 +214,7 @@
       </facet-filters-form>
     {%- endif -%}
 
-    <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
+    <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width {% else %} no-filter{% endif %}">
       {{ 'component-facets.css' | asset_url | stylesheet_tag }}
       <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
       {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
@@ -463,6 +463,8 @@
       const mainGrid = document.querySelector('#product-grid');
       const highlightedBlocks = document.querySelectorAll('.highlighted-products-block');
       const revertBtn = document.getElementById('revert-to-featured');
+      const mainPagination = document.getElementById('main-pagination');
+      mainPagination.style.visibility = 'hidden';
 
       if (!mainGrid || !highlightedBlocks.length) return;
 
@@ -549,6 +551,7 @@
           }
         });
 
+        mainPagination.style.visibility = 'visible';
         mainGrid.style.display = 'flex';
         mainGrid.style.paddingTop = 0;
         if (revertBtn) revertBtn.style.display = 'none';
