@@ -82,6 +82,17 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "blocks": {
+        "highlighted_products_AJxfjQ": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "Last Chance",
+            "filter_input_strings": "Last Chance",
+            "products_mobile": 3,
+            "products_desktop": 6,
+            "button_link_type": "view-more",
+            "button_link_text": "View All Last Chance"
+          }
+        },
         "highlighted_products_c7Ypfw": {
           "type": "highlighted_products",
           "settings": {
@@ -93,12 +104,12 @@
             "button_link_text": "View All Art Prints"
           }
         },
-        "highlighted_products_8yKjkr": {
+        "highlighted_products_aWyCkU": {
           "type": "highlighted_products",
           "settings": {
             "heading": "Clothing",
-            "filter_input_strings": "tee, hoodie, sweats, sweatshirt, hat",
-            "products_mobile": 1,
+            "filter_input_strings": "clothing",
+            "products_mobile": 2,
             "products_desktop": 3,
             "button_link_type": "view-more",
             "button_link_text": "View All Clothing"
@@ -117,8 +128,9 @@
         }
       },
       "block_order": [
+        "highlighted_products_AJxfjQ",
         "highlighted_products_c7Ypfw",
-        "highlighted_products_8yKjkr",
+        "highlighted_products_aWyCkU",
         "highlighted_products_VceLmC"
       ],
       "settings": {

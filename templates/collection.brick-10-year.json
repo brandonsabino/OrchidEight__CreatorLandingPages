@@ -28,7 +28,7 @@
         "slide_XxC6N3": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/bricky_banner_1.png",
+            "image": "shopify://shop_images/bricky_LC_banner.png",
             "heading": "",
             "heading_size": "h1",
             "subheading": "",
@@ -61,7 +61,7 @@
     "marquee_text_FY3qhb": {
       "type": "marquee-text",
       "settings": {
-        "marquee_text": "Celebrate the 10 year anniversary of Bricky!",
+        "marquee_text": "Last CHANCE SALE!",
         "marquee_background_color": "#2e3c5c",
         "marquee_text_color": "#ffe7c8",
         "marquee_border_color": "#2e3c5c"
@@ -69,12 +69,12 @@
     },
     "countdown_a3DVUj": {
       "type": "countdown",
-      "disabled": true,
+      "custom_css": [],
       "settings": {
         "background_color": "#6eb6c6",
         "border_color": "#ffffff",
         "text_color": "#ffe7c8",
-        "fallback_message": "Stay tuned for our next release!",
+        "fallback_message": "Until LAST CHANCE is GONE!",
         "section_background": "#ffffff"
       }
     },
@@ -86,7 +86,7 @@
           "settings": {
             "heading": "10 Year",
             "filter_input_strings": "bricky-10year",
-            "products_mobile": 1,
+            "products_mobile": 2,
             "products_desktop": 7,
             "button_link_type": "view-all",
             "button_link_text": "View All Products"
@@ -121,7 +121,7 @@
         "highlighted_products_VceLmC"
       ],
       "settings": {
-        "enabled_filtered_sections": true,
+        "enabled_filtered_sections": false,
         "products_per_page": 36,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",

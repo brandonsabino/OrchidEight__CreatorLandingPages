@@ -117,9 +117,10 @@
       "block_order": [
         "highlighted_products_FFzVaC"
       ],
+      "custom_css": [],
       "settings": {
         "enabled_filtered_sections": false,
-        "products_per_page": 16,
+        "products_per_page": 24,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",
         "image_ratio": "square",

@@ -24,6 +24,7 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
+        "enabled_filtered_sections": false,
         "products_per_page": 16,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",

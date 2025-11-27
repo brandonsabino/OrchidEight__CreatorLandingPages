@@ -27,28 +27,9 @@
       "blocks": {
         "slide_XxC6N3": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/banner_1_bdc30f05-792a-4135-9fbd-179318467e3a.png",
-            "heading": "IT'S LAIMU TAIMU!",
-            "heading_size": "h1",
-            "subheading": "New merch finally here!!",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-left",
-            "show_text_box": true,
-            "text_alignment": "left",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-1",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "slide_MmLqn9": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/summer_banner_V1.png",
-            "heading": "Suns out buns out",
+            "image": "shopify://shop_images/Vexoria_Sun_Eater_banner_image.png",
+            "heading": "",
             "heading_size": "h1",
             "subheading": "",
             "button_label": "",
@@ -56,7 +37,7 @@
             "button_style_secondary": false,
             "box_align": "middle-left",
             "show_text_box": false,
-            "text_alignment": "center",
+            "text_alignment": "left",
             "image_overlay_opacity": 0,
             "color_scheme": "scheme-1",
             "text_alignment_mobile": "center"
@@ -64,17 +45,16 @@
         }
       },
       "block_order": [
-        "slide_XxC6N3",
-        "slide_MmLqn9"
+        "slide_XxC6N3"
       ],
       "settings": {
         "layout": "full_bleed",
         "slide_height": "adapt_image",
         "slider_visual": "dots",
-        "auto_rotate": false,
+        "auto_rotate": true,
         "change_slides_speed": 5,
         "image_behavior": "none",
-        "show_text_below": true,
+        "show_text_below": false,
         "accessibility_info": ""
       }
     },
@@ -82,56 +62,27 @@
       "type": "marquee-text",
       "disabled": true,
       "settings": {
-        "marquee_text": "No pre-order, shipping immediately!",
-        "marquee_background_color": "#c5e495",
-        "marquee_text_color": "#81a5da",
-        "marquee_border_color": "#c5e495"
+        "marquee_text": "Limited Edition Tee only available until end of countdown",
+        "marquee_background_color": "#ca8cdb",
+        "marquee_text_color": "#ffffff",
+        "marquee_border_color": "#ca8cdb"
       }
     },
     "countdown_a3DVUj": {
       "type": "countdown",
       "disabled": true,
       "settings": {
-        "background_color": "#ffdbdb",
-        "border_color": "#ffffff",
-        "text_color": "#81a5da",
+        "background_color": "#ca8cdb",
+        "border_color": "#ca8cdb",
+        "text_color": "#ffffff",
         "fallback_message": "Stay tuned for our next release!",
         "section_background": "#ffffff"
       }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
-      "blocks": {
-        "highlighted_products_nmkWEB": {
-          "type": "highlighted_products",
-          "settings": {
-            "heading": "Summer Drop",
-            "filter_input_strings": "drop2",
-            "products_mobile": 6,
-            "products_desktop": 9,
-            "button_link_type": "view-more",
-            "button_link_text": "View Summer Drop"
-          }
-        },
-        "highlighted_products_kWRre8": {
-          "type": "highlighted_products",
-          "settings": {
-            "heading": "Winter Drop",
-            "filter_input_strings": "drop1",
-            "products_mobile": 3,
-            "products_desktop": 3,
-            "button_link_type": "view-more",
-            "button_link_text": "View Winter Drop"
-          }
-        }
-      },
-      "block_order": [
-        "highlighted_products_nmkWEB",
-        "highlighted_products_kWRre8"
-      ],
       "settings": {
-        "enabled_filtered_sections": true,
-        "products_per_page": 36,
+        "products_per_page": 16,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",
         "image_ratio": "square",
@@ -145,7 +96,7 @@
         "enable_sorting": false,
         "columns_mobile": "1",
         "padding_top": 0,
-        "padding_bottom": 20
+        "padding_bottom": 0
       }
     }
   },

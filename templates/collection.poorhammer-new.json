@@ -15,14 +15,14 @@
         "heading_bY4cLF": {
           "type": "heading",
           "settings": {
-            "heading": "THE NEW COLLECTION",
+            "heading": "LAST CHANCE SALE",
             "heading_size": "h0"
           }
         },
         "text_pyjVG6": {
           "type": "text",
           "settings": {
-            "text": "<h2>Zip up with the Poorhammer crew!</h2>",
+            "text": "<h2>All Rhinos Are Free, Paintbrush Licker, and Horde Mode products on sale for a limited time</h2>",
             "text_style": "body"
           }
         },
@@ -73,7 +73,7 @@
     "marquee_text_FY3qhb": {
       "type": "marquee-text",
       "settings": {
-        "marquee_text": "New page with new products",
+        "marquee_text": "Last Chance Sale going on now!",
         "marquee_background_color": "#8f937b",
         "marquee_text_color": "#ffffff",
         "marquee_border_color": "#8f937b"
@@ -86,13 +86,43 @@
         "background_color": "#2f3221",
         "border_color": "#ffffff",
         "text_color": "#ffffff",
-        "fallback_message": "Stay tuned for our next release!"
+        "fallback_message": "Stay tuned for our next release!",
+        "section_background": "#ffffff"
       }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "blocks": {
+        "highlighted_products_E8xhXw": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "Last Chance Sale",
+            "filter_input_strings": "Last Chance",
+            "products_mobile": 3,
+            "products_desktop": 9,
+            "button_link_type": "view-more",
+            "button_link_text": "View All Sale Items"
+          }
+        },
+        "highlighted_products_QUaLHW": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "All Poorhammer Items",
+            "filter_input_strings": "poorhammer",
+            "products_mobile": 3,
+            "products_desktop": 9,
+            "button_link_type": "view-all",
+            "button_link_text": "View All Products"
+          }
+        }
+      },
+      "block_order": [
+        "highlighted_products_E8xhXw",
+        "highlighted_products_QUaLHW"
+      ],
       "settings": {
-        "products_per_page": 24,
+        "enabled_filtered_sections": false,
+        "products_per_page": 36,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",
         "image_ratio": "square",
@@ -116,7 +146,10 @@
           "type": "heading",
           "settings": {
             "heading": "RECENT PODCASTS",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "heading_font_family": "sans_serif_n4",
+            "heading_font_family_import": "",
+            "use_greston_font": false
           }
         }
       },
