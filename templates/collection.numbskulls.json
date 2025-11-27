@@ -25,36 +25,17 @@
     "slideshow_Kgjyzn": {
       "type": "slideshow",
       "blocks": {
-        "slide_dCMfHQ": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Vex_Banner_2.png",
-            "heading": "",
-            "heading_size": "h1",
-            "subheading": "",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-center",
-            "show_text_box": false,
-            "text_alignment": "center",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-1",
-            "text_alignment_mobile": "center"
-          }
-        },
         "slide_XxC6N3": {
           "type": "slide",
-          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/Vexoria_Sun_Eater_banner_image.png",
+            "image": "shopify://shop_images/adric_banner_1.png",
             "heading": "",
             "heading_size": "h1",
             "subheading": "",
             "button_label": "",
             "link": "",
             "button_style_secondary": false,
-            "box_align": "middle-left",
+            "box_align": "middle-right",
             "show_text_box": false,
             "text_alignment": "left",
             "image_overlay_opacity": 0,
@@ -64,17 +45,16 @@
         }
       },
       "block_order": [
-        "slide_dCMfHQ",
         "slide_XxC6N3"
       ],
       "settings": {
         "layout": "full_bleed",
         "slide_height": "adapt_image",
         "slider_visual": "dots",
-        "auto_rotate": true,
+        "auto_rotate": false,
         "change_slides_speed": 5,
         "image_behavior": "none",
-        "show_text_below": false,
+        "show_text_below": true,
         "accessibility_info": ""
       }
     },
@@ -82,19 +62,19 @@
       "type": "marquee-text",
       "disabled": true,
       "settings": {
-        "marquee_text": "Limited Edition Tee only available until end of countdown",
-        "marquee_background_color": "#ca8cdb",
-        "marquee_text_color": "#ffffff",
-        "marquee_border_color": "#ca8cdb"
+        "marquee_text": "Celebrate the 10 year anniversary of Bricky!",
+        "marquee_background_color": "#2e3c5c",
+        "marquee_text_color": "#ffe7c8",
+        "marquee_border_color": "#2e3c5c"
       }
     },
     "countdown_a3DVUj": {
       "type": "countdown",
       "disabled": true,
       "settings": {
-        "background_color": "#ca8cdb",
-        "border_color": "#ca8cdb",
-        "text_color": "#ffffff",
+        "background_color": "#6eb6c6",
+        "border_color": "#ffffff",
+        "text_color": "#ffe7c8",
         "fallback_message": "Stay tuned for our next release!",
         "section_background": "#ffffff"
       }
@@ -102,32 +82,56 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "blocks": {
-        "highlighted_products_YHJCzH": {
-          "type": "highlighted_products",
-          "settings": {
-            "heading": "New Drop",
-            "filter_input_strings": "drop2",
-            "products_mobile": 6,
-            "products_desktop": 9,
-            "button_link_type": "view-all",
-            "button_link_text": "View All"
-          }
-        },
-        "highlighted_products_nAQwr6": {
+        "highlighted_products_AJxfjQ": {
           "type": "highlighted_products",
           "settings": {
             "heading": "Last Chance",
-            "filter_input_strings": "drop1",
-            "products_mobile": 6,
-            "products_desktop": 9,
+            "filter_input_strings": "Last Chance",
+            "products_mobile": 3,
+            "products_desktop": 6,
             "button_link_type": "view-more",
-            "button_link_text": ""
+            "button_link_text": "View All Last Chance"
+          }
+        },
+        "highlighted_products_c7Ypfw": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "Art Prints",
+            "filter_input_strings": "print",
+            "products_mobile": 1,
+            "products_desktop": 3,
+            "button_link_type": "view-more",
+            "button_link_text": "View All Art Prints"
+          }
+        },
+        "highlighted_products_aWyCkU": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "Clothing",
+            "filter_input_strings": "clothing",
+            "products_mobile": 2,
+            "products_desktop": 3,
+            "button_link_type": "view-more",
+            "button_link_text": "View All Clothing"
+          }
+        },
+        "highlighted_products_VceLmC": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "Accessories",
+            "filter_input_strings": "accessory",
+            "products_mobile": 1,
+            "products_desktop": 3,
+            "button_link_type": "view-more",
+            "button_link_text": "View All Accessories"
           }
         }
       },
       "block_order": [
-        "highlighted_products_YHJCzH",
-        "highlighted_products_nAQwr6"
+        "highlighted_products_AJxfjQ",
+        "highlighted_products_c7Ypfw",
+        "highlighted_products_aWyCkU",
+        "highlighted_products_VceLmC"
       ],
       "settings": {
         "enabled_filtered_sections": true,
@@ -145,7 +149,7 @@
         "enable_sorting": false,
         "columns_mobile": "1",
         "padding_top": 0,
-        "padding_bottom": 0
+        "padding_bottom": 20
       }
     }
   },

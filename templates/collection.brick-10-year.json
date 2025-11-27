@@ -27,6 +27,7 @@
       "blocks": {
         "slide_XxC6N3": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/bricky_LC_banner.png",
             "heading": "",
