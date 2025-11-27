@@ -499,6 +499,11 @@
         "type": "collection_list",
         "id": "creator_landing_pages_collections",
         "label": "t:settings_schema.collection_landing_pages.collections"
+      },
+      {
+        "type": "collection_list",
+        "id": "creator_landing_pages_collections_overflow",
+        "label": "t:settings_schema.collection_landing_pages.overflow"
       }
     ]
   },

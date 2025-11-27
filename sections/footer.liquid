@@ -29,6 +29,20 @@
       {% break %}
     {% endif %}
   {% endfor %}
+
+  {% if collection_page_match == false %}
+    {% for creator_collection in settings.creator_landing_pages_collections_overflow %}
+      {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
+        {% assign collection_page_match = true %}
+
+        {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
+        {% assign creator_title = collection.title %}
+        {% assign creator_footer_background_color = collection.metafields.custom.creator_landing_page_footer_background %}
+        {% assign creator_footer_content_color = collection.metafields.custom.creator_landing_page_footer_content_color %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 {% endif %}
 
 <!-- Check if this is a product page and if any of the product's collections match creator collections -->
@@ -46,6 +60,22 @@
         {% break %}
       {% endif %}
     {% endfor %}
+
+    {% if product_page_match == false %}
+      {% for creator_collection in settings.creator_landing_pages_collections_overflow %}
+        {% if product_collection.title == creator_collection.title %}
+          {% assign product_page_match = true %}
+
+          <!-- Set each metafield value for the matched collection -->
+          {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
+          {% assign creator_title = product_collection.title %}
+          {% assign creator_footer_background_color = product_collection.metafields.custom.creator_landing_page_footer_background %}
+          {% assign creator_footer_content_color = product_collection.metafields.custom.creator_landing_page_footer_content_color %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
     {% if product_page_match %}
       {% break %}
     {% endif %}

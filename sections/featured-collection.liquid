@@ -23,6 +23,17 @@
       {% break %}
     {% endif %}
   {% endfor %}
+  
+  {% if collection_page_match == false %}
+    {% for creator_collection in settings.creator_landing_pages_collections_overflow %}
+      {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
+        {% assign creator_product_background = collection.metafields.custom.product_grid_background_override %}
+        {% assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color %}
+        {% assign collection_page_match = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 {% endif %}
 
 <!-- Check if this is a product page and if any of the product's collections match creator collections -->
@@ -36,6 +47,18 @@
         {% assign creator_accent_color = creator_collection.metafields.custom.creator_landing_page_accent_color %}
       {% endif %}
     {% endfor %}
+    
+    {% if product_page_match == false %}
+      {% for creator_collection in settings.creator_landing_pages_collections_overflow %}
+        {% if product_collection.title == creator_collection.title %}
+          {% assign product_page_match = true %}
+          {% assign creator_collection = creator_collection.title %}
+          {% assign creator_product_background = creator_collection.metafields.custom.product_grid_background_override %}
+          {% assign creator_accent_color = creator_collection.metafields.custom.creator_landing_page_accent_color %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    
     {% if product_page_match %}
       {% break %}
     {% endif %}

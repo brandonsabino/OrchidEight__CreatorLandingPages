@@ -30,6 +30,23 @@
       {% break %}
     {% endif %}
   {% endfor %}
+  
+  {% if collection_page_match == false %}
+    {% for creator_collection in settings.creator_landing_pages_collections_overflow %}
+      {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
+        {% assign collection_page_match = true %}
+        {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
+        {% assign creator_collection_url = collection.url %}
+        {% assign creator_title = collection.title %}
+        {% assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color %}
+        {% assign creator_header_shape = collection.metafields.custom.creator_landing_page_header_shape %}
+        {% assign creater_outer_header_background = collection.metafields.custom.creator_landing_page_outer_header_background %}
+        {% assign creator_header_background_color = collection.metafields.custom.creator_landing_page_header_background %}
+        {% assign creator_header_content_color = collection.metafields.custom.creator_landing_page_header_content_color %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 {% endif %}
 
 <!-- Check if this is a product page and if any of the product's collections match creator collections -->
@@ -51,6 +68,24 @@
         {% break %}
       {% endif %}
     {% endfor %}
+    
+    {% if product_page_match == false %}
+      {% for creator_collection in settings.creator_landing_pages_collections_overflow %}
+        {% if product_collection.title == creator_collection.title %}
+          {% assign product_page_match = true %}
+          {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
+          {% assign creator_collection_url = product_collection.url %}
+          {% assign creator_title = product_collection.title %}
+          {% assign creator_accent_color = product_collection.metafields.custom.creator_landing_page_accent_color %}
+          {% assign creator_header_shape = product_collection.metafields.custom.creator_landing_page_header_shape %}
+          {% assign creater_outer_header_background = product_collection.metafields.custom.creator_landing_page_outer_header_background %}
+          {% assign creator_header_background_color = product_collection.metafields.custom.creator_landing_page_header_background %}
+          {% assign creator_header_content_color = product_collection.metafields.custom.creator_landing_page_header_content_color %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    
     {% if product_page_match %}
       {% break %}
     {% endif %}

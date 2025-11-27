@@ -18,6 +18,18 @@
       {% break %}
     {% endif %}
   {% endfor %}
+  
+  {% if collection_page_match == false %}
+    {% for creator_collection in settings.creator_landing_pages_collections_overflow %}
+      {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
+        {% assign collection_page_match = true %}
+        {% assign creator_collection_banner_background = collection.metafields.custom.collection_banner_background_color %}
+        {% assign creator_collection_banner_text_color = collection.metafields.custom.collection_banner_text_color %}
+        {% assign creator_collection_banner_text_alignment = collection.metafields.custom.collection_banner_text_alignment %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 {% endif %}
 
 <!-- Set is_creator_landing_page if either collection_page_match or product_page_match is true -->
