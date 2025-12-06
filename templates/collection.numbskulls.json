@@ -28,7 +28,7 @@
         "slide_XxC6N3": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/adric_banner_1.png",
+            "image": "shopify://shop_images/numbskulls_bgdc_banner.png",
             "heading": "",
             "heading_size": "h1",
             "subheading": "",
@@ -85,45 +85,45 @@
         "highlighted_products_AJxfjQ": {
           "type": "highlighted_products",
           "settings": {
-            "heading": "Last Chance",
-            "filter_input_strings": "Last Chance",
-            "products_mobile": 3,
-            "products_desktop": 6,
-            "button_link_type": "view-more",
-            "button_link_text": "View All Last Chance"
+            "heading": "New Drop",
+            "filter_input_strings": "drop2",
+            "products_mobile": 9,
+            "products_desktop": 9,
+            "button_link_type": "view-all",
+            "button_link_text": "View All Products"
           }
         },
         "highlighted_products_c7Ypfw": {
           "type": "highlighted_products",
           "settings": {
-            "heading": "Art Prints",
-            "filter_input_strings": "print",
-            "products_mobile": 1,
+            "heading": "Past Wearables",
+            "filter_input_strings": "lcclothing",
+            "products_mobile": 3,
             "products_desktop": 3,
             "button_link_type": "view-more",
-            "button_link_text": "View All Art Prints"
+            "button_link_text": "All Last Chance Clothing"
           }
         },
         "highlighted_products_aWyCkU": {
           "type": "highlighted_products",
           "settings": {
-            "heading": "Clothing",
-            "filter_input_strings": "clothing",
-            "products_mobile": 2,
+            "heading": "Past Accessories",
+            "filter_input_strings": "lcaccessory",
+            "products_mobile": 3,
             "products_desktop": 3,
             "button_link_type": "view-more",
-            "button_link_text": "View All Clothing"
+            "button_link_text": "All Last Chance Accessories"
           }
         },
         "highlighted_products_VceLmC": {
           "type": "highlighted_products",
           "settings": {
-            "heading": "Accessories",
-            "filter_input_strings": "accessory",
-            "products_mobile": 1,
+            "heading": "Past Stickers",
+            "filter_input_strings": "lcsticker",
+            "products_mobile": 3,
             "products_desktop": 3,
             "button_link_type": "view-more",
-            "button_link_text": "View All Accessories"
+            "button_link_text": "All Last Chance Stickers"
           }
         }
       },

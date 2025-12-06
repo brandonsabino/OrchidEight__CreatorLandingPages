@@ -145,6 +145,13 @@
             "custom_path": "shopify://collections/cyyu"
           }
         },
+        "featured_collection_JYLdaw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "datto",
+            "custom_path": "shopify://collections/datto"
+          }
+        },
         "featured_collection_m7YAbe": {
           "type": "featured_collection",
           "settings": {
@@ -212,6 +219,13 @@
           "type": "featured_collection",
           "settings": {
             "collection": "heavenly-father",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_tBQNnq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hinabobina",
             "custom_path": ""
           }
         },
@@ -296,15 +310,9 @@
         },
         "featured_collection_CViE6Y": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "papamutt",
-            "custom_path": ""
-          }
-        },
-        "featured_collection_eUjGzm": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "paragon",
             "custom_path": ""
           }
         }
@@ -320,6 +328,7 @@
         "featured_collection_MhAaBe",
         "featured_collection_PcL9Qt",
         "featured_collection_NRqQ7m",
+        "featured_collection_JYLdaw",
         "featured_collection_m7YAbe",
         "featured_collection_mc7NQQ",
         "featured_collection_4aXCXB",
@@ -330,6 +339,7 @@
         "featured_collection_rLrDDE",
         "featured_collection_f4VKgW",
         "featured_collection_9LmR8h",
+        "featured_collection_tBQNnq",
         "featured_collection_D7a3rf",
         "featured_collection_LnVJQJ",
         "featured_collection_i978hV",
@@ -341,8 +351,7 @@
         "featured_collection_jFbyKx",
         "featured_collection_g8PPic",
         "featured_collection_XATnfB",
-        "featured_collection_CViE6Y",
-        "featured_collection_eUjGzm"
+        "featured_collection_CViE6Y"
       ],
       "settings": {
         "title": "",
@@ -371,7 +380,6 @@
         },
         "featured_collection_RFLLdj": {
           "type": "featured_collection",
-          "disabled": true,
           "settings": {
             "collection": "papamutt",
             "custom_path": ""
@@ -379,7 +387,6 @@
         },
         "featured_collection_MFXEMH": {
           "type": "featured_collection",
-          "disabled": true,
           "settings": {
             "collection": "paragon",
             "custom_path": ""

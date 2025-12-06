@@ -107,7 +107,7 @@
           "settings": {
             "heading": "New Drop",
             "filter_input_strings": "drop2",
-            "products_mobile": 6,
+            "products_mobile": 9,
             "products_desktop": 9,
             "button_link_type": "view-all",
             "button_link_text": "View All"
@@ -118,7 +118,7 @@
           "settings": {
             "heading": "Last Chance",
             "filter_input_strings": "drop1",
-            "products_mobile": 6,
+            "products_mobile": 9,
             "products_desktop": 9,
             "button_link_type": "view-more",
             "button_link_text": ""
