@@ -7,6 +7,7 @@
 {% assign creator_bluesky_account = '' %}
 
 <!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
+{% assign collection_drawer_match = false %}
 {% if collection %}
   {% for creator_collection in settings.creator_landing_pages_collections %}
     {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
@@ -17,19 +18,20 @@
       {% assign creator_twitch_account = collection.metafields.custom.creator_landing_page_twitch_account %}
       {% assign creator_tiktok_account = collection.metafields.custom.creator_landing_page_tiktok_account %}
       {% assign creator_bluesky_account = collection.metafields.custom.creator_landing_page_bluesky_account %}
+      {% assign collection_drawer_match = true %}
       {% break %}
     {% endif %}
   {% endfor %}
 
-  {% if collection_page_match == false %}
+  {% if collection_drawer_match == false %}
     {% for creator_collection in settings.creator_landing_pages_collections_overflow %}
       {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
-        {% assign creator_x_account = collection.metafields.custom.creator_landing_page_x_account %}
-        {% assign creator_instagram_account = collection.metafields.custom.creator_landing_page_instagram_account %}
-        {% assign creator_youtube_account = collection.metafields.custom.creator_landing_page_youtube_account %}
-        {% assign creator_twitch_account = collection.metafields.custom.creator_landing_page_twitch_account %}
-        {% assign creator_tiktok_account = collection.metafields.custom.creator_landing_page_tiktok_account %}
-        {% assign creator_bluesky_account = collection.metafields.custom.creator_landing_page_bluesky_account %}
+        {% assign creator_x_account = creator_collection.metafields.custom.creator_landing_page_x_account %}
+        {% assign creator_instagram_account = creator_collection.metafields.custom.creator_landing_page_instagram_account %}
+        {% assign creator_youtube_account = creator_collection.metafields.custom.creator_landing_page_youtube_account %}
+        {% assign creator_twitch_account = creator_collection.metafields.custom.creator_landing_page_twitch_account %}
+        {% assign creator_tiktok_account = creator_collection.metafields.custom.creator_landing_page_tiktok_account %}
+        {% assign creator_bluesky_account = creator_collection.metafields.custom.creator_landing_page_bluesky_account %}
         {% break %}
       {% endif %}
     {% endfor %}
@@ -37,6 +39,7 @@
 {% endif %}
 
 <!-- Check if this is a product page and if any of the product's collections match creator collections -->
+{% assign product_drawer_match = false %}
 {% if product and product.collections %}
   {% for product_collection in product.collections %}
     {% for creator_collection in settings.creator_landing_pages_collections %}
@@ -48,11 +51,12 @@
         {% assign creator_twitch_account = product_collection.metafields.custom.creator_landing_page_twitch_account %}
         {% assign creator_tiktok_account = product_collection.metafields.custom.creator_landing_page_tiktok_account %}
         {% assign creator_bluesky_account = product_collection.metafields.custom.creator_landing_page_bluesky_account %}
+        {% assign product_drawer_match = true %}
         {% break %}
       {% endif %}
     {% endfor %}
 
-    {% if product_page_match == false %}
+    {% if product_drawer_match == false %}
       {% for creator_collection in settings.creator_landing_pages_collections_overflow %}
         {% if product_collection.title == creator_collection.title %}
           {% assign creator_x_account = product_collection.metafields.custom.creator_landing_page_x_account %}
@@ -61,12 +65,13 @@
           {% assign creator_twitch_account = product_collection.metafields.custom.creator_landing_page_twitch_account %}
           {% assign creator_tiktok_account = product_collection.metafields.custom.creator_landing_page_tiktok_account %}
           {% assign creator_bluesky_account = product_collection.metafields.custom.creator_landing_page_bluesky_account %}
+          {% assign product_drawer_match = true %}
           {% break %}
         {% endif %}
       {% endfor %}
     {% endif %}
 
-    {% if product_page_match %}
+    {% if product_drawer_match %}
       {% break %}
     {% endif %}
   {% endfor %}
