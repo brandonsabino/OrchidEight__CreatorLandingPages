@@ -38,12 +38,11 @@
           "type": "description",
           "settings": {}
         },
-        "text_94DYCd": {
-          "type": "text",
-          "name": "Fabric",
+        "size_chart_collapsible_xRxQFK": {
+          "type": "size_chart_collapsible",
           "settings": {
-            "text": "{{ product.metafields.shopify.fabric | metafield_text: field: 'label' }}",
-            "text_style": "body"
+            "heading": "",
+            "icon": "shirt"
           }
         }
       },
@@ -53,7 +52,7 @@
         "variant_picker",
         "buy_buttons",
         "description",
-        "text_94DYCd"
+        "size_chart_collapsible_xRxQFK"
       ],
       "settings": {
         "enable_sticky_info": true,

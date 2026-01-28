@@ -76,7 +76,6 @@
       "blocks": {
         "featured_collection_XL63Jz": {
           "type": "featured_collection",
-          "disabled": true,
           "settings": {
             "collection": "limited-drops",
             "custom_path": ""
@@ -105,8 +104,16 @@
         },
         "featured_collection_8cqWHX": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "billion-dollar-clown-farm",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_Nwnw4t": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "brian_f",
             "custom_path": ""
           }
         },
@@ -236,6 +243,20 @@
             "custom_path": ""
           }
         },
+        "featured_collection_B7T66t": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "jocat",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_Ki643M": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kabhaal",
+            "custom_path": ""
+          }
+        },
         "featured_collection_LnVJQJ": {
           "type": "featured_collection",
           "disabled": true,
@@ -246,7 +267,6 @@
         },
         "featured_collection_i978hV": {
           "type": "featured_collection",
-          "disabled": true,
           "settings": {
             "collection": "lessdraws",
             "custom_path": ""
@@ -275,13 +295,22 @@
         },
         "featured_collection_KCkwKX": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "matarakan",
             "custom_path": ""
           }
         },
+        "featured_collection_taQ3pj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mooreover",
+            "custom_path": ""
+          }
+        },
         "featured_collection_mfWpGM": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "mysticlight",
             "custom_path": ""
@@ -289,6 +318,7 @@
         },
         "featured_collection_jFbyKx": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "narrative-declaration",
             "custom_path": ""
@@ -296,6 +326,7 @@
         },
         "featured_collection_g8PPic": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "nene-amano",
             "custom_path": ""
@@ -303,6 +334,7 @@
         },
         "featured_collection_XATnfB": {
           "type": "featured_collection",
+          "disabled": true,
           "settings": {
             "collection": "numbskulls",
             "custom_path": ""
@@ -323,6 +355,7 @@
         "featured_collection_Q8PyyT",
         "featured_collection_7MYKg4",
         "featured_collection_8cqWHX",
+        "featured_collection_Nwnw4t",
         "featured_collection_mWEebx",
         "featured_collection_6xEtTi",
         "featured_collection_MhAaBe",
@@ -341,12 +374,15 @@
         "featured_collection_9LmR8h",
         "featured_collection_tBQNnq",
         "featured_collection_D7a3rf",
+        "featured_collection_B7T66t",
+        "featured_collection_Ki643M",
         "featured_collection_LnVJQJ",
         "featured_collection_i978hV",
         "featured_collection_H9gQ4b",
         "featured_collection_TXywkg",
         "featured_collection_eRb8Cb",
         "featured_collection_KCkwKX",
+        "featured_collection_taQ3pj",
         "featured_collection_mfWpGM",
         "featured_collection_jFbyKx",
         "featured_collection_g8PPic",
@@ -370,9 +406,29 @@
     "collection_list_HY8kGf": {
       "type": "collection-list",
       "blocks": {
+        "featured_collection_UBA6At": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mysticlight",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_3CRrF6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "narrative-declaration",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_yPiwim": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "nene-amano",
+            "custom_path": ""
+          }
+        },
         "featured_collection_UXFBg6": {
           "type": "featured_collection",
-          "disabled": true,
           "settings": {
             "collection": "numbskulls",
             "custom_path": ""
@@ -399,6 +455,13 @@
             "custom_path": ""
           }
         },
+        "featured_collection_yHA7qQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "piper",
+            "custom_path": ""
+          }
+        },
         "featured_collection_XxWJtY": {
           "type": "featured_collection",
           "settings": {
@@ -417,6 +480,13 @@
           "type": "featured_collection",
           "settings": {
             "collection": "shammy",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_zQDfn6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "shoomimi",
             "custom_path": ""
           }
         },
@@ -485,13 +555,18 @@
         }
       },
       "block_order": [
+        "featured_collection_UBA6At",
+        "featured_collection_3CRrF6",
+        "featured_collection_yPiwim",
         "featured_collection_UXFBg6",
         "featured_collection_RFLLdj",
         "featured_collection_MFXEMH",
         "featured_collection_yah4wi",
+        "featured_collection_yHA7qQ",
         "featured_collection_XxWJtY",
         "featured_collection_ihh7me",
         "featured_collection_gpCMXb",
+        "featured_collection_zQDfn6",
         "featured_collection_yph4UQ",
         "featured_collection_KjGXhj",
         "featured_collection_km7Rdg",

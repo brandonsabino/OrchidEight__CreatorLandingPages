@@ -55,7 +55,6 @@
       "demo-collection",
       "geef",
       "bricky",
-      "matarakan",
       "paragon",
       "tabletop-titans",
       "vexoria",
@@ -94,14 +93,18 @@
       "datto",
       "dr-rhino",
       "jocat",
-      "kabhaal"
+      "kabhaal",
+      "aurelia-tempris"
     ],
     "creator_landing_pages_collections_overflow": [
       "artist-alley",
       "suto-conventions",
       "doc",
       "vexpo",
-      "mooreover"
+      "mooreover",
+      "miniko-mew",
+      "shoomimi",
+      "marcodmeatball"
     ],
     "card_style": "card",
     "card_image_padding": 0,
