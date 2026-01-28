@@ -109,14 +109,14 @@
   }
 
   {% if section.settings.grid_background_image %}
-    .product-grid-container {
+    .section-{{ section.id }} {
       background: url({{ section.settings.grid_background_image | image_url: width: 2000 }});
     }
   {% endif %}
 
   /* Override the Schema background */
   {% if is_creator_landing_page and creator_product_grid_background %}
-    .product-grid-container {
+    .section-{{ section.id }} {
       background: url({{ creator_product_grid_background | image_url: width: 2000 }});
     }
   {% endif %}
