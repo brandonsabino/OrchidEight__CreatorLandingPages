@@ -56,7 +56,9 @@
       "name": "Creator Landing Pages",
       "enable": "Enable Custom Creator Landing Pages",
       "collections": "Select the Collections you wish to apply Creator Landing Pages to:",
-      "overflow": "Select up to 50 additional collections"
+      "overflow": "Select up to 50 additional collections",
+      "overflow_2": "Select up to 50 more additional collections",
+      "overflow_3": "Select up to 50 more additional collections"
     },
     "cards": {
       "name": "Product cards",

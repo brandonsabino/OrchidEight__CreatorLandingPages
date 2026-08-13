@@ -504,6 +504,16 @@
         "type": "collection_list",
         "id": "creator_landing_pages_collections_overflow",
         "label": "t:settings_schema.collection_landing_pages.overflow"
+      },
+      {
+        "type": "collection_list",
+        "id": "creator_landing_pages_collections_overflow_2",
+        "label": "t:settings_schema.collection_landing_pages.overflow_2"
+      },
+      {
+        "type": "collection_list",
+        "id": "creator_landing_pages_collections_overflow_3",
+        "label": "t:settings_schema.collection_landing_pages.overflow_3"
       }
     ]
   },
