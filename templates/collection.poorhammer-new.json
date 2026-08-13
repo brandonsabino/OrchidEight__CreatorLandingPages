@@ -41,6 +41,7 @@
         "text_pyjVG6",
         "button_jAYzMx"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/PH1.png",
         "height": "adapt",
@@ -59,7 +60,6 @@
     },
     "banner": {
       "type": "main-collection-banner",
-      "disabled": true,
       "custom_css": [
         ".collection-hero__description {text-align: center; margin: auto; padding-bottom: 40px;}",
         "table {width: 100% !important;}"
@@ -72,6 +72,7 @@
     },
     "marquee_text_FY3qhb": {
       "type": "marquee-text",
+      "disabled": true,
       "settings": {
         "marquee_text": "Last Chance Sale going on now!",
         "marquee_background_color": "#8f937b",

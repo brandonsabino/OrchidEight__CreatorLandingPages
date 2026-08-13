@@ -1,0 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "custom_liquid_qNikMC": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% assign featured_collection = collections['featured-item-collection'] %}\n\n<div class=\"featured-carousel-container\">\n\n    <button class=\"carousel-arrow left\">&#10094;</button>\n\n    <div class=\"featured-carousel\" id=\"featured-carousel\">\n\n        {% for product in featured_collection.products limit: 20 %}\n\n        <a class=\"featured-product\" href=\"{{ product.url }}\">\n\n            {% if product.featured_image %}\n                <img\n                    src=\"{{ product.featured_image | image_url: width: 800 }}\"\n                    alt=\"{{ product.title }}\"\n                    loading=\"lazy\">\n            {% endif %}\n\n            <div class=\"featured-info\">\n                <div class=\"featured-title\">{{ product.title }}</div>\n                <div class=\"featured-price\">{{ product.price | money }}</div>\n            </div>\n\n        </a>\n\n        {% endfor %}\n\n    </div>\n\n    <button class=\"carousel-arrow right\">&#10095;</button>\n\n</div>\n\n<style>\n\n.featured-carousel-container{\n    position:relative;\n    max-width:1400px;\n    margin:40px auto;\n    display:flex;\n    align-items:center;\n    justify-content:center;\n    gap:20px;\n}\n\n.featured-carousel{\n\n    display:flex;\n    gap:24px;\n\n    overflow-x:auto;\n    scroll-behavior:smooth;\n    scroll-snap-type:x mandatory;\n\n    scrollbar-width:none;\n    -ms-overflow-style:none;\n\n    width:100%;\n    justify-content:center;\n\n    padding:10px;\n\n}\n\n.featured-carousel::-webkit-scrollbar{\n    display:none;\n}\n\n.featured-product{\n\n    flex:0 0 calc((100% - 72px)/4);\n\n    scroll-snap-align:center;\n\n    background:#fff;\n    color:inherit;\n    text-decoration:none;\n\n    border-radius:12px;\n\n    overflow:hidden;\n\n    box-shadow:0 4px 12px rgba(0,0,0,.08);\n\n    transition:.25s;\n\n}\n\n.featured-product:hover{\n\n    transform:translateY(-6px);\n\n    box-shadow:0 10px 24px rgba(0,0,0,.18);\n\n}\n\n.featured-product img{\n\n    width:100%;\n    aspect-ratio:1;\n\n    object-fit:cover;\n\n    display:block;\n\n}\n\n.featured-info{\n\n    padding:16px;\n\n    text-align:center;\n\n}\n\n.featured-title{\n\n    font-size:18px;\n\n    font-weight:600;\n\n    margin-bottom:8px;\n\n}\n\n.featured-price{\n\n    font-weight:bold;\n\n}\n\n.carousel-arrow{\n    width:46px;\n    height:46px;\n\n    display:flex;\n    align-items:center;\n    justify-content:center;\n\n    padding:0;\n\n    border:none;\n    border-radius:50%;\n\n    font-size:22px;\n    line-height:1;\n\n    cursor:pointer;\n}\n\n.carousel-arrow:hover{\n\n    background:#f3f3f3;\n\n}\n\n@media (max-width:1024px){\n\n.featured-product{\n\n    flex:0 0 calc((100% - 24px)/2);\n\n}\n\n}\n\n@media (max-width:700px){\n\n.featured-product{\n\n    flex:0 0 100%;\n\n}\n\n.carousel-arrow{\n\n    display:none;\n\n}\n\n}\n\n</style>\n\n<script>\n\n(function(){\n\nconst carousel=document.getElementById(\"featured-carousel\");\n\nif(!carousel) return;\n\nconst cards=carousel.querySelectorAll(\".featured-product\");\n\nif(cards.length===0) return;\n\nfunction scrollAmount(){\n\n    return cards[0].offsetWidth+24;\n\n}\n\ndocument.querySelector(\".carousel-arrow.left\").onclick=function(){\n\n    carousel.scrollBy({\n\n        left:-scrollAmount(),\n\n        behavior:\"smooth\"\n\n    });\n\n};\n\ndocument.querySelector(\".carousel-arrow.right\").onclick=function(){\n\n    carousel.scrollBy({\n\n        left:scrollAmount(),\n\n        behavior:\"smooth\"\n\n    });\n\n};\n\nlet isDown=false;\nlet startX;\nlet scrollLeft;\n\ncarousel.addEventListener(\"mousedown\",(e)=>{\n\n    isDown=true;\n\n    startX=e.pageX-carousel.offsetLeft;\n\n    scrollLeft=carousel.scrollLeft;\n\n});\n\ncarousel.addEventListener(\"mouseleave\",()=>{\n\n    isDown=false;\n\n});\n\ncarousel.addEventListener(\"mouseup\",()=>{\n\n    isDown=false;\n\n});\n\ncarousel.addEventListener(\"mousemove\",(e)=>{\n\n    if(!isDown) return;\n\n    e.preventDefault();\n\n    const x=e.pageX-carousel.offsetLeft;\n\n    const walk=(x-startX)*1.5;\n\n    carousel.scrollLeft=scrollLeft-walk;\n\n});\n\n})();\n\n</script>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_qNikMC"
+  ]
+}

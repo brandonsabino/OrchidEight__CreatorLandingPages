@@ -14,17 +14,26 @@
     "announcement_bar_qtQpL6": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_rizkWr": {
+          "type": "announcement",
+          "settings": {
+            "text": "Welcome to our store",
+            "link": ""
+          }
+        },
         "announcement_9njDTP": {
           "type": "announcement",
           "settings": {
-            "text": "Due to the massive influx of holiday orders, production is taking longer than usual. We apologize for the inconvenience.",
+            "text": "High order volume has caused a delay in production. We are working to get your items done ASAP. Please bear with us.",
             "link": ""
           }
         }
       },
       "block_order": [
+        "announcement_rizkWr",
         "announcement_9njDTP"
       ],
+      "disabled": true,
       "name": "t:sections.announcement-bar.presets.name",
       "settings": {
         "color_scheme": "scheme-1",

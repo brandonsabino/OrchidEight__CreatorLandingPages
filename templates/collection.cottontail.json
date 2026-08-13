@@ -27,6 +27,7 @@
       "blocks": {
         "slide_XxC6N3": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Banner_1.jpg",
             "heading": "Welcome Fluffers",
@@ -43,8 +44,46 @@
             "text_alignment_mobile": "center"
           }
         },
+        "slide_CnttKU": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/suliaglutcottonstarting_1.png",
+            "heading": "Welcome Fluffers",
+            "heading_size": "h1",
+            "subheading": "Wanna show everyone how much of a degen you are? Now you can!",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_nQRCrB": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Cotton_BG_Mirror.png",
+            "heading": "Welcome Fluffers",
+            "heading_size": "h1",
+            "subheading": "Wanna show everyone how much of a degen you are? Now you can!",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        },
         "slide_LxNLUd": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Banner_3.png",
             "heading": "Free Stuff",
@@ -83,6 +122,8 @@
       },
       "block_order": [
         "slide_XxC6N3",
+        "slide_CnttKU",
+        "slide_nQRCrB",
         "slide_LxNLUd",
         "slide_aXHPae"
       ],
@@ -114,12 +155,14 @@
         "background_color": "#671b49",
         "border_color": "#ffffff",
         "text_color": "#ffffff",
-        "fallback_message": "Stay tuned for our next release!"
+        "fallback_message": "Stay tuned for our next release!",
+        "section_background": "#ffffff"
       }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
       "settings": {
+        "enabled_filtered_sections": false,
         "products_per_page": 16,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",

@@ -11,6 +11,7 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 40,
         "padding_bottom": 0
@@ -29,6 +30,7 @@
     },
     "custom_liquid_L6ggnb": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "custom_liquid": "<iframe data-tally-src=\"https://tally.so/embed/3x1Pjd?alignLeft=0&hideTitle=1&transparentBackground=1&dynamicHeight=1\" loading=\"lazy\" width=\"100%\" height=\"200\" frameborder=\"0\" marginheight=\"0\" marginwidth=\"0\" title=\"Customer Support\"></iframe>\n<script>var d=document,w=\"https://tally.so/widgets/embed.js\",v=function(){\"undefined\"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll(\"iframe[data-tally-src]:not([src])\").forEach((function(e){e.src=e.dataset.tallySrc}))};if(\"undefined\"!=typeof Tally)v();else if(d.querySelector('script[src=\"'+w+'\"]')==null){var s=d.createElement(\"script\");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>",
@@ -36,11 +38,61 @@
         "padding_top": 0,
         "padding_bottom": 0
       }
+    },
+    "rich_text_Myq4rb": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_6XgApj": {
+          "type": "heading",
+          "settings": {
+            "heading": "Customer Support",
+            "heading_size": "h1",
+            "heading_font_family": "sans_serif_n4",
+            "heading_font_family_import": "",
+            "use_greston_font": false
+          }
+        },
+        "text_cByUmi": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>During the month of June our team will be relocating our operation to a new shop. Orders placed or outstanding during this time will see a  delay in fulfillment due to these external factors. <br/><br/>We appreciate your patience regarding this matter. Should you have questions or concerns regarding a specific order please don't hesitate to reach out to our customer support email where we would be happy to assist you.</strong><br/><br/>-----<br/><br/>If you are experiencing issues with your order and require assistance please contact us at contact@orchideight.com<br/><br/><br/>To smoothly and effectively resolve any issues with your order please include the following information in your message: Your order number, your name, your shipping address, and if provided, your phone number.<br/><br/><br/>Thank you for your business<br/>The Orchid Eight team.</p>",
+            "text_font_family": "sans_serif_n4",
+            "text_font_family_import": ""
+          }
+        },
+        "button_XGKd6K": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_6XgApj",
+        "text_cByUmi",
+        "button_XGKd6K"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "main",
     "form",
-    "custom_liquid_L6ggnb"
+    "custom_liquid_L6ggnb",
+    "rich_text_Myq4rb"
   ]
 }

@@ -1,0 +1,79 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_hmp7GP": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_8cbKqH": {
+          "type": "heading",
+          "settings": {
+            "heading": "Are you a creator interested in working with Orchid Eight?",
+            "heading_size": "h1",
+            "heading_font_family": "sans_serif_n4",
+            "heading_font_family_import": "",
+            "use_greston_font": false
+          }
+        },
+        "text_nn3ina": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Orchid Eight is a non-exclusive merchandise provider for creators of all sizes. We specialize in everything from simple items representing your brand to specialized and bespoke items tailored with care for special moments and big milestones. <br/><br/>Whether you're looking to move from an existing platform or take the plunge into something new, we're here to work with you in order to take your vision and bring it to your community in a way that you can be proud of, and your viewers can be excited by.</p>",
+            "text_font_family": "sans_serif_n4",
+            "text_font_family_import": ""
+          }
+        },
+        "text_dJ9dgd": {
+          "type": "text",
+          "settings": {
+            "text": "<p>To get more information on our services or to get in contact with our client management team please reach out to us at <span style=\"text-decoration:underline\"><strong>sales@orchideight.com</strong></span>.</p>",
+            "text_font_family": "sans_serif_n4",
+            "text_font_family_import": ""
+          }
+        },
+        "text_RBbR8H": {
+          "type": "text",
+          "settings": {
+            "text": "<p><em>Note: Creator applications are accepted based on production timelines and Orchid Eight's general availability, slots are not always available. </em></p>",
+            "text_font_family": "sans_serif_n4",
+            "text_font_family_import": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_8cbKqH",
+        "text_nn3ina",
+        "text_dJ9dgd",
+        "text_RBbR8H"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_hmp7GP"
+  ]
+}

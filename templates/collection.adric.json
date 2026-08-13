@@ -82,8 +82,20 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "blocks": {
+        "highlighted_products_7YMXUT": {
+          "type": "highlighted_products",
+          "settings": {
+            "heading": "Art Prints",
+            "filter_input_strings": "prints",
+            "products_mobile": 2,
+            "products_desktop": 6,
+            "button_link_type": "view-more",
+            "button_link_text": "View All Prints"
+          }
+        },
         "highlighted_products_AJxfjQ": {
           "type": "highlighted_products",
+          "disabled": true,
           "settings": {
             "heading": "Last Chance",
             "filter_input_strings": "Last Chance",
@@ -98,7 +110,7 @@
           "settings": {
             "heading": "Art Prints",
             "filter_input_strings": "print",
-            "products_mobile": 1,
+            "products_mobile": 2,
             "products_desktop": 3,
             "button_link_type": "view-more",
             "button_link_text": "View All Art Prints"
@@ -106,6 +118,7 @@
         },
         "highlighted_products_aWyCkU": {
           "type": "highlighted_products",
+          "disabled": true,
           "settings": {
             "heading": "Clothing",
             "filter_input_strings": "clothing",
@@ -121,20 +134,21 @@
             "heading": "Accessories",
             "filter_input_strings": "accessory",
             "products_mobile": 1,
-            "products_desktop": 3,
+            "products_desktop": 2,
             "button_link_type": "view-more",
             "button_link_text": "View All Accessories"
           }
         }
       },
       "block_order": [
+        "highlighted_products_7YMXUT",
         "highlighted_products_AJxfjQ",
         "highlighted_products_c7Ypfw",
         "highlighted_products_aWyCkU",
         "highlighted_products_VceLmC"
       ],
       "settings": {
-        "enabled_filtered_sections": true,
+        "enabled_filtered_sections": false,
         "products_per_page": 36,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",

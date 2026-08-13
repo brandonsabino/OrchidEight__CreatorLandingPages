@@ -47,8 +47,21 @@
     "product-grid": {
       "type": "main-collection-product-grid",
       "blocks": {
+        "highlighted_products_HBm34R": {
+          "type": "highlighted_products",
+          "disabled": true,
+          "settings": {
+            "heading": "Valentines Drop",
+            "filter_input_strings": "kumi_Valentine",
+            "products_mobile": 1,
+            "products_desktop": 6,
+            "button_link_type": "view-all",
+            "button_link_text": "View All"
+          }
+        },
         "highlighted_products_FFzVaC": {
           "type": "highlighted_products",
+          "disabled": true,
           "settings": {
             "heading": "New Drops!",
             "filter_input_strings": "demo, new_drop",
@@ -60,6 +73,7 @@
         }
       },
       "block_order": [
+        "highlighted_products_HBm34R",
         "highlighted_products_FFzVaC"
       ],
       "custom_css": [],

@@ -1,0 +1,107 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_hmp7GP": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_8cbKqH": {
+          "type": "heading",
+          "settings": {
+            "heading": "Are you a business interested in working with Orchid Eight?",
+            "heading_size": "h1",
+            "heading_font_family": "sans_serif_n4",
+            "heading_font_family_import": "",
+            "use_greston_font": false
+          }
+        },
+        "text_dJ9dgd": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We offer print on demand services for a large variety of apparel items and accessories in both small batch and bulk quantities!<br/><br/>Our catalogue ranges from traditional apparel such as tee shirts, hats, hoodies, and sweatpants, all the way to personalized accessories for your home, office, clients, and customers, such as computer desk mats, custom stationary, posters and stickers, mugs, and acrylic goods. <br/><br/>To see if we can help with your next big project or event, please email us at <span style=\"text-decoration:underline\"><strong>sales@orchideight.com</strong></span> and we would be glad to assist you!<br/><br/>If you do not see the item you are looking for on this chart, please reach out to us directly! <br/><span style=\"text-decoration:underline\"><strong>We offer far more than what is represented here.</strong></span></p>",
+            "text_font_family": "sans_serif_n4",
+            "text_font_family_import": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_8cbKqH",
+        "text_dJ9dgd"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_jQfMdm": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div style=\"display: flex; justify-content: center; width: 100%;\">\n  <table class=\"pricing-table\">\n    <tbody>\n      <tr>\n        <th colspan=\"5\" style=\"text-align:left;\">Common Item Pricing:</th>\n      </tr>\n\n      <tr>\n        <th>Order Quantity:</th>\n        <th>10+</th>\n        <th>25+</th>\n        <th>50+</th>\n        <th>100+</th>\n      </tr>\n\n      <tr>\n        <td>Tee Shirt</td>\n        <td>$25.00</td>\n        <td>$20.00</td>\n        <td>$17.00</td>\n        <td>$15.00</td>\n      </tr>\n\n      <tr>\n        <td>Hoodie</td>\n        <td>$50.00</td>\n        <td>$45.00</td>\n        <td>$40.00</td>\n        <td>$37.00</td>\n      </tr>\n\n      <tr>\n        <td>Deskmat/TCG Playmat</td>\n        <td>$25.00</td>\n        <td>$21.00</td>\n        <td>$18.00</td>\n        <td>$15.00</td>\n      </tr>\n\n      <tr>\n        <td>Mug</td>\n        <td>$17.00</td>\n        <td>$15.00</td>\n        <td>$14.00</td>\n        <td>$13.00</td>\n      </tr>\n\n      <tr>\n        <td colspan=\"5\" style=\"height:15px; border:none;\"></td>\n      </tr>\n\n      <tr>\n        <th>Order Quantity:</th>\n        <th>25+</th>\n        <th>50+</th>\n        <th>100+</th>\n        <th>300+</th>\n      </tr>\n\n      <tr>\n        <td>2.5&quot; Vinyl Sticker</td>\n        <td>$1.00</td>\n        <td>$0.90</td>\n        <td>$0.75</td>\n        <td>$0.65</td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n\n<style>\n.pricing-table {\n    border-collapse: collapse;\n    width: 100%;\n    max-width: 700px;\n    font-family: Arial, sans-serif;\n    font-size: 15px;\n}\n\n.pricing-table th,\n.pricing-table td {\n    border: 1px solid #cfcfcf;\n    padding: 8px 12px;\n    text-align: center;\n}\n\n.pricing-table th:first-child,\n.pricing-table td:first-child {\n    text-align: left;\n    white-space: nowrap;\n}\n\n.pricing-table th {\n    background: #f5f5f5;\n    font-weight: bold;\n}\n\n.pricing-table tr:first-child th {\n    background: #ffffff;\n    font-size: 16px;\n}\n</style>",
+        "color_scheme": "",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "rich_text_GfCbMG": {
+      "type": "rich-text",
+      "blocks": {
+        "text_tNdjTF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Apparel price increases by $3.00 per print location (Front, Back, Sleeve R, Sleeve L) <br/>Apparel price estimates are based on a single print location in a DTF printing style. <br/>We also offer DTG, HVT, and Embroidered designs at varying price points. <br/>Tee shirt sizing goes up to 6xl for additional cost. </p>",
+            "text_font_family": "sans_serif_n4",
+            "text_font_family_import": ""
+          }
+        },
+        "text_7r9Get": {
+          "type": "text",
+          "settings": {
+            "text": "<p><em>Note: The above information is an estimated price and does not represent a difinitive quote. Please contact us for more information regarding your project and we will provide a quote tailored to your individual project and needs. </em></p>",
+            "text_font_family": "sans_serif_n4",
+            "text_font_family_import": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_tNdjTF",
+        "text_7r9Get"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_hmp7GP",
+    "custom_liquid_jQfMdm",
+    "rich_text_GfCbMG"
+  ]
+}
