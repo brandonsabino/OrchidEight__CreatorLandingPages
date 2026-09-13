@@ -147,6 +147,15 @@
     }
   }
 
+  {% if section.settings.target_id != blank %}
+    #{{ section.settings.target_id | handle }}.section-anchor {
+      display: block;
+      position: relative;
+      height: 0;
+      scroll-margin-top: calc(var(--header-height, 0px) + 2rem);
+    }
+  {% endif %}
+
   {% if is_creator_landing_page %}
     #collection-{{ section.id }}.collection {
       border-top: 5px solid {{ creator_accent_color }};
@@ -190,6 +199,9 @@
 <div
   class="{% unless is_creator_landing_page %}color-{{ section.settings.color_scheme }} isolate gradient{% endunless %}"
 >
+  {%- if section.settings.target_id != blank -%}
+    <div id="{{ section.settings.target_id | handle }}" class="section-anchor"></div>
+  {%- endif -%}
   <div
     class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
     id="collection-{{ section.id }}"
@@ -335,6 +347,12 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "target_id",
+      "label": "Target ID",
+      "info": "Give this section a name so a Link grid on the same page can scroll to it. Use the same value in the Link grid block, e.g. eru-erudite."
+    },
     {
       "type": "inline_richtext",
       "id": "title",
