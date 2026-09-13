@@ -1,0 +1,158 @@
+.link-grid__items {
+  --link-grid-gap: 0.8rem;
+
+  /* Overridden per section instance via an inline style on this element. */
+  --link-grid-columns-desktop: 3;
+  --link-grid-columns-mobile: 1;
+  --link-grid-card-height: 7.2rem;
+  --link-grid-radius: 0px;
+
+  /* Mobile-first: the desktop count is swapped in at the 750px breakpoint. */
+  --link-grid-columns: var(--link-grid-columns-mobile);
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--link-grid-gap);
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Heading and description span the full row so links wrap beneath them. */
+.link-grid__item--heading,
+.link-grid__item--description {
+  flex: 0 0 100%;
+}
+
+.link-grid__heading {
+  margin: 0;
+}
+
+.link-grid__item--description + .link-grid__item--text,
+.link-grid__item--heading + .link-grid__item--text {
+  margin-top: 0.5rem;
+}
+
+.link-grid__description {
+  margin: 0;
+}
+
+.link-grid__description > *:first-child {
+  margin-top: 0;
+}
+
+.link-grid__description > *:last-child {
+  margin-bottom: 0;
+}
+
+/* h6 has no sizing class in base.css; keep it a step below h5. */
+.link-grid__heading.h6 {
+  font-size: calc(var(--font-heading-scale) * 1.2rem);
+  letter-spacing: 0.1rem;
+  line-height: calc(1 + 0.3 / max(1, var(--font-heading-scale)));
+}
+
+/* ---------- Text links ---------- */
+
+.link-grid__item--text {
+  flex: 0 0 auto;
+  align-self: center;
+}
+
+.link-grid__text-link {
+  display: inline-block;
+  padding: 0.4rem 0;
+  color: rgb(var(--color-link));
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  transition: opacity var(--duration-short) ease;
+}
+
+.link-grid__text-link:hover {
+  opacity: 0.75;
+}
+
+/* ---------- Card links ---------- */
+
+.link-grid__item--card {
+  flex: 0 1 calc(
+    (100% - (var(--link-grid-columns) - 1) * var(--link-grid-gap)) / var(--link-grid-columns)
+  );
+  min-width: 0;
+}
+
+.link-grid__card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--link-grid-card-height);
+  height: 100%;
+  padding: 1.6rem 2rem;
+  overflow: hidden;
+  border-radius: var(--link-grid-radius);
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  text-align: center;
+  text-decoration: none;
+  transition: background var(--duration-short) ease-in-out;
+}
+
+.link-grid__card-bg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 115%;
+  transition: background-size var(--duration-default) ease-in-out;
+}
+
+/* Scrim keeps label legible over arbitrary artwork. */
+.link-grid__card--image .link-grid__card-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(32, 32, 33, 0.4);
+}
+
+.link-grid__card:hover .link-grid__card-bg {
+  background-size: 125%;
+}
+
+.link-grid__card-text {
+  position: relative;
+  z-index: 1;
+  word-break: break-word;
+}
+
+.link-grid__card--image .link-grid__card-text {
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+}
+
+@media screen and (max-width: 749px) {
+  .link-grid__items {
+    --link-grid-gap: 0.6rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .link-grid__items {
+    --link-grid-columns: var(--link-grid-columns-desktop);
+  }
+}
+
+/* Scroll target on jump-to sections; offsets the sticky header. */
+.section-anchor {
+  display: block;
+  position: relative;
+  height: 0;
+  scroll-margin-top: calc(var(--header-height, 0px) + 2rem);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

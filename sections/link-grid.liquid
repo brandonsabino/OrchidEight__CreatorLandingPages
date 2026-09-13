@@ -1,0 +1,332 @@
+{{ 'section-link-grid.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  case section.settings.card_height
+    when 'small'
+      assign card_height = '5rem'
+    when 'large'
+      assign card_height = '12rem'
+    else
+      assign card_height = '7.2rem'
+  endcase
+-%}
+
+<div class="color-{{ section.settings.color_scheme }} isolate gradient">
+  <div class="link-grid page-width section-{{ section.id }}-padding">
+    <div
+      class="link-grid__items"
+      style="
+        --link-grid-columns-desktop: {{ section.settings.columns_desktop }};
+        --link-grid-columns-mobile: {{ section.settings.columns_mobile }};
+        --link-grid-card-height: {{ card_height }};
+        --link-grid-radius: {{ section.settings.corner_radius }}px;
+      "
+    >
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            <div class="link-grid__item link-grid__item--heading" {{ block.shopify_attributes }}>
+              {%- assign heading_level = block.settings.heading_level | default: 'h2' -%}
+              <{{ heading_level }} class="link-grid__heading inline-richtext {{ heading_level }}">
+                {{- block.settings.heading -}}
+              </{{ heading_level }}>
+            </div>
+
+          {%- when 'description' -%}
+            <div class="link-grid__item link-grid__item--description" {{ block.shopify_attributes }}>
+              <div class="link-grid__description rte">{{ block.settings.description }}</div>
+            </div>
+
+          {%- when 'text_link' -%}
+            {%- liquid
+              assign link_url = ''
+              if block.settings.target_id != blank
+                assign link_url = block.settings.target_id | handle | prepend: '#'
+              elsif block.settings.page != blank
+                assign link_url = block.settings.page.url
+              endif
+
+              assign link_label = block.settings.label
+              if link_label == blank
+                assign link_label = block.settings.page.title
+              endif
+            -%}
+            {%- if link_url != blank and link_label != blank -%}
+              <div class="link-grid__item link-grid__item--text" {{ block.shopify_attributes }}>
+                <a class="link-grid__text-link" href="{{ link_url }}">{{ link_label | escape }}</a>
+              </div>
+            {%- endif -%}
+
+          {%- when 'card_link' -%}
+            {%- liquid
+              assign link_url = ''
+              if block.settings.target_id != blank
+                assign link_url = block.settings.target_id | handle | prepend: '#'
+              elsif block.settings.page != blank
+                assign link_url = block.settings.page.url
+              endif
+
+              assign link_label = block.settings.label
+              if link_label == blank
+                assign link_label = block.settings.page.title
+              endif
+
+              assign has_image = false
+              if block.settings.background_image != blank
+                assign has_image = true
+              endif
+            -%}
+            {%- if link_url != blank and link_label != blank -%}
+              <div class="link-grid__item link-grid__item--card" {{ block.shopify_attributes }}>
+                <a
+                  class="link-grid__card{% if has_image %} link-grid__card--image{% endif %}"
+                  href="{{ link_url }}"
+                  {% if block.settings.text_color != blank %}
+                    style="color: {{ block.settings.text_color }};"
+                  {% endif %}
+                >
+                  <span
+                    class="link-grid__card-bg"
+                    {% if has_image %}
+                      style="background-image: url('{{ block.settings.background_image | image_url: width: 1200 }}');"
+                    {% elsif block.settings.background_color != blank %}
+                      style="background-color: {{ block.settings.background_color }};"
+                    {% endif %}
+                  ></span>
+                  <span class="link-grid__card-text">{{ link_label | escape }}</span>
+                </a>
+              </div>
+            {%- endif -%}
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Link grid",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Link to a section further down the page by entering the same Target ID you set on that section (for example, on a Featured collection)."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Columns on desktop",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Columns on mobile",
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "card_height",
+      "label": "Card height",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Corner radius",
+      "info": "Applies to every card in this section.",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Jump to"
+        },
+        {
+          "type": "select",
+          "id": "heading_level",
+          "label": "Heading level",
+          "info": "Sets the HTML tag and text size. Use H1 only once per page.",
+          "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" },
+            { "value": "h3", "label": "H3" },
+            { "value": "h4", "label": "H4" },
+            { "value": "h5", "label": "H5" },
+            { "value": "h6", "label": "H6" }
+          ],
+          "default": "h2"
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Pick a creator to jump to their products.</p>"
+        }
+      ]
+    },
+    {
+      "type": "text_link",
+      "name": "Text link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Display name",
+          "default": "Text link"
+        },
+        {
+          "type": "text",
+          "id": "target_id",
+          "label": "Target ID",
+          "info": "Scrolls to the section on this page with a matching Target ID. Takes priority over Page."
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Page",
+          "info": "Used only when Target ID is empty."
+        }
+      ]
+    },
+    {
+      "type": "card_link",
+      "name": "Card link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Display name",
+          "default": "Card link"
+        },
+        {
+          "type": "text",
+          "id": "target_id",
+          "label": "Target ID",
+          "info": "Scrolls to the section on this page with a matching Target ID. Takes priority over Page."
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Page",
+          "info": "Used only when Target ID is empty."
+        },
+        {
+          "type": "header",
+          "content": "Background"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background image",
+          "info": "Takes priority over background color."
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background color"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "visible_if": "{{ block.settings.background_image != blank or block.settings.background_color != blank }}"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Link grid",
+      "blocks": [
+        { "type": "heading" },
+        { "type": "card_link" },
+        { "type": "card_link" },
+        { "type": "card_link" }
+      ]
+    }
+  ]
+}
+{% endschema %}
