@@ -1,0 +1,135 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign collection_page_match = false
+
+  if collection and settings.enable_creator_landing_pages
+    for creator_collection in settings.creator_landing_pages_collections
+      if creator_collection.title == collection.title
+        assign collection_page_match = true
+        break
+      endif
+    endfor
+
+    if collection_page_match == false
+      for creator_collection in settings.creator_landing_pages_collections_overflow
+        if creator_collection.title == collection.title
+          assign collection_page_match = true
+          break
+        endif
+      endfor
+    endif
+
+    if collection_page_match == false
+      for creator_collection in settings.creator_landing_pages_collections_overflow_2
+        if creator_collection.title == collection.title
+          assign collection_page_match = true
+          break
+        endif
+      endfor
+    endif
+
+    if collection_page_match == false
+      for creator_collection in settings.creator_landing_pages_collections_overflow_3
+        if creator_collection.title == collection.title
+          assign collection_page_match = true
+          break
+        endif
+      endfor
+    endif
+  endif
+
+  # When the collection image is enabled, the metafield is the only source: no image hides the section
+  assign hide_section = false
+  if section.settings.use_collection_banner_image
+    assign banner_image = nil
+    if collection_page_match
+      assign banner_image = collection.metafields.custom.collection_banner_image.value
+    endif
+    if banner_image == blank
+      assign hide_section = true
+    endif
+  else
+    assign banner_image = section.settings.image
+  endif
+-%}
+
+{%- if hide_section -%}
+  {%- style -%}
+    #shopify-section-{{ section.id }} {
+      display: none;
+    }
+  {%- endstyle -%}
+{%- else -%}
+  {%- if banner_image != blank -%}
+    {%- style -%}
+      /* The media is absolutely positioned, so the slide needs its own height to show the image */
+      #CreatorCollectionBanner-{{ section.id }} .slideshow__slide::before {
+        padding-bottom: {{ 1 | divided_by: banner_image.aspect_ratio | times: 100 }}%;
+        content: '';
+        display: block;
+      }
+    {%- endstyle -%}
+  {%- endif -%}
+
+  <div
+    class="slideshow banner banner--adapt_image grid--1-col{% if banner_image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+    id="CreatorCollectionBanner-{{ section.id }}"
+  >
+    <div class="slideshow__slide grid__item grid--1-col">
+      <div class="slideshow__media banner__media media{% if banner_image == blank %} placeholder{% endif %}">
+        {%- if banner_image != blank -%}
+          {%- liquid
+            assign height = banner_image.width | divided_by: banner_image.aspect_ratio | round
+            assign fetch_priority = 'auto'
+            if section.index == 1
+              assign fetch_priority = 'high'
+            endif
+          -%}
+          {{
+            banner_image
+            | image_url: width: 3840
+            | image_tag:
+              height: height,
+              sizes: '100vw',
+              widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+              fetchpriority: fetch_priority
+          }}
+        {%- else -%}
+          {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Creator Collection Banner",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_collection_banner_image",
+      "label": "Use creator collection banner image",
+      "info": "On creator collection pages, shows the image from the collection's custom.collection_banner_image metafield. The section is hidden when the metafield is empty or the page isn't a creator collection.",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Creator Collection Banner"
+    }
+  ]
+}
+{% endschema %}
