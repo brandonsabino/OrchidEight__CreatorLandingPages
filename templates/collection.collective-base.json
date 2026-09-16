@@ -1,0 +1,251 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "custom_css": [
+        ".collection-hero__description {text-align: center; margin: auto; padding-bottom: 40px;}",
+        "table {width: 100% !important;}"
+      ],
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "color_scheme": "scheme-4"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "enabled_filtered_sections": false,
+        "products_per_page": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-4",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "columns_mobile": "2",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "link_grid_HJVgKw": {
+      "type": "link-grid",
+      "blocks": {
+        "description_RyKxJ3": {
+          "type": "description",
+          "settings": {
+            "description": "<p>There's a few of us...</p>"
+          }
+        },
+        "heading_Axgfkc": {
+          "type": "heading",
+          "settings": {
+            "heading": "Meet the bricks",
+            "heading_level": "h1"
+          }
+        },
+        "card_link_QQpVhU": {
+          "type": "card_link",
+          "settings": {
+            "label": "John",
+            "target_id": "john",
+            "page": "",
+            "background_color": "",
+            "text_color": ""
+          }
+        },
+        "card_link_cziExq": {
+          "type": "card_link",
+          "settings": {
+            "label": "Jimmy",
+            "target_id": "jimmy",
+            "page": "",
+            "background_color": "",
+            "text_color": ""
+          }
+        },
+        "card_link_wY6D8h": {
+          "type": "card_link",
+          "settings": {
+            "label": "Robert",
+            "target_id": "robert",
+            "page": "",
+            "background_color": "",
+            "text_color": ""
+          }
+        },
+        "card_link_DWLMtp": {
+          "type": "card_link",
+          "settings": {
+            "label": "JPJ",
+            "target_id": "jpj",
+            "page": "",
+            "background_color": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "description_RyKxJ3",
+        "heading_Axgfkc",
+        "card_link_QQpVhU",
+        "card_link_cziExq",
+        "card_link_wY6D8h",
+        "card_link_DWLMtp"
+      ],
+      "name": "Link grid",
+      "settings": {
+        "color_scheme": "",
+        "columns_desktop": 4,
+        "columns_mobile": 2,
+        "card_height": "small",
+        "corner_radius": 18,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_WdqNAc": {
+      "type": "featured-collection",
+      "name": "Featured collection - John",
+      "settings": {
+        "target_id": "john",
+        "title": "John",
+        "heading_size": "h1",
+        "description": "<p>The original, never to be imitated.</p>",
+        "show_description": true,
+        "description_style": "body",
+        "collection": "brick-haus-copy",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-51d71a61-e01f-4d4c-b576-4e144461e827",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "featured_collection_3QA8LL": {
+      "type": "featured-collection",
+      "name": "Featured collection - Jimmy",
+      "settings": {
+        "target_id": "jimmy",
+        "title": "Jimmy",
+        "heading_size": "h1",
+        "description": "<p>The original, never to be imitated.</p>",
+        "show_description": true,
+        "description_style": "body",
+        "collection": "john-copy",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-3",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "featured_collection_tpxMEj": {
+      "type": "featured-collection",
+      "name": "Featured collection - Robert",
+      "settings": {
+        "target_id": "robert",
+        "title": "Robert",
+        "heading_size": "h1",
+        "description": "<p>The original, never to be imitated.</p>",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "john-copy",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-51d71a61-e01f-4d4c-b576-4e144461e827",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "featured_collection_wiQkjx": {
+      "type": "featured-collection",
+      "name": "Featured collection - JPJ",
+      "settings": {
+        "target_id": "jpj",
+        "title": "JPJ",
+        "heading_size": "h1",
+        "description": "<p>Are we gonna pretend like I wasn't the most talented one?</p>",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "brick-haus-copy-2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-3",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "link_grid_HJVgKw",
+    "featured_collection_WdqNAc",
+    "featured_collection_3QA8LL",
+    "featured_collection_tpxMEj",
+    "featured_collection_wiQkjx"
+  ]
+}
