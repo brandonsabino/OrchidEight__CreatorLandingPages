@@ -20,6 +20,18 @@
     "cart-footer": {
       "type": "main-cart-footer",
       "blocks": {
+        "openborder_total_cost_CtWmVw": {
+          "type": "shopify://apps/openborder/blocks/total_cost/335cda27-4b00-4fc1-bf39-81ea7041d51e",
+          "settings": {
+            "text_color": "#000000",
+            "progress_color": "#4CAF50",
+            "font_size": "14px",
+            "supported_countries": "",
+            "is_in_cart": false,
+            "is_staging": false,
+            "subdomain_to_use": ""
+          }
+        },
         "subtotal": {
           "type": "subtotal",
           "settings": {}
@@ -30,6 +42,7 @@
         }
       },
       "block_order": [
+        "openborder_total_cost_CtWmVw",
         "subtotal",
         "buttons"
       ],

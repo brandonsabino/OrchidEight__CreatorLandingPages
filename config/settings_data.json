@@ -12,9 +12,9 @@
     "logo": "shopify://shop_images/O8_Website_Logo.png",
     "logo_width": 90,
     "favicon": "shopify://shop_images/O8_Elements_O8_1_7fd3b452-7789-44ed-83c2-b64ba6634a10.png",
-    "type_header_font": "assistant_n4",
+    "type_header_font": "bayon_n4",
     "heading_scale": 100,
-    "type_body_font": "assistant_n4",
+    "type_body_font": "bayon_n4",
     "body_scale": 100,
     "page_width": 1600,
     "spacing_sections": 0,
@@ -147,7 +147,9 @@
       "yomi-quinnley"
     ],
     "creator_landing_pages_collections_overflow_2": [],
-    "creator_landing_pages_collections_overflow_3": [],
+    "creator_landing_pages_collections_overflow_3": [
+      "bricky-copy"
+    ],
     "card_style": "card",
     "card_image_padding": 0,
     "card_text_alignment": "left",
@@ -531,12 +533,12 @@
       },
       "scheme-4": {
         "settings": {
-          "background": "#121212",
+          "background": "#cc1747",
           "background_gradient": "",
           "text": "#ffffff",
-          "button": "#ffffff",
-          "button_label": "#121212",
-          "secondary_button_label": "#ffffff",
+          "button": "#f9b455",
+          "button_label": "#000000",
+          "secondary_button_label": "#f9b455",
           "shadow": "#121212"
         }
       },
@@ -564,10 +566,10 @@
       },
       "scheme-51d71a61-e01f-4d4c-b576-4e144461e827": {
         "settings": {
-          "background": "#8f937c",
+          "background": "#f9b455",
           "background_gradient": "",
-          "text": "#121212",
-          "button": "#121212",
+          "text": "#000000",
+          "button": "#cc1747",
           "button_label": "#ffffff",
           "secondary_button_label": "#121212",
           "shadow": "#121212"
