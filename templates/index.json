@@ -200,6 +200,9 @@
           "type": "row",
           "settings": {
             "image": "shopify://shop_images/luis-villasmil-ITFwHdPEED0-unsplash.jpg",
+            "image_count": 3,
+            "image_2": "shopify://shop_images/fredrick-tendong-6ou8gWpS9ns-unsplash.jpg",
+            "image_3": "shopify://shop_images/game-console-controller-illuminated.jpg",
             "caption": "show your support",
             "heading": "You love them? We love them too.",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu augue eu odio pharetra condimentum. Cras facilisis, erat ut faucibus volutpat, neque libero sagittis nulla, eget semper nisl nisl non dolor.</p>",
@@ -211,6 +214,7 @@
           "type": "row",
           "settings": {
             "image": "shopify://shop_images/revised_mock_up2.png",
+            "image_count": 1,
             "caption": "subscribe for updates",
             "heading": "Never miss a drop",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu augue eu odio pharetra condimentum. Cras facilisis, erat ut faucibus volutpat, neque libero sagittis nulla, eget semper nisl nisl non dolor.</p>",
@@ -222,6 +226,7 @@
           "type": "row",
           "settings": {
             "image": "shopify://shop_images/girl-dm_card_mockup2.png",
+            "image_count": 1,
             "caption": "Shop Orchid Eight Exclusives",
             "heading": "You won't find this anywhere else.",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu augue eu odio pharetra condimentum. Cras facilisis, erat ut faucibus volutpat, neque libero sagittis nulla, eget semper nisl nisl non dolor.</p>",
