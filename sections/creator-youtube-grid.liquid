@@ -1,0 +1,292 @@
+{% comment %}
+  Creator YouTube Videos
+
+  A row of YouTube embeds that scrolls, four across on desktop and one on
+  mobile, with arrows and dots. Videos are added as blocks: YouTube has no way
+  to list a channel's latest uploads without an API key, so the video URLs are
+  entered by hand.
+
+  The creator's YouTube metafield is used for the channel link below the row.
+{% endcomment %}
+
+{{ 'component-creator-embeds.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'creator-youtube-grid.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign creator_collections = settings.creator_landing_pages_collections
+  assign creator_collections = creator_collections | concat: settings.creator_landing_pages_collections_overflow
+  assign creator_collections = creator_collections | concat: settings.creator_landing_pages_collections_overflow_2
+  assign creator_collections = creator_collections | concat: settings.creator_landing_pages_collections_overflow_3
+
+  assign is_creator_page = false
+
+  if settings.enable_creator_landing_pages
+    if collection
+      for creator_collection in creator_collections
+        if creator_collection.title == collection.title
+          assign creator_source = collection
+          assign is_creator_page = true
+          break
+        endif
+      endfor
+    endif
+
+    if is_creator_page == false and product
+      for product_collection in product.collections
+        for creator_collection in creator_collections
+          if creator_collection.title == product_collection.title
+            assign creator_source = product_collection
+            assign is_creator_page = true
+            break
+          endif
+        endfor
+        if is_creator_page
+          break
+        endif
+      endfor
+    endif
+  endif
+
+  assign channel_url = section.settings.channel_url
+  if channel_url == blank and is_creator_page
+    assign channel_url = creator_source.metafields.custom.creator_landing_page_youtube_account.value.url
+  endif
+-%}
+
+{%- if section.blocks.size > 0 -%}
+  {%- style -%}
+    #shopify-section-{{ section.id }} .creator-youtube {
+      --videos-per-view: {{ section.settings.videos_per_view }};
+    }
+
+    #shopify-section-{{ section.id }} .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      #shopify-section-{{ section.id }} .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+
+  <div class="color-{{ section.settings.color_scheme }} gradient">
+    <div class="section-{{ section.id }}-padding page-width">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="title {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      <creator-youtube-grid class="creator-youtube">
+        <div class="creator-youtube__viewport">
+        {%- if section.settings.show_arrows and section.blocks.size > section.settings.videos_per_view -%}
+          <button
+            type="button"
+            class="creator-youtube__nav creator-youtube__nav--prev"
+            data-yt-prev
+            aria-label="{{ 'general.slider.previous_slide' | t }}"
+          >
+            <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+          </button>
+        {%- endif -%}
+
+        <div class="creator-youtube__track" data-yt-track>
+          {%- for block in section.blocks -%}
+            {%- liquid
+              assign raw = block.settings.video_url | strip
+              assign video_id = raw
+
+              if raw contains 'youtu.be/'
+                assign video_id = raw | split: 'youtu.be/' | last | split: '?' | first | split: '&' | first
+              elsif raw contains 'watch?v='
+                assign video_id = raw | split: 'watch?v=' | last | split: '&' | first
+              elsif raw contains '/embed/'
+                assign video_id = raw | split: '/embed/' | last | split: '?' | first | split: '&' | first
+              elsif raw contains '/shorts/'
+                assign video_id = raw | split: '/shorts/' | last | split: '?' | first | split: '&' | first
+              endif
+
+              assign video_id = video_id | split: '/' | first | strip
+            -%}
+            {%- if video_id != blank -%}
+              <div class="creator-youtube__slide" {{ block.shopify_attributes }}>
+                <div class="creator-youtube__video">
+                  <iframe
+                    src="https://www.youtube.com/embed/{{ video_id | url_encode }}?rel=0&modestbranding=1"
+                    title="{{ block.settings.title | default: 'YouTube video' | escape }}"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if section.settings.show_arrows and section.blocks.size > section.settings.videos_per_view -%}
+          <button
+            type="button"
+            class="creator-youtube__nav creator-youtube__nav--next"
+            data-yt-next
+            aria-label="{{ 'general.slider.next_slide' | t }}"
+          >
+            <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+          </button>
+        {%- endif -%}
+        </div>
+
+        {%- if section.settings.show_dots and section.blocks.size > section.settings.videos_per_view -%}
+          <div class="creator-youtube__dots">
+            {%- for block in section.blocks -%}
+              <button
+                type="button"
+                class="creator-youtube__dot{% if forloop.first %} is-active{% endif %}"
+                data-yt-dot
+                aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+              ></button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </creator-youtube-grid>
+
+      {%- if section.settings.show_channel_link and channel_url != blank -%}
+        <div class="creator-youtube__footer">
+          <a href="{{ channel_url }}" class="button button--secondary" target="_blank" rel="noopener">
+            {{ section.settings.channel_link_label | default: 'Watch on YouTube' | escape }}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Creator YouTube Videos",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Add a block per video. YouTube cannot list a channel's latest uploads without an API key, so videos are entered by hand. The channel link below the row comes from the creator's YouTube metafield."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "range",
+      "id": "videos_per_view",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4,
+      "label": "Videos per row",
+      "info": "Desktop only. Mobile always shows one at a time."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "default": true,
+      "label": "Show arrows"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "default": true,
+      "label": "Show dots"
+    },
+    {
+      "type": "text",
+      "id": "channel_url",
+      "label": "Channel URL override",
+      "info": "Overrides the creator metafield, and lets the section work on non-creator pages."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_channel_link",
+      "default": true,
+      "label": "Show link to channel"
+    },
+    {
+      "type": "text",
+      "id": "channel_link_label",
+      "default": "Watch on YouTube",
+      "label": "Link label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "YouTube URL or ID",
+          "info": "Accepts a watch link, youtu.be link, Shorts link, embed link, or the bare video ID."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "Used as the iframe's accessible name."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Creator YouTube Videos",
+      "blocks": [{ "type": "video" }, { "type": "video" }, { "type": "video" }, { "type": "video" }]
+    }
+  ]
+}
+{% endschema %}

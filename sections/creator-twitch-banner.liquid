@@ -1,0 +1,312 @@
+{% comment %}
+  Creator Twitch Banner
+
+  Embeds the creator's Twitch channel, taken from the collection's
+  creator_landing_page_twitch_account metafield, with an optional decorative
+  image layered over the player.
+
+  Twitch requires a parent parameter matching the domain serving the page, so
+  every host the storefront answers on is passed. Note that Twitch rejects IP
+  addresses, so the embed will not play on the local dev server — review it on a
+  preview or the live domain.
+
+  Renders nothing when no channel can be resolved.
+{% endcomment %}
+
+{{ 'component-creator-embeds.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign creator_collections = settings.creator_landing_pages_collections
+  assign creator_collections = creator_collections | concat: settings.creator_landing_pages_collections_overflow
+  assign creator_collections = creator_collections | concat: settings.creator_landing_pages_collections_overflow_2
+  assign creator_collections = creator_collections | concat: settings.creator_landing_pages_collections_overflow_3
+
+  assign is_creator_page = false
+
+  if settings.enable_creator_landing_pages
+    if collection
+      for creator_collection in creator_collections
+        if creator_collection.title == collection.title
+          assign creator_source = collection
+          assign is_creator_page = true
+          break
+        endif
+      endfor
+    endif
+
+    if is_creator_page == false and product
+      for product_collection in product.collections
+        for creator_collection in creator_collections
+          if creator_collection.title == product_collection.title
+            assign creator_source = product_collection
+            assign is_creator_page = true
+            break
+          endif
+        endfor
+        if is_creator_page
+          break
+        endif
+      endfor
+    endif
+  endif
+
+  # A manual channel always wins, so the section also works off a creator page
+  assign twitch_url = ''
+  if is_creator_page
+    assign twitch_url = creator_source.metafields.custom.creator_landing_page_twitch_account.value.url
+  endif
+
+  assign channel = section.settings.channel | strip
+  if channel == blank and twitch_url != blank
+    assign channel = twitch_url
+  endif
+
+  if channel contains 'twitch.tv/'
+    assign channel = channel | split: 'twitch.tv/' | last | split: '?' | first | split: '/' | first
+  endif
+  assign channel = channel | strip | downcase
+
+  # Twitch refuses to load unless a parent value matches the domain embedding
+  # the page. request.host reports the shop domain even on the dev server, so
+  # localhost is added explicitly — browse the dev server at localhost, not
+  # 127.0.0.1, since Twitch rejects raw IP addresses.
+  assign host = request.host | split: ':' | first
+  assign parent_hosts = host
+  assign parent_hosts = parent_hosts | append: ',' | append: shop.domain
+  assign parent_hosts = parent_hosts | append: ',' | append: shop.permanent_domain
+  assign parent_hosts = parent_hosts | append: ',localhost'
+  assign parent_hosts = parent_hosts | append: ',' | append: section.settings.extra_parents
+
+  assign parents = ''
+  assign seen_hosts = '|'
+  assign parent_list = parent_hosts | split: ','
+
+  for parent_host in parent_list
+    assign clean_host = parent_host | strip | split: '//' | last | split: '/' | first | split: ':' | first | downcase
+    unless clean_host == blank
+      assign marker = '|' | append: clean_host | append: '|'
+      unless seen_hosts contains marker
+        assign seen_hosts = seen_hosts | append: clean_host | append: '|'
+        unless parents == blank
+          assign parents = parents | append: '&'
+        endunless
+        assign parents = parents | append: 'parent=' | append: clean_host
+      endunless
+    endunless
+  endfor
+
+  assign autoplay = 'false'
+  if section.settings.autoplay
+    assign autoplay = 'true'
+  endif
+  assign muted = 'false'
+  if section.settings.muted
+    assign muted = 'true'
+  endif
+
+  assign max_height = 'none'
+  if section.settings.max_height_vh > 0
+    assign max_height = section.settings.max_height_vh | append: 'vh'
+  endif
+-%}
+
+{%- if channel != blank -%}
+  {%- style -%}
+    #shopify-section-{{ section.id }} .creator-twitch {
+      --twitch-ratio: {{ section.settings.ratio | default: '16 / 9' }};
+      --twitch-max-height: {{ max_height }};
+    }
+
+    #shopify-section-{{ section.id }} .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      #shopify-section-{{ section.id }} .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+
+  <div class="color-{{ section.settings.color_scheme }} gradient">
+    <div class="section-{{ section.id }}-padding">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="title {{ section.settings.heading_size }} page-width">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      <div class="creator-twitch">
+        <div class="creator-twitch__player">
+          <iframe
+            src="https://player.twitch.tv/?channel={{ channel | url_encode }}&{{ parents }}&autoplay={{ autoplay }}&muted={{ muted }}"
+            title="{{ channel | escape }} on Twitch"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        {%- if section.settings.overlay_image != blank -%}
+          <div class="creator-twitch__overlay">
+            {{
+              section.settings.overlay_image
+              | image_url: width: 2400
+              | image_tag: loading: 'lazy', widths: '750, 1100, 1500, 2000, 2400', alt: ''
+            }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.show_channel_link -%}
+          {%- comment -%}
+            .button already paints itself with the colour scheme's button colour.
+          {%- endcomment -%}
+          <div class="creator-twitch__footer">
+            <a
+              href="https://www.twitch.tv/{{ channel | url_encode }}"
+              class="button"
+              target="_blank"
+              rel="noopener"
+            >
+              {{ section.settings.channel_link_label | default: 'Watch on Twitch' | escape }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Creator Twitch Banner",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Uses the creator's Twitch metafield on creator collection and product pages. The embed does not play on the local dev server, because Twitch rejects IP addresses as a parent domain."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "text",
+      "id": "channel",
+      "label": "Channel override",
+      "info": "A channel name or Twitch URL. Overrides the creator metafield, and lets the section work on non-creator pages."
+    },
+    {
+      "type": "text",
+      "id": "extra_parents",
+      "label": "Extra parent domains",
+      "info": "Comma separated. Twitch only loads when one parent matches the domain in the address bar. The shop domains and localhost are already included; add a preview domain here to test on a share link."
+    },
+    {
+      "type": "image_picker",
+      "id": "overlay_image",
+      "label": "Overlay image",
+      "info": "Sits over the player as a frame. Clicks pass through it."
+    },
+    {
+      "type": "select",
+      "id": "ratio",
+      "options": [
+        { "value": "16 / 9", "label": "16:9" },
+        { "value": "16 / 10", "label": "16:10" },
+        { "value": "21 / 9", "label": "21:9 (cinematic)" },
+        { "value": "4 / 3", "label": "4:3" },
+        { "value": "3 / 1", "label": "3:1 (banner strip)" }
+      ],
+      "default": "16 / 9",
+      "label": "Aspect ratio"
+    },
+    {
+      "type": "range",
+      "id": "max_height_vh",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "default": 75,
+      "label": "Maximum height",
+      "info": "Share of the screen height the player may fill. 0 removes the cap. The player stays full width, so once capped the aspect ratio gives way and Twitch letterboxes inside the frame."
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "default": true,
+      "label": "Autoplay"
+    },
+    {
+      "type": "checkbox",
+      "id": "muted",
+      "default": true,
+      "label": "Start muted",
+      "info": "Browsers block autoplay with sound, so leave this on if autoplay is enabled."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_channel_link",
+      "default": true,
+      "label": "Show link to channel"
+    },
+    {
+      "type": "text",
+      "id": "channel_link_label",
+      "default": "Watch on Twitch",
+      "label": "Link label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Creator Twitch Banner"
+    }
+  ]
+}
+{% endschema %}

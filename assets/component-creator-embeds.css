@@ -1,0 +1,212 @@
+/* Creator Twitch banner and YouTube videos */
+
+/* --- Twitch --- */
+.creator-twitch {
+  position: relative;
+  width: 100%;
+}
+
+/* aspect-ratio rather than a padding-bottom hack, so max-height can cap it —
+   padding-based height ignores max-height entirely. */
+.creator-twitch__player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--twitch-ratio, 16 / 9);
+  max-height: var(--twitch-max-height, none);
+  overflow: hidden;
+}
+
+.creator-twitch__player iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Decorative frame sits over the player and must not swallow clicks */
+.creator-twitch__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.creator-twitch__overlay img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Sits over the player, above the decorative frame */
+.creator-twitch__footer {
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  z-index: 3;
+}
+
+@media screen and (max-width: 749px) {
+  .creator-twitch__footer {
+    left: 1.2rem;
+    bottom: 1.2rem;
+  }
+}
+
+/* --- YouTube --- */
+/* Custom elements are inline by default, which gives absolutely positioned
+   children a containing block that does not span the track. */
+.creator-youtube {
+  display: block;
+  position: relative;
+}
+
+/* Arrows centre against the videos only, not the dots row below them */
+.creator-youtube__viewport {
+  position: relative;
+}
+
+.creator-youtube__track {
+  display: flex;
+  gap: 1.6rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.creator-youtube__track::-webkit-scrollbar {
+  display: none;
+}
+
+.creator-youtube__slide {
+  flex: 0 0 calc((100% - (var(--videos-per-view, 4) - 1) * 1.6rem) / var(--videos-per-view, 4));
+  scroll-snap-align: start;
+}
+
+.creator-youtube__video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+}
+
+.creator-youtube__video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.creator-youtube__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+}
+
+.creator-youtube__nav .svg-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.creator-youtube__nav svg {
+  width: 100%;
+  height: auto;
+  fill: currentColor;
+}
+
+/* icon-caret.svg points downwards, so each direction is rotated into place */
+.creator-youtube__nav--prev svg {
+  transform: rotate(90deg);
+}
+
+.creator-youtube__nav--next svg {
+  transform: rotate(-90deg);
+}
+
+.creator-youtube__nav--prev {
+  left: -2.2rem;
+}
+
+.creator-youtube__nav--next {
+  right: -2.2rem;
+}
+
+.creator-youtube__nav[disabled] {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.creator-youtube__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 2.4rem;
+}
+
+.creator-youtube__dot {
+  width: 1rem;
+  height: 1rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: rgba(var(--color-button), 0.4);
+  transition: background-color var(--duration-default, 0.2s) ease;
+}
+
+.creator-youtube__dot.is-active,
+.creator-youtube__dot:hover {
+  background-color: rgb(var(--color-button));
+}
+
+.creator-youtube__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+@media screen and (max-width: 749px) {
+  .creator-youtube__slide {
+    flex: 0 0 100%;
+  }
+
+  .creator-youtube__nav {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .creator-youtube__nav--prev {
+    left: 1rem;
+  }
+
+  .creator-youtube__nav--next {
+    right: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .creator-youtube__track {
+    scroll-behavior: auto;
+  }
+}
