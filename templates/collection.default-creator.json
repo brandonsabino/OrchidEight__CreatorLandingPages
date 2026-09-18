@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "creator_collection_banner_q6C68k": {
+      "type": "creator-collection-banner",
+      "name": "Creator Collection Banner",
+      "settings": {
+        "use_collection_banner_image": true
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "custom_css": [
@@ -42,13 +49,6 @@
         "text_color": "#000000",
         "fallback_message": "Stay tuned for our next release!",
         "section_background": "#ffffff"
-      }
-    },
-    "creator_collection_banner_q6C68k": {
-      "type": "creator-collection-banner",
-      "name": "Creator Collection Banner",
-      "settings": {
-        "use_collection_banner_image": true
       }
     },
     "product-grid": {

@@ -24,10 +24,10 @@
           "type": "shopify://apps/openborder/blocks/total_cost/335cda27-4b00-4fc1-bf39-81ea7041d51e",
           "settings": {
             "text_color": "#000000",
-            "progress_color": "#4CAF50",
-            "font_size": "14px",
+            "progress_color": "#CC1747",
+            "font_size": "16px",
             "supported_countries": "",
-            "is_in_cart": false,
+            "is_in_cart": true,
             "is_staging": false,
             "subdomain_to_use": ""
           }
