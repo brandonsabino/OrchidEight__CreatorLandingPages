@@ -44,16 +44,30 @@
               >
                 <div class="mega-menu__inner page-width">
                   {%- if link.links != blank -%}
+                    {%- comment -%}
+                      Dawn hardcodes six columns. Use only as many as this menu
+                      item actually needs, so short menus do not leave empty
+                      columns stretching across the panel.
+                    {%- endcomment -%}
+                    {%- assign mega_columns = link.links.size | at_most: 6 -%}
                     <ul
                       class="mega-menu__list{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
                       role="list"
+                      style="--mega-columns: {{ mega_columns }};"
                     >
                       {%- for childlink in link.links -%}
+                        {%- liquid
+                          assign child_button = false
+                          assign child_label = childlink.title | strip | downcase
+                          if section.settings.view_all_buttons and child_label == 'view all'
+                            assign child_button = true
+                          endif
+                        -%}
                         <li>
                           <a
                             id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                             href="{{ childlink.url }}"
-                            class="mega-menu__link mega-menu__link--level-2 link"
+                            class="mega-menu__link mega-menu__link--level-2 link{% if childlink.links != blank %} mega-menu__link--parent{% endif %}{% if child_button %} header__menu-item--button{% endif %}"
                             {% if childlink.current %}
                               aria-current="page"
                             {% endif %}
@@ -63,11 +77,18 @@
                           {%- if childlink.links != blank -%}
                             <ul class="list-unstyled" role="list">
                               {%- for grandchildlink in childlink.links -%}
+                                {%- liquid
+                                  assign grandchild_button = false
+                                  assign grandchild_label = grandchildlink.title | strip | downcase
+                                  if section.settings.view_all_buttons and grandchild_label == 'view all'
+                                    assign grandchild_button = true
+                                  endif
+                                -%}
                                 <li>
                                   <a
                                     id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                     href="{{ grandchildlink.url }}"
-                                    class="mega-menu__link link"
+                                    class="mega-menu__link link{% if grandchild_button %} header__menu-item--button{% endif %}"
                                     {% if grandchildlink.current %}
                                       aria-current="page"
                                     {% endif %}
