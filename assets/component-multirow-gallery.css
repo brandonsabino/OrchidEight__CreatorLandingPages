@@ -1,0 +1,83 @@
+/* Multirow row gallery — up to three images per row, swipeable, looping */
+
+/* When image height is set to Adapt the media wrapper sizes itself with
+   padding-bottom, leaving no content height for a percentage height to resolve
+   against. Filling the padded box absolutely works for both cases. */
+.image-with-text__media--gallery {
+  position: relative;
+}
+
+.multirow-gallery {
+  position: absolute;
+  inset: 0;
+  display: block;
+  height: 100%;
+}
+
+.multirow-gallery__track {
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.multirow-gallery__track::-webkit-scrollbar {
+  display: none;
+}
+
+.multirow-gallery__slide {
+  position: relative;
+  flex: 0 0 100%;
+  height: 100%;
+  scroll-snap-align: start;
+}
+
+.multirow-gallery__slide img,
+.multirow-gallery__slide .placeholder-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Bars take the button colour of the row's colour scheme */
+.multirow-gallery__bars {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1.2rem;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 0 1.2rem;
+}
+
+.multirow-gallery__bar {
+  width: 6.4rem;
+  height: 0.6rem;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(var(--color-button), 0.4);
+  transition: background-color var(--duration-default, 0.2s) ease;
+}
+
+.multirow-gallery__bar:hover,
+.multirow-gallery__bar.is-active {
+  background-color: rgb(var(--color-button));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .multirow-gallery__track {
+    scroll-behavior: auto;
+  }
+
+  .multirow-gallery__bar {
+    transition: none;
+  }
+}

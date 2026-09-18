@@ -1,4 +1,6 @@
 {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
+{{ 'component-multirow-gallery.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'multirow-gallery.js' | asset_url }}" defer="defer"></script>
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -51,17 +53,71 @@
       >
         <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.image_layout contains 'alternate' %}{% cycle odd_class, even_class %}{% else %}{{ odd_class }}{% endif %}">
           <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
+            {%- liquid
+              assign row_image_count = block.settings.image_count | default: 1
+              assign gallery_total = 0
+
+              if block.settings.image != blank
+                assign gallery_total = gallery_total | plus: 1
+              endif
+              if row_image_count > 1 and block.settings.image_2 != blank
+                assign gallery_total = gallery_total | plus: 1
+              endif
+              if row_image_count > 2 and block.settings.image_3 != blank
+                assign gallery_total = gallery_total | plus: 1
+              endif
+            -%}
             <div
-              class="image-with-text__media image-with-text__media--{{ section.settings.image_height }} gradient color-{{ section.settings.row_color_scheme }} global-media-settings{% if block.settings.image != blank %} media{% else %} image-with-text__media--placeholder placeholder{% endif %}"
+              class="image-with-text__media image-with-text__media--{{ section.settings.image_height }} gradient color-{{ section.settings.row_color_scheme }} global-media-settings{% if block.settings.image != blank %} media{% else %} image-with-text__media--placeholder placeholder{% endif %}{% if gallery_total > 1 %} image-with-text__media--gallery{% endif %}"
               {% if section.settings.image_height == 'adapt' and block.settings.image != blank %}
                 style="padding-bottom: {{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;"
               {% endif %}
             >
-              {%- if block.settings.image != blank -%}
-                {%- capture sizes -%}
-                  (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
-                  (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
-                {%- endcapture -%}
+              {%- capture sizes -%}
+                (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px,
+                (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
+              {%- endcapture -%}
+              {%- if gallery_total > 1 -%}
+                <multirow-gallery class="multirow-gallery" data-count="{{ gallery_total }}">
+                  <div class="multirow-gallery__track" data-gallery-track>
+                    <div class="multirow-gallery__slide">
+                      {{
+                        block.settings.image
+                        | image_url: width: 1500
+                        | image_tag: sizes: sizes, widths: '165, 360, 535, 750, 1070, 1500'
+                      }}
+                    </div>
+                    {%- if row_image_count > 1 and block.settings.image_2 != blank -%}
+                      <div class="multirow-gallery__slide">
+                        {{
+                          block.settings.image_2
+                          | image_url: width: 1500
+                          | image_tag: loading: 'lazy', sizes: sizes, widths: '165, 360, 535, 750, 1070, 1500'
+                        }}
+                      </div>
+                    {%- endif -%}
+                    {%- if row_image_count > 2 and block.settings.image_3 != blank -%}
+                      <div class="multirow-gallery__slide">
+                        {{
+                          block.settings.image_3
+                          | image_url: width: 1500
+                          | image_tag: loading: 'lazy', sizes: sizes, widths: '165, 360, 535, 750, 1070, 1500'
+                        }}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                  <div class="multirow-gallery__bars">
+                    {%- for i in (1..gallery_total) -%}
+                      <button
+                        type="button"
+                        class="multirow-gallery__bar{% if forloop.first %} is-active{% endif %}"
+                        data-gallery-bar
+                        aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ gallery_total }}"
+                      ></button>
+                    {%- endfor -%}
+                  </div>
+                </multirow-gallery>
+              {%- elsif block.settings.image != blank -%}
                 {{
                   block.settings.image
                   | image_url: width: 1500
@@ -356,6 +412,28 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.multirow.blocks.row.settings.image.label"
+        },
+        {
+          "type": "range",
+          "id": "image_count",
+          "min": 1,
+          "max": 3,
+          "step": 1,
+          "default": 1,
+          "label": "Images",
+          "info": "With more than one image the row becomes a swipeable gallery that loops. It never advances on its own."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Second image",
+          "visible_if": "{{ block.settings.image_count > 1 }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Third image",
+          "visible_if": "{{ block.settings.image_count > 2 }}"
         },
         {
           "type": "text",
