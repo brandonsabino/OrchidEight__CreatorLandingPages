@@ -96,6 +96,12 @@
     }
   }
 
+  /* Mobile logo width — the header is in its mobile layout below 990px */
+  @media screen and (max-width: 989px) {
+    .header__heading-logo {
+      width: {{ settings.mobile_logo_width }}px;
+    }
+  }
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
