@@ -24,11 +24,12 @@
   border: 0;
 }
 
-/* Decorative frame sits over the player and must not swallow clicks */
+/* Decorative frame sits over the player and must not swallow clicks. Kept below
+   the header's stacking level so an open menu is never painted over. */
 .creator-twitch__overlay {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -39,12 +40,14 @@
   object-fit: contain;
 }
 
-/* Sits over the player, above the decorative frame */
+/* Sits over the player and the decorative frame, but must stay below the
+   header, which is z-index 3 — at equal z-index this section wins on DOM order
+   and the button paints over an open menu. */
 .creator-twitch__footer {
   position: absolute;
   left: 2rem;
   bottom: 2rem;
-  z-index: 3;
+  z-index: 1;
 }
 
 @media screen and (max-width: 749px) {
