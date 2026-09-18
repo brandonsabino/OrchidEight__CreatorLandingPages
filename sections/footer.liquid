@@ -5,146 +5,6 @@
 {{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 
-{% assign is_creator_landing_page = false %}
-{% assign collection_page_match = false %}
-{% assign product_page_match = false %}
-
-<!-- Initialize variables to store metafield values if a match is found -->
-{% assign creator_logo = '' %}
-{% assign creator_title = '' %}
-{% assign creator_footer_background_color = '' %}
-{% assign creator_footer_content_color = '' %}
-
-<!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
-{% if collection %}
-  {% for creator_collection in settings.creator_landing_pages_collections %}
-    {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
-      {% assign collection_page_match = true %}
-
-      <!-- Set each metafield value for the matched collection -->
-      {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
-      {% assign creator_title = collection.title %}
-      {% assign creator_footer_background_color = collection.metafields.custom.creator_landing_page_footer_background %}
-      {% assign creator_footer_content_color = collection.metafields.custom.creator_landing_page_footer_content_color %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
-
-  {% if collection_page_match == false %}
-    {% for creator_collection in settings.creator_landing_pages_collections_overflow %}
-      {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
-        {% assign collection_page_match = true %}
-
-        {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
-        {% assign creator_title = collection.title %}
-        {% assign creator_footer_background_color = collection.metafields.custom.creator_landing_page_footer_background %}
-        {% assign creator_footer_content_color = collection.metafields.custom.creator_landing_page_footer_content_color %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-
-  {% if collection_page_match == false %}
-    {% for creator_collection in settings.creator_landing_pages_collections_overflow_2 %}
-      {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
-        {% assign collection_page_match = true %}
-
-        {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
-        {% assign creator_title = collection.title %}
-        {% assign creator_footer_background_color = collection.metafields.custom.creator_landing_page_footer_background %}
-        {% assign creator_footer_content_color = collection.metafields.custom.creator_landing_page_footer_content_color %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-
-  {% if collection_page_match == false %}
-    {% for creator_collection in settings.creator_landing_pages_collections_overflow_3 %}
-      {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
-        {% assign collection_page_match = true %}
-
-        {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
-        {% assign creator_title = collection.title %}
-        {% assign creator_footer_background_color = collection.metafields.custom.creator_landing_page_footer_background %}
-        {% assign creator_footer_content_color = collection.metafields.custom.creator_landing_page_footer_content_color %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-{% endif %}
-
-<!-- Check if this is a product page and if any of the product's collections match creator collections -->
-{% if product and product.collections %}
-  {% for product_collection in product.collections %}
-    {% for creator_collection in settings.creator_landing_pages_collections %}
-      {% if product_collection.title == creator_collection.title %}
-        {% assign product_page_match = true %}
-
-        <!-- Set each metafield value for the matched collection -->
-        {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
-        {% assign creator_title = product_collection.title %}
-        {% assign creator_footer_background_color = product_collection.metafields.custom.creator_landing_page_footer_background %}
-        {% assign creator_footer_content_color = product_collection.metafields.custom.creator_landing_page_footer_content_color %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-
-    {% if product_page_match == false %}
-      {% for creator_collection in settings.creator_landing_pages_collections_overflow %}
-        {% if product_collection.title == creator_collection.title %}
-          {% assign product_page_match = true %}
-
-          <!-- Set each metafield value for the matched collection -->
-          {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
-          {% assign creator_title = product_collection.title %}
-          {% assign creator_footer_background_color = product_collection.metafields.custom.creator_landing_page_footer_background %}
-          {% assign creator_footer_content_color = product_collection.metafields.custom.creator_landing_page_footer_content_color %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-
-    {% if product_page_match == false %}
-      {% for creator_collection in settings.creator_landing_pages_collections_overflow_2 %}
-        {% if product_collection.title == creator_collection.title %}
-          {% assign product_page_match = true %}
-
-          <!-- Set each metafield value for the matched collection -->
-          {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
-          {% assign creator_title = product_collection.title %}
-          {% assign creator_footer_background_color = product_collection.metafields.custom.creator_landing_page_footer_background %}
-          {% assign creator_footer_content_color = product_collection.metafields.custom.creator_landing_page_footer_content_color %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-
-    {% if product_page_match == false %}
-      {% for creator_collection in settings.creator_landing_pages_collections_overflow_3 %}
-        {% if product_collection.title == creator_collection.title %}
-          {% assign product_page_match = true %}
-
-          <!-- Set each metafield value for the matched collection -->
-          {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
-          {% assign creator_title = product_collection.title %}
-          {% assign creator_footer_background_color = product_collection.metafields.custom.creator_landing_page_footer_background %}
-          {% assign creator_footer_content_color = product_collection.metafields.custom.creator_landing_page_footer_content_color %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-
-    {% if product_page_match %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
-
-<!-- Set is_creator_landing_page if either collection_page_match or product_page_match is true -->
-{% if collection_page_match or product_page_match %}
-  {% assign is_creator_landing_page = true %}
-{% endif %}
-
 {%- style -%}
   .footer {
     margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
@@ -166,17 +26,6 @@
     }
   }
 
-  {% if is_creator_landing_page %}
-    .footer {
-      background-color: {{ creator_footer_background_color }};
-      color: {{ creator_footer_content_color }}
-    }
-
-    .footer-block__details-content .list-menu__item--link,
-    .footer h2 {
-      color: {{ creator_footer_content_color }}
-    }
-  {% endif %}
 {%- endstyle -%}
 
 <footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
@@ -286,51 +135,26 @@
                       {%- endif -%}
                     </div>
                   {%- when 'image' -%}
-                    {% if is_creator_landing_page %}
-                      <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
-                        {%- if creator_logo != blank -%}
-                          {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
-                          <div
-                            class="footer-block__image-wrapper"
-                            style="max-width: min(100%, {% if is_creator_landing_page and creator_logo %}200px{% else %}{{ block.settings.image_width }}px){% endif %};"
+                    <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
+                      {%- if block.settings.image != blank -%}
+                        {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
+                        <div
+                          class="footer-block__image-wrapper"
+                          style="max-width: min(100%, {{ block.settings.image_width }}px);"
+                        >
+                          <img
+                            srcset="{{ block.settings.image | image_url: width: block.settings.image_width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x"
+                            src="{{ block.settings.image | image_url: width: 760 }}"
+                            alt="{{ block.settings.image.alt | escape }}"
+                            loading="lazy"
+                            width="{{ block.settings.image.width }}"
+                            height="{{ block.settings.image.height }}"
                           >
-                            <img
-                              srcset="{{ creator_logo | image_url: width: 200 }}, {{ creator_logo | image_url: width: 200 }} 2x"
-                              src="{{ creator_logo | image_url: width: 760 }}"
-                              alt="{{ block.settings.image.alt | escape }}"
-                              loading="lazy"
-                              height="200px"
-                              width="200px"
-                            >
-                          </div>
-                        {%- else -%}
-                          <h2>
-                            {{ creator_title }}
-                          </h2>
-                        {%- endif -%}
-                      </div>
-                    {% else %}
-                      <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
-                        {%- if block.settings.image != blank -%}
-                          {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
-                          <div
-                            class="footer-block__image-wrapper"
-                            style="max-width: min(100%, {{ block.settings.image_width }}px);"
-                          >
-                            <img
-                              srcset="{{ block.settings.image | image_url: width: block.settings.image_width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x"
-                              src="{{ block.settings.image | image_url: width: 760 }}"
-                              alt="{{ block.settings.image.alt | escape }}"
-                              loading="lazy"
-                              width="{{ block.settings.image.width }}"
-                              height="{{ block.settings.image.height }}"
-                            >
-                          </div>
-                        {%- else -%}
-                          {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
-                        {%- endif -%}
-                      </div>
-                    {% endif %}
+                        </div>
+                      {%- else -%}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+                      {%- endif -%}
+                    </div>
                 {%- endcase -%}
               </div>
             {%- endfor -%}
