@@ -903,11 +903,6 @@ summary::-webkit-details-marker {
 
 .grid:last-child {
   margin-block: 0;
-  padding-block-start: 3rem;
-  
-  @media screen and (min-width: 750px) {
-    padding-block-start: 2rem;
-  }
 }
 
 .grid__item {
