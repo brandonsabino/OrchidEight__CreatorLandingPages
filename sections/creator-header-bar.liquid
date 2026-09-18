@@ -1,0 +1,293 @@
+{% comment %}
+  Creator Header Bar
+
+  Sits below the main Orchid Eight header and carries the creator-specific
+  content the header used to absorb: socials on the left, the creator's logo in
+  the centre, and their collection description on the right.
+
+  Colours come from the same collection metafields that used to restyle the
+  header itself: outer background behind the bar, inner background on the bar,
+  and content colour for text and icons. Colours only — the accent border and
+  the header shape toggle are deliberately not carried over, and the bar runs
+  full width.
+{% endcomment %}
+
+{%- liquid
+  assign creator_collections = settings.creator_landing_pages_collections
+  assign creator_collections = creator_collections | concat: settings.creator_landing_pages_collections_overflow
+  assign creator_collections = creator_collections | concat: settings.creator_landing_pages_collections_overflow_2
+  assign creator_collections = creator_collections | concat: settings.creator_landing_pages_collections_overflow_3
+
+  assign is_creator_page = false
+
+  if settings.enable_creator_landing_pages
+    if collection
+      for creator_collection in creator_collections
+        if creator_collection.title == collection.title
+          assign creator_source = collection
+          assign is_creator_page = true
+          break
+        endif
+      endfor
+    endif
+
+    if is_creator_page == false and product
+      for product_collection in product.collections
+        for creator_collection in creator_collections
+          if creator_collection.title == product_collection.title
+            assign creator_source = product_collection
+            assign is_creator_page = true
+            break
+          endif
+        endfor
+        if is_creator_page
+          break
+        endif
+      endfor
+    endif
+  endif
+-%}
+
+{%- if is_creator_page -%}
+  {%- liquid
+    assign creator_x = creator_source.metafields.custom.creator_landing_page_x_account
+    assign creator_instagram = creator_source.metafields.custom.creator_landing_page_instagram_account
+    assign creator_twitch = creator_source.metafields.custom.creator_landing_page_twitch_account
+    assign creator_youtube = creator_source.metafields.custom.creator_landing_page_youtube_account
+    assign creator_tiktok = creator_source.metafields.custom.creator_landing_page_tiktok_account
+    assign creator_bluesky = creator_source.metafields.custom.creator_landing_page_bluesky_account
+
+    assign creator_logo = creator_source.metafields.custom.creator_landing_page_logo
+    assign creator_description = creator_source.description
+
+    assign outer_background = creator_source.metafields.custom.creator_landing_page_outer_header_background | default: 'transparent'
+    assign inner_background = creator_source.metafields.custom.creator_landing_page_header_background | default: 'transparent'
+    assign content_color = creator_source.metafields.custom.creator_landing_page_header_content_color | default: 'currentColor'
+  -%}
+
+  {%- style -%}
+    #shopify-section-{{ section.id }} {
+      background: {{ outer_background }};
+    }
+
+    /* Background runs full bleed, content is capped at page width — same as the header */
+    #shopify-section-{{ section.id }} .creator-header-bar {
+      background-color: {{ inner_background }};
+      color: {{ content_color }};
+    }
+
+    #shopify-section-{{ section.id }} .creator-header-bar__inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 3rem;
+    }
+
+    #shopify-section-{{ section.id }} .creator-header-bar__socials {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.6rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #shopify-section-{{ section.id }} .creator-header-bar__socials a {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      color: inherit;
+      text-decoration: none;
+      padding-bottom: 0;
+    }
+
+    /* Underline grows in from the left */
+    #shopify-section-{{ section.id }} .creator-header-bar__socials a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 4px;
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform var(--duration-default, 0.25s) ease;
+    }
+
+    #shopify-section-{{ section.id }} .creator-header-bar__socials a:hover::after,
+    #shopify-section-{{ section.id }} .creator-header-bar__socials a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #shopify-section-{{ section.id }} .creator-header-bar__socials a::after {
+        transition: none;
+      }
+    }
+
+    /* Dawn's .svg-wrapper is a fixed 20px box — match it to the icon so the
+       anchor, and therefore the underline, is exactly icon width */
+    #shopify-section-{{ section.id }} .creator-header-bar__socials .svg-wrapper {
+      width: 4.8rem;
+      height: 4.8rem;
+    }
+
+    #shopify-section-{{ section.id }} .creator-header-bar__socials svg {
+      width: 4.8rem;
+      height: 4.8rem;
+      fill: currentColor;
+    }
+
+    #shopify-section-{{ section.id }} .creator-header-bar__socials path {
+      fill: currentColor;
+    }
+
+    #shopify-section-{{ section.id }} .creator-header-bar__logo {
+      justify-self: center;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .creator-header-bar__logo img {
+      display: block;
+      width: auto;
+      max-height: 7rem;
+      margin: 0 auto;
+    }
+
+    #shopify-section-{{ section.id }} .creator-header-bar__title {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    #shopify-section-{{ section.id }} .creator-header-bar__description {
+      justify-self: end;
+      text-align: right;
+      font-size: 1.3rem;
+      max-width: 46ch;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    #shopify-section-{{ section.id }} .creator-header-bar__description > * {
+      margin: 0;
+    }
+
+    /* Headings in the description carry their own colour, so override them too */
+    #shopify-section-{{ section.id }} .creator-header-bar__description h1,
+    #shopify-section-{{ section.id }} .creator-header-bar__description h2,
+    #shopify-section-{{ section.id }} .creator-header-bar__description h3,
+    #shopify-section-{{ section.id }} .creator-header-bar__description h4,
+    #shopify-section-{{ section.id }} .creator-header-bar__description h5,
+    #shopify-section-{{ section.id }} .creator-header-bar__description h6 {
+      color: {{ content_color }};
+    }
+
+    @media screen and (max-width: 749px) {
+      #shopify-section-{{ section.id }} .creator-header-bar__inner {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 1.2rem;
+        padding: 1.6rem;
+      }
+
+      #shopify-section-{{ section.id }} .creator-header-bar__logo {
+        order: -1;
+      }
+
+      #shopify-section-{{ section.id }} .creator-header-bar__socials {
+        justify-content: center;
+      }
+
+      #shopify-section-{{ section.id }} .creator-header-bar__description {
+        justify-self: center;
+        text-align: center;
+      }
+    }
+  {%- endstyle -%}
+
+  <div class="creator-header-bar">
+    <div class="creator-header-bar__inner page-width">
+      <ul class="creator-header-bar__socials" role="list">
+        {%- if creator_x.value.url -%}
+          <li>
+            <a href="{{ creator_x.value.url }}" target="_blank" rel="noopener" aria-label="X">
+              <span class="svg-wrapper">{{- 'icon-twitter.svg' | inline_asset_content -}}</span>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if creator_instagram.value.url -%}
+          <li>
+            <a href="{{ creator_instagram.value.url }}" target="_blank" rel="noopener" aria-label="Instagram">
+              <span class="svg-wrapper">{{- 'icon-instagram.svg' | inline_asset_content -}}</span>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if creator_twitch.value.url -%}
+          <li>
+            <a href="{{ creator_twitch.value.url }}" target="_blank" rel="noopener" aria-label="Twitch">
+              <span class="svg-wrapper">{{- 'icon-twitch.svg' | inline_asset_content -}}</span>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if creator_youtube.value.url -%}
+          <li>
+            <a href="{{ creator_youtube.value.url }}" target="_blank" rel="noopener" aria-label="YouTube">
+              <span class="svg-wrapper">{{- 'icon-youtube.svg' | inline_asset_content -}}</span>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if creator_tiktok.value.url -%}
+          <li>
+            <a href="{{ creator_tiktok.value.url }}" target="_blank" rel="noopener" aria-label="TikTok">
+              <span class="svg-wrapper">{{- 'icon-tiktok.svg' | inline_asset_content -}}</span>
+            </a>
+          </li>
+        {%- endif -%}
+        {%- if creator_bluesky.value.url -%}
+          <li>
+            <a href="{{ creator_bluesky.value.url }}" target="_blank" rel="noopener" aria-label="BlueSky">
+              <span class="svg-wrapper">{{- 'icon-bluesky.svg' | inline_asset_content -}}</span>
+            </a>
+          </li>
+        {%- endif -%}
+      </ul>
+
+      <div class="creator-header-bar__logo">
+        {%- if creator_logo != blank -%}
+          {{
+            creator_logo
+            | image_url: width: 600
+            | image_tag: loading: 'lazy', widths: '165, 300, 450, 600', alt: creator_source.title
+          }}
+        {%- else -%}
+          <p class="creator-header-bar__title">{{ creator_source.title }}</p>
+        {%- endif -%}
+      </div>
+
+      <div class="creator-header-bar__description rte">
+        {%- if creator_description != blank -%}
+          {{ creator_description }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Creator Header Bar",
+  "tag": "section",
+  "class": "creator-header-bar-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": []
+}
+{% endschema %}

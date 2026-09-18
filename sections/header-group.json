@@ -50,7 +50,7 @@
       "custom_css": [],
       "settings": {
         "logo_position": "middle-left",
-        "menu": "main-menu",
+        "menu": "orchid-eight-main",
         "menu_type_desktop": "mega",
         "sticky_header_type": "always",
         "show_line_separator": false,
@@ -63,11 +63,36 @@
         "margin_bottom": 0,
         "padding_top": 8,
         "padding_bottom": 8
-      }
+      },
+      "blocks": {
+        "collection_card_test": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "cottontail",
+            "menu_item": "Collections"
+          }
+        },
+        "product_card_test": {
+          "type": "product_card",
+          "settings": {
+            "product": "cottontail-bun-buns-diner-tee",
+            "menu_item": "More"
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_test",
+        "product_card_test"
+      ]
+    },
+    "creator_header_bar": {
+      "type": "creator-header-bar",
+      "settings": {}
     }
   },
   "order": [
     "announcement_bar_qtQpL6",
-    "header"
+    "header",
+    "creator_header_bar"
   ]
 }
