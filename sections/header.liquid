@@ -1,170 +1,3 @@
-{% assign is_creator_landing_page = false %}
-{% assign collection_page_match = false %}
-{% assign product_page_match = false %}
-
-<!-- Initialize variables to store metafield values if a match is found -->
-{% assign creator_logo = '' %}
-{% assign creator_collection_url = '' %}
-{% assign creator_title = '' %}
-{% assign creator_accent_color = '' %}
-{% assign creater_outer_header_background = '' %}
-{% assign creator_header_background_color = '' %}
-{% assign creator_header_content_color = '' %}
-{% assign creator_header_shape = '' %}
-
-<!-- Check if this is a collection page and if there's a match in settings.creator_landing_pages_collections -->
-{% if collection %}
-  {% for creator_collection in settings.creator_landing_pages_collections %}
-    {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
-      {% assign collection_page_match = true %}
-
-      <!-- Set each metafield value for the matched collection -->
-      {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
-      {% assign creator_collection_url = collection.url %}
-      {% assign creator_title = collection.title %}
-      {% assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color %}
-      {% assign creator_header_shape = collection.metafields.custom.creator_landing_page_header_shape %}
-      {% assign creater_outer_header_background = collection.metafields.custom.creator_landing_page_outer_header_background %}
-      {% assign creator_header_background_color = collection.metafields.custom.creator_landing_page_header_background %}
-      {% assign creator_header_content_color = collection.metafields.custom.creator_landing_page_header_content_color %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
-  
-  {% if collection_page_match == false %}
-    {% for creator_collection in settings.creator_landing_pages_collections_overflow %}
-      {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
-        {% assign collection_page_match = true %}
-        {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
-        {% assign creator_collection_url = collection.url %}
-        {% assign creator_title = collection.title %}
-        {% assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color %}
-        {% assign creator_header_shape = collection.metafields.custom.creator_landing_page_header_shape %}
-        {% assign creater_outer_header_background = collection.metafields.custom.creator_landing_page_outer_header_background %}
-        {% assign creator_header_background_color = collection.metafields.custom.creator_landing_page_header_background %}
-        {% assign creator_header_content_color = collection.metafields.custom.creator_landing_page_header_content_color %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-
-  {% if collection_page_match == false %}
-    {% for creator_collection in settings.creator_landing_pages_collections_overflow_2 %}
-      {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
-        {% assign collection_page_match = true %}
-        {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
-        {% assign creator_collection_url = collection.url %}
-        {% assign creator_title = collection.title %}
-        {% assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color %}
-        {% assign creator_header_shape = collection.metafields.custom.creator_landing_page_header_shape %}
-        {% assign creater_outer_header_background = collection.metafields.custom.creator_landing_page_outer_header_background %}
-        {% assign creator_header_background_color = collection.metafields.custom.creator_landing_page_header_background %}
-        {% assign creator_header_content_color = collection.metafields.custom.creator_landing_page_header_content_color %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-
-  {% if collection_page_match == false %}
-    {% for creator_collection in settings.creator_landing_pages_collections_overflow_3 %}
-      {% if creator_collection.title == collection.title and settings.enable_creator_landing_pages %}
-        {% assign collection_page_match = true %}
-        {% assign creator_logo = collection.metafields.custom.creator_landing_page_logo %}
-        {% assign creator_collection_url = collection.url %}
-        {% assign creator_title = collection.title %}
-        {% assign creator_accent_color = collection.metafields.custom.creator_landing_page_accent_color %}
-        {% assign creator_header_shape = collection.metafields.custom.creator_landing_page_header_shape %}
-        {% assign creater_outer_header_background = collection.metafields.custom.creator_landing_page_outer_header_background %}
-        {% assign creator_header_background_color = collection.metafields.custom.creator_landing_page_header_background %}
-        {% assign creator_header_content_color = collection.metafields.custom.creator_landing_page_header_content_color %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-{% endif %}
-
-<!-- Check if this is a product page and if any of the product's collections match creator collections -->
-{% if product and product.collections %}
-  {% for product_collection in product.collections %}
-    {% for creator_collection in settings.creator_landing_pages_collections %}
-      {% if product_collection.title == creator_collection.title %}
-        {% assign product_page_match = true %}
-
-        <!-- Set each metafield value for the matched collection -->
-        {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
-        {% assign creator_collection_url = product_collection.url %}
-        {% assign creator_title = product_collection.title %}
-        {% assign creator_accent_color = product_collection.metafields.custom.creator_landing_page_accent_color %}
-        {% assign creator_header_shape = product_collection.metafields.custom.creator_landing_page_header_shape %}
-        {% assign creater_outer_header_background = product_collection.metafields.custom.creator_landing_page_outer_header_background %}
-        {% assign creator_header_background_color = product_collection.metafields.custom.creator_landing_page_header_background %}
-        {% assign creator_header_content_color = product_collection.metafields.custom.creator_landing_page_header_content_color %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-    
-    {% if product_page_match == false %}
-      {% for creator_collection in settings.creator_landing_pages_collections_overflow %}
-        {% if product_collection.title == creator_collection.title %}
-          {% assign product_page_match = true %}
-          {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
-          {% assign creator_collection_url = product_collection.url %}
-          {% assign creator_title = product_collection.title %}
-          {% assign creator_accent_color = product_collection.metafields.custom.creator_landing_page_accent_color %}
-          {% assign creator_header_shape = product_collection.metafields.custom.creator_landing_page_header_shape %}
-          {% assign creater_outer_header_background = product_collection.metafields.custom.creator_landing_page_outer_header_background %}
-          {% assign creator_header_background_color = product_collection.metafields.custom.creator_landing_page_header_background %}
-          {% assign creator_header_content_color = product_collection.metafields.custom.creator_landing_page_header_content_color %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-
-    {% if product_page_match == false %}
-      {% for creator_collection in settings.creator_landing_pages_collections_overflow_2 %}
-        {% if product_collection.title == creator_collection.title %}
-          {% assign product_page_match = true %}
-          {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
-          {% assign creator_collection_url = product_collection.url %}
-          {% assign creator_title = product_collection.title %}
-          {% assign creator_accent_color = product_collection.metafields.custom.creator_landing_page_accent_color %}
-          {% assign creator_header_shape = product_collection.metafields.custom.creator_landing_page_header_shape %}
-          {% assign creater_outer_header_background = product_collection.metafields.custom.creator_landing_page_outer_header_background %}
-          {% assign creator_header_background_color = product_collection.metafields.custom.creator_landing_page_header_background %}
-          {% assign creator_header_content_color = product_collection.metafields.custom.creator_landing_page_header_content_color %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-
-    {% if product_page_match == false %}
-      {% for creator_collection in settings.creator_landing_pages_collections_overflow_3 %}
-        {% if product_collection.title == creator_collection.title %}
-          {% assign product_page_match = true %}
-          {% assign creator_logo = product_collection.metafields.custom.creator_landing_page_logo %}
-          {% assign creator_collection_url = product_collection.url %}
-          {% assign creator_title = product_collection.title %}
-          {% assign creator_accent_color = product_collection.metafields.custom.creator_landing_page_accent_color %}
-          {% assign creator_header_shape = product_collection.metafields.custom.creator_landing_page_header_shape %}
-          {% assign creater_outer_header_background = product_collection.metafields.custom.creator_landing_page_outer_header_background %}
-          {% assign creator_header_background_color = product_collection.metafields.custom.creator_landing_page_header_background %}
-          {% assign creator_header_content_color = product_collection.metafields.custom.creator_landing_page_header_content_color %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-    
-    {% if product_page_match %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
-
-<!-- Set is_creator_landing_page if either collection_page_match or product_page_match is true -->
-{% if collection_page_match or product_page_match %}
-  {% assign is_creator_landing_page = true %}
-{% endif %}
-
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -262,70 +95,6 @@
     }
   }
 
-  {% if is_creator_landing_page %}
-    .section-header {
-      background: {{ creater_outer_header_background }};
-    }
-
-    .header-wrapper {
-      background-color: {{ creator_header_background_color }};
-      border-bottom: 2px solid {{ creator_header_content_color }};
-    }
-
-    @media screen and (min-width: 990px) {
-      .header-wrapper {
-        border-bottom: 2px solid {{ creator_accent_color }};
-        {% if creator_header_shape == true %}
-          border: 2px solid {{ creator_accent_color }};
-          margin: 15px auto;
-          max-width: 82%;
-          border-radius: 50px;
-        {% endif %}
-        padding: 0;
-      }
-    }
-
-    .header:not(.drawer-menu).page-width {
-      padding: 2px 30px;
-    }
-
-    .header__heading-logo_fallback {
-      min-width: max-content;
-      color: {{ creator_header_content_color }};
-      font-size: 25px;
-      font-weight: bold;
-      padding: 0;
-      margin: 0
-    }
-
-    .header__inline-menu.creator .list-menu--inline {
-      align-items: center;
-      margin-top: 10px;
-      {%- if section.settings.logo_position == 'middle-center' -%}
-        padding-left: 0.8rem;
-      {% endif %}
-    }
-
-    .header__inline-menu.creator li:not(:last-of-type) {
-      margin-right: 15px;
-    }
-
-    .header__inline-menu.creator svg {
-      width: 40px;
-      height: 30px;
-    }
-
-    .header__inline-menu.creator a:hover {
-      border-bottom: 1px solid {{ creator_header_content_color }}
-    }
-
-    .header-wrapper path,
-    .header-wrapper .header-localization button,
-    .header-wrapper .localization-selector span {
-      color: {{ creator_header_content_color }};
-      fill: {{ creator_header_content_color }};
-    }
-  {% endif %}
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
@@ -366,36 +135,22 @@
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
-          <a href="{% if is_creator_landing_page %}{{ shop.secure_url | append: creator_collection_url }}{% else %}{{ routes.root_url }}{% endif %}" class="header__heading-link link link--text focus-inset">
+          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
             {%- if settings.logo != blank -%}
               <div class="header__heading-logo-wrapper">
                 {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
                 {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
                 {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
                 {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 2.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-                {% if is_creator_landing_page == true and creator_logo %}
-                  {{ creator_logo | image_url: width: 667 | image_tag:
-                    class: 'header__heading-logo motion-reduce',
-                    widths: widths,
-                    height: 200,
-                    width: 200,
-                    alt: logo_alt,
-                    sizes: sizes,
-                    preload: true
-                  }}
-                {% elsif is_creator_landing_page == true %}
-                  <h1 class="header__heading-logo_fallback">{{ creator_title }}</h1>
-                {% else %}
-                  {{ settings.logo | image_url: width: 600 | image_tag:
-                    class: 'header__heading-logo motion-reduce',
-                    widths: widths,
-                    height: logo_height,
-                    width: settings.logo_width,
-                    alt: logo_alt,
-                    sizes: sizes,
-                    preload: true
-                  }}
-                {% endif %}
+                {{ settings.logo | image_url: width: 600 | image_tag:
+                  class: 'header__heading-logo motion-reduce',
+                  widths: widths,
+                  height: logo_height,
+                  width: settings.logo_width,
+                  alt: logo_alt,
+                  sizes: sizes,
+                  preload: true
+                }}
               </div>
             {%- else -%}
               <span class="h2">{{ shop.name }}</span>
@@ -411,7 +166,7 @@
         if section.settings.menu_type_desktop == 'dropdown'
           render 'header-dropdown-menu'
         elsif section.settings.menu_type_desktop != 'drawer'
-          render 'header-mega-menu', is_creator_landing_page: is_creator_landing_page
+          render 'header-mega-menu'
         endif
       endif
     %}
@@ -420,34 +175,22 @@
       {%- if request.page_type == 'index' -%}
         <h1 class="header__heading">
       {%- endif -%}
-          <a href="{% if is_creator_landing_page %}{{ shop.secure_url | append: creator_collection_url }}{% else %}{{ routes.root_url }}{% endif %}" class="header__heading-link link link--text focus-inset">
+          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
             {%- if settings.logo != blank -%}
               <div class="header__heading-logo-wrapper">
                 {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
                 {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
                 {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
                 {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 2.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-                {% if is_creator_landing_page == true and creator_logo %}
-                   {{ creator_logo | image_url: width: 667 | image_tag:
-                    class: 'header__heading-logo motion-reduce',
-                    widths: widths,
-                    height: 200,
-                    width: 200,
-                    alt: logo_alt,
-                    sizes: sizes,
-                    preload: true
-                  }}
-                {% else %}
-                  {{ settings.logo | image_url: width: 600 | image_tag:
-                    class: 'header__heading-logo motion-reduce',
-                    widths: widths,
-                    height: logo_height,
-                    width: settings.logo_width,
-                    alt: logo_alt,
-                    sizes: sizes,
-                    preload: true
-                  }}
-                {% endif %}
+                {{ settings.logo | image_url: width: 600 | image_tag:
+                  class: 'header__heading-logo motion-reduce',
+                  widths: widths,
+                  height: logo_height,
+                  width: settings.logo_width,
+                  alt: logo_alt,
+                  sizes: sizes,
+                  preload: true
+                }}
               </div>
             {%- else -%}
               <span class="h2">{{ shop.name }}</span>
@@ -482,11 +225,9 @@
           </localization-form>
         {%- endif -%}
       </div>
-      {% unless is_creator_landing_page == true %}
-        {% render 'header-search', input_id: 'Search-In-Modal' %}
-      {% endunless %}
+      {% render 'header-search', input_id: 'Search-In-Modal' %}
 
-      {%- if shop.customer_accounts_enabled and is_creator_landing_page != true -%}
+      {%- if shop.customer_accounts_enabled -%}
         <a
           href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
           class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
@@ -538,12 +279,6 @@
           </div>
         {%- endif -%}
       </a>
-
-      {% if is_creator_landing_page %}
-        <a href="{{ shop.url }}" class="header__icon header__icon--orchid-eight" target="_blank" aria-label="Link to {{ shop.name }} home page.">
-          <img src="{{ 'orchidEightLogo.png' | asset_url }}" alt="{{ shop.name }} logo"/>
-        </a>
-      {% endif %}
     </div>
   </header>
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
@@ -908,3 +643,4 @@
   ]
 }
 {% endschema %}
+
