@@ -1,0 +1,33 @@
+{% comment %}
+  Renders every menu card block attached to a given top-level menu item.
+  Outputs nothing when no card targets that item.
+
+  Accepts:
+  - title: {String} the top-level menu item's title
+  - class: {String} wrapper class (defaults to the mega menu placement)
+
+  Usage:
+  {% render 'menu-cards', title: link.title %}
+{% endcomment %}
+
+{%- liquid
+  assign target = title | strip | downcase
+  assign wrapper_class = class | default: 'mega-menu__cards'
+-%}
+
+{%- capture cards -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'product_card' or block.type == 'collection_card' or block.type == 'page_card' -%}
+      {%- if block.settings.menu_item != blank -%}
+        {%- assign block_target = block.settings.menu_item | strip | downcase -%}
+        {%- if block_target == target -%}
+          {%- render 'menu-card', block: block -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- if cards != blank -%}
+  <div class="{{ wrapper_class }}">{{ cards }}</div>
+{%- endif -%}

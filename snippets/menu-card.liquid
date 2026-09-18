@@ -1,0 +1,61 @@
+{% comment %}
+  Renders a single header menu card.
+
+  Accepts:
+  - block: {Object} a 'product_card', 'collection_card' or 'page_card' block
+    from the header section
+
+  Usage:
+  {% render 'menu-card', block: block %}
+{% endcomment %}
+
+{%- liquid
+  assign card_url = ''
+  assign card_title = ''
+  assign card_image = ''
+
+  case block.type
+    when 'product_card'
+      assign card_product = block.settings.product
+      if card_product != blank
+        assign card_url = card_product.url
+        assign card_title = card_product.title
+        assign card_image = card_product.featured_image
+      endif
+    when 'collection_card'
+      assign card_collection = block.settings.collection
+      if card_collection != blank
+        assign card_url = card_collection.url
+        assign card_title = card_collection.title
+        assign card_image = card_collection.featured_image
+      endif
+    when 'page_card'
+      assign card_page = block.settings.page
+      if card_page != blank
+        assign card_url = card_page.url
+        assign card_title = card_page.title
+        assign card_image = block.settings.image
+      endif
+  endcase
+-%}
+
+{%- if card_url != blank -%}
+  <a href="{{ card_url }}" class="menu-card" {{ block.shopify_attributes }}>
+    <span class="menu-card__media">
+      {%- if card_image != blank -%}
+        {{
+          card_image
+          | image_url: width: 600
+          | image_tag:
+            loading: 'lazy',
+            widths: '165, 300, 450, 600',
+            sizes: '(min-width: 990px) 20rem, 45vw',
+            alt: card_title
+        }}
+      {%- else -%}
+        {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </span>
+    <span class="menu-card__title">{{ card_title | escape }}</span>
+  </a>
+{%- endif -%}

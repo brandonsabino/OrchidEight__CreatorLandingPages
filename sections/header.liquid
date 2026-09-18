@@ -9,6 +9,7 @@
 
 {%- if section.settings.menu_type_desktop == 'mega' -%}
   <link rel="stylesheet" href="{{ 'component-mega-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ 'component-menu-card.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
 
@@ -443,7 +444,7 @@
 {
   "name": "t:sections.header.name",
   "class": "section-header",
-  "max_blocks": 3,
+  "max_blocks": 12,
   "settings": [
     {
       "type": "select",
@@ -639,6 +640,62 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "product_card",
+      "name": "Product card",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "menu_item",
+          "label": "Top-level menu item",
+          "info": "The exact title of the top-level menu item this card attaches to, e.g. Collections. Only works when the desktop menu type is set to Mega menu."
+        }
+      ]
+    },
+    {
+      "type": "collection_card",
+      "name": "Collection card",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "menu_item",
+          "label": "Top-level menu item",
+          "info": "The exact title of the top-level menu item this card attaches to, e.g. Collections. Only works when the desktop menu type is set to Mega menu."
+        }
+      ]
+    },
+    {
+      "type": "page_card",
+      "name": "Page card",
+      "settings": [
+        {
+          "type": "page",
+          "id": "page",
+          "label": "Page"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "menu_item",
+          "label": "Top-level menu item",
+          "info": "The exact title of the top-level menu item this card attaches to, e.g. Collections. Only works when the desktop menu type is set to Mega menu."
+        }
+      ]
     }
   ]
 }
