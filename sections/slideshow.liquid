@@ -2,6 +2,86 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 
+{%- comment -%}
+  The slideshow has no section-level colour scheme, only per-slide ones, so the
+  controls borrow the first slide's scheme for their button colour.
+{%- endcomment -%}
+{%- assign controls_color_scheme = section.blocks.first.settings.color_scheme -%}
+
+{%- style -%}
+  /* Controls overlay the bottom of the slide: no background, arrows at the
+     component edges capped at page width, dots centred between them. */
+  #shopify-section-{{ section.id }} .slideshow__controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    background: transparent;
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .slideshow__controls > * {
+    pointer-events: auto;
+  }
+
+  #shopify-section-{{ section.id }} .slider-button,
+  #shopify-section-{{ section.id }} .slider-button:not([disabled]):hover {
+    color: rgb(var(--color-button));
+  }
+
+  #shopify-section-{{ section.id }} .slider-button .svg-wrapper,
+  #shopify-section-{{ section.id }} .slider-button svg {
+    color: rgb(var(--color-button));
+    fill: currentColor;
+  }
+
+  #shopify-section-{{ section.id }} .slider-button {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+
+  #shopify-section-{{ section.id }} .slider-button .icon {
+    width: auto;
+    height: 1.4rem;
+  }
+
+  /* The caret is a filled path, so scaling alone keeps the same relative
+     weight — stroking the path is what actually thickens the arrow. */
+  #shopify-section-{{ section.id }} .slider-button .icon path {
+    stroke: currentColor;
+    stroke-width: 0.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  #shopify-section-{{ section.id }} .slider-counter {
+    border: none;
+    background: transparent;
+  }
+
+  #shopify-section-{{ section.id }} .slider-counter__link--dots .dot {
+    border-color: rgb(var(--color-button));
+  }
+
+  #shopify-section-{{ section.id }} .slider-counter__link--active.slider-counter__link--dots .dot,
+  #shopify-section-{{ section.id }} .slider-counter__link--dots:not(.slider-counter__link--active):hover .dot {
+    background-color: rgb(var(--color-button));
+  }
+
+  #shopify-section-{{ section.id }} .slider-counter--counter,
+  #shopify-section-{{ section.id }} .slider-counter--numbers {
+    color: rgb(var(--color-button));
+  }
+{%- endstyle -%}
+
 {%- if section.settings.slide_height == 'adapt_image' and section.blocks.first.settings.image != blank -%}
   {%- style -%}
     @media screen and (max-width: 749px) {
@@ -32,7 +112,7 @@
   aria-label="{{ section.settings.accessibility_info | escape }}"
 >
   {%- if section.settings.auto_rotate and section.blocks.size > 1 -%}
-    <div class="slideshow__controls slideshow__controls--top slider-buttons{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %}">
+    <div class="slideshow__controls slideshow__controls--top slider-buttons color-{{ controls_color_scheme }}{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %}">
       <button
         type="button"
         class="slider-button slider-button--prev"
@@ -191,7 +271,7 @@
   </div>
 
   {%- if section.blocks.size > 1 and section.settings.auto_rotate == false -%}
-    <div class="slideshow__controls slider-buttons{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %}">
+    <div class="slideshow__controls slider-buttons color-{{ controls_color_scheme }}{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %}">
       <button
         type="button"
         class="slider-button slider-button--prev"
