@@ -9,6 +9,78 @@
  */
 {
   "sections": {
+    "creator_twitch_banner_j7ea3i": {
+      "type": "creator-twitch-banner",
+      "name": "Creator Twitch Banner",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "channel": "bricky",
+        "extra_parents": "",
+        "ratio": "16 / 10",
+        "max_height_vh": 75,
+        "autoplay": true,
+        "muted": true,
+        "show_channel_link": true,
+        "channel_link_label": "Watch on Twitch",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "creator_youtube_grid_HgyQrb": {
+      "type": "creator-youtube-grid",
+      "blocks": {
+        "video_hebTEK": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=hKcl7gQRba8",
+            "title": ""
+          }
+        },
+        "video_mQfyLP": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=F5k1RLswfJ4",
+            "title": ""
+          }
+        },
+        "video_nHj8ki": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=PXU41wnbscg",
+            "title": ""
+          }
+        },
+        "video_MGFTKW": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=QmGOxJFgcsY",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_hebTEK",
+        "video_mQfyLP",
+        "video_nHj8ki",
+        "video_MGFTKW"
+      ],
+      "name": "Creator YouTube Videos",
+      "settings": {
+        "heading": "Miss a clip?",
+        "heading_size": "h1",
+        "videos_per_view": 3,
+        "show_arrows": true,
+        "show_dots": true,
+        "channel_url": "",
+        "show_channel_link": true,
+        "channel_link_label": "Check out our channel!",
+        "color_scheme": "",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "disabled": true,
@@ -137,12 +209,14 @@
         "filter_type": "horizontal",
         "enable_sorting": false,
         "columns_mobile": "1",
-        "padding_top": 0,
+        "padding_top": 20,
         "padding_bottom": 20
       }
     }
   },
   "order": [
+    "creator_twitch_banner_j7ea3i",
+    "creator_youtube_grid_HgyQrb",
     "banner",
     "slideshow_Kgjyzn",
     "marquee_text_FY3qhb",
