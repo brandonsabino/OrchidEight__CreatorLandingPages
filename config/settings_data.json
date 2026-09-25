@@ -230,11 +230,12 @@
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
     "currency_code_enabled": false,
-    "cart_type": "page",
+    "cart_type": "notification",
     "show_vendor": false,
     "show_cart_note": true,
     "cart_drawer_collection": "new-products",
     "cart_color_scheme": "scheme-1",
+    "cart_notification_color_scheme": "scheme-3",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
