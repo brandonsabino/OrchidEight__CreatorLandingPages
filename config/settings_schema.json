@@ -1509,6 +1509,17 @@
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
+      },
+      {
+        "type": "header",
+        "content": "Cart notification"
+      },
+      {
+        "type": "color_scheme",
+        "id": "cart_notification_color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "scheme-4",
+        "info": "Applies when Cart type is set to Notification. Defaults to scheme-4 to match the scheme the notification previously inherited from the header."
       }
     ]
   }
