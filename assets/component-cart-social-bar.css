@@ -1,0 +1,130 @@
+/* Cart Social Bar */
+
+/* Custom elements are inline by default, which would paint the colour scheme's
+   background behind the text only rather than across the whole section. */
+cart-social-bar {
+  display: block;
+}
+
+.cart-social-bar__group,
+.cart-social-bar__creators {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.cart-social-bar__creators {
+  margin-top: 2.4rem;
+}
+
+.cart-social-bar__heading,
+.cart-social-bar__subheading {
+  margin: 0;
+}
+
+.cart-social-bar__notice {
+  margin: 0;
+  font-size: 1.4rem;
+  opacity: 0.75;
+}
+
+/* component-list-social.css right-aligns on desktop and centres on mobile;
+   the section's alignment setting wins at every width. */
+.cart-social-bar .list-social.cart-social-bar__list {
+  justify-content: var(--cart-social-justify);
+}
+
+.cart-social-bar__creator {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: var(--cart-social-justify);
+  column-gap: 0.4rem;
+}
+
+.cart-social-bar__creator-name {
+  font-size: 1.6rem;
+  text-decoration: none;
+}
+
+.cart-social-bar__creator-name:hover {
+  text-decoration: underline;
+}
+
+.cart-social-bar--left {
+  --cart-social-justify: flex-start;
+  text-align: left;
+}
+
+.cart-social-bar--center {
+  --cart-social-justify: center;
+  text-align: center;
+}
+
+.cart-social-bar--right {
+  --cart-social-justify: flex-end;
+  text-align: right;
+}
+
+.cart-social-bar--left .cart-social-bar__group,
+.cart-social-bar--left .cart-social-bar__creators {
+  align-items: flex-start;
+}
+
+.cart-social-bar--center .cart-social-bar__group,
+.cart-social-bar--center .cart-social-bar__creators {
+  align-items: center;
+}
+
+.cart-social-bar--right .cart-social-bar__group,
+.cart-social-bar--right .cart-social-bar__creators {
+  align-items: flex-end;
+}
+
+/* Icons take the colour scheme's text colour only. Most social SVGs already
+   use currentColor, but icon-bluesky.svg hardcodes its brand blue and
+   icon-twitch.svg has no fill at all (so renders black); the files are left
+   alone because the creator header relies on them as they are. */
+.cart-social-bar .list-social__link svg,
+.cart-social-bar .list-social__link svg path {
+  fill: currentColor;
+}
+
+/* Keep every icon whole: the wrapper never shrinks in a tight row, and the
+   SVG is free to draw past its box when it scales up on hover. */
+.cart-social-bar .list-social__link .svg-wrapper {
+  flex-shrink: 0;
+  overflow: visible;
+  width: var(--cart-social-icon-size, 2.2rem);
+  height: var(--cart-social-icon-size, 2.2rem);
+}
+
+/* Each row reads its own size slider. */
+.cart-social-bar__group {
+  --cart-social-icon-size: var(--cart-social-store-icon-size);
+}
+
+.cart-social-bar__creator {
+  --cart-social-icon-size: var(--cart-social-creator-icon-size);
+}
+
+/* Fill the wrapper exactly. Dawn's .list-social__item .icon rule fixes icons
+   with an .icon class at 2.2rem whatever the wrapper size, while the Bluesky
+   and Twitch files have no .icon class, so without this the slider would only
+   resize some of them. */
+.cart-social-bar .list-social__item .svg-wrapper > svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transition: transform var(--duration-short, 100ms) ease;
+}
+
+.cart-social-bar .list-social__link:hover svg {
+  transform: scale(1.07);
+}
+
+/* The creator name already sits beside the icons, so trim the first icon's
+   leading padding to keep the name and icons reading as one row. */
+.cart-social-bar__creator .list-social__item:first-child .list-social__link {
+  padding-left: 0.6rem;
+}

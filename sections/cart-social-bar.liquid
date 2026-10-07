@@ -1,0 +1,320 @@
+{% comment %}
+  Social Bar
+
+  A row of the store's social icons, taken from the theme's Social media
+  settings, under a configurable heading.
+
+  With "Show line item socials" on, each line item's product collections are
+  checked against the creator collection lists, and every creator with an item
+  in the cart gets their own row of icons from their creator_landing_page_*
+  metafields. Each creator appears once however many of their items are in the
+  cart, and creators with no social metafields are skipped.
+
+  The cart page updates line items without a reload, so cart-social-bar.js
+  re-renders this section whenever the cart changes.
+{% endcomment %}
+
+{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{{ 'component-cart-social-bar.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cart-social-bar.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign has_store_socials = true
+  if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank and settings.social_bluesky_link == blank
+    assign has_store_socials = false
+  endif
+
+  # Handles of creators with an item in the cart, pipe separated so each
+  # creator is listed once.
+  assign creator_handles = '|'
+
+  if section.settings.show_line_item_socials and settings.enable_creator_landing_pages
+    # Each list is walked on its own: an empty collection list setting breaks a
+    # concat chain and silently drops every list after it.
+    assign creator_list_keys = 'creator_landing_pages_collections,creator_landing_pages_collections_overflow,creator_landing_pages_collections_overflow_2,creator_landing_pages_collections_overflow_3' | split: ','
+
+    for item in cart.items
+      for product_collection in item.product.collections
+        assign marker = '|' | append: product_collection.handle | append: '|'
+        if creator_handles contains marker
+          continue
+        endif
+
+        assign is_creator = false
+        for list_key in creator_list_keys
+          for creator_collection in settings[list_key]
+            if creator_collection.title == product_collection.title
+              assign is_creator = true
+              break
+            endif
+          endfor
+          if is_creator
+            break
+          endif
+        endfor
+
+        if is_creator
+          assign creator_handles = creator_handles | append: product_collection.handle | append: '|'
+        endif
+      endfor
+    endfor
+  endif
+
+  assign creator_handle_list = creator_handles | remove_first: '|' | split: '|'
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} .cart-social-bar {
+    --cart-social-store-icon-size: {{ section.settings.store_icon_size }}px;
+    --cart-social-creator-icon-size: {{ section.settings.creator_icon_size }}px;
+  }
+
+  #shopify-section-{{ section.id }} .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<cart-social-bar
+  class="cart-social-bar cart-social-bar--{{ section.settings.alignment }} color-{{ section.settings.color_scheme }} gradient"
+  data-section-id="{{ section.id }}"
+>
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- if has_store_socials or request.design_mode -%}
+      <div class="cart-social-bar__group">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="cart-social-bar__heading {{ section.settings.heading_size }}">
+            {{ section.settings.heading | escape }}
+          </h2>
+        {%- endif -%}
+
+        {%- if has_store_socials -%}
+          {%- render 'social-icons', class: 'cart-social-bar__list' -%}
+        {%- else -%}
+          <p class="cart-social-bar__notice">
+            Add the store's social links under Theme settings &rsaquo; Social media to show them here.
+          </p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if creator_handle_list.size > 0 -%}
+      <div class="cart-social-bar__creators">
+        {%- if section.settings.creator_heading != blank -%}
+          <h3 class="cart-social-bar__subheading {{ section.settings.creator_heading_size }}">{{ section.settings.creator_heading | escape }}</h3>
+        {%- endif -%}
+
+        {%- for creator_handle in creator_handle_list -%}
+          {%- liquid
+            assign creator = collections[creator_handle]
+            assign creator_x = creator.metafields.custom.creator_landing_page_x_account.value.url
+            assign creator_instagram = creator.metafields.custom.creator_landing_page_instagram_account.value.url
+            assign creator_twitch = creator.metafields.custom.creator_landing_page_twitch_account.value.url
+            assign creator_youtube = creator.metafields.custom.creator_landing_page_youtube_account.value.url
+            assign creator_tiktok = creator.metafields.custom.creator_landing_page_tiktok_account.value.url
+            assign creator_bluesky = creator.metafields.custom.creator_landing_page_bluesky_account.value.url
+          -%}
+
+          {%- if creator_x != blank
+            or creator_instagram != blank
+            or creator_twitch != blank
+            or creator_youtube != blank
+            or creator_tiktok != blank
+            or creator_bluesky != blank
+          -%}
+            <div class="cart-social-bar__creator">
+              <a href="{{ creator.url }}" class="cart-social-bar__creator-name link link--text">
+                {{- creator.title | escape -}}
+              </a>
+
+              <ul class="list-unstyled list-social cart-social-bar__list" role="list">
+                {%- if creator_x != blank -%}
+                  <li class="list-social__item">
+                    <a href="{{ creator_x }}" class="link list-social__link" target="_blank" rel="noopener">
+                      <span class="svg-wrapper">{{- 'icon-twitter.svg' | inline_asset_content -}}</span>
+                      <span class="visually-hidden">{{ creator.title | escape }} on X</span>
+                    </a>
+                  </li>
+                {%- endif -%}
+                {%- if creator_instagram != blank -%}
+                  <li class="list-social__item">
+                    <a href="{{ creator_instagram }}" class="link list-social__link" target="_blank" rel="noopener">
+                      <span class="svg-wrapper">{{- 'icon-instagram.svg' | inline_asset_content -}}</span>
+                      <span class="visually-hidden">{{ creator.title | escape }} on Instagram</span>
+                    </a>
+                  </li>
+                {%- endif -%}
+                {%- if creator_twitch != blank -%}
+                  <li class="list-social__item">
+                    <a href="{{ creator_twitch }}" class="link list-social__link" target="_blank" rel="noopener">
+                      <span class="svg-wrapper">{{- 'icon-twitch.svg' | inline_asset_content -}}</span>
+                      <span class="visually-hidden">{{ creator.title | escape }} on Twitch</span>
+                    </a>
+                  </li>
+                {%- endif -%}
+                {%- if creator_youtube != blank -%}
+                  <li class="list-social__item">
+                    <a href="{{ creator_youtube }}" class="link list-social__link" target="_blank" rel="noopener">
+                      <span class="svg-wrapper">{{- 'icon-youtube.svg' | inline_asset_content -}}</span>
+                      <span class="visually-hidden">{{ creator.title | escape }} on YouTube</span>
+                    </a>
+                  </li>
+                {%- endif -%}
+                {%- if creator_tiktok != blank -%}
+                  <li class="list-social__item">
+                    <a href="{{ creator_tiktok }}" class="link list-social__link" target="_blank" rel="noopener">
+                      <span class="svg-wrapper">{{- 'icon-tiktok.svg' | inline_asset_content -}}</span>
+                      <span class="visually-hidden">{{ creator.title | escape }} on TikTok</span>
+                    </a>
+                  </li>
+                {%- endif -%}
+                {%- if creator_bluesky != blank -%}
+                  <li class="list-social__item">
+                    <a href="{{ creator_bluesky }}" class="link list-social__link" target="_blank" rel="noopener">
+                      <span class="svg-wrapper">{{- 'icon-bluesky.svg' | inline_asset_content -}}</span>
+                      <span class="visually-hidden">{{ creator.title | escape }} on Bluesky</span>
+                    </a>
+                  </li>
+                {%- endif -%}
+              </ul>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</cart-social-bar>
+
+{% schema %}
+{
+  "name": "Social Bar",
+  "tag": "section",
+  "class": "section",
+  "enabled_on": {
+    "templates": ["cart"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Store icons come from Theme settings > Social media."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Follow Orchid Eight",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h2",
+      "label": "Heading size"
+    },
+    {
+      "type": "range",
+      "id": "store_icon_size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 22,
+      "label": "Orchid Eight icon size"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center",
+      "label": "Alignment"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line_item_socials",
+      "default": false,
+      "label": "Show line item socials",
+      "info": "Also shows socials for each creator with an item in the cart, from their creator collection's social metafields."
+    },
+    {
+      "type": "text",
+      "id": "creator_heading",
+      "default": "Follow the creators in your cart",
+      "label": "Creator heading",
+      "visible_if": "{{ section.settings.show_line_item_socials }}"
+    },
+    {
+      "type": "select",
+      "id": "creator_heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h2",
+      "label": "Creator heading size",
+      "visible_if": "{{ section.settings.show_line_item_socials }}"
+    },
+    {
+      "type": "range",
+      "id": "creator_icon_size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 22,
+      "label": "Creator icon size",
+      "visible_if": "{{ section.settings.show_line_item_socials }}"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Bar"
+    }
+  ]
+}
+{% endschema %}
