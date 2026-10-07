@@ -273,6 +273,10 @@
           "label": "X / Twitter",
           "info": "https://x.com/shopify"
         },
+        "social_bluesky_link": {
+          "label": "Bluesky",
+          "info": "https://bsky.app/profile/shopify.bsky.social"
+        },
         "social_facebook_link": {
           "label": "Facebook",
           "info": "https://facebook.com/shopify"

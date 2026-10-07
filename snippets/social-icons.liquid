@@ -60,6 +60,16 @@
       </a>
     </li>
   {%- endif -%}
+  {%- if settings.social_bluesky_link != blank -%}
+    <li class="list-social__item">
+      <a href="{{ settings.social_bluesky_link }}" class="link list-social__link">
+        <span class="svg-wrapper">
+          {{- 'icon-bluesky.svg' | inline_asset_content -}}
+        </span>
+        <span class="visually-hidden">{{ 'general.social.links.bluesky' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
   {%- if settings.social_pinterest_link != blank -%}
     <li class="list-social__item">
       <a href="{{ settings.social_pinterest_link }}" class="link list-social__link">
