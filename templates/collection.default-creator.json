@@ -16,6 +16,25 @@
         "use_collection_banner_image": true
       }
     },
+    "creator_twitch_banner_Qcf7gM": {
+      "type": "creator-twitch-banner",
+      "name": "Creator Twitch Banner",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "channel": "",
+        "extra_parents": "",
+        "ratio": "16 / 9",
+        "max_height_vh": 75,
+        "autoplay": true,
+        "muted": true,
+        "show_channel_link": true,
+        "channel_link_label": "Watch on Twitch",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "custom_css": [
@@ -96,16 +115,17 @@
         "show_rating": false,
         "quick_add": "none",
         "enable_filtering": false,
-        "filter_type": "horizontal",
-        "enable_sorting": false,
+        "filter_type": "drawer",
+        "enable_sorting": true,
         "columns_mobile": "1",
-        "padding_top": 0,
-        "padding_bottom": 16
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     }
   },
   "order": [
     "creator_collection_banner_q6C68k",
+    "creator_twitch_banner_Qcf7gM",
     "banner",
     "marquee_text_GPUKnh",
     "countdown_mnApfU",

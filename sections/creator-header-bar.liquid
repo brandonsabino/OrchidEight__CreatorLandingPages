@@ -13,19 +13,24 @@
 {% endcomment %}
 
 {%- liquid
-  assign creator_collections = settings.creator_landing_pages_collections
-  assign creator_collections = creator_collections | concat: settings.creator_landing_pages_collections_overflow
-  assign creator_collections = creator_collections | concat: settings.creator_landing_pages_collections_overflow_2
-  assign creator_collections = creator_collections | concat: settings.creator_landing_pages_collections_overflow_3
+  # Each list is walked on its own rather than joined with concat: an empty
+  # collection list setting breaks a concat chain and silently drops every list
+  # after it, so creators in a later overflow list would never match.
+  assign creator_list_keys = 'creator_landing_pages_collections,creator_landing_pages_collections_overflow,creator_landing_pages_collections_overflow_2,creator_landing_pages_collections_overflow_3' | split: ','
 
   assign is_creator_page = false
 
   if settings.enable_creator_landing_pages
     if collection
-      for creator_collection in creator_collections
-        if creator_collection.title == collection.title
-          assign creator_source = collection
-          assign is_creator_page = true
+      for list_key in creator_list_keys
+        for creator_collection in settings[list_key]
+          if creator_collection.title == collection.title
+            assign creator_source = collection
+            assign is_creator_page = true
+            break
+          endif
+        endfor
+        if is_creator_page
           break
         endif
       endfor
@@ -33,10 +38,15 @@
 
     if is_creator_page == false and product
       for product_collection in product.collections
-        for creator_collection in creator_collections
-          if creator_collection.title == product_collection.title
-            assign creator_source = product_collection
-            assign is_creator_page = true
+        for list_key in creator_list_keys
+          for creator_collection in settings[list_key]
+            if creator_collection.title == product_collection.title
+              assign creator_source = product_collection
+              assign is_creator_page = true
+              break
+            endif
+          endfor
+          if is_creator_page
             break
           endif
         endfor
