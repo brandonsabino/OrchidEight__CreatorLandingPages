@@ -8,6 +8,7 @@
   - extend_height: {Boolean} Card height extends to available container space. Default: false (optional)
   - wrapper_class: {String} Wrapper class for card (optional)
   - placeholder_image: {String} Placeholder image when collection is empty (optional)
+  - show_sale_badge: {Boolean} Show a Sale badge when the collection has an in-stock product with a compare-at price. Default: false (optional)
 
   Usage:
   {% render 'card-collection' %}
@@ -28,6 +29,17 @@
   if wrapper_class == null or wrapper_class == 'none'
     assign card_color_scheme = settings.collection_card_color_scheme
     assign card_style = settings.collection_card_style
+  endif
+
+  # collection.products is capped at the first 50 products outside of a paginate tag
+  assign collection_on_sale = false
+  if show_sale_badge and card_collection != blank
+    for product in card_collection.products
+      if product.compare_at_price > product.price and product.available
+        assign collection_on_sale = true
+        break
+      endif
+    endfor
   endif
 -%}
 <a
@@ -110,6 +122,13 @@
                 </p>
               {%- endif -%}
             </div>
+            {%- if collection_on_sale -%}
+              <div class="card__badge {{ settings.badge_position }}">
+                <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">
+                  {{- 'products.product.on_sale' | t -}}
+                </span>
+              </div>
+            {%- endif -%}
           </div>
         {%- endif -%}
       </div>
@@ -139,6 +158,13 @@
               </p>
             {%- endif -%}
           </div>
+          {%- if collection_on_sale -%}
+            <div class="card__badge {{ settings.badge_position }}">
+              <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">
+                {{- 'products.product.on_sale' | t -}}
+              </span>
+            </div>
+          {%- endif -%}
         </div>
       {%- endif -%}
       {%- if card_collection == blank -%}

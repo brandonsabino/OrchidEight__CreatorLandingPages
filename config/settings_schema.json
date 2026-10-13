@@ -1301,6 +1301,16 @@
         "default": 40
       },
       {
+        "type": "range",
+        "id": "badge_font_size",
+        "min": 10,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 16
+      },
+      {
         "type": "color_scheme",
         "id": "sale_badge_color_scheme",
         "label": "t:settings_schema.badges.settings.sale_badge_color_scheme.label",
@@ -1383,13 +1393,15 @@
         "type": "text",
         "id": "social_twitter_link",
         "label": "t:settings_schema.social-media.settings.social_twitter_link.label",
-        "placeholder": "t:settings_schema.social-media.settings.social_twitter_link.info"
+        "placeholder": "t:settings_schema.social-media.settings.social_twitter_link.info",
+        "default": "https://x.com/Orchid8Merch"
       },
       {
         "type": "text",
         "id": "social_bluesky_link",
         "label": "t:settings_schema.social-media.settings.social_bluesky_link.label",
-        "placeholder": "t:settings_schema.social-media.settings.social_bluesky_link.info"
+        "placeholder": "t:settings_schema.social-media.settings.social_bluesky_link.info",
+        "default": "https://bsky.app/profile/orchideight.bsky.social"
       },
       {
         "type": "text",

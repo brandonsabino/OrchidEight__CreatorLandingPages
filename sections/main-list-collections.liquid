@@ -39,7 +39,8 @@
           {% render 'card-collection',
             card_collection: collection,
             media_aspect_ratio: section.settings.image_ratio,
-            columns: 3
+            columns: 3,
+            show_sale_badge: section.settings.show_sale_badge
           %}
         </li>
       {%- endfor -%}
@@ -119,6 +120,13 @@
       "step": 1,
       "default": 3,
       "label": "t:sections.main-list-collections.settings.columns_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sale_badge",
+      "default": true,
+      "label": "Show sale badge",
+      "info": "Shows a Sale badge on collections that contain an in-stock product with a compare-at price. Checks up to the first 50 products in each collection."
     },
     {
       "type": "header",
