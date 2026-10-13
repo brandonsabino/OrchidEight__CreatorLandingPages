@@ -233,9 +233,21 @@
       margin-top: 0;
     }
   {% endif %}
+
+  {% if section.settings.target_id != blank %}
+    #{{ section.settings.target_id | handle }}.section-anchor {
+      display: block;
+      position: relative;
+      height: 0;
+      scroll-margin-top: calc(var(--header-height, 0px) + 2rem);
+    }
+  {% endif %}
 {%- endstyle -%}
 
 <div class="section-{{ section.id }} section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+  {%- if section.settings.target_id != blank -%}
+    <div id="{{ section.settings.target_id | handle }}" class="section-anchor"></div>
+  {%- endif -%}
   {%- paginate collection.products by section.settings.products_per_page -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
     {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
@@ -689,6 +701,12 @@
   "name": "t:sections.main-collection-product-grid.name",
   "class": "section",
   "settings": [
+    {
+      "type": "text",
+      "id": "target_id",
+      "label": "Target ID",
+      "info": "Give this section a name so a Link grid on the same page can scroll to it. Use the same value in the Link grid block, e.g. eru-erudite."
+    },
     {
       "type": "checkbox",
       "id": "enabled_filtered_sections",
