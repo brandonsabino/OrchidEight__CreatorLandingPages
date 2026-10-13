@@ -48,6 +48,9 @@
   left: 2rem;
   bottom: 2rem;
   z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 @media screen and (max-width: 749px) {
@@ -211,5 +214,13 @@
 @media (prefers-reduced-motion: reduce) {
   .creator-youtube__track {
     scroll-behavior: auto;
+  }
+}
+
+/* Smooth jump when the Twitch secondary button targets a section on the page.
+   Mirrors section-link-grid.css, which only loads alongside a Link grid. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }

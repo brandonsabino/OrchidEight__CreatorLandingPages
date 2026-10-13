@@ -166,19 +166,40 @@
           </div>
         {%- endif -%}
 
-        {%- if section.settings.show_channel_link -%}
+        {%- if section.settings.show_channel_link or section.settings.show_secondary_button -%}
           {%- comment -%}
             .button already paints itself with the colour scheme's button colour.
           {%- endcomment -%}
           <div class="creator-twitch__footer">
-            <a
-              href="https://www.twitch.tv/{{ channel | url_encode }}"
-              class="button"
-              target="_blank"
-              rel="noopener"
-            >
-              {{ section.settings.channel_link_label | default: 'Watch on Twitch' | escape }}
-            </a>
+            {%- if section.settings.show_channel_link -%}
+              <a
+                href="https://www.twitch.tv/{{ channel | url_encode }}"
+                class="button"
+                target="_blank"
+                rel="noopener"
+              >
+                {{ section.settings.channel_link_label | default: 'Watch on Twitch' | escape }}
+              </a>
+            {%- endif -%}
+
+            {%- if section.settings.show_secondary_button and section.settings.secondary_button_label != blank -%}
+              {%- liquid
+                assign secondary_button_url = section.settings.secondary_button_link
+                if section.settings.secondary_button_target_id != blank
+                  assign secondary_button_url = section.settings.secondary_button_target_id | handle | prepend: '#'
+                endif
+              -%}
+              <a
+                {% if secondary_button_url != blank %}
+                  href="{{ secondary_button_url }}"
+                {% else %}
+                  role="link" aria-disabled="true"
+                {% endif %}
+                class="button button--secondary"
+              >
+                {{ section.settings.secondary_button_label | escape }}
+              </a>
+            {%- endif -%}
           </div>
         {%- endif -%}
       </div>
@@ -281,6 +302,32 @@
       "id": "channel_link_label",
       "default": "Watch on Twitch",
       "label": "Link label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_button",
+      "default": false,
+      "label": "Show secondary button"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_label",
+      "default": "Shop the collection",
+      "label": "Secondary button label",
+      "visible_if": "{{ section.settings.show_secondary_button }}"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_target_id",
+      "label": "Secondary button target ID",
+      "info": "Scrolls to the section on this page with a matching Target ID. Takes priority over Secondary button link.",
+      "visible_if": "{{ section.settings.show_secondary_button }}"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary button link",
+      "visible_if": "{{ section.settings.show_secondary_button }}"
     },
     {
       "type": "color_scheme",
