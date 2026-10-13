@@ -38,6 +38,11 @@
   if target == product and product.price_varies
     assign money_price = 'products.product.price.from_price_html' | t: price: money_price
   endif
+
+  assign is_bundle = false
+  if product.tags contains 'bundle' or product.tags contains 'Bundle'
+    assign is_bundle = true
+  endif
 -%}
 
 {%- unless target == null and placeholder == null -%}
@@ -50,6 +55,7 @@
       {%- if compare_at_price > price and product.quantity_price_breaks_configured? %} volume-pricing--sale-badge{% endif -%}
       {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
       {%- if show_badges %} price--show-badge{% endif -%}
+      {%- if is_bundle %} price--bundle{% endif -%}
     "
   >
     <div class="price__container">
@@ -125,7 +131,11 @@
     </div>
     {%- if show_badges -%}
       <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
-        {{ 'products.product.bundle_deal' | t }}
+        {%- if is_bundle -%}
+          {{ 'products.product.bundle_deal' | t }}
+        {%- else -%}
+          {{ 'products.product.on_sale' | t }}
+        {%- endif -%}
       </span>
 
       <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
