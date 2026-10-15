@@ -10,7 +10,9 @@
   addresses, so the embed will not play on the local dev server — review it on a
   preview or the live domain.
 
-  Renders nothing when no channel can be resolved.
+  Renders nothing when no channel can be resolved, or when Require creator opt-in
+  is on and the creator collection's show_twitch_banner metafield is not set to
+  true.
 {% endcomment %}
 
 {{ 'component-creator-embeds.css' | asset_url | stylesheet_tag }}
@@ -64,6 +66,15 @@
   assign twitch_url = ''
   if is_creator_page
     assign twitch_url = creator_source.metafields.custom.creator_landing_page_twitch_account.value.url
+  endif
+
+  # With opt-in required, the banner stays hidden on a creator page until its
+  # collection explicitly sets show_twitch_banner to true; false or unset hides it.
+  assign opted_out = false
+  if section.settings.require_opt_in and is_creator_page
+    unless creator_source.metafields.custom.show_twitch_banner.value == true
+      assign opted_out = true
+    endunless
   endif
 
   assign channel = section.settings.channel | strip
@@ -120,7 +131,7 @@
   endif
 -%}
 
-{%- if channel != blank -%}
+{%- if channel != blank and opted_out == false -%}
   {%- style -%}
     #shopify-section-{{ section.id }} .creator-twitch {
       --twitch-ratio: {{ section.settings.ratio | default: '16 / 9' }};
@@ -216,6 +227,13 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "require_opt_in",
+      "default": false,
+      "label": "Require creator opt-in",
+      "info": "On creator pages, shows the banner only when the collection's Show Twitch banner metafield (custom.show_twitch_banner) is set to true. False or unset hides it."
+    },
     {
       "type": "paragraph",
       "content": "Uses the creator's Twitch metafield on creator collection and product pages. The embed does not play on the local dev server, because Twitch rejects IP addresses as a parent domain."
