@@ -1,8 +1,8 @@
 {% comment %}
   Social Bar
 
-  A row of the store's social icons, taken from the theme's Social media
-  settings, under a configurable heading.
+  With "Show Orchid Eight socials" on, a row of the store's social icons, taken
+  from the theme's Social media settings, under a configurable heading.
 
   With "Show line item socials" on, each line item's product collections are
   checked against the creator collection lists, and every creator with an item
@@ -22,6 +22,15 @@
   assign has_store_socials = true
   if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank and settings.social_bluesky_link == blank
     assign has_store_socials = false
+  endif
+
+  # The editor still shows the store group without links, so the setup notice
+  # is visible there
+  assign show_store_group = false
+  if section.settings.show_store_socials
+    if has_store_socials or request.design_mode
+      assign show_store_group = true
+    endif
   endif
 
   # Handles of creators with an item in the cart, pipe separated so each
@@ -87,7 +96,7 @@
   data-section-id="{{ section.id }}"
 >
   <div class="page-width section-{{ section.id }}-padding">
-    {%- if has_store_socials or request.design_mode -%}
+    {%- if show_store_group -%}
       <div class="cart-social-bar__group">
         {%- if section.settings.heading != blank -%}
           <h2 class="cart-social-bar__heading {{ section.settings.heading_size }}">
@@ -206,10 +215,17 @@
       "content": "Store icons come from Theme settings > Social media."
     },
     {
+      "type": "checkbox",
+      "id": "show_store_socials",
+      "default": true,
+      "label": "Show Orchid Eight socials"
+    },
+    {
       "type": "text",
       "id": "heading",
       "default": "Follow Orchid Eight",
-      "label": "Heading"
+      "label": "Heading",
+      "visible_if": "{{ section.settings.show_store_socials }}"
     },
     {
       "type": "select",
@@ -220,7 +236,8 @@
         { "value": "h0", "label": "Large" }
       ],
       "default": "h2",
-      "label": "Heading size"
+      "label": "Heading size",
+      "visible_if": "{{ section.settings.show_store_socials }}"
     },
     {
       "type": "range",
@@ -230,7 +247,8 @@
       "step": 2,
       "unit": "px",
       "default": 22,
-      "label": "Orchid Eight icon size"
+      "label": "Orchid Eight icon size",
+      "visible_if": "{{ section.settings.show_store_socials }}"
     },
     {
       "type": "select",

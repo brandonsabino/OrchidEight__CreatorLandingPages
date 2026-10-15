@@ -13,7 +13,7 @@ cart-social-bar {
   gap: 0.8rem;
 }
 
-.cart-social-bar__creators {
+.cart-social-bar__group + .cart-social-bar__creators {
   margin-top: 2.4rem;
 }
 
