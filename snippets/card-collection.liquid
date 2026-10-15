@@ -8,7 +8,7 @@
   - extend_height: {Boolean} Card height extends to available container space. Default: false (optional)
   - wrapper_class: {String} Wrapper class for card (optional)
   - placeholder_image: {String} Placeholder image when collection is empty (optional)
-  - show_sale_badge: {Boolean} Show a Sale badge when the collection has an in-stock product with a compare-at price. Default: false (optional)
+  - show_sale_badge: {Boolean} Show badges: New Collection when the collection was published within the theme's New badge window, otherwise Sale when it has an in-stock, non-bundle product with a compare-at price. Default: false (optional)
 
   Usage:
   {% render 'card-collection' %}
@@ -31,15 +31,33 @@
     assign card_style = settings.collection_card_style
   endif
 
-  # collection.products is capped at the first 50 products outside of a paginate tag
+  # A new collection takes precedence over a sale, so the product scan only runs
+  # when the collection is outside the New badge window
+  assign collection_is_new = false
   assign collection_on_sale = false
   if show_sale_badge and card_collection != blank
-    for product in card_collection.products
-      if product.compare_at_price > product.price and product.available
-        assign collection_on_sale = true
-        break
+    if card_collection.published_at
+      assign new_cutoff = settings.new_badge_days | default: 14 | times: 86400
+      assign new_cutoff = 'now' | date: '%s' | minus: new_cutoff
+      assign published_seconds = card_collection.published_at | date: '%s' | plus: 0
+      if published_seconds > new_cutoff
+        assign collection_is_new = true
       endif
-    endfor
+    endif
+
+    # collection.products is capped at the first 50 products outside of a paginate tag.
+    # Bundles carry a compare-at price by design, so they don't make a collection a sale.
+    unless collection_is_new
+      for product in card_collection.products
+        if product.tags contains 'bundle' or product.tags contains 'Bundle'
+          continue
+        endif
+        if product.compare_at_price > product.price and product.available
+          assign collection_on_sale = true
+          break
+        endif
+      endfor
+    endunless
   endif
 -%}
 <a
@@ -122,7 +140,13 @@
                 </p>
               {%- endif -%}
             </div>
-            {%- if collection_on_sale -%}
+            {%- if collection_is_new -%}
+              <div class="card__badge {{ settings.badge_position }}">
+                <span class="badge badge--bottom-left color-{{ settings.new_badge_color_scheme }}">
+                  {{- 'products.product.new_collection' | t -}}
+                </span>
+              </div>
+            {%- elsif collection_on_sale -%}
               <div class="card__badge {{ settings.badge_position }}">
                 <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">
                   {{- 'products.product.on_sale' | t -}}
@@ -158,7 +182,13 @@
               </p>
             {%- endif -%}
           </div>
-          {%- if collection_on_sale -%}
+          {%- if collection_is_new -%}
+            <div class="card__badge {{ settings.badge_position }}">
+              <span class="badge badge--bottom-left color-{{ settings.new_badge_color_scheme }}">
+                {{- 'products.product.new_collection' | t -}}
+              </span>
+            </div>
+          {%- elsif collection_on_sale -%}
             <div class="card__badge {{ settings.badge_position }}">
               <span class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}">
                 {{- 'products.product.on_sale' | t -}}

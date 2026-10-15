@@ -34,6 +34,19 @@
   {% assign is_bundle = true %}
 {% endif %}
 
+{%- liquid
+  # Badge precedence: sold out, then bundle, then sale, then new
+  assign is_new = false
+  if card_product.published_at
+    assign new_cutoff = settings.new_badge_days | default: 14 | times: 86400
+    assign new_cutoff = 'now' | date: '%s' | minus: new_cutoff
+    assign published_seconds = card_product.published_at | date: '%s' | plus: 0
+    if published_seconds > new_cutoff
+      assign is_new = true
+    endif
+  endif
+-%}
+
 {% assign is_creator_landing_page = false %}
 {% assign collection_page_match = false %}
 {% assign product_page_match = false %}
@@ -321,6 +334,13 @@
                 class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
               >
                 {{- 'products.product.on_sale' | t -}}
+              </span>
+            {%- elsif is_new -%}
+              <span
+                id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
+                class="badge badge--bottom-left color-{{ settings.new_badge_color_scheme }}"
+              >
+                {{- 'products.product.new_item' | t -}}
               </span>
             {%- endif -%}
           </div>
@@ -752,6 +772,13 @@
               class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
             >
               {{- 'products.product.on_sale' | t -}}
+            </span>
+          {%- elsif is_new -%}
+            <span
+              id="Badge-{{ section_id }}-{{ card_product.id }}"
+              class="badge badge--bottom-left color-{{ settings.new_badge_color_scheme }}"
+            >
+              {{- 'products.product.new_item' | t -}}
             </span>
           {%- endif -%}
         </div>

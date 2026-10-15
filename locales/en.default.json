@@ -120,6 +120,8 @@
       "sku": "SKU",
       "on_sale": "Sale",
       "bundle_deal": "Bundle Deal",
+      "new_item": "New",
+      "new_collection": "New Collection",
       "product_variants": "Product variants",
       "media": {
         "gallery_viewer": "Gallery Viewer",

@@ -1321,6 +1321,23 @@
         "id": "sold_out_badge_color_scheme",
         "label": "t:settings_schema.badges.settings.sold_out_badge_color_scheme.label",
         "default": "scheme-3"
+      },
+      {
+        "type": "color_scheme",
+        "id": "new_badge_color_scheme",
+        "label": "New badge",
+        "default": "scheme-5"
+      },
+      {
+        "type": "range",
+        "id": "new_badge_days",
+        "min": 1,
+        "max": 60,
+        "step": 1,
+        "unit": "d",
+        "label": "Show New badge for",
+        "info": "Days after a product or collection is published. Pages are cached, so a badge can linger a few hours past the cutoff.",
+        "default": 14
       }
     ]
   },
