@@ -1,0 +1,117 @@
+{% comment %}
+  Creator Frame Layout
+
+  Wraps the whole template in a creator's frame artwork and gives it a
+  right-hand sidebar. Every other section stays in the main column, apart from a
+  Creator YouTube Videos section set to the Sidebar layout, which moves into the
+  sidebar. At 1024px and below the sidebar drops under the main column.
+
+  The artwork is cut into bands (see section-creator-frame.css). The numbers
+  below are pixel positions in the source artwork, measured from the top-left
+  of its visible area; the band images were cut at those same positions, so the
+  two must change together.
+
+  Renders nothing visible itself: the artwork is laid over the other sections
+  and ignores clicks.
+{% endcomment %}
+
+{{ 'section-creator-frame.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  body:has(#CreatorFrame-{{ section.id }}) {
+    background-color: {{ section.settings.background_color }};
+  }
+
+  #MainContent:has(#CreatorFrame-{{ section.id }}) {
+    --frame-max-width: {{ section.settings.max_width }}px;
+
+    /* Porcelainmaid artwork, 5140 x 4172 */
+    --frame-w: 5140;
+    --frame-main-x: 385;
+    --frame-main-w: 3212;
+    --frame-side-w: 1107;
+    --frame-pad-top: 213;
+    --frame-pad-bottom: 271;
+    --frame-side-offset: 21;
+    --frame-top-h: 1000;
+    --frame-bottom-h: 772;
+    --frame-shelf-w: 3900;
+    --frame-shelf-h: 1200;
+    --frame-shelf-thickness: 140;
+    --frame-shelf-offset: 929;
+    --frame-top: url('{{ 'creator-frame-porcelainmaid-top.webp' | asset_url }}');
+    --frame-strip: url('{{ 'creator-frame-porcelainmaid-strip.webp' | asset_url }}');
+    --frame-bottom: url('{{ 'creator-frame-porcelainmaid-bottom.webp' | asset_url }}');
+    --frame-shelf: url('{{ 'creator-frame-porcelainmaid-shelf.webp' | asset_url }}');
+
+    /* Left pillar | main | middle pillar | sidebar | right edge */
+    grid-template-columns: minmax(0, 385fr) minmax(0, 3212fr) minmax(0, 254fr) minmax(0, 1107fr) minmax(0, 182fr);
+  }
+
+  /* At 1024px and below the artwork is cut off just past the middle pillar */
+  @media screen and (max-width: 1024px) {
+    #MainContent:has(#CreatorFrame-{{ section.id }}) {
+      --frame-w: 3900;
+      --frame-top: url('{{ 'creator-frame-porcelainmaid-top-narrow.webp' | asset_url }}');
+      --frame-strip: url('{{ 'creator-frame-porcelainmaid-strip-narrow.webp' | asset_url }}');
+      --frame-bottom: url('{{ 'creator-frame-porcelainmaid-bottom-narrow.webp' | asset_url }}');
+      grid-template-columns: minmax(0, 385fr) minmax(0, 3212fr) minmax(0, 303fr);
+    }
+  }
+{%- endstyle -%}
+
+{%- if section.settings.clear_section_backgrounds -%}
+  {%- style -%}
+    #MainContent:has(#CreatorFrame-{{ section.id }}) > .shopify-section > :not(.creator-frame) {
+      background: none;
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+<div id="CreatorFrame-{{ section.id }}" class="creator-frame" aria-hidden="true">
+  <div class="creator-frame__strip"></div>
+</div>
+
+{% schema %}
+{
+  "name": "Creator frame layout",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Frames the template in the Porcelainmaid artwork and adds a right-hand sidebar. Set a Creator YouTube Videos section to the Sidebar layout to place it there. The shelf sits above the collection product grid."
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 1000,
+      "max": 2400,
+      "step": 50,
+      "unit": "px",
+      "default": 1800,
+      "label": "Maximum frame width"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "default": "#29173f",
+      "label": "Page background"
+    },
+    {
+      "type": "checkbox",
+      "id": "clear_section_backgrounds",
+      "default": true,
+      "label": "Show page background behind sections",
+      "info": "Removes each section's color scheme background so the page background shows inside the frame. Product cards keep theirs."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Creator frame layout"
+    }
+  ]
+}
+{% endschema %}

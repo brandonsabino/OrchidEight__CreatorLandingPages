@@ -192,6 +192,28 @@
   margin-top: 2rem;
 }
 
+/* Sidebar layout: one column, no scrolling */
+.creator-youtube--stack .creator-youtube__track {
+  flex-direction: column;
+  overflow: visible;
+  scroll-snap-type: none;
+}
+
+.creator-youtube--stack .creator-youtube__slide {
+  flex: 0 0 auto;
+}
+
+.creator-youtube__video--placeholder {
+  background-color: rgba(var(--color-foreground), 0.08);
+}
+
+.creator-youtube__video--placeholder svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
 @media screen and (max-width: 749px) {
   .creator-youtube__slide {
     flex: 0 0 100%;

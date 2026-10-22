@@ -1,0 +1,87 @@
+{
+  "sections": {
+    "creator_frame_layout": {
+      "type": "creator-frame-layout",
+      "settings": {
+        "max_width": 1800,
+        "background_color": "#29173f",
+        "clear_section_backgrounds": true
+      }
+    },
+    "creator_twitch_banner": {
+      "type": "creator-twitch-banner",
+      "settings": {
+        "require_opt_in": false,
+        "heading": "",
+        "heading_size": "h1",
+        "channel": "porcelainmaid",
+        "extra_parents": "",
+        "ratio": "16 / 9",
+        "max_height_vh": 75,
+        "autoplay": true,
+        "muted": true,
+        "show_channel_link": false,
+        "channel_link_label": "Watch on Twitch",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "enabled_filtered_sections": false,
+        "products_per_page": 24,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "columns_mobile": "2",
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
+    "creator_youtube_sidebar": {
+      "type": "creator-youtube-grid",
+      "blocks": {
+        "video_1": { "type": "video", "settings": { "video_url": "", "title": "" } },
+        "video_2": { "type": "video", "settings": { "video_url": "", "title": "" } },
+        "video_3": { "type": "video", "settings": { "video_url": "", "title": "" } },
+        "video_4": { "type": "video", "settings": { "video_url": "", "title": "" } },
+        "video_5": { "type": "video", "settings": { "video_url": "", "title": "" } }
+      },
+      "block_order": ["video_1", "video_2", "video_3", "video_4", "video_5"],
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "layout": "stack",
+        "videos_per_view": 4,
+        "show_arrows": false,
+        "show_dots": false,
+        "channel_url": "",
+        "show_channel_link": true,
+        "channel_link_label": "Watch on YouTube",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 16
+      }
+    }
+  },
+  "order": ["creator_frame_layout", "creator_twitch_banner", "banner", "product-grid", "creator_youtube_sidebar"]
+}

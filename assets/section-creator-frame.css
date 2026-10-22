@@ -1,0 +1,122 @@
+/*
+  Creator frame layout
+
+  Turns #MainContent into a framed two-column layout: every section sits in the
+  main column, except a YouTube section set to the Sidebar layout, which spans
+  the right-hand column. The frame artwork is laid over the top.
+
+  The artwork is cut into bands so it can stretch to any amount of content:
+  a top band and a bottom band pinned to the ends, a pillar strip that repeats
+  between them, and a shelf drawn above the collection product grid.
+
+  Every measurement is in pixels of the source artwork. They, the column tracks
+  and the narrow-screen artwork are set in the section's style tag, since fr
+  tracks cannot be built from custom properties. Columns use fr so they scale
+  exactly with the frame, and vertical offsets use percentage margins and
+  padding, which resolve against width, so the artwork and the content stay
+  locked together at any size.
+*/
+
+#MainContent:has(> .shopify-section > .creator-frame) {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  /* The sidebar spans every explicit row; the final 1fr row absorbs any extra
+     height it needs, so main-column sections never spread apart. */
+  grid-template-rows: repeat(20, auto) 1fr;
+  align-content: start;
+  max-width: var(--frame-max-width);
+  margin-inline: auto;
+  /* The percentage resolves against <body>, so the frame width is rebuilt */
+  padding-top: calc(min(100%, var(--frame-max-width)) * var(--frame-pad-top) / var(--frame-w));
+  padding-bottom: calc(min(100%, var(--frame-max-width)) * var(--frame-pad-bottom) / var(--frame-w));
+}
+
+#MainContent:has(> .shopify-section > .creator-frame) > .shopify-section {
+  grid-column: 2;
+  min-width: 0;
+}
+
+/* Sections are framed by the artwork, so the theme's page gutters are trimmed */
+#MainContent:has(> .shopify-section > .creator-frame) > .shopify-section .page-width {
+  max-width: none;
+  padding-inline: 1.5rem;
+}
+
+/* --- Artwork --- */
+/* An absolutely positioned grid child is placed against its grid area, so the
+   area is reset to auto to cover the whole frame, padding included. */
+#MainContent:has(> .shopify-section > .creator-frame) > .shopify-section:has(> .creator-frame) {
+  grid-column: auto;
+  grid-row: auto;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.creator-frame {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+  background:
+    var(--frame-top) no-repeat left top / 100% auto,
+    var(--frame-bottom) no-repeat left bottom / 100% auto;
+}
+
+/* Margins rather than top and bottom, so the band heights resolve against width.
+   Doubled selector to outrank base.css hiding empty divs. */
+.creator-frame .creator-frame__strip {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  margin-top: calc(var(--frame-top-h) / var(--frame-w) * 100%);
+  margin-bottom: calc(var(--frame-bottom-h) / var(--frame-w) * 100%);
+  background: var(--frame-strip) repeat-y left top / 100% auto;
+}
+
+/* --- Shelf, between the banners and the products --- */
+#MainContent:has(> .shopify-section > .creator-frame) > .shopify-section:has(#ProductGridContainer) {
+  position: relative;
+  margin-top: calc(var(--frame-shelf-thickness) / var(--frame-main-w) * 100%);
+}
+
+#MainContent:has(> .shopify-section > .creator-frame) > .shopify-section:has(#ProductGridContainer)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: calc(var(--frame-shelf-w) / var(--frame-main-w) * 100%);
+  aspect-ratio: var(--frame-shelf-w) / var(--frame-shelf-h);
+  margin-top: calc(var(--frame-shelf-offset) / var(--frame-main-w) * -100%);
+  margin-left: calc(var(--frame-main-x) / var(--frame-main-w) * -100%);
+  background: var(--frame-shelf) no-repeat left top / 100% 100%;
+  pointer-events: none;
+}
+
+/* --- Sidebar --- */
+#MainContent:has(> .shopify-section > .creator-frame) > .shopify-section:has(> [data-frame-sidebar]) {
+  grid-column: 4;
+  grid-row: 1 / -1;
+  margin-top: calc(var(--frame-side-offset) / var(--frame-side-w) * 100%);
+}
+
+#MainContent:has(> .shopify-section > .creator-frame) [data-frame-sidebar] .page-width {
+  padding-inline: 1rem;
+}
+
+/* At 1024px and below the sidebar drops into the main column, after everything else */
+@media screen and (max-width: 1024px) {
+  #MainContent:has(> .shopify-section > .creator-frame) {
+    grid-template-rows: none;
+  }
+
+  #MainContent:has(> .shopify-section > .creator-frame) > .shopify-section:has(> [data-frame-sidebar]) {
+    grid-column: 2;
+    grid-row: auto;
+    order: 1;
+    margin-top: 0;
+  }
+}

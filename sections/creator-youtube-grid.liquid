@@ -7,6 +7,10 @@
   entered by hand.
 
   The creator's YouTube metafield is used for the channel link below the row.
+
+  The Sidebar layout stacks the videos in a single column with no arrows or
+  dots, for templates that use the Creator frame layout section, which moves this
+  section into its right-hand column.
 {% endcomment %}
 
 {{ 'component-creator-embeds.css' | asset_url | stylesheet_tag }}
@@ -57,6 +61,11 @@
     endif
   endif
 
+  assign is_stacked = false
+  if section.settings.layout == 'stack'
+    assign is_stacked = true
+  endif
+
   assign channel_url = section.settings.channel_url
   if channel_url == blank and is_creator_page
     assign channel_url = creator_source.metafields.custom.creator_landing_page_youtube_account.value.url
@@ -82,15 +91,15 @@
     }
   {%- endstyle -%}
 
-  <div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="color-{{ section.settings.color_scheme }} gradient"{% if is_stacked %} data-frame-sidebar{% endif %}>
     <div class="section-{{ section.id }}-padding page-width">
       {%- if section.settings.heading != blank -%}
         <h2 class="title {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
       {%- endif -%}
 
-      <creator-youtube-grid class="creator-youtube">
+      <creator-youtube-grid class="creator-youtube{% if is_stacked %} creator-youtube--stack{% endif %}">
         <div class="creator-youtube__viewport">
-        {%- if section.settings.show_arrows and section.blocks.size > section.settings.videos_per_view -%}
+        {%- if is_stacked == false and section.settings.show_arrows and section.blocks.size > section.settings.videos_per_view -%}
           <button
             type="button"
             class="creator-youtube__nav creator-youtube__nav--prev"
@@ -131,11 +140,17 @@
                   ></iframe>
                 </div>
               </div>
+            {%- elsif is_stacked and request.design_mode -%}
+              <div class="creator-youtube__slide" {{ block.shopify_attributes }}>
+                <div class="creator-youtube__video creator-youtube__video--placeholder">
+                  {{- 'image' | placeholder_svg_tag: 'placeholder-svg' -}}
+                </div>
+              </div>
             {%- endif -%}
           {%- endfor -%}
         </div>
 
-        {%- if section.settings.show_arrows and section.blocks.size > section.settings.videos_per_view -%}
+        {%- if is_stacked == false and section.settings.show_arrows and section.blocks.size > section.settings.videos_per_view -%}
           <button
             type="button"
             class="creator-youtube__nav creator-youtube__nav--next"
@@ -147,7 +162,7 @@
         {%- endif -%}
         </div>
 
-        {%- if section.settings.show_dots and section.blocks.size > section.settings.videos_per_view -%}
+        {%- if is_stacked == false and section.settings.show_dots and section.blocks.size > section.settings.videos_per_view -%}
           <div class="creator-youtube__dots">
             {%- for block in section.blocks -%}
               <button
@@ -202,6 +217,17 @@
       "label": "Heading size"
     },
     {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        { "value": "row", "label": "Scrolling row" },
+        { "value": "stack", "label": "Sidebar (stacked)" }
+      ],
+      "default": "row",
+      "label": "Layout",
+      "info": "Sidebar stacks the videos in one column. On a template with the Creator frame layout section, it moves into the frame's right-hand column."
+    },
+    {
       "type": "range",
       "id": "videos_per_view",
       "min": 2,
@@ -209,7 +235,7 @@
       "step": 1,
       "default": 4,
       "label": "Videos per row",
-      "info": "Desktop only. Mobile always shows one at a time."
+      "info": "Scrolling row layout, desktop only. Mobile always shows one at a time."
     },
     {
       "type": "checkbox",
