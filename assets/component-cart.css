@@ -192,6 +192,18 @@ cart-items {
   max-width: 36rem;
 }
 
+.cart__shipping-delay-notice {
+  max-width: 36rem;
+  margin: 0 auto 1.6rem;
+  padding: 1rem 1.4rem;
+  border: 2px solid #d72c0d;
+  border-radius: 8px;
+  background-color: #d72c0d;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+}
+
 .cart__ctas {
   text-align: center;
 }
@@ -209,6 +221,10 @@ cart-items {
   .tax-note {
     margin-bottom: 2.2rem;
     text-align: right;
+  }
+
+  .cart__shipping-delay-notice {
+    margin-right: 0;
   }
 
   [data-shopify-buttoncontainer] {

@@ -1,0 +1,15 @@
+{% comment %}
+  Renders the product's custom.shipping_delay_message metafield, or nothing when it's blank.
+  Accepts:
+  - product: {Object} product object.
+  - class: {String} classes for the wrapper (optional).
+
+  Usage:
+  {% render 'shipping-delay-message', product: item.product, class: 'product-option' %}
+{% endcomment %}
+{%- assign shipping_delay_message = product.metafields.custom.shipping_delay_message.value -%}
+{%- if shipping_delay_message != blank -%}
+  <p class="shipping-delay-message{% if class != blank %} {{ class }}{% endif %}">
+    {{- shipping_delay_message | escape | newline_to_br -}}
+  </p>
+{%- endif -%}

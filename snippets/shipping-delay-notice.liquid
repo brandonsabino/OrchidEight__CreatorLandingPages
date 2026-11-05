@@ -1,0 +1,21 @@
+{% comment %}
+  Renders an order-level notice counting the cart items whose product has a custom.shipping_delay_message,
+  or nothing when none do.
+
+  Usage:
+  {% render 'shipping-delay-notice' %}
+{% endcomment %}
+{%- liquid
+  assign shipping_delay_count = 0
+  for item in cart.items
+    if item.product.metafields.custom.shipping_delay_message.value != blank
+      assign shipping_delay_count = shipping_delay_count | plus: item.quantity
+    endif
+  endfor
+-%}
+{%- if shipping_delay_count > 0 -%}
+  <p class="cart__shipping-delay-notice">
+    Your cart contains {{ shipping_delay_count }}
+    {% if shipping_delay_count == 1 %}item{% else %}items{% endif %} that may delay the fulfillment of your order.
+  </p>
+{%- endif -%}

@@ -102,6 +102,8 @@
                     {%- endif -%}
                   {%- endif -%}
                 </small>
+
+                {%- render 'shipping-delay-notice' -%}
               </div>
             {%- else -%}
               <div class="cart__ctas" {{ block.shopify_attributes }}>

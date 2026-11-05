@@ -98,6 +98,8 @@
           {%- endif -%}
         </div>
       {%- endform -%}
+
+      {%- render 'shipping-delay-message', product: product, class: 'product-form__shipping-delay' -%}
     </product-form>
   {%- else -%}
     <div class="product-form">

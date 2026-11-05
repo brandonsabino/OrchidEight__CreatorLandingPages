@@ -313,6 +313,11 @@ cart-drawer-items {
   text-align: left;
 }
 
+.cart-drawer .cart__shipping-delay-notice {
+  max-width: none;
+  margin: 0 0 2rem;
+}
+
 .cart-drawer .product-option dd {
   word-break: break-word;
 }
