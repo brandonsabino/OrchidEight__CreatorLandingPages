@@ -9,164 +9,479 @@
  */
 {
   "sections": {
-    "slideshow_R9Qr7a": {
-      "type": "slideshow",
+    "rich_text_YybPAh": {
+      "type": "rich-text",
       "blocks": {
-        "slide_p7YhTQ": {
-          "type": "slide",
+        "heading_46RXbd": {
+          "type": "heading",
           "settings": {
-            "image": "shopify://shop_images/florian-olivo-Mf23RF8xArY-unsplash.jpg",
-            "heading": "High end  merchandise on a global scale.",
-            "heading_size": "hxl",
-            "subheading": "",
-            "button_label": "Explore our collections",
-            "link": "shopify://collections",
-            "button_style_secondary": false,
-            "box_align": "middle-left",
-            "show_text_box": false,
-            "text_alignment": "left",
-            "image_overlay_opacity": 20,
-            "color_scheme": "scheme-4",
-            "text_alignment_mobile": "left"
+            "heading": "Orchid Eight Content Creators",
+            "heading_size": "h1",
+            "heading_font_family": "sans_serif_n4",
+            "heading_font_family_import": "",
+            "use_greston_font": true
           }
         },
-        "slide_Bw46ck": {
-          "type": "slide",
+        "text_xiCpPr": {
+          "type": "text",
+          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/fredrick-tendong-6ou8gWpS9ns-unsplash.jpg",
-            "heading": "Everything physical for your digital world.",
-            "heading_size": "hxl",
-            "subheading": "",
-            "button_label": "Shop the Latest Drops",
-            "link": "shopify://collections",
-            "button_style_secondary": false,
-            "box_align": "middle-left",
-            "show_text_box": false,
-            "text_alignment": "left",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-4",
-            "text_alignment_mobile": "center"
-          }
-        },
-        "slide_H96Qii": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/heraclito-rollemberg-lxrVeXmTY7Y-unsplash.jpg",
-            "heading": "Bulk black desk mats",
-            "heading_size": "hxl",
-            "subheading": "$19.99 each",
-            "button_label": "Shop Now",
-            "link": "shopify://products/black-desk-mat",
-            "button_style_secondary": false,
-            "box_align": "bottom-right",
-            "show_text_box": false,
-            "text_alignment": "left",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-4",
-            "text_alignment_mobile": "center"
+            "text": "<p>Here's all of the content creator's store links. Take a look at their current products.</p>",
+            "text_font_family": "poppins_n4",
+            "text_font_family_import": ""
           }
         }
       },
       "block_order": [
-        "slide_p7YhTQ",
-        "slide_Bw46ck",
-        "slide_H96Qii"
+        "heading_46RXbd",
+        "text_xiCpPr"
       ],
-      "name": "t:sections.slideshow.presets.name",
       "settings": {
-        "layout": "full_bleed",
-        "slide_height": "medium",
-        "slider_visual": "dots",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "image_behavior": "none",
-        "show_text_below": false,
-        "accessibility_info": "Slideshow about our brand"
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 12
       }
     },
-    "collection_list_pxzrcp": {
+    "collection_list_pRMRje": {
       "type": "collection-list",
       "blocks": {
-        "featured_collection_GEPgLY": {
+        "featured_collection_XL63Jz": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "limited-drops",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_M3ic34": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "artist-alley",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_Q8PyyT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "adeptus-ridiculous",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_7MYKg4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "acceptable-losses",
+            "custom_path": "shopify://collections/acceptable-losses"
+          }
+        },
+        "featured_collection_k488JB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "arar",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_n9iMqY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "arowrites",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_bVrQRM": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "august-anomaly",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_LeLK6p": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "aurelia-tempris",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_8cqWHX": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "billion-dollar-clown-farm",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_Nwnw4t": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "brian_f",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_mWEebx": {
           "type": "featured_collection",
           "settings": {
             "collection": "bricky",
             "custom_path": ""
           }
         },
-        "featured_collection_hH3Gfd": {
+        "featured_collection_6xEtTi": {
           "type": "featured_collection",
           "settings": {
-            "collection": "mari",
+            "collection": "cakejumper",
             "custom_path": ""
           }
         },
-        "featured_collection_iYJ8UJ": {
+        "featured_collection_JeqRLD": {
           "type": "featured_collection",
           "settings": {
-            "collection": "limealicious",
+            "collection": "castle-super-beast",
             "custom_path": ""
           }
         },
-        "featured_collection_EYt88f": {
+        "featured_collection_MhAaBe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "chacha",
+            "custom_path": "shopify://collections/chacha"
+          }
+        },
+        "featured_collection_JijdV4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "chrchie",
+            "custom_path": "shopify://collections/chrchie"
+          }
+        },
+        "featured_collection_4DpG9H": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "christian-von-carmian",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_NbqyeW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "commissar-kai",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_PcL9Qt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cottontail",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_K3GDE7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "crelly",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_NRqQ7m": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cyyu",
+            "custom_path": "shopify://collections/cyyu"
+          }
+        },
+        "featured_collection_JYLdaw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "datto",
+            "custom_path": "shopify://collections/datto"
+          }
+        },
+        "featured_collection_7CXeHb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dejavudea",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_m7YAbe": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dicehammer",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_mc7NQQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "dr-rhino",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_4aXCXB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "easty",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_qaxBiA": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "effinfox",
+            "custom_path": "shopify://collections/effinfox"
+          }
+        },
+        "featured_collection_4G4ycV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "elia-stellaria",
+            "custom_path": "shopify://collections/elia-stellaria"
+          }
+        },
+        "featured_collection_nntdcq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ellieminibot",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_MgzFKx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fangz",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_DmgFwX": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "fefe",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_AgfnqN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "first-tour-guardsman",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_CqHQ8g": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "froggy-phd",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_rLrDDE": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "geef",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_gCYWBk": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "girl-dm",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_LK7yDi": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "grimmi",
+            "custom_path": "shopify://collections/grimmi"
+          }
+        },
+        "featured_collection_QgqpWT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "gundamboi",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_f4VKgW": {
           "type": "featured_collection",
           "settings": {
             "collection": "hayegurl",
             "custom_path": ""
           }
         },
-        "featured_collection_YaygCn": {
+        "featured_collection_9LmR8h": {
           "type": "featured_collection",
           "settings": {
-            "collection": "paragon",
+            "collection": "heavenly-father",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_tBQNnq": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hinabobina",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_D7a3rf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "isaa-corva",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_6B3VeN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "jax",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_B7T66t": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "jocat",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_Ki643M": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kabhaal",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_fw49Wh": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kommavt",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_aT7GPb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "konoobi",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_LnVJQJ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kumi",
+            "custom_path": "shopify://collections/kumi"
+          }
+        },
+        "featured_collection_ThL3Cc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lady-qathrin",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_i978hV": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lessdraws",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_H9gQ4b": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "limealicious",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_D3BHie": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "marcodmeatball",
             "custom_path": ""
           }
         }
       },
       "block_order": [
-        "featured_collection_GEPgLY",
-        "featured_collection_hH3Gfd",
-        "featured_collection_iYJ8UJ",
-        "featured_collection_EYt88f",
-        "featured_collection_YaygCn"
+        "featured_collection_XL63Jz",
+        "featured_collection_M3ic34",
+        "featured_collection_Q8PyyT",
+        "featured_collection_7MYKg4",
+        "featured_collection_k488JB",
+        "featured_collection_n9iMqY",
+        "featured_collection_bVrQRM",
+        "featured_collection_LeLK6p",
+        "featured_collection_8cqWHX",
+        "featured_collection_Nwnw4t",
+        "featured_collection_mWEebx",
+        "featured_collection_6xEtTi",
+        "featured_collection_JeqRLD",
+        "featured_collection_MhAaBe",
+        "featured_collection_JijdV4",
+        "featured_collection_4DpG9H",
+        "featured_collection_NbqyeW",
+        "featured_collection_PcL9Qt",
+        "featured_collection_K3GDE7",
+        "featured_collection_NRqQ7m",
+        "featured_collection_JYLdaw",
+        "featured_collection_7CXeHb",
+        "featured_collection_m7YAbe",
+        "featured_collection_mc7NQQ",
+        "featured_collection_4aXCXB",
+        "featured_collection_qaxBiA",
+        "featured_collection_4G4ycV",
+        "featured_collection_nntdcq",
+        "featured_collection_MgzFKx",
+        "featured_collection_DmgFwX",
+        "featured_collection_AgfnqN",
+        "featured_collection_CqHQ8g",
+        "featured_collection_rLrDDE",
+        "featured_collection_gCYWBk",
+        "featured_collection_LK7yDi",
+        "featured_collection_QgqpWT",
+        "featured_collection_f4VKgW",
+        "featured_collection_9LmR8h",
+        "featured_collection_tBQNnq",
+        "featured_collection_D7a3rf",
+        "featured_collection_6B3VeN",
+        "featured_collection_B7T66t",
+        "featured_collection_Ki643M",
+        "featured_collection_fw49Wh",
+        "featured_collection_aT7GPb",
+        "featured_collection_LnVJQJ",
+        "featured_collection_ThL3Cc",
+        "featured_collection_i978hV",
+        "featured_collection_H9gQ4b",
+        "featured_collection_D3BHie"
       ],
-      "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "title": "Find your favorites",
+        "title": "",
         "heading_size": "h1",
-        "image_ratio": "portrait",
-        "columns_desktop": 5,
+        "image_ratio": "square",
+        "columns_desktop": 6,
         "grid_alignment": "center",
-        "color_scheme": "scheme-51d71a61-e01f-4d4c-b576-4e144461e827",
-        "show_view_all": true,
-        "columns_mobile": "1",
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "show_sale_badge": true,
+        "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 16
       }
     },
-    "rich_text_8HXjdJ": {
+    "rich_text_Ke48KM": {
       "type": "rich-text",
       "blocks": {
-        "heading_yUCrmq": {
+        "heading_XzzQGC": {
           "type": "heading",
           "settings": {
-            "heading": "Interested in working with Orchid Eight?",
+            "heading": "Interested in working with us?",
             "heading_size": "h1",
             "heading_font_family": "bayon_n4",
             "heading_font_family_import": "",
             "use_greston_font": false
           }
         },
-        "text_p8Qk8b": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Orchid Eight is a non-exclusive merchandise provider for content creators and businesses.</p><p>We specialize in everything from simple items representing your brand, to specialized and bespoke items tailored with care for special moments and big milestones.</p>",
-            "text_font_family": "bayon_n4",
-            "text_font_family_import": ""
-          }
-        },
-        "button_DG3Jf8": {
+        "button_PcAKpL": {
           "type": "button",
           "settings": {
             "button_label": "Creator Contact",
@@ -179,9 +494,8 @@
         }
       },
       "block_order": [
-        "heading_yUCrmq",
-        "text_p8Qk8b",
-        "button_DG3Jf8"
+        "heading_XzzQGC",
+        "button_PcAKpL"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
@@ -193,110 +507,484 @@
         "padding_bottom": 52
       }
     },
-    "multirow_cNKnxT": {
-      "type": "multirow",
+    "collection_list_HY8kGf": {
+      "type": "collection-list",
       "blocks": {
-        "row_9gnRKX": {
-          "type": "row",
+        "featured_collection_etGdqW": {
+          "type": "featured_collection",
           "settings": {
-            "image": "shopify://shop_images/luis-villasmil-ITFwHdPEED0-unsplash.jpg",
-            "image_count": 3,
-            "image_2": "shopify://shop_images/fredrick-tendong-6ou8gWpS9ns-unsplash.jpg",
-            "image_3": "shopify://shop_images/game-console-controller-illuminated.jpg",
-            "caption": "show your support",
-            "heading": "You love them? We love them too.",
-            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu augue eu odio pharetra condimentum. Cras facilisis, erat ut faucibus volutpat, neque libero sagittis nulla, eget semper nisl nisl non dolor.</p>",
-            "button_label": "",
-            "button_link": ""
+            "collection": "mari",
+            "custom_path": ""
           }
         },
-        "row_ntVpKm": {
-          "type": "row",
+        "featured_collection_TaMY4U": {
+          "type": "featured_collection",
           "settings": {
-            "image": "shopify://shop_images/revised_mock_up2.png",
-            "image_count": 1,
-            "caption": "subscribe for updates",
-            "heading": "Never miss a drop",
-            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu augue eu odio pharetra condimentum. Cras facilisis, erat ut faucibus volutpat, neque libero sagittis nulla, eget semper nisl nisl non dolor.</p>",
-            "button_label": "",
-            "button_link": ""
+            "collection": "mariefd",
+            "custom_path": ""
           }
         },
-        "row_hGKFzr": {
-          "type": "row",
+        "featured_collection_Wha4xc": {
+          "type": "featured_collection",
           "settings": {
-            "image": "shopify://shop_images/girl-dm_card_mockup2.png",
-            "image_count": 1,
-            "caption": "Shop Orchid Eight Exclusives",
-            "heading": "You won't find this anywhere else.",
-            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu augue eu odio pharetra condimentum. Cras facilisis, erat ut faucibus volutpat, neque libero sagittis nulla, eget semper nisl nisl non dolor.</p>",
-            "button_label": "",
-            "button_link": ""
+            "collection": "melizande",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_niJPqC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "miniko-mew",
+            "custom_path": "shopify://collections/miniko-mew"
+          }
+        },
+        "featured_collection_mxyr38": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mooreover",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_QidJPa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mysticlight",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_y4mFac": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "namuspirit",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_GkYm9m": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "narrative-declaration",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_PkkjgP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "necrit",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_HrpJL7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "nene-amano",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_DTm6fT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "noro",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_RdEKPc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "numbskulls",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_wPRYNn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "onigiri",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_FTH8WH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pancreasnowork",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_PLTFBd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "papamutt",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_LBc8Rt": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "paragon",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_xE7jDF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "paulisbadatstuff",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_wAD88V": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "piper",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_6nL9mj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "poorhammer",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_PtW7ni": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "poorhammer",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_XUGwTc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "porcelain-maid",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_pDafBT": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pumpkin-potion",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_7tW7jr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pxppycorpse",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_yM3QRP": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "radiaactive",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_jpkGbJ": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "rin-penrose",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_hzEzhd": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rin-penrose",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_ihh7me": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "roflgator",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_TVkd8x": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rorii",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_VHF8AY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "rubixraptor",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_xyTfYY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "savii",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_gpCMXb": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "shammy",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_dbYLEH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "shiro-gomi",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_zQDfn6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "shoomimi",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_GJWWfx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sif-avellana",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_CtdLVW": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sigridandbird",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_YyEUY6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sister-cecilia",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_yph4UQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "spite",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_KjGXhj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "strippin",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_km7Rdg": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sunnysplosion",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_ETPEGG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "suto",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_HMiHDr": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "sybert",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_hmVt7W": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "tabletop-titans",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_tKi7ik": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "theking",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_Wr6X3d": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "the-unexpectables",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_QHkCrL": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "matarakan",
+            "custom_path": ""
           }
         }
       },
       "block_order": [
-        "row_9gnRKX",
-        "row_ntVpKm",
-        "row_hGKFzr"
+        "featured_collection_etGdqW",
+        "featured_collection_TaMY4U",
+        "featured_collection_Wha4xc",
+        "featured_collection_niJPqC",
+        "featured_collection_mxyr38",
+        "featured_collection_QidJPa",
+        "featured_collection_y4mFac",
+        "featured_collection_GkYm9m",
+        "featured_collection_PkkjgP",
+        "featured_collection_HrpJL7",
+        "featured_collection_DTm6fT",
+        "featured_collection_RdEKPc",
+        "featured_collection_wPRYNn",
+        "featured_collection_FTH8WH",
+        "featured_collection_PLTFBd",
+        "featured_collection_LBc8Rt",
+        "featured_collection_xE7jDF",
+        "featured_collection_wAD88V",
+        "featured_collection_6nL9mj",
+        "featured_collection_PtW7ni",
+        "featured_collection_XUGwTc",
+        "featured_collection_pDafBT",
+        "featured_collection_7tW7jr",
+        "featured_collection_yM3QRP",
+        "featured_collection_jpkGbJ",
+        "featured_collection_hzEzhd",
+        "featured_collection_ihh7me",
+        "featured_collection_TVkd8x",
+        "featured_collection_VHF8AY",
+        "featured_collection_xyTfYY",
+        "featured_collection_gpCMXb",
+        "featured_collection_dbYLEH",
+        "featured_collection_zQDfn6",
+        "featured_collection_GJWWfx",
+        "featured_collection_CtdLVW",
+        "featured_collection_YyEUY6",
+        "featured_collection_yph4UQ",
+        "featured_collection_KjGXhj",
+        "featured_collection_km7Rdg",
+        "featured_collection_ETPEGG",
+        "featured_collection_HMiHDr",
+        "featured_collection_hmVt7W",
+        "featured_collection_tKi7ik",
+        "featured_collection_Wr6X3d",
+        "featured_collection_QHkCrL"
       ],
-      "name": "t:sections.multirow.presets.name",
+      "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "image_height": "medium",
-        "desktop_image_width": "medium",
+        "title": "",
         "heading_size": "h1",
-        "text_style": "body",
-        "button_style": "secondary",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "image_layout": "alternate-left",
-        "section_color_scheme": "",
-        "row_color_scheme": "",
-        "mobile_content_alignment": "left",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "grid_alignment": "center",
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "show_sale_badge": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
     },
-    "newsletter_4BbVzA": {
-      "type": "newsletter",
+    "collection_list_fa3NpK": {
+      "type": "collection-list",
       "blocks": {
-        "heading_MV7QGY": {
-          "type": "heading",
+        "featured_collection_jrUkjm": {
+          "type": "featured_collection",
           "settings": {
-            "heading": "Subscribe to our emails",
-            "heading_size": "h1"
+            "collection": "tommy",
+            "custom_path": ""
           }
         },
-        "paragraph_enp7bi": {
-          "type": "paragraph",
+        "featured_collection_qGLkUL": {
+          "type": "featured_collection",
           "settings": {
-            "text": "<p>You can leave us on read, we won't mind.</p>"
+            "collection": "vexoria",
+            "custom_path": ""
           }
         },
-        "email_form_aTKgdt": {
-          "type": "email_form",
-          "settings": {}
+        "featured_collection_3KhFaB": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "vityanova",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_iqNELQ": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "voices-of-the-void",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_ePERCM": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "wicked-good-gaming",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_j7R4PN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "williaso",
+            "custom_path": ""
+          }
+        },
+        "featured_collection_CDpQTh": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "yewfie",
+            "custom_path": "shopify://collections/yewfie"
+          }
+        },
+        "featured_collection_WkpKUB": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "",
+            "custom_path": ""
+          }
         }
       },
       "block_order": [
-        "heading_MV7QGY",
-        "paragraph_enp7bi",
-        "email_form_aTKgdt"
+        "featured_collection_jrUkjm",
+        "featured_collection_qGLkUL",
+        "featured_collection_3KhFaB",
+        "featured_collection_iqNELQ",
+        "featured_collection_ePERCM",
+        "featured_collection_j7R4PN",
+        "featured_collection_CDpQTh",
+        "featured_collection_WkpKUB"
       ],
-      "name": "t:sections.newsletter.presets.name",
+      "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "color_scheme": "scheme-4",
-        "full_width": true,
-        "padding_top": 16,
-        "padding_bottom": 16
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 6,
+        "grid_alignment": "center",
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "show_sale_badge": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
-    "slideshow_R9Qr7a",
-    "collection_list_pxzrcp",
-    "rich_text_8HXjdJ",
-    "multirow_cNKnxT",
-    "newsletter_4BbVzA"
+    "rich_text_YybPAh",
+    "collection_list_pRMRje",
+    "rich_text_Ke48KM",
+    "collection_list_HY8kGf",
+    "collection_list_fa3NpK"
   ]
 }
