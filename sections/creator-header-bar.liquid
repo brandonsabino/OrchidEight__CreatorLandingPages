@@ -160,6 +160,12 @@
       text-align: center;
     }
 
+    #shopify-section-{{ section.id }} .creator-header-bar__logo-link {
+      display: inline-block;
+      color: inherit;
+      text-decoration: none;
+    }
+
     #shopify-section-{{ section.id }} .creator-header-bar__logo img {
       display: block;
       width: auto;
@@ -270,15 +276,17 @@
       </ul>
 
       <div class="creator-header-bar__logo">
-        {%- if creator_logo != blank -%}
-          {{
-            creator_logo
-            | image_url: width: 600
-            | image_tag: loading: 'lazy', widths: '165, 300, 450, 600', alt: creator_source.title
-          }}
-        {%- else -%}
-          <p class="creator-header-bar__title">{{ creator_source.title }}</p>
-        {%- endif -%}
+        <a href="{{ creator_source.url }}" class="creator-header-bar__logo-link">
+          {%- if creator_logo != blank -%}
+            {{
+              creator_logo
+              | image_url: width: 600
+              | image_tag: loading: 'lazy', widths: '165, 300, 450, 600', alt: creator_source.title
+            }}
+          {%- else -%}
+            <p class="creator-header-bar__title">{{ creator_source.title }}</p>
+          {%- endif -%}
+        </a>
       </div>
 
       <div class="creator-header-bar__description rte">
