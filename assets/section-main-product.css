@@ -238,7 +238,11 @@ product-info {
 a.product__text {
   display: block;
   text-decoration: none;
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgb(var(--color-foreground));
+}
+
+a.product__text:hover {
+  text-decoration: underline;
 }
 
 .product__text.caption-with-letter-spacing {

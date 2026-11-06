@@ -313,12 +313,13 @@
   padding: 0.9rem 1.5rem;
   text-decoration: none;
   line-height: calc(1 + 0.8 / var(--font-body-scale));
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgb(var(--color-foreground));
   word-break: break-word;
 }
 
 .disclosure__link:hover {
   color: rgb(var(--color-foreground));
+  text-decoration: underline;
 }
 
 .disclosure__link .icon-checkmark {
