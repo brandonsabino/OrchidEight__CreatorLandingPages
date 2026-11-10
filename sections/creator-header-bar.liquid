@@ -6,10 +6,11 @@
   the centre, and their collection description on the right.
 
   Colours come from the same collection metafields that used to restyle the
-  header itself: outer background behind the bar, inner background on the bar,
-  and content colour for text and icons. Colours only — the accent border and
-  the header shape toggle are deliberately not carried over, and the bar runs
-  full width.
+  header itself: inner background on the bar, content colour for text and
+  icons, and the outer background as the bar's bottom border, whose thickness
+  (in px, default 2) comes from its own metafield. The accent border and the
+  header shape toggle are deliberately not carried over, and the bar runs full
+  width.
 {% endcomment %}
 
 {%- liquid
@@ -70,20 +71,18 @@
     assign creator_logo = creator_source.metafields.custom.creator_landing_page_logo
     assign creator_description = creator_source.description
 
-    assign outer_background = creator_source.metafields.custom.creator_landing_page_outer_header_background | default: 'transparent'
+    assign border_color = creator_source.metafields.custom.creator_landing_page_outer_header_background | default: 'transparent'
+    assign border_thickness = creator_source.metafields.custom.creator_landing_page_header_border_thickness | default: 2
     assign inner_background = creator_source.metafields.custom.creator_landing_page_header_background | default: 'transparent'
     assign content_color = creator_source.metafields.custom.creator_landing_page_header_content_color | default: 'currentColor'
   -%}
 
   {%- style -%}
-    #shopify-section-{{ section.id }} {
-      background: {{ outer_background }};
-    }
-
     /* Background runs full bleed, content is capped at page width — same as the header */
     #shopify-section-{{ section.id }} .creator-header-bar {
       background-color: {{ inner_background }};
       color: {{ content_color }};
+      border-bottom: {{ border_thickness }}px solid {{ border_color }};
     }
 
     #shopify-section-{{ section.id }} .creator-header-bar__inner {
