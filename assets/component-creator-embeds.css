@@ -54,6 +54,13 @@
 }
 
 @media screen and (max-width: 749px) {
+  /* Twitch lays its player out for at least 300px of height and scrolls inside
+     the iframe below that, which a 16:9 frame on a phone (~220px) always hits.
+     The frame grows to 300px instead; min-height also outranks the max-height cap. */
+  .creator-twitch__player {
+    min-height: 300px;
+  }
+
   .creator-twitch__footer {
     left: 1.2rem;
     bottom: 1.2rem;
