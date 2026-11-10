@@ -224,6 +224,53 @@
         justify-self: center;
         text-align: center;
       }
+
+      /* Pinned under the main header, which publishes its height as --header-height */
+      #shopify-section-{{ section.id }} {
+        position: sticky;
+        top: var(--header-height, 0px);
+        z-index: 2;
+      }
+
+      /* Once scrolled, collapse to a slim logo strip to leave room for the page */
+      #shopify-section-{{ section.id }} .creator-header-bar__inner,
+      #shopify-section-{{ section.id }} .creator-header-bar__logo img,
+      #shopify-section-{{ section.id }} .creator-header-bar__socials,
+      #shopify-section-{{ section.id }} .creator-header-bar__description {
+        transition: padding var(--duration-default, 0.25s) ease, gap var(--duration-default, 0.25s) ease,
+          max-height var(--duration-default, 0.25s) ease, opacity var(--duration-default, 0.25s) ease;
+      }
+
+      #shopify-section-{{ section.id }} .creator-header-bar__socials,
+      #shopify-section-{{ section.id }} .creator-header-bar__description {
+        max-height: 8rem;
+        overflow: hidden;
+      }
+
+      #shopify-section-{{ section.id }} .creator-header-bar--compact .creator-header-bar__inner {
+        gap: 0;
+        padding: 0.8rem 1.6rem;
+      }
+
+      #shopify-section-{{ section.id }} .creator-header-bar--compact .creator-header-bar__logo img {
+        max-height: 4rem;
+      }
+
+      #shopify-section-{{ section.id }} .creator-header-bar--compact .creator-header-bar__socials,
+      #shopify-section-{{ section.id }} .creator-header-bar--compact .creator-header-bar__description {
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    @media screen and (max-width: 749px) and (prefers-reduced-motion: reduce) {
+      #shopify-section-{{ section.id }} .creator-header-bar__inner,
+      #shopify-section-{{ section.id }} .creator-header-bar__logo img,
+      #shopify-section-{{ section.id }} .creator-header-bar__socials,
+      #shopify-section-{{ section.id }} .creator-header-bar__description {
+        transition: none;
+      }
     }
   {%- endstyle -%}
 
@@ -295,6 +342,47 @@
       </div>
     </div>
   </div>
+
+  <script>
+    (() => {
+      // Mobile only: compact the bar once the page has scrolled past its full height,
+      // and restore it only back at the top. The gap between the two points stops the
+      // bar flickering when its own collapse shifts the page.
+      const bar = document.querySelector('#shopify-section-{{ section.id }} .creator-header-bar');
+      if (!bar) return;
+
+      const mobile = window.matchMedia('(max-width: 749px)');
+      let expandedHeight = bar.offsetHeight;
+      let ticking = false;
+
+      const update = () => {
+        ticking = false;
+        if (!mobile.matches) {
+          bar.classList.remove('creator-header-bar--compact');
+          return;
+        }
+
+        const isCompact = bar.classList.contains('creator-header-bar--compact');
+        if (!isCompact) expandedHeight = bar.offsetHeight;
+
+        if (!isCompact && window.scrollY > expandedHeight) {
+          bar.classList.add('creator-header-bar--compact');
+        } else if (isCompact && window.scrollY <= 0) {
+          bar.classList.remove('creator-header-bar--compact');
+        }
+      };
+
+      const onScroll = () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(update);
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      mobile.addEventListener('change', update);
+      update();
+    })();
+  </script>
 {%- endif -%}
 
 {% schema %}
