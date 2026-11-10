@@ -55,6 +55,7 @@
     "cart_social_bar": {
       "type": "cart-social-bar",
       "settings": {
+        "show_store_socials": false,
         "heading": "Follow Orchid Eight",
         "heading_size": "h0",
         "store_icon_size": 32,

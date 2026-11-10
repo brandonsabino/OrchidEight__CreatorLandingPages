@@ -14,29 +14,20 @@
     "announcement_bar_qtQpL6": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_rizkWr": {
+        "announcement_4Q9H4d": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
-            "link": ""
-          }
-        },
-        "announcement_9njDTP": {
-          "type": "announcement",
-          "settings": {
-            "text": "High order volume has caused a delay in production. We are working to get your items done ASAP. Please bear with us.",
-            "link": ""
+            "text": "Shipping and Order Status",
+            "link": "shopify://pages/current-expected-shipping-times"
           }
         }
       },
       "block_order": [
-        "announcement_rizkWr",
-        "announcement_9njDTP"
+        "announcement_4Q9H4d"
       ],
-      "disabled": true,
       "name": "t:sections.announcement-bar.presets.name",
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-51d71a61-e01f-4d4c-b576-4e144461e827",
         "show_line_separator": true,
         "show_social": false,
         "auto_rotate": false,
@@ -47,50 +38,6 @@
     },
     "header": {
       "type": "header",
-      "blocks": {
-        "collection_card_3gTYBj": {
-          "type": "collection_card",
-          "settings": {
-            "collection": "dr-rhino",
-            "menu_item": "collections"
-          }
-        },
-        "collection_card_dGJUVp": {
-          "type": "collection_card",
-          "settings": {
-            "collection": "arowrites",
-            "menu_item": "collections"
-          }
-        },
-        "collection_card_mtL9MN": {
-          "type": "collection_card",
-          "settings": {
-            "collection": "arar",
-            "menu_item": "collections"
-          }
-        },
-        "collection_card_test": {
-          "type": "collection_card",
-          "settings": {
-            "collection": "cottontail",
-            "menu_item": "Collections"
-          }
-        },
-        "product_card_test": {
-          "type": "product_card",
-          "settings": {
-            "product": "cottontail-bun-buns-diner-tee",
-            "menu_item": "More"
-          }
-        }
-      },
-      "block_order": [
-        "collection_card_3gTYBj",
-        "collection_card_dGJUVp",
-        "collection_card_mtL9MN",
-        "collection_card_test",
-        "product_card_test"
-      ],
       "custom_css": [],
       "settings": {
         "logo_position": "middle-left",
