@@ -1,5 +1,8 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
+{%- if section.settings.pagination_type == 'infinite' -%}
+  <script src="{{ 'collection-list-infinite-scroll.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
 
 <div class="page-width">
   <h1 class="title title--primary inline-richtext{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
@@ -17,14 +20,19 @@
       assign collections = collections | reverse
     endif
 
-    assign moduloResult = 28 | modulo: section.settings.columns_desktop
-    assign paginate_by = 30
-    if moduloResult == 0
-      assign paginate_by = 28
+    if section.settings.pagination_type == 'paginate'
+      assign paginate_by = section.settings.collections_per_page
+    else
+      assign moduloResult = 28 | modulo: section.settings.columns_desktop
+      assign paginate_by = 30
+      if moduloResult == 0
+        assign paginate_by = 28
+      endif
     endif
   -%}
   {%- paginate collections by paginate_by -%}
     <ul
+      id="CollectionList-{{ section.id }}"
       class="collection-list grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
       role="list"
     >
@@ -45,7 +53,21 @@
         </li>
       {%- endfor -%}
     </ul>
-    {% render 'pagination', paginate: paginate %}
+    {%- if section.settings.pagination_type == 'paginate' -%}
+      {% render 'pagination', paginate: paginate %}
+    {%- elsif paginate.next -%}
+      <collection-list-infinite-scroll
+        class="collection-list-infinite-scroll"
+        data-next-url="{{ paginate.next.url }}"
+        data-section-id="{{ section.id }}"
+        data-list-id="CollectionList-{{ section.id }}"
+      >
+        <div class="loading__spinner hidden">
+          {%- render 'loading-spinner' -%}
+        </div>
+        <noscript>{% render 'pagination', paginate: paginate %}</noscript>
+      </collection-list-infinite-scroll>
+    {%- endif -%}
   {%- endpaginate -%}
 </div>
 {% schema %}
@@ -120,6 +142,33 @@
       "step": 1,
       "default": 3,
       "label": "t:sections.main-list-collections.settings.columns_desktop.label"
+    },
+    {
+      "type": "select",
+      "id": "pagination_type",
+      "options": [
+        {
+          "value": "infinite",
+          "label": "Load on scroll"
+        },
+        {
+          "value": "paginate",
+          "label": "Paginate"
+        }
+      ],
+      "default": "infinite",
+      "label": "Pagination type",
+      "info": "Load on scroll appends more collections as the visitor nears the bottom of the page."
+    },
+    {
+      "type": "range",
+      "id": "collections_per_page",
+      "min": 4,
+      "max": 60,
+      "step": 2,
+      "default": 24,
+      "label": "Collections per page",
+      "visible_if": "{{ section.settings.pagination_type == 'paginate' }}"
     },
     {
       "type": "checkbox",

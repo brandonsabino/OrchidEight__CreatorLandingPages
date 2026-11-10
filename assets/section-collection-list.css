@@ -59,3 +59,14 @@
 .collection-list-view-all {
   margin-top: 2rem;
 }
+
+.collection-list-infinite-scroll {
+  display: flex;
+  justify-content: center;
+  min-height: 4rem;
+  margin-top: 2rem;
+}
+
+.collection-list-infinite-scroll .loading__spinner {
+  position: static;
+}
