@@ -8,9 +8,9 @@
   Colours come from the same collection metafields that used to restyle the
   header itself: inner background on the bar, content colour for text and
   icons, and the outer background as the bar's bottom border, whose thickness
-  (in px, default 2) comes from its own metafield. The accent border and the
-  header shape toggle are deliberately not carried over, and the bar runs full
-  width.
+  (in px, default 2) comes from its own metafield. With no outer background
+  there is no border. The accent border and the header shape toggle are
+  deliberately not carried over, and the bar runs full width.
 {% endcomment %}
 
 {%- liquid
@@ -73,6 +73,10 @@
 
     assign border_color = creator_source.metafields.custom.creator_landing_page_outer_header_background | default: 'transparent'
     assign border_thickness = creator_source.metafields.custom.creator_landing_page_header_border_thickness | default: 2
+    # No outer colour means no border, rather than a transparent one that still adds height
+    if border_color == 'transparent'
+      assign border_thickness = 0
+    endif
     assign inner_background = creator_source.metafields.custom.creator_landing_page_header_background | default: 'transparent'
     assign content_color = creator_source.metafields.custom.creator_landing_page_header_content_color | default: 'currentColor'
   -%}
