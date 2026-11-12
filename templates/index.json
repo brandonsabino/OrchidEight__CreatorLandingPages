@@ -9,6 +9,45 @@
  */
 {
   "sections": {
+    "rich_text_Ke48KM": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_XzzQGC": {
+          "type": "heading",
+          "settings": {
+            "heading": "Interested in working with us?",
+            "heading_size": "h1",
+            "heading_font_family": "bayon_n4",
+            "heading_font_family_import": "",
+            "use_greston_font": false
+          }
+        },
+        "button_PcAKpL": {
+          "type": "button",
+          "settings": {
+            "button_label": "Creator Contact",
+            "button_link": "shopify://pages/creator-contact-us",
+            "button_style_secondary": false,
+            "button_label_2": "Business Contact",
+            "button_link_2": "shopify://pages/business-contact-us",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_XzzQGC",
+        "button_PcAKpL"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "rich_text_YybPAh": {
       "type": "rich-text",
       "blocks": {
@@ -456,45 +495,6 @@
         "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 16
-      }
-    },
-    "rich_text_Ke48KM": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_XzzQGC": {
-          "type": "heading",
-          "settings": {
-            "heading": "Interested in working with us?",
-            "heading_size": "h1",
-            "heading_font_family": "bayon_n4",
-            "heading_font_family_import": "",
-            "use_greston_font": false
-          }
-        },
-        "button_PcAKpL": {
-          "type": "button",
-          "settings": {
-            "button_label": "Creator Contact",
-            "button_link": "shopify://pages/creator-contact-us",
-            "button_style_secondary": false,
-            "button_label_2": "Business Contact",
-            "button_link_2": "shopify://pages/business-contact-us",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_XzzQGC",
-        "button_PcAKpL"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-4",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
       }
     },
     "collection_list_HY8kGf": {
@@ -971,9 +971,9 @@
     }
   },
   "order": [
+    "rich_text_Ke48KM",
     "rich_text_YybPAh",
     "collection_list_pRMRje",
-    "rich_text_Ke48KM",
     "collection_list_HY8kGf",
     "collection_list_fa3NpK"
   ]

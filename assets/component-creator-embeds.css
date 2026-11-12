@@ -69,10 +69,14 @@
 
 /* --- YouTube --- */
 /* Custom elements are inline by default, which gives absolutely positioned
-   children a containing block that does not span the track. */
+   children a containing block that does not span the track.
+   isolation keeps the arrows' z-index local to the carousel; otherwise they tie
+   with the sticky creator header bar (z-index 2) and win on DOM order, painting
+   over it as the page scrolls underneath. */
 .creator-youtube {
   display: block;
   position: relative;
+  isolation: isolate;
 }
 
 /* Arrows centre against the videos only, not the dots row below them */
