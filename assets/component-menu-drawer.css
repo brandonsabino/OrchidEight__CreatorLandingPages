@@ -234,6 +234,26 @@ details[open].menu-opening > .menu-drawer__submenu {
   padding: 1.1rem 1.1rem;
 }
 
+/* icon-bluesky.svg (and icon-twitch.svg) have no .icon class, hardcoded
+   width/height attributes and their own fill, so Dawn's .list-social__item
+   .icon sizing and currentColor never reach them. Bring any such icon in
+   line with the rest of the drawer row. The SVG files are left alone because
+   the creator header relies on them as they are. */
+.menu-drawer .list-social__item svg:not(.icon) {
+  width: 2.2rem;
+  height: 2.2rem;
+  transition: transform var(--duration-short, 100ms) ease;
+}
+
+.menu-drawer .list-social__item svg:not(.icon),
+.menu-drawer .list-social__item svg:not(.icon) path {
+  fill: currentColor;
+}
+
+.menu-drawer .list-social__link:hover svg:not(.icon) {
+  transform: scale(1.07);
+}
+
 @media screen and (max-width: 749px) {
   .menu-drawer.country-selector-open {
     transform: none !important;
